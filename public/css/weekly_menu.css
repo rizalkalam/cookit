@@ -1,0 +1,25 @@
+.nav-content{
+    display: flex;
+    gap: 41px;
+    justify-content: center;
+    padding: 36px 0px 26px 0px;
+}
+
+.nav-content button {
+    min-width: 30px;
+    flex-shrink: 0;
+    padding: 10px 30px;
+    background: #EBECED;
+    font-size: 15px;
+    border: none;
+}
+
+.nav-content button.nav-content-active {
+    min-width: 30px;
+    flex-shrink: 0;
+    padding: 10px 30px;
+    background: #626263;
+    font-size: 15px;
+    border: none;
+    color: #fff;
+}

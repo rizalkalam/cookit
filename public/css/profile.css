@@ -1,0 +1,382 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+    scroll-behavior: smooth;
+}
+
+.con-profile {
+    background-color: #D9D9D9;
+}
+
+.con-profile-top {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    padding: 35px 0px 0px 120px;
+}
+
+.con-profile-top img {
+    width: 110px;
+    height: 110px;
+    border-radius: 100%;
+}
+
+.txt-profile-top {
+    display: flex;
+    flex-direction: column;
+}
+
+.txt-profile-top h3{
+    color: #38578E;
+}
+
+.txt-profile-top p{
+    color: #38578E;
+}
+
+.main-profile {
+    display: flex;
+    padding: 16px 80px 83px 80px;
+    
+}
+
+.con-profile-left {
+    background: #fff;
+    display: flex;
+    height: 40%;
+    width: 400px;
+    gap: 1px;
+    justify-content: space-between;
+}
+
+.content-profile-left {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    justify-content: center;
+    width: 150px;
+    
+    margin: 33px 10px 33px 19px;
+}
+
+.content-profile-left li {
+    list-style: none;
+}
+
+.content-profile-left li a {
+    font-size: 16px;
+    width: 150px;
+    color: #38578E;
+    font-weight: 500;
+}
+
+.content-profile-left li a.active-page {
+    font-size: 16px;
+    width: 150px;
+    color: #38578E;
+    font-weight: bold;
+}
+
+.line-left {
+    margin: 13px 0px 13px 0px;
+    border: 1px solid #38578E;
+}
+
+.con-profile-mid {
+    display: flex;
+    justify-content: space-between;
+    gap: 112px;
+    background: #fff;
+    padding: 0px 0px 0px 60px;
+    width: 100%;
+    /* width: 700px; */
+}
+
+.content-profile-mid{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    height: 500px;
+    padding: 60px 0px;
+}
+
+.title-profile-mid {
+    font-size: 18px;
+    font-weight: bold;
+    color: #38578E;
+}
+
+.con-myaccount {
+    margin-left: 23px;
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+}
+
+.input-form-myaccount {
+    width: 500px;
+    display: flex;
+    gap: 2px;
+    align-items: center;
+}
+
+.input-form-myaccount p{
+    width: 25%;
+    font-size: 18;
+    font-weight: 500;
+    color: #38578E;
+}
+
+.gap{
+    width: 20%;
+}
+
+.btn-save {
+    width: 118px;
+    height: 40px;
+    background-color: #38578E;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    color: #ffffff;
+    transition-duration: 0.4s;
+}
+
+.line-mid {
+    margin: 12px 0px 12px 0px;
+    border: 1px solid #38578E;
+}
+
+.con-profile-right {
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
+    padding: 90px;
+    width: 100%;
+}
+
+.con-profile-right img {
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+}
+
+.btn-choose-photo {
+    width: 195px;
+    height: 40px;
+    background-color: #38578E;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    color: #ffffff;
+    transition-duration: 0.4s;
+    margin-bottom: 6px;
+}
+
+.underimg-profile-right p {
+    font-size: 12px;
+    font-weight: 200;
+}
+
+/* style konten member */
+.con-member-left {
+    background: #fff;
+    display: flex;
+    height: 40%;
+    width: 400px;
+    gap: 1px;
+    justify-content: space-between;
+}
+
+.con-member-mid {
+    display: flex;
+    justify-content: space-between;
+    gap: 112px;
+    background: #fff;
+    padding: 0px 0px 0px 60px;
+    width: 100%;
+    /* width: 70%; */
+}
+
+.txt-grup-profile-mid {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.title-txt-grup-profile-mid {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.dsc-txt-grup-profile-mid {
+    font-size: 12px;
+    font-weight: 200;
+}
+
+.input-group-profile-mid {
+    display: flex;
+    gap: 18px;
+}
+
+.title-input-profile-mid {
+    font-size: 12px;
+    font-weight: 300;
+    margin-bottom: 2px;
+}
+
+.con-search-filter .con-filter {
+    display: flex;
+    width: 40%;
+    height: 37px;
+    gap: 20px;
+}
+
+.con-search-filter .con-filter select {
+    
+    /* width: 100%; */
+    /* height: 100%; */
+    padding: 0px 17px;
+    background: #DBDBDB;
+    border: none;
+    cursor: pointer;
+    border: none;
+}
+
+.title-profile-right {
+    font-size: 18px;
+    font-weight: bold;
+    color: #38578E;
+}
+
+.con-member-right {
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    gap: 32px;
+    align-items: start;
+    padding: 60px 57px 0px 45px;
+    width: 100%;
+}
+
+.txt-group-member-right {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.dsc-member-right {
+    font-size: 16;
+    font-weight: 500;
+    color: #38578E;
+}
+
+.txt-keuntungan {
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.txt-group-member-right ul li {
+    margin-left: 24px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.btn-member-right {
+    align-self: flex-end;
+    justify-self: flex-end;
+    padding: 180px 0px;
+}
+
+.btn-beli {
+    width: 83px;
+    height: 37px;
+    background-color: #38578E;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    color: #ffffff;
+    transition-duration: 0.4s;
+    margin-bottom: 6px;
+}
+/* end-style konten member */
+
+/* style konten ubah kata sandi */
+.con-password-mid {
+    display: flex;
+    justify-content: space-between;
+    gap: 112px;
+    background: #fff;
+    padding: 0px 0px 0px 68px;
+    width: 100%;
+    /* width: 700px; */
+}
+
+.content-password-mid{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    height: 500px;
+    padding: 60px 0px;
+}
+
+.title-password-mid {
+    font-size: 18px;
+    font-weight: bold;
+    color: #38578E;
+}
+
+.con-reset-password {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.input-form-reset-password {
+    width: 600px;
+    display: flex;
+    align-items: center;
+}
+
+.input-form-reset-password p{
+    width: 60%;
+    font-size: 16px;
+    font-weight: 500;
+    color: #38578E;
+}
+
+.btn-reset-password-save {
+    width: 118px;
+    height: 40px;
+    background-color: #38578E;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    color: #ffffff;
+    transition-duration: 0.4s;
+}
+
+.noted-reset-password {
+    font-size: 12px;
+    font-weight: 200;
+}
+
+.con-password-right {
+    background: #fff;
+    display: flex;
+    gap: 32px;
+    align-self: flex-end;
+    padding: 432px 0px 30px 270px;
+    width: 80%;
+}
+/* end-steyle konten ubah kata sandi */
