@@ -59,7 +59,12 @@
 {{-- end-sidebar --}}
 
 <div class="dashboard-content">
-    <p class="title-dashboard">Edit Live Product / Add New</p>
+    <div class="title-section-edit-product">
+        <p class="title-dashboard">Edit Live Product / Add New</p>
+        <a href="/detail/product">
+            <button class="btn-save-edit-product">Save</button>
+        </a>
+    </div>
     <div class="container-edit-product">
         <div class="edit-dshb-sec">
             <div class="head-sec-edit-product">
@@ -145,7 +150,7 @@
             <div class="head-sec-edit-product">
                 <p class="title-con-product">#Section 3</p>
                 <ul>
-                    <li id="live">Live</li>
+                    <li id="empty">Uncompleted</li>
                 </ul>
             </div>
             <div class="warp-row-edit-product">
@@ -176,8 +181,12 @@
                         <button class="btn-ordernow-dshb-product">Main Course</button>
                     </a>
                     <a href="/detail/product">
-                        <button class="btn-ordernow-dshb-product">Dessert</button>
+                        <button id="order-empty" class="btn-ordernow-dshb-product">Dessert</button>
                     </a>
+                </div>
+                <div class="con-danger-txt">
+                    <iconify-icon icon="solar:danger-circle-bold" width="15"></iconify-icon>
+                    <p class="danger-txt-edit-product">Dessert doesn’t exist</p>
                 </div>
             </div>
         </div>
@@ -210,14 +219,18 @@
                 <p class="row4-edit-product">Menu</p>
                 <div class="row5-edit-product">
                     <a href="/detail/product">
-                        <button class="btn-ordernow-dshb-product">Appetizer</button>
+                        <button id="order-empty" class="btn-ordernow-dshb-product">Appetizer</button>
                     </a>
                     <a href="/detail/product">
-                        <button class="btn-ordernow-dshb-product">Main Course</button>
+                        <button id="order-empty" class="btn-ordernow-dshb-product">Main Course</button>
                     </a>
                     <a href="/detail/product">
-                        <button class="btn-ordernow-dshb-product">Dessert</button>
+                        <button id="order-empty" class="btn-ordernow-dshb-product">Dessert</button>
                     </a>
+                </div>
+                <div class="con-danger-txt">
+                    <iconify-icon icon="solar:danger-circle-bold" width="15"></iconify-icon>
+                    <p class="danger-txt-edit-product">Appetizer, Main Course, Dessert doesn’t exist</p>
                 </div>
             </div>
         </div>

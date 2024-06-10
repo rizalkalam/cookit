@@ -64,21 +64,42 @@
         <div class="section-3">
             <p class="title-section">Further Information</p>
             <div class="container-section-3">
-                <div class="txt-sec3">
-                    <p class="title-txt-sec3">Alat yang dibutuhkan</p>
-                    <p class="dsc-txt-sec3">Tusukan kayu/sate Lap bersih Blender Chopper</p>
+                <div class="con-left-product">
+                    <div class="txt-sec3">
+                        <p class="title-txt-sec3">Alat yang dibutuhkan</p>
+                        <p class="dsc-txt-sec3">Tusukan kayu/sate Lap bersih Blender Chopper</p>
+                    </div>
+                    <div class="txt-sec3">
+                        <p class="title-txt-sec3">Tingkat Kesusahan</p>
+                        <p class="dsc-txt-sec3">Sedang</p>
+                    </div>
+                    <div class="txt-sec3">
+                        <p class="title-txt-sec3">Bahan yang dibutuhkan</p>
+                        <p class="dsc-txt-sec3">200 mL Air Tepung terigu Es batu</p>
+                    </div>
+                    <div class="txt-sec3">
+                        <p class="title-txt-sec3">Waktu Penyajian</p>
+                        <p class="dsc-txt-sec3">30 menit</p>
+                    </div>
                 </div>
-                <div class="txt-sec3">
-                    <p class="title-txt-sec3">Tingkat Kesusahan</p>
-                    <p class="dsc-txt-sec3">Sedang</p>
-                </div>
-                <div class="txt-sec3">
-                    <p class="title-txt-sec3">Bahan yang dibutuhkan</p>
-                    <p class="dsc-txt-sec3">200 mL Air Tepung terigu Es batu</p>
-                </div>
-                <div class="txt-sec3">
-                    <p class="title-txt-sec3">Waktu Penyajian</p>
-                    <p class="dsc-txt-sec3">30 menit</p>
+                <div class="nutritions-facts">
+                    <h3>Nutritions Facts!</h3>
+                    <div class="txt-nutritions-facts">
+                        <p class="title-txt-nutritions-facts">Karbohidrat</p>
+                        <p class="dsc-txt-nutritions-facts">tes 1231abc</p>
+                    </div>
+                    <div class="txt-nutritions-facts">
+                        <p class="title-txt-nutritions-facts">Lemak</p>
+                        <p class="dsc-txt-nutritions-facts">tes 23u2u83iu234</p>
+                    </div>
+                    <div class="txt-nutritions-facts">
+                        <p class="title-txt-nutritions-facts">Protein</p>
+                        <p class="dsc-txt-nutritions-facts">tes 1231abc</p>
+                    </div>
+                    <div class="txt-nutritions-facts">
+                        <p class="title-txt-nutritions-facts">Serat</p>
+                        <p class="dsc-txt-nutritions-facts">tes 1231abc</p>
+                    </div>
                 </div>
             </div>
             <div class="btn-section-34">
