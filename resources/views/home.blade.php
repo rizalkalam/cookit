@@ -60,6 +60,9 @@
         <div class="title-section-2">
             <p>Redy to Order</p>
         </div>
+        <div class="link-weeklymenu">
+            <a href="/weekly-menu">See Our Weekly Menu ></a>
+        </div>
         <div class="container-carousel">
             <div class="carousel-view">
                 <!-- Left Button -->
@@ -67,104 +70,22 @@
                   <!-- List Container -->
                   <div id="item-list" class="item-list">
                     <!-- Items -->
+                    @foreach ($menus as $menu)    
                     <div class="item">
-                        <img id="item" class="item-img" src="/assets/card1-sec2.png"/>
+                        <img id="item" class="item-img" src="{{ $menu->img_menu }}"/>
                         <div class="dsc-card-section-2">
-                            <p class="title-dsc-card-sec2">Cheese Burger</p>
+                            <p class="title-dsc-card-sec2">{{ $menu->menu_name }}</p>
                             <div class="location-section-2">
                                 <img src="/assets/map-marker.svg">
-                                <p class="txt-map-sec2">Burger Arena</p>
+                                <p class="txt-map-sec2">{{ $menu->store }}</p>
                             </div>
-                            <p class="price-sec2">$4.00</p>
-                            <a href="">
+                            <p class="price-sec2">${{ $menu->price }}</p>
+                            <a href="/detail/{{ $menu->menu_name }}">
                                 <button class="btn-ordernow-sec2">Order Now</button>
                             </a>
                         </div>
                     </div>
-                    <div class="item">
-                        <img id="item" class="item-img" src="/assets/card2-sec2.png"/>
-                        <div class="dsc-card-section-2">
-                            <p class="title-dsc-card-sec2">Toffe’s Cake</p>
-                            <div class="location-section-2">
-                                <img src="/assets/map-marker.svg">
-                                <p class="txt-map-sec2">Top Sticks</p>
-                            </div>
-                            <p class="price-sec2">$4.00</p>
-                            <a href="">
-                                <button class="btn-ordernow-sec2">Order Now</button>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <img id="item" class="item-img" src="/assets/card3-sec2.png"/>
-                        <div class="dsc-card-section-2">
-                            <p class="title-dsc-card-sec2">Dancake</p>
-                            <div class="location-section-2">
-                                <img src="/assets/map-marker.svg">
-                                <p class="txt-map-sec2">Cake World</p>
-                            </div>
-                            <p class="price-sec2">$4.00</p>
-                            <a href="">
-                                <button class="btn-ordernow-sec2">Order Now</button>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <img id="item" class="item-img" src="/assets/card4-sec2.png"/>
-                        <div class="dsc-card-section-2">
-                            <p class="title-dsc-card-sec2">Crispy Sandwitch</p>
-                            <div class="location-section-2">
-                                <img src="/assets/map-marker.svg">
-                                <p class="txt-map-sec2">Fastfood Dine</p>
-                            </div>
-                            <p class="price-sec2">$4.00</p>
-                            <a href="">
-                                <button class="btn-ordernow-sec2">Order Now</button>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <img id="item" class="item-img" src="/assets/card5-sec2.png"/>
-                        <div class="dsc-card-section-2">
-                            <p class="title-dsc-card-sec2">Thai  Soup</p>
-                            <div class="location-section-2">
-                                <img src="/assets/map-marker.svg">
-                                <p class="txt-map-sec2">Foody man</p>
-                            </div>
-                            <p class="price-sec2">$4.00</p>
-                            <a href="">
-                                <button class="btn-ordernow-sec2">Order Now</button>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <img id="item" class="item-img" src="/assets/card2-sec2.png"/>
-                        <div class="dsc-card-section-2">
-                            <p class="title-dsc-card-sec2">Toffe’s Cake</p>
-                            <div class="location-section-2">
-                                <img src="/assets/map-marker.svg">
-                                <p class="txt-map-sec2">Top Sticks</p>
-                            </div>
-                            <p class="price-sec2">$4.00</p>
-                            <a href="">
-                                <button class="btn-ordernow-sec2">Order Now</button>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <img id="item" class="item-img" src="/assets/card4-sec2.png"/>
-                        <div class="dsc-card-section-2">
-                            <p class="title-dsc-card-sec2">Crispy Sandwitch</p>
-                            <div class="location-section-2">
-                                <img src="/assets/map-marker.svg">
-                                <p class="txt-map-sec2">Fastfood Dine</p>
-                            </div>
-                            <p class="price-sec2">$4.00</p>
-                            <a href="">
-                                <button class="btn-ordernow-sec2">Order Now</button>
-                            </a>
-                        </div>
-                    </div>
+                    @endforeach
                   </div>
                 <!-- Right Button -->
                 <button id="next-btn" class="next-btn"><img src="/assets/icn-arrow-right.svg" alt=""></button>
@@ -226,25 +147,115 @@
                     <p class="coment-testi-sec3">“Lobortis leo pretium facilisis amet nisl at nec. Scelerisque risus tortor donec ipsum consequat semper consequat adipiscing ultrices.”</p>
                 </div>
             </div>
-            
-            
-            
         </div>
-        <a href="">
-            <button class="btn-testi-sec3">SENT A QUOTE</button>
-        </a>
+        
+        <button class="btn-testi-sec3" onclick="openForm()">SENT A QUOTE</button>
+        <div id="modal">
+            <div id="exampleModal" class="reveal-modal">
+                <button class="btn-close-modal" onclick="closeForm()"><img src="/assets/close-modal.svg" alt=""></button>
+                <p class="title-modal">Give a Review</p>
+                <form class="rating">
+                    <label>
+                      <input type="radio" name="stars" value="1" />
+                      <span class="icon">★</span>
+                    </label>
+                    <label>
+                      <input type="radio" name="stars" value="2" />
+                      <span class="icon">★</span>
+                      <span class="icon">★</span>
+                    </label>
+                    <label>
+                      <input type="radio" name="stars" value="3" />
+                      <span class="icon">★</span>
+                      <span class="icon">★</span>
+                      <span class="icon">★</span>   
+                    </label>
+                    <label>
+                      <input type="radio" name="stars" value="4" />
+                      <span class="icon">★</span>
+                      <span class="icon">★</span>
+                      <span class="icon">★</span>
+                      <span class="icon">★</span>
+                    </label>
+                    <label>
+                      <input type="radio" name="stars" value="5" />
+                      <span class="icon">★</span>
+                      <span class="icon">★</span>
+                      <span class="icon">★</span>
+                      <span class="icon">★</span>
+                      <span class="icon">★</span>
+                    </label>
+                </form>
+                <div class="detail-review">
+                    <p class="title-review">Detail Review</p>
+                    <div class="txt-review">
+                        <p>Lorem ipsum dolor sit amet,  adipiscing elit.Sed at gravida nulla tempor, neque. Duis quam ut netus 
+                            donec enim vitae ac diam. Lorem ipsum dolor sit amet,  adipiscing elit.Sed at gravida nulla tempor, neque. Duis quam ut netus donec enim vitae ac diam. Lorem ipsum dolor sit amet,  adipiscing elit.Sed at gravida nulla tempor, neque. Duis quam ut netus donec enim vitae ac diam. </p>
+                    </div>
+                </div>
+                <form class="input-recomend" action="/action_page.php">
+                    <div class="title-input-radio">
+                        <p>Would you recomend CookIt to others?</p>
+                    </div>
+                    <div class="content-input-radio">
+                        <div>
+                            <label class="container">Yes
+                                <input type="radio" checked="checked" name="radio">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <div>
+                            <label class="container">No
+                                <input type="radio" checked="checked" name="radio">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+                </form>
+                <div class="btn-modal">
+                    <a href="">
+                        <button class="btn-send-review">Send Review</button>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
     {{-- end-content-section-3 --}}
 
-    {{-- content-section-4 --}}
-    <div class="content-section-4">
-        <img class="img-background-sec4" src="/assets/img-sec4-res.png" alt="">
-        <div class="con-section-4">
-            <p class="txt-sec4">Are you ready to order with the best deals?</p>
-            <a href="">
-                <button class="btn-check-menu">CHECK OUR MENU<img src="/assets/icn-next.svg"></button>
-            </a>
-        </div>
-    </div>
-    {{-- end-content-section-4 --}}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
+    <script>
+        // modal
+        function openForm() {
+        document.getElementById("modal").style.display = "block";
+        }
+
+        function closeForm() {
+        document.getElementById("modal").style.display = "none";
+        }
+        // end-modal
+
+        $(document).ready(function() {
+        initializeSlick();
+        $(window).on('resize', function() {
+            initializeSlick();
+        });
+
+        const prev = document.getElementById('prev-btn');
+        const next = document.getElementById('next-btn');
+        const list = document.getElementById('item-list');
+
+        const itemWidth = 150;
+        const padding = 10;
+
+        prev.addEventListener('click', () => {
+            list.scrollLeft -= itemWidth + padding;
+        });
+
+        next.addEventListener('click', () => {
+            list.scrollLeft += itemWidth + padding;
+        });
+        });
+    </script>
 @endsection

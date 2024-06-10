@@ -1,0 +1,133 @@
+.dashboard-content {
+  background-color: #FFFAEF;
+  margin-left: 250px;
+  padding: 1px 20px 100px 20px;
+  /* height: 1000px; */
+}
+
+/* sidebar */
+.wrap-side{
+    background-color: #fff;
+}
+
+.sidebar {
+    margin: 0px;
+    padding: 40px 0px 0px 0px;
+    width: 250px;
+    background-color: #fff;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+  }
+  
+  .sidebar a {
+    display: block;
+    color: black;
+    padding: 16px;
+    text-decoration: none;
+    margin: 0px 0px 0px 30px;
+    width: 180px;
+    height: auto;
+    border-radius: 5px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+   
+  .sidebar a.active {
+    background-color: #FF7A00;
+    margin: 0px 0px 0px 30px;
+    width: 180px;
+    height: auto;
+    color: white;
+    border-radius: 5px;
+  }
+  
+  .sidebar a:hover:not(.active) {
+    background-color: #FFFAEF;
+    color: black;
+    margin: 0px 0px 0px 30px;
+    width: 180px;
+    height: auto;
+    border-radius: 0px;
+  }
+
+  #side-menu{
+    display: flex;
+  }
+
+  #mark{
+    background-color: #fff;
+    width: 6px;
+    height: 50px;
+    border-radius: 0px 10px 10px 0px;
+  }
+
+  #mark.active{
+    background-color: #FF7A00;
+    width: 6px;
+    height: 50px;
+    border-radius: 0px 10px 10px 0px;
+  }
+
+  iconify-icon{
+    color: black;
+  }
+
+  iconify-icon.active{
+    color: #fff;
+  }
+
+  .line-gap-sidebar{
+    width: 100%;
+    border: 0.6px solid #E0E0E0;
+    margin: 90px auto;
+    margin-bottom: 10px;
+}
+  
+/* end-sidebar */
+
+.featured-product{
+
+    width: 300px;
+    height: auto;
+}
+
+.meter-warp{
+    width: 230px;
+    position: relative;
+    display: flex;
+}
+
+.meter-body{
+    width: 100%;
+    height: auto;
+}
+
+.container-meter{
+    position: absolute;
+    width: 180px;
+    margin: 0 auto;
+    left: 10%;
+    top: 8%;
+    /* margin-bottom: 100px; */
+    /* border: 1px solid #F46A45; */
+}
+
+.meter-hand{
+    width: 100%;
+    height: auto;
+}
+
+#MeterHand {
+    display: inline-block;
+    transform: rotate(200deg);
+    /* animation: rotation 2s; */
+  }
+  
+  /* @keyframes rotation {
+    50% {
+        transform: rotate(50deg);
+      }
+  } */

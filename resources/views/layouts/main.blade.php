@@ -6,9 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CookItUp</title>
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/auth.css">
     <link rel="stylesheet" href="/css/profile.css">
     <link rel="stylesheet" href="/css/home.css">
     <link rel="stylesheet" href="/css/weekly_menu.css">
+    <link rel="stylesheet" href="/css/product.css">
+    <link rel="stylesheet" href="/css/dashboard-home.css">
+    <link rel="stylesheet" href="/css/dashboard-product.css">
+    <link rel="stylesheet" href="/css/dashboard-edit-product.css">
+    <link rel="stylesheet" href="/css/dashboard-edit-menu.css">
+    <link rel="stylesheet" href="/css/dashboard-orderlist.css">
+    <link rel="stylesheet" href="/css/dashboard-review.css">
+    <link rel="stylesheet" href="/css/dashboard-customer.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
+
     <!-- icon -->
     <link
       rel="stylesheet"
@@ -29,13 +41,25 @@
     <!--  -->
 </head>
 <body>
-    @auth
-        @include('partials.navbarauth')
+    
+    @if (Route::is('no-partials'))
+      @yield('content')
+    @elseif(Route::is('prefix-dashboard'))
+      @auth
+          @include('partials.navbarauth')
+      @else
+          @include('partials.navbar')      
+      @endauth
+      @yield('content')
     @else
-        @include('partials.navbar')      
-    @endauth
-    @yield('content')
-    @include('partials.footer')
+      @auth
+          @include('partials.navbarauth')
+      @else
+          @include('partials.navbar')      
+      @endauth
+      @yield('content')
+      @include('partials.footer')
+    @endif
     
     <script src="/js/script.js"></script>
 </body>

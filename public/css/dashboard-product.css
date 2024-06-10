@@ -1,0 +1,223 @@
+.title-dashboard{
+    margin: 50px 0px 10px 10px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+
+.title-con-product{
+    font-size: 24px;
+    font-weight: 500;
+}
+
+/* section-1 */
+.container-dshb-product{
+    background-color: #fff;
+    margin: 0px 20px;
+    padding: 50px 20px;
+    border-radius: 25px;
+}
+
+.edit-txt{
+    font-size: 14px;
+    color: black;
+    text-decoration: underline;
+    text-shadow: 0 0 1px black;
+}
+
+.con-dshb-product{
+    display: flex;
+    flex-direction: column;
+    padding: 0px 50px;
+}
+
+.sec1-dshb-product{
+    display: flex;
+    gap: 55px;
+}
+
+.dshb-monthly-links{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+    padding: 22px 14px;
+    /* max-width: 60px;
+    max-height: 70px; */
+}
+
+.dshb-monthly{
+    list-style: none;
+    margin: auto;
+    background-color: #FEF9EE;
+    padding: 4px 15px;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.selected{
+    background-color: #FFB30E;
+}
+
+.dshb-monthly-links li a{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.dshb-month{
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+}
+
+.day{
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+}
+
+.dshb-product-list{
+    display: flex;
+    gap: 65px;
+}
+
+.item-dshb-product {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+.dsc-card-dshb-product{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.item-dshb-product-img{
+    width: 200px;
+    height: auto;
+    border-radius: 16px;
+}
+
+.con-dshb-product{
+    display: flex;
+    gap: 50px;
+}
+
+.title-dsc-card-dshb-product{
+    font-size: 16px;
+    font-weight: bold;
+    color: #424242;
+}
+
+.dsc-dshb-product{
+    color: #FFB30E;
+}
+
+.price-dshb-product{
+    font-weight: bold;
+    color: #212121;
+}
+
+.btn-ordernow-dshb-product{
+    width: 100%;
+    padding: 15px 0px;
+    border: none;
+    background-color: #F46A45;
+    color: #fff;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+/* end-section-1 */
+
+/* section-2 */
+.sec2-dshb-product{
+    background-color: #FFFAEF;
+    padding: 20px 10px;
+    display: flex;
+    gap: 80px;
+}
+
+.item-dshb-product-img-sec2{
+    width: 200px;
+    height: auto;
+    border-radius: 16px;
+}
+
+.dsc-card-dshb-product-sec2{
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.btn-ordernow-dshb-product-sec2{
+    width: 100%;
+    padding: 15px 0px;
+    border: none;
+    background-color: #F46A45;
+    color: #fff;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 60px;
+}
+/* end-section-2 */
+
+/* section-3 */
+.table-warp{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+    margin-top: 10px;
+    
+}
+    /* table */
+    #customers {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        
+    }
+
+    #customers th{
+        
+    }
+
+    .td-menu{
+        margin-top: 20px;
+        display: flex;
+        gap: 15px;
+    }
+    
+    #customers td{
+        padding-bottom: 25px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    #customers td .icn-close{
+        margin-top: 10px;
+        width: 28px;
+        height: auto;
+    }
+
+    #customers img{
+        width: 40px;
+        height: 40px;
+    }
+    
+    #customers tr:hover {background-color: #ddd;}
+    
+    #customers th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #fff;
+        color: black;
+    }
+    /* end-table */
+/* end-section-3 */

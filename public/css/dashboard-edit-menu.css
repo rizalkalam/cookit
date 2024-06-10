@@ -1,0 +1,314 @@
+/* section-1 */
+.container-edit-menu{
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin: 20px 10px;
+    padding: 30px 40px;
+    border-radius: 25px;
+    background-color: #fff;
+}
+
+.head-sec-edit-menu{
+    display: flex;
+    flex-direction: column;
+}
+
+.txt-type{
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.head-sec-edit-menu-top{
+    display: flex;
+    justify-content: space-between;
+}
+
+.type-menu{
+    font-size: 28px;
+    font-weight: 500;
+}
+
+.btn-save-menu{
+    width: 70px;
+    padding: 9px 0px;
+    border: none;
+    background-color: #F46A45;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.btn-archive-menu{
+    width: 70px;
+    padding: 8px 0px;
+    border: none;
+    background-color: #fff;
+    color: black;
+    border: 1px solid #D5D5D5;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.sec1-edit-menu{
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: space-between;
+}
+
+.left-sec1-edit-menu{
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.left-sec1-edit-menu img{
+    width: 250px;
+    height: auto;
+}
+
+.con-btn-sec1-edit-menu{
+    max-width: 250px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-upload-menu{
+    width: 115px;
+    padding: 12px 0px;
+    border: none;
+    background-color: #fff;
+    color: #43BE83;
+    border: 1px solid #D5D5D5;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.btn-delete-menu{
+    width: 115px;
+    padding: 12px 0px;
+    border: none;
+    background-color: #fff;
+    color: #F93C65;
+    border: 1px solid #D5D5D5;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.right-sec1-edit-menu{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 15px 0px;
+}
+
+.input-form-edit-menu p{
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.input-form-edit-menu input{
+    width: 750px;
+    font-size: 16px;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #D5D5D5;
+    border-radius: 5px;
+}
+
+/* end-section-1 */
+
+/* section-2 */
+.title-con-edit-menu{
+    font-size: 26px;
+    font-weight: 500;
+}
+
+.table-edit-menu-warp{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+    margin-top: 10px;
+    
+}
+    /* table */
+    #edit-menu {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    #edit-menu th{
+        border-bottom: 1px solid #D5D5D5;
+    }
+
+    .input-name-edit-menu{
+        width: 600px;
+        height: 65px;
+    }
+
+    .input-name-edit-menu input{
+        width: 90%;
+        height: 60%;
+        border: 1px solid #D5D5D5;
+        border-radius: 5px;
+        padding: 0px 10px;
+    }
+
+    .input-qty-edit-menu{
+        width: 100px;
+        height: 65px;
+    }
+
+    .input-qty-edit-menu input{
+        width: 60%;
+        height: 60%;
+        border: 1px solid #D5D5D5;
+        border-radius: 5px;
+        padding: 0px 10px;
+    }
+
+    .input-unit-edit-menu{
+        width: 90px;
+        height: 65px;
+    }
+
+    .input-unit-edit-menu select{
+        width: 70%;
+        height: 60%;
+        border: 1px solid #D5D5D5;
+        border-radius: 5px;
+    }
+    
+    /* #edit-menu tr:hover {background-color: #ddd;} */
+    
+    #edit-menu th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #fff;
+        color: black;
+    }
+    /* end-table */
+/* end-section-2 */
+
+/* section-3 */
+.container-sec3-edit-menu{
+    padding: 30px 0px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.con-left-sec3-edit-menu{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.con-right-sec3-edit-menu{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.input-form-sec3{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.input-karbohidrat,
+.input-protein,
+.input-lemak{
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.input-karbohidrat p,
+.input-protein p,
+.input-lemak p{
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.input-karbohidrat input,
+.input-protein input,
+.input-lemak input{
+    font-size: 16px;
+    height: 38px;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid #D5D5D5;
+}
+
+.input-karbohidrat select,
+.input-protein select,
+.input-lemak select{
+    font-size: 12px;
+    width: 80px;
+    height: 38px;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid #D5D5D5;
+}
+
+.line-gap-sec3{
+    height: auto;
+    border: 0.9px solid #D5D5D5;
+}
+
+/* end-section-3 */
+
+/* section-4 */
+.container-form-sec4-edit-menu{
+    padding: 30px 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.container-sec4-edit-menu{
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.input-number-sec4{
+    width: 90px;
+    height: 38px;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid #D5D5D5;
+}
+
+.input-dsc-sec4{
+    max-width: 700px;
+    width: 700px;
+    height: 38px;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid #D5D5D5;
+}
+
+.container-sec4-edit-menu-last{
+    width: 936px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.icn-add-data-sec4 {
+    
+}
+
+.icn-add-data-sec4 iconify-icon{
+    color: #979797;
+}
+/* end-section-4 */

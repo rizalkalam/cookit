@@ -1,17 +1,65 @@
-const prev = document.getElementById('prev-btn')
-const next = document.getElementById('next-btn')
-const list = document.getElementById('item-list')
+function initializeSlick() {
+  if (window.innerWidth <= 480) {
+      if (!$(".item-list").hasClass('slick-initialized')) {
+          $(".item-list").slick({
+              centerMode: true,
+              autoplay: false,
+              dots: false,
+              arrows: false,
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              variableWidth: true,
+              
+          });
+      }
 
-const itemWidth = 150
-const padding = 10
+      if (!$(".card-list-sec3").hasClass('slick-initialized3')) {
+          $(".card-list-sec3").slick({
+            centerMode: true,
+            autoplay: true,
+            dots: false,
+            arrows: false,
+            variableWidth: true,
+            // slidesToShow: 1,
+            // slidesToScroll: 1,
+          })
+      }
+  } else if(window.innerWidth <= 835) {
+      if (!$(".item-list").hasClass('slick-initialized')) {
+        $(".item-list").slick({
+            centerMode: true,
+            autoplay: false,
+            dots: false,
+            arrows: false,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            variableWidth: true,
+            
+        });
+      }
 
-prev.addEventListener('click',()=>{
-  list.scrollLeft -= itemWidth + padding
-})
+      if (!$(".card-list-sec3").hasClass('slick-initialized3')) {
+          $(".card-list-sec3").slick({
+            centerMode: false,
+            autoplay: true,
+            dots: false,
+            arrows: false,
+            variableWidth: true,
+            // slidesToShow: 1,
+            // slidesToScroll: 1,
+          })
+      }
+  } else {
+    if ($(".item-list").hasClass('slick-initialized')) {
+        $(".item-list").slick('unslick');
+    }
+  }
+}
 
-next.addEventListener('click',()=>{
-  list.scrollLeft += itemWidth + padding
-})
+
+
+
+
 
 function navPopup() {
   var x = document.getElementById("nav-links");

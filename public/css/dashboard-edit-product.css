@@ -1,0 +1,90 @@
+.container-edit-product{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    margin: 20px 20px;
+}
+
+.edit-dshb-sec{
+    background-color: #fff;
+    padding: 30px 0px;
+}
+
+.head-sec-edit-product{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px 90px 0px 25px;
+}
+
+#live{
+    font-size: 14px;
+    color: #00B69B;
+}
+
+#empty{
+    font-size: 14px;
+    color: #F93C65;
+}
+
+.warp-row-edit-product{
+    padding: 30px 90px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.row1-edit-product{
+    display: flex;
+    justify-content: space-between;
+}
+
+.row2-edit-product{
+    display: flex;
+    justify-content: space-between;
+}
+
+.con-inpt-date{
+    display: flex;
+    gap: 40px;
+}
+
+.from-date,
+.until-date{
+    display: flex;
+    gap: 10px;
+}
+
+.row2-edit-product input{
+    color: #D5D5D5;
+    border: 1px solid #D5D5D5;
+}
+
+.row3-edit-product{
+    width: 100%;
+    border: 0.6px solid #E0E0E0;
+    margin-top: 20px;
+    /* margin-bottom: 10px; */
+}
+
+.row4-edit-product{
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.row5-edit-product{
+    display: flex;
+    gap: 120px;
+}
+
+.btn-ordernow-dshb-product{
+    width: 220px;
+    padding: 15px 0px;
+    border: none;
+    background-color: #F46A45;
+    color: #fff;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 10px;
+}

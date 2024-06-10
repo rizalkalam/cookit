@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -32,6 +33,7 @@ class AuthController extends Controller
     public function registration(Request $request)
     {
         $validator = Validator::make($request->all(), [
+            'full_name' => 'required',
             'name' => 'required',
             'email' => 'required',
             'password' => 'required'
@@ -47,14 +49,18 @@ class AuthController extends Controller
 
         try {
             $data = User::create([
+                'full_name' => $request->full_name,
                 'name' => $request->name,
                 'email' => $request->email,
-                'password' => $request->password
+                'password' => Hash::make($request->password), 
             ]);
 
             $data->assignRole('user');
 
-            return redirect('/login')->with('success', 'Berhasil mendaftar, silahkan masuk!');;
+            event(new Registered($data));
+            Auth::login($data);
+
+            return redirect('/email/verify');
         } catch (\Throwable $th) {
             // return redirect()->back()->withInput()->withErrors(['password' => 'Kata sandi yang Anda masukkan salah.']);
         }
@@ -62,7 +68,7 @@ class AuthController extends Controller
 
     public function auth(Request $request)
     {
-        $credentials = $request->only('email', 'password');
+        $credentials = $request->only('name', 'password');
 
         if (Auth::attempt($credentials)) {
             // Authentication passed
