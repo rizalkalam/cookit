@@ -1,0 +1,94 @@
+.section-content-bundling{
+    padding: 0px 150px 150px 150px;
+}
+
+.con-list-bundling{
+    background-color: #FFFAEF;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    padding: 30px 20px 50px 20px;
+}
+
+.container-bundling{
+    display: grid;
+    gap: 50px;
+    grid-template-columns: repeat(4, 215px);
+    justify-content: center;
+    align-items: center;
+}
+
+.card-bundling{
+    background-repeat: no-repeat;
+    background-size: 400px;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    /* padding: 30px 20px 20px 20px; */
+    border-radius: 10px;
+}
+
+.img-bundling{
+    width: 215px;
+    height: 215px;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+    inset 0 -3em 3em rgba(0,0,0,0.4),
+    0.3em 0.3em 1em rgba(0,0,0,0.4);
+}
+
+.img-bundling img{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.dsc-bundling{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+}
+
+.title-dsc-bundling{
+    font-size: 16px;
+    font-weight: bold;
+    color: #424242;
+}
+
+.txt-dsc-bundling{
+    font-size: 16px;
+    font-weight: 500;
+    color: #FF7A00;
+}
+
+.sec-button-bundling{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-order-bundling{
+    width: 133vh;
+    height: 45px;
+    margin: 0 auto;
+    background-color: #F46A45;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    transition-duration: 0.4s;
+}

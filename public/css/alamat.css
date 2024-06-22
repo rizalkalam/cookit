@@ -1,0 +1,143 @@
+.list-alamat{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#con-alamat{
+    width: 145vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid rgba(244, 106, 69, 20%);
+    padding: 40px 30px;
+    position: relative;
+}
+
+#con-alamat.applied{
+    width: 145vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #00B69B;
+    padding: 40px 30px;
+}
+
+#con-alamat a{
+    font-size: 12px;
+    color: #FF0000;
+}
+
+.badge-applied{
+    position: absolute;
+    top: 3px;
+    right: 5px;
+    background-color: #00B69B;
+    padding: 5px 5px;
+}
+
+.badge-applied p{
+    font-size: 12px;
+    color: #fff;
+}
+
+.btn-add-alamat{
+    width: 100%;
+    padding: 15px 0px;
+    border: none;
+    background-color: #fff;
+    color: #F46A45;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+    margin-top: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn-add-alamat{
+    cursor: pointer;
+}
+
+.btn-add-alamat iconify-icon{
+    color: #F46A45;
+}
+
+.btn-change{
+    width: 100%;
+    padding: 12px 0px;
+    border: none;
+    background-color: #00B69B;
+    color: #fff;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn-change{
+    cursor: pointer;
+}
+
+/* form-alamat */
+.input-alamat-1,
+.input-alamat-2{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.input-alamat-1 input{
+    width: 100%;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 14px;
+    border: 1px solid #D5D5D5;
+}
+
+.input-alamat-1 p{
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.input-alamat-2 input{
+    width: 100%;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 14px;
+    border: 1px solid #D5D5D5;
+}
+
+.input-alamat-2 p{
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.btn-sv-form-alamat{
+    width: 100%;
+    padding: 12px 0px;
+    border: none;
+    background-color: #F46A45;
+    color: #fff;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    cursor: pointer;
+}
+/* end-form-alamat */

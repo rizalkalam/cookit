@@ -94,6 +94,104 @@
     </div>
     {{-- end-content-section-2 --}}
 
+    {{-- additional-section --}}
+    <div class="content-additional-section">
+        <div class="title-section-2">
+            <p>Go Saver With Bundle</p>
+        </div>
+        <div class="wrap-con-additional-section">
+            <div class="con-left-additional-section">
+                <div class="left-additional-section">
+                    <div class="left-dsc-additional-section">
+                        <a href="" class="title-bundle">Snack Attack</a>
+                        <p class="left-dsc-bundle">4 Appetizer + 4 Dessert</p>
+                        <div class="btn-additional-section">
+                            <p class="left-dsc-bundle">only</p>
+                            <a href="/detail/product">
+                                <button class="btn-price-additional-section">Rp30.000</button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="line-gap-additional-section"></div>
+                    <div class="left-total-menu-additional-section">
+                        <p class="number-bundle">8</p>
+                        <p class="txt-menu-bundle">Menu</p>
+                    </div>
+                </div>
+                <div class="none-additional-section">
+    
+                </div>
+            </div>
+            <div class="con-right-additional-section">
+                <div class="right-additional-section">
+                    <div class="right-dsc-additional-section">
+                        <a href="" class="title-bundle">Snack Attack</a>
+                        <p class="right-dsc-bundle">4 Appetizer + 4 Dessert</p>
+                        <div class="btn-additional-section">
+                            <p class="right-dsc-bundle">only</p>
+                            <a href="/detail/product">
+                                <button class="btn-price-additional-section">Rp30.000</button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="line-gap-additional-section"></div>
+                    <div class="right-total-menu-additional-section">
+                        <p class="number-bundle">8</p>
+                        <p class="txt-menu-bundle">Menu</p>
+                    </div>
+                </div>
+                <div class="none-additional-section">
+    
+                </div>
+            </div>
+            <div class="con-left-additional-section">
+                <div class="left-additional-section">
+                    <div class="left-dsc-additional-section">
+                        <a href="" class="title-bundle">Snack Attack</a>
+                        <p class="left-dsc-bundle">4 Appetizer + 4 Dessert</p>
+                        <div class="btn-additional-section">
+                            <p class="left-dsc-bundle">only</p>
+                            <a href="/detail/product">
+                                <button class="btn-price-additional-section">Rp30.000</button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="line-gap-additional-section"></div>
+                    <div class="left-total-menu-additional-section">
+                        <p class="number-bundle">8</p>
+                        <p class="txt-menu-bundle">Menu</p>
+                    </div>
+                </div>
+                <div class="none-additional-section">
+    
+                </div>
+            </div>
+            <div class="con-right-additional-section">
+                <div class="right-additional-section">
+                    <div class="right-dsc-additional-section">
+                        <a href="" class="title-bundle">Snack Attack</a>
+                        <p class="right-dsc-bundle">4 Appetizer + 4 Dessert</p>
+                        <div class="btn-additional-section">
+                            <p class="right-dsc-bundle">only</p>
+                            <a href="/detail/product">
+                                <button class="btn-price-additional-section">Rp30.000</button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="line-gap-additional-section"></div>
+                    <div class="right-total-menu-additional-section">
+                        <p class="number-bundle">8</p>
+                        <p class="txt-menu-bundle">Menu</p>
+                    </div>
+                </div>
+                <div class="none-additional-section">
+    
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- end-additional-section --}}
+
     {{-- content-section-3 --}}
     <div class="content-section-3">
         <div class="txt1-section-3">
@@ -250,7 +348,7 @@
         const padding = 10;
 
         prev.addEventListener('click', () => {
-            list.scrollLeft -= itemWidth + padding;
+            list.scrollright -= itemWidth + padding;
         });
 
         next.addEventListener('click', () => {

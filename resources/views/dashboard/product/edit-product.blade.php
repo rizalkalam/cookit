@@ -7,28 +7,28 @@
         <div class="side-menu" id="side-menu">
             <div id="mark"></div>
             <a href="/dashboard/home">
-                <iconify-icon icon="mingcute:dashboard-3-line" width="20"></iconify-icon>
+                <iconify-icon icon="radix-icons:dashboard" width="20"></iconify-icon>
                 Dashboard
             </a>
         </div>
         <div id="side-menu">
             <div id="mark" class="active"></div>
-            <a href="/dashboard/product" class="active">
-                <iconify-icon class="active" icon="material-symbols:window-outline-sharp" width="20"></iconify-icon>
+            <a class="active" href="/dashboard/product">
+                <iconify-icon class="active" icon="fluent:box-multiple-checkmark-24-regular" width="20"></iconify-icon>
                 Products
             </a>
         </div>
         <div id="side-menu">
             <div id="mark"></div>
-            <a href="#contact">
-                <iconify-icon icon="lucide:notebook-pen" width="20"></iconify-icon>
+            <a href="/dashboard/order_list">
+                <iconify-icon icon="hugeicons:note-03" width="20"></iconify-icon>
                 Order
             </a>
         </div>
         <div id="side-menu">
             <div id="mark"></div>
             <a href="#about">
-                <iconify-icon icon="typcn:messages" width="20"></iconify-icon>
+                <iconify-icon icon="solar:hand-stars-linear" width="20"></iconify-icon>
                 Review
             </a>
         </div>
@@ -37,6 +37,13 @@
             <a href="#about">
                 <iconify-icon icon="humbleicons:users" width="20"></iconify-icon>
                 Customer
+            </a>
+        </div>
+        <div id="side-menu">
+            <div id="mark"></div>
+            <a href="#about">
+                <iconify-icon icon="iconoir:database" width="20"></iconify-icon>
+                Database
             </a>
         </div>
         <div class="line-gap-sidebar"></div>
@@ -95,13 +102,13 @@
                 <p class="row4-edit-product">Menu</p>
                 <div class="row5-edit-product">
                     <a href="/detail/product">
-                        <button class="btn-ordernow-dshb-product">Appetizer</button>
+                        <button class="btn-ordernow-dshb-edit-product">Appetizer</button>
                     </a>
                     <a href="/detail/product">
-                        <button class="btn-ordernow-dshb-product">Main Course</button>
+                        <button class="btn-ordernow-dshb-edit-product">Main Course</button>
                     </a>
                     <a href="/detail/product">
-                        <button class="btn-ordernow-dshb-product">Dessert</button>
+                        <button class="btn-ordernow-dshb-edit-product">Dessert</button>
                     </a>
                 </div>
             </div>
@@ -135,13 +142,13 @@
                 <p class="row4-edit-product">Menu</p>
                 <div class="row5-edit-product">
                     <a href="/detail/product">
-                        <button class="btn-ordernow-dshb-product">Appetizer</button>
+                        <button class="btn-ordernow-dshb-edit-product">Appetizer</button>
                     </a>
                     <a href="/detail/product">
-                        <button class="btn-ordernow-dshb-product">Main Course</button>
+                        <button class="btn-ordernow-dshb-edit-product">Main Course</button>
                     </a>
                     <a href="/detail/product">
-                        <button class="btn-ordernow-dshb-product">Dessert</button>
+                        <button class="btn-ordernow-dshb-edit-product">Dessert</button>
                     </a>
                 </div>
             </div>
@@ -175,13 +182,13 @@
                 <p class="row4-edit-product">Menu</p>
                 <div class="row5-edit-product">
                     <a href="/detail/product">
-                        <button class="btn-ordernow-dshb-product">Appetizer</button>
+                        <button class="btn-ordernow-dshb-edit-product">Appetizer</button>
                     </a>
                     <a href="/detail/product">
-                        <button class="btn-ordernow-dshb-product">Main Course</button>
+                        <button class="btn-ordernow-dshb-edit-product">Main Course</button>
                     </a>
                     <a href="/detail/product">
-                        <button id="order-empty" class="btn-ordernow-dshb-product">Dessert</button>
+                        <button id="order-empty" class="btn-ordernow-dshb-edit-product">Dessert</button>
                     </a>
                 </div>
                 <div class="con-danger-txt">
@@ -219,13 +226,13 @@
                 <p class="row4-edit-product">Menu</p>
                 <div class="row5-edit-product">
                     <a href="/detail/product">
-                        <button id="order-empty" class="btn-ordernow-dshb-product">Appetizer</button>
+                        <button id="order-empty" class="btn-ordernow-dshb-edit-product">Appetizer</button>
                     </a>
                     <a href="/detail/product">
-                        <button id="order-empty" class="btn-ordernow-dshb-product">Main Course</button>
+                        <button id="order-empty" class="btn-ordernow-dshb-edit-product">Main Course</button>
                     </a>
                     <a href="/detail/product">
-                        <button id="order-empty" class="btn-ordernow-dshb-product">Dessert</button>
+                        <button id="order-empty" class="btn-ordernow-dshb-edit-product">Dessert</button>
                     </a>
                 </div>
                 <div class="con-danger-txt">

@@ -1,0 +1,181 @@
+.section-rincian-pesanan{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 90px 160px;
+    background-color: #FFFAEF;
+}
+
+.sec1-rincian-pesanan{
+    width: 152vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+    margin-top: 30px;
+    padding: 40px 30px;
+}
+
+.sec1-rincian-pesanan iconify-icon{
+    color: #F46A45;
+}
+
+.kode-pesanan{
+    width: 152vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+    padding: 20px 20px;
+}
+
+.txt-kode-pesanan{
+    font-size: 14px;
+    font-weight: bold;
+    color: #202224;
+}
+
+.status-pesanan{
+    padding: 8px 15px;
+    border-radius: 5px;
+    background-color: rgba(0, 182, 155, 22%);
+}
+
+.status-pesanan p{
+    font-size: 12px;
+    font-weight: bold;
+    color: #00B69B;
+}
+
+.contact-rincian-pesanan{
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.addres-rincian-pesanan{
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+}
+
+.sec1-rincian-pesanan a{
+    font-size: 12px;
+    color: #FF0000;
+}
+
+/* end-section-1 */
+
+/* section-2 */
+.sec2-rincian-pesanan{
+    width: 152vh;
+    background-color: #fff;
+    box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+}
+
+.head-sec2-rincian-pesanan{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 50px 20px 30px;
+  }
+  
+.head-sec2-rincian-pesanan-con{
+    display: flex;
+    gap: 80px;
+}
+
+.list-rincian-pesanan{
+    display: flex;
+    flex-direction: column;
+}
+
+.item-rincian-pesanan{
+    padding: 20px 0px 20px 30px;
+    height: 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.right-list-rincian-pesanan{
+    display: flex;
+    gap: 80px;
+    padding: 20px 80px 20px 30px;
+}
+
+.price-rincian-pesanan{
+    margin-right: 40px;
+}
+
+.count-rincian-pesanan{
+    margin-right: 50px;
+}
+
+.line-gap-rincian-pesanan{
+    width: 100%;
+    border: 0.6px solid #E0E0E0;
+    margin: 10px auto;
+}
+
+.con-total-rincian-pesanan{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: end;
+    padding: 2px 80px;
+}
+
+.con-voucher-rincian-pesanan{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 50px;
+    padding-bottom: 10px;
+}
+
+.voucher-rincian-pesanan{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.voucher-rincian-pesanan iconify-icon{
+    color: #F46A45;
+}
+
+.del-voucher{
+    font-size: 14px;
+    font-weight: 400;
+    color: #FF0000;
+}
+/* end-section-2 */
+
+/* section-3 */
+.sec3-rincian-pesanan{
+    width: 152vh;
+    background-color: #fff;
+    box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+}
+
+.title-sec3-rincian-pesanan{
+    margin: 10px 30px;
+}
+
+
+.content-sec3-rincian-pesanan{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: end;
+    gap: 14px;
+    padding: 0px 20px 20px 0px;
+}
+
+.con-sec3-rincian-pesanan{
+    display: flex;
+    gap: 180px;
+
+}
+/* end-section-3 */

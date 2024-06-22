@@ -1,0 +1,125 @@
+.head-con-dshb-detail-paket{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.head-con-dshb-detail-paket a{
+    margin-top: 30px;
+}
+
+.btn-sv-dshb-detail-paket{
+    width: 80px;
+    padding: 8px 15px;
+    background-color: #F46A45;
+    color: #fff;
+    border: 1px solid #F46A45;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* section-table */
+
+.head-sec-table-dshb-detail-paket{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 100px 25px 45px;
+    background-color: #fff;
+    box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+    /* padding-left: 45px;
+    padding-right: 120px; */
+}
+
+.txt-left-head-dshb-detail-paket{
+    font-size: 16px;
+    font-weight: 600;
+    color: #202224;
+}
+
+.txt-right-head-dshb-detail-paket{
+    font-size: 14px;
+    font-weight: 500;
+    color: #848484;
+}
+
+.line-gap-dshb-detail-paket{
+    width: 100%;
+    border: 0.6px solid rgba(43, 48, 52, 30%);
+    margin: 0 auto;
+}
+
+.child-sec-table-dshb-detail-paket{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.table-wrap-dshb-detail-paket{
+    padding: 30px 45px;
+    background-color: #fff;
+    box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+}
+
+    /* table */
+    #detail-paket-dshb {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .td-menu{
+        margin-top: 20px;
+        display: flex;
+        gap: 15px;
+    }
+
+    #detail-paket-dshb th {
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #fff;
+        color: #F46A45;
+    }
+
+    #detail-paket-dshb td{
+        padding-bottom: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    #detail-paket-dshb td .icn-close{
+        margin-top: 10px;
+        width: 28px;
+        height: auto;
+    }
+
+    #detail-paket-dshb img{
+        width: 40px;
+        height: 40px;
+    }
+
+    /* #detail-paket-dshb tr:hover {background-color: #ddd;} */
+
+    
+    /* end-table */
+
+.bottom-dshb-detail-paket{
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+    padding: 20px 60px;
+    margin-top: 40px;
+}
+
+.txt-total-dshb-detail-paket{
+    font-size: 16px;
+    font-weight: 500;
+    color: black;
+}
+
+.txt-price-dshb-detail-paket{
+    font-size: 18px;
+    font-weight: 500;
+    color: #F46A45;
+}
+/* end-section-table */
