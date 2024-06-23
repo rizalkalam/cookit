@@ -67,41 +67,70 @@
 <div class="dashboard-content">
     <p class="title-dashboard">Input Data : Detail Alamat</p>
     <div class="container-data-alamat">
-        <div class="child-data-alamat">
-            <div class="con-data-profile">
-                <p class="txt-data-left">Surabaya Kota</p>
-                <a class="delete-data-detaildb" href="">Hapus</a>
+        @foreach ($data as $address)
+            <div class="child-data-alamat">
+                <div class="con-data-profile">
+                    <p class="txt-data-left">{{ $address['area'] }}</p>
+                    <a class="delete-data-detaildb" href="/dashboard/database/data_alamat/{{ $address['id'] }}">Edit</a>
+                </div>
+                <ul class="list-data-alamat">
+                    @if ($address['district_count'] == 0)
+                        <li>Belum ada district tersedia untuk area ini.</li>
+                    @else
+                        @foreach ($address['district'] as $district)
+                            <li>{{ $district->district_name }}</li>
+                        @endforeach
+                    @endif
+                </ul>
             </div>
-            <ul class="list-data-alamat">
-                <li>Bubutan</li>
-                <li>Genteng</li>
-                <li>Gubeng</li>
-            </ul>
-        </div>
-        <div class="child-data-alamat">
-            <div class="con-data-profile">
-                <p class="txt-data-left">Surabaya Pusat</p>
-                <a class="delete-data-detaildb" href="">Hapus</a>
-            </div>
-            <ul class="list-data-alamat">
-                
-            </ul>
-        </div>
-        <div class="child-data-alamat">
-            <div class="con-data-profile">
-                <p class="txt-data-left">Surabaya Timur</p>
-                <a class="delete-data-detaildb" href="">Hapus</a>
-            </div>
-            <ul class="list-data-alamat">
-                
-            </ul>
-        </div>
-        <a href="/detail/product">
-            <button class="btn-dshb-db">
-                <iconify-icon icon="gala:add" width="18"></iconify-icon>
-                Add New
-            </button>
-        </a>
+        @endforeach
+        <button class="btn-dshb-db" id="modal-add-profiledata">
+            <iconify-icon icon="gala:add" width="18"></iconify-icon>
+            Add New
+        </button>
     </div>
 </div>
+
+{{-- modal --}}
+<form action="/dashboard/database/data_alamat/create" method="POST">
+    @csrf
+    <div id="modal-add-profilerasa">
+        <div id="exampleModal" class="reveal-modal-profilerasa">
+            <button class="btn-close-modal"><img src="/assets/close-modal.svg" alt=""></button>
+            <input type="text" placeholder="tambah area" name="area" id="area" required>
+            <div class="">
+                <button class="btn-modal-livetopromote" type="submit">Submit</button>
+            </div>
+        </div>
+    </div>
+</form>
+{{-- modal --}}
+
+<script>
+    // Get the modal
+    var modal = document.getElementById("modal-add-profilerasa");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("modal-add-profiledata");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("btn-close-modal")[0];
+
+    // When the user clicks the button, open the modal 
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
 @endsection

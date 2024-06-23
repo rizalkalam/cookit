@@ -110,6 +110,15 @@
     font-weight: 400;
 }
 
+.input-alamat-2 select{
+    width: 100%;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 14px;
+    border: 1px solid #D5D5D5;
+}
+
+
 .input-alamat-2 input{
     width: 100%;
     font-size: 14px;

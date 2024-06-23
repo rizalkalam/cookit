@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class NutritionsMenuSeeder extends Seeder
+class ToSentSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,16 +16,18 @@ class NutritionsMenuSeeder extends Seeder
         collect([
             [
                 'menu_id'=> 1,
-                'karbohidrat'=> 12,
-                'protein'=> 12,
-                'lemak'=> 12,
-                'serat'=> 12,
-                'natrium'=> 12,
-                'kalori'=> 12,
+                'material_id'=> 1,
+                'qty'=> 2,
                 'unit_id'=>1,
             ],
-        ])->each(function ($nutritions_menu){
-            DB::table('nutritions_menus')->insert($nutritions_menu);
+            [
+                'menu_id'=> 1,
+                'material_id'=> 2,
+                'qty'=> 3,
+                'unit_id'=>1,
+            ],
+        ])->each(function ($to_sent){
+            DB::table('to_sents')->insert($to_sent);
         });
     }
 }

@@ -86,42 +86,6 @@ class AuthController extends Controller
         }
     }
 
-    public function update_profile(Request $request, $id)
-    {
-        $validateData = $request->validate([
-            'name'=>'required',
-            'username'=>'required',
-            'email'=>'required',
-            'phone'=>'required',
-            // 'updated_at' => now()
-        ]);
-
-        User::where('id', $id)->update($validateData);
-        // $request->session()->flash('Success', 'Data berhasil diubah');
-        
-        return redirect('/myaccount')->with('success', 'Profil berhasil diperbarui!');
-    }
-
-    public function update_pp(Request $request, $id)
-    {
-        $validateData = $request->validate([
-            'photo_profile' => 'mimes:jpeg,png,jpg|file|max:2048',
-        ]);
-
-        $file_path = User::where('id', $id)->value('photo_profile');
-
-        if ($request->file('photo_profile')) {
-            Storage::delete($file_path);
-            $request->file('photo_profile')->move('photo_profile/', $request->file('photo_profile')->getClientOriginalName());
-            $validateData['photo_profile'] =  'photo_profile/' . $request->file('photo_profile')->getClientOriginalName();
-        }
-
-        User::where('id', auth()->user()->id)->update($validateData);
-        $request->session()->flash('Success', 'Data berhasil diubah');
-        
-        return redirect('/myaccount');
-    }
-
     public function reset_password(Request $request, $id)
     {
         if (Hash::check($request->password_lama, auth()->user()->password)) {    

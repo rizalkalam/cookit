@@ -31,7 +31,7 @@ class UserSeeder extends Seeder
             'phone' => '085155370503',
             'email' => 'user1@example.com',
             'password' => bcrypt('user123'),
-            'photo_profile' => 'assets/gyj.jpeg'
+            'photo_profile' => 'assets/img-default.png'
         ]);
 
         $admin->assignRole('admin');

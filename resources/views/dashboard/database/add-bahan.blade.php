@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('content')
-{{-- sidebar --}}
+    {{-- sidebar --}}
 <div class="wrap-side">
     <div class="sidebar">
         <div class="side-menu" id="side-menu">
@@ -65,25 +65,52 @@
 {{-- end-sidebar --}}
 
 <div class="dashboard-content">
-    <p class="title-dashboard">Input Data : Bahan yang Dikirim</p>
-    <div class="container-profile-rasa">
-        @foreach ($materials as $material)    
-        <div class="con-data-profile">
-            <div class="con-left-bahan-dikirim">
-                <div class="img-bahan-dikirim">
-                    <img src="/{{ $material->material_img }}" alt="">
-                </div>
-                <p>{{ $material->material_name }}</p>
-            </div>
-            <a class="delete-data-detaildb" href="/dashboard/database/bahan_dikirim/{{ $material->id }}">Edit</a>
+    <p class="title-dashboard">Edit / Tambah</p>
+    <form action="/dashboard/database/bahan_dikirim/create" method="POST" enctype="multipart/form-data">
+        @csrf
+        <div class="sec-button-db-form">
+            <button type="submit" class="btn-add-db">Add</button>
         </div>
-        @endforeach
-        <a href="/dashboard/database/tambah_bahan">
-            <button class="btn-dshb-db">
-                <iconify-icon icon="gala:add" width="18"></iconify-icon>
-                Add New
-            </button>
-        </a>
-    </div>
+        <div class="sec-content-db-form">
+            <div class="left-db-form">
+                <div class="img-db-form">
+                    <img id="output_img_bahan" src="/assets/img-default.png" alt="">
+                    <img id="default_img_bahan" src="/assets/img-default.png" alt="" style="display: none">
+                </div>
+                <div class="con-btn-form-bahan">
+                    <div class="">
+                        <label for="input_img_bahan" class="btn-upload-img-bahan">Upload</label>
+                        <input id="input_img_bahan" name="material_img"  type="file" accept="image/*" onchange="loadFile(event)" style="display: none">
+                    </div>
+                    <button type="button" id="clearBtn" class="btn-delete-img-bahan">Delete</button>
+                </div>
+            </div>
+            <div class="right-db-form">
+                <div class="input-form-edit-menu">
+                    <p>Nama Bahan: </p>
+                    <input type="text" name="material_name" id="material_name" required />
+                </div>
+            </div>
+        </div>
+    </form>
 </div>
+
+<script>
+    // preview upload img
+    input_img_bahan.onchange = evt => {
+    const [file] = input_img_bahan.files
+        if (file) {
+            output_img_bahan.src = URL.createObjectURL(file)
+            output_img_bahan.style.display = 'block';
+            default_img_bahan.style.display = 'none';
+        }
+
+        clearBtn.onclick = () => {
+            input_img_bahan.value = ""; // Mengosongkan input file
+            output_img_bahan.src = "#"; // Mengatur ulang sumber gambar
+            output_img_bahan.style.display = 'none'; // Menyembunyikan gambar pratinjau
+            default_img_bahan.style.display = 'block';
+        }
+    }
+</script>
 @endsection

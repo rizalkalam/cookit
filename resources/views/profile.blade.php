@@ -1,20 +1,38 @@
 @extends('layouts.main')
 @section('content')
 <div class="profile-content">
-    <p class="title-dashboard">Detail Customer</p>
-    <div class="sec-content-db-form">
-        <div class="left-db-form">
-            <div class="img-db-form">
-                <img src="/assets/img-default.png" alt="">
-            </div>
-        </div>
-        <div class="right-db-form">
-            <div class="input-form-edit-menu">
-                <p>Nama Bahan: </p>
-                <input type="name" name="name" id="name" required />
-            </div>
-        </div>
+    <form action="/update_profile" method="POST" enctype="multipart/form-data">
+    @csrf
+    <div class="con-head-profile">
+        <p class="title-dashboard">Profile Saya</p>
+        <button type="submit" class="btn-sv-profile">Save</button>
     </div>
+
+    <div class="sec1-form-profile">
+            @foreach ($profiles as $profile)    
+                <div class="left-db-form">
+                    <div class="img-db-form">
+                        <img id="output_img_bahan" src="/{{ $profile->photo_profile }}" alt="">
+                        <img id="default_img_bahan" src="/assets/img-default.png" alt="" style="display: none">
+                    </div>
+                    <div class="con-btn-form-bahan">
+                        <div class="">
+                            <label for="input_img_bahan" class="btn-upload-img-bahan">Upload</label>
+                            <input id="input_img_bahan" name="photo_profile"  type="file" accept="image/*" onchange="loadFile(event)" style="display: none">
+                        </div>
+                        <button type="button" id="clearBtn" class="btn-delete-img-bahan">Delete</button>
+                    </div>
+                </div>
+                <div class="input-form-profile">
+    
+                    <input type="text" name="name" id="name" value="{{ old('name', $profile->name) }}" required />
+                    {{-- <p>@tess</p> --}}
+                    <input type="text" name="phone" id="phone" value="{{ old('phone', $profile->phone) }}" required />
+                    <input type="text" name="email" id="email" value="{{ old('email', $profile->email) }}" required />
+                </div>
+            @endforeach
+        </div>
+    </form>
 
     <div class="sec2-detail-customer">
         <p class="title-sec-detail-customer">Riwayat Pesanan</p>
@@ -112,31 +130,50 @@
     <div class="sec3-detail-customer">
         <p class="title-sec-detail-customer">Alamat</p>
         <div class="container-sec3-detail-customer">
-            <div class="con-alamat-detail-customer">
-                <div class="name-number-detail-customer">
-                    <p>Go YoonJung</p>
-                    <p>(+62) 85159064429</p>
+            @foreach ($addresses as $address)    
+                <div class="con-alamat-detail-customer">
+                    <div class="name-number-detail-customer">
+                        <p>{{ $address->full_name }}</p>
+                        <p>(+62) {{ $address->phone_address }}</p>
+                    </div>
+                    <p class="address-detail-customer">{{ $address->complete_address }}</p>
+                    <a href="/ubah_alamat/{{ $address->id }}">Ubah</a>
                 </div>
-                <p class="address-detail-customer">Jalan Kejawan Putih Mutiara VI Blok c3 No.333A, Kejawen Putih Tambak, Mulyorejo (pagar ke2 stlh belok), KOTA SURABAYA - MULYOREJO, JAWA TIMUR, ID 60112</p>
-                <a href="">Ubah</a>
-            </div>
-            <div class="con-alamat-detail-customer">
-                <div class="name-number-detail-customer">
-                    <p>Go YoonJung</p>
-                    <p>(+62) 85159064429</p>
-                </div>
-                <p class="address-detail-customer">Jalan Kejawan Putih Mutiara VI Blok c3 No.333A, Kejawen Putih Tambak, Mulyorejo (pagar ke2 stlh belok), KOTA SURABAYA - MULYOREJO, JAWA TIMUR, ID 60112</p>
-                <a href="">Ubah</a>
-            </div>
-            <div class="con-alamat-detail-customer">
-                <div class="name-number-detail-customer">
-                    <p>Go YoonJung</p>
-                    <p>(+62) 85159064429</p>
-                </div>
-                <p class="address-detail-customer">Jalan Kejawan Putih Mutiara VI Blok c3 No.333A, Kejawen Putih Tambak, Mulyorejo (pagar ke2 stlh belok), KOTA SURABAYA - MULYOREJO, JAWA TIMUR, ID 60112</p>
-                <a href="">Ubah</a>
-            </div>
+            @endforeach
+            <a href="/tambah_alamat">
+                <button class="btn-dshb-db" id="modal-add-profiledata">
+                    <iconify-icon icon="gala:add" width="18"></iconify-icon>
+                    Tambah alamat
+                </button>
+            </a>
         </div>
     </div>
 </div>
+
+<script>
+    // preview upload img
+    const loadFile = event => {
+        const output = document.getElementById('output_img_bahan');
+        const defaultImg = document.getElementById('default_img_bahan');
+
+        output.src = URL.createObjectURL(event.target.files[0]);
+        output.style.display = 'block';
+        defaultImg.style.display = 'none';
+
+        output.onload = () => {
+            URL.revokeObjectURL(output.src) // free memory
+        };
+    };
+
+    document.getElementById('clearBtn').onclick = () => {
+        const inputImg = document.getElementById('input_img_bahan');
+        const output = document.getElementById('output_img_bahan');
+        const defaultImg = document.getElementById('default_img_bahan');
+
+        inputImg.value = ""; // Mengosongkan input file
+        output.src = defaultImg.src; // Mengatur ulang ke gambar default
+        output.style.display = 'none'; // Menyembunyikan gambar pratinjau
+        defaultImg.style.display = 'block';
+    };
+</script>
 @endsection

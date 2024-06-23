@@ -7,9 +7,12 @@ use Illuminate\Database\Seeder;
 use Database\Seeders\MenuSeeder;
 use Database\Seeders\UnitSeeder;
 use Database\Seeders\UserSeeder;
+use Database\Seeders\ToSentSeeder;
 use Database\Seeders\DistrictSeeder;
 use Database\Seeders\MaterialSeeder;
+use Database\Seeders\HowToCookSeeder;
 use Database\Seeders\WeeklyMenuSeeder;
+use Database\Seeders\AddressUserSeeder;
 use Database\Seeders\LiveProductSeeder;
 use Database\Seeders\AddressDetailSeeder;
 use Database\Seeders\FlavorProfileSeeder;
@@ -35,15 +38,16 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             LiveProductSeeder::class,
             MenuSeeder::class,
-            OtherInformationsMenuSeeder::class,
             NutritionsMenuSeeder::class,
-            TutorialsMenuSeeder::class,
+            HowToCookSeeder::class,
+            ToSentSeeder::class,
             WeeklyMenuSeeder::class,
             FlavorProfileSeeder::class,
             MaterialSeeder::class,
             UnitSeeder::class,
             AddressDetailSeeder::class,
             DistrictSeeder::class,
+            AddressUserSeeder::class,
         ]);
     }
 }

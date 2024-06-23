@@ -16,17 +16,20 @@ class DistrictSeeder extends Seeder
         collect([
             [
                 'area_id' => 1,
-                'district_name' => 'Bubutan'
+                'district_name' => 'Bubutan',
+                'shipping_cost' => 13.000
             ],
 
             [
                 'area_id' => 1,
-                'district_name' => 'Genteng'
+                'district_name' => 'Genteng',
+                'shipping_cost' => 13.000
             ],
 
             [
                 'area_id' => 1,
-                'district_name' => 'Gubeng'
+                'district_name' => 'Gubeng',
+                'shipping_cost' => 13.000
             ],
         ])->each(function ($district){
             DB::table('districts')->insert($district);

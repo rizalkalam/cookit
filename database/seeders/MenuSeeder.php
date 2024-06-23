@@ -20,6 +20,7 @@ class MenuSeeder extends Seeder
                 'profile_yt'=>'testing',
                 'link_yt'=>'ou5a0DkiN10?si=auK-v0z28sZVH9W7',
                 'img_menu'=> '/img_menu/card1-sec2.png',
+                'flavor_id'=>1
             ],
         ])->each(function ($menu){
             DB::table('menus')->insert($menu);

@@ -15,17 +15,17 @@ class MaterialSeeder extends Seeder
     {
         collect([
             [
-                'material_img' => '/img_menu/card1-sec2.png',
+                'material_img' => 'img_menu/card1-sec2.png',
                 'material_name' => 'Ragi Instan'
             ],
 
             [
-                'material_img' => '/img_menu/card1-sec2.png',
+                'material_img' => 'img_menu/card1-sec2.png',
                 'material_name' => 'Bayam'
             ],
 
             [
-                'material_img' => '/img_menu/card1-sec2.png',
+                'material_img' => 'img_menu/card1-sec2.png',
                 'material_name' => 'Susu Evaporasi'
             ],
         ])->each(function ($material_sent){

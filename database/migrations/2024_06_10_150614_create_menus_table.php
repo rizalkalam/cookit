@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('profile_yt');
             $table->string('link_yt');
             $table->string('img_menu');
+            $table->foreignId('flavor_id');
             $table->timestamps();
         });
     }

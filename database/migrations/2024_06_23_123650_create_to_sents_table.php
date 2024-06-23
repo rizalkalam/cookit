@@ -11,15 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('nutritions_menus', function (Blueprint $table) {
+        Schema::create('to_sents', function (Blueprint $table) {
             $table->id();
             $table->foreignId('menu_id');
-            $table->double('karbohidrat');
-            $table->double('protein');
-            $table->double('lemak');
-            $table->double('serat');
-            $table->double('natrium');
-            $table->double('kalori');
+            $table->foreignId('material_id');
+            $table->integer('qty');
             $table->foreignId('unit_id');
             $table->timestamps();
         });
@@ -30,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('nutritions_menus');
+        Schema::dropIfExists('to_sents');
     }
 };

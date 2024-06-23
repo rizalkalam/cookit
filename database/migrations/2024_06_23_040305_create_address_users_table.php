@@ -11,11 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('districts', function (Blueprint $table) {
+        Schema::create('address_users', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('area_id');
-            $table->string('district_name');
-            $table->double('shipping_cost');
+            $table->foreignId('user_id');
+            $table->string('full_name');
+            $table->string('phone_address');
+            $table->string('area');
+            $table->string('district');
+            $table->string('complete_address');
             $table->timestamps();
         });
     }
@@ -25,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('districts');
+        Schema::dropIfExists('address_users');
     }
 };

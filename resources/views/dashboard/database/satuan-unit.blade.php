@@ -67,24 +67,85 @@
 <div class="dashboard-content">
     <p class="title-dashboard">Input Data : Satuan Unit</p>
     <div class="container-satuan-unit">
-        <div class="con-data-profile">
-            <p class="txt-data-left">Sdt</p>
-            <a class="delete-data-detaildb" href="">Hapus</a>
-        </div>
-        <div class="con-data-profile">
-            <p class="txt-data-left">Bks</p>
-            <a class="delete-data-detaildb" href="">Hapus</a>
-        </div>
-        <div class="con-data-profile">
-            <p class="txt-data-left">Helai</p>
-            <a class="delete-data-detaildb" href="">Hapus</a>
-        </div>
-        <a href="/detail/product">
-            <button class="btn-dshb-db">
-                <iconify-icon icon="gala:add" width="18"></iconify-icon>
-                Add New
-            </button>
-        </a>
+        @foreach ($units as $unit)    
+            <div class="con-data-profile">
+                <p class="txt-data-left">{{ $unit->unit }}</p>
+                <a href="#" class="delete-data-detaildb" data-unit-id="{{ $unit->id }}">
+                    Hapus
+                </a>
+            </div>
+        @endforeach
+        <button class="btn-dshb-db" id="modal-add-profiledata">
+            <iconify-icon icon="gala:add" width="18"></iconify-icon>
+            Add New
+        </button>
     </div>
 </div>
+
+{{-- modal --}}
+<form action="/dashboard/database/satuan_unit/create" method="POST">
+    @csrf
+    <div id="modal-add-profilerasa">
+        <div id="exampleModal" class="reveal-modal-profilerasa">
+            <button class="btn-close-modal"><img src="/assets/close-modal.svg" alt=""></button>
+            <input type="text" placeholder="tambah satuan unit" name="unit" id="unit" required>
+            <div class="">
+                <button class="btn-modal-livetopromote" type="submit">Submit</button>
+            </div>
+        </div>
+    </div>
+</form>
+{{-- modal --}}
+
+<!-- Form untuk menghapus data (di dalam loop) -->   
+@foreach ($units as $unit)    
+<form id="delete-unit-{{ $unit->id }}" method="POST" action="/dashboard/database/satuan_unit/{{ $unit->id }}" style="display:none;">
+    @csrf
+    @method('DELETE')
+</form>
+@endforeach
+
+<script>
+    // Get the modal
+    var modal = document.getElementById("modal-add-profilerasa");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("modal-add-profiledata");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("btn-close-modal")[0];
+
+    // When the user clicks the button, open the modal 
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    // Event listener untuk link 'Hapus'
+    document.querySelectorAll('.delete-data-detaildb').forEach(item => {
+        item.addEventListener('click', function(event) {
+            event.preventDefault();
+            var id = this.getAttribute('data-unit-id'); // Ambil atribut data-bahan-id
+
+            if (confirm('Apakah Anda yakin ingin menghapus item ini?')) {
+                // Temukan form yang sesuai berdasarkan id
+                var form = document.getElementById('delete-unit-' + id);
+                if (form) {
+                    form.submit();
+                }
+            }
+        });
+    });
+</script>
 @endsection

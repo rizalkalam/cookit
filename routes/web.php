@@ -7,6 +7,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Dashboard\DBController;
+use App\Http\Controllers\Dashboard\AddressController;
 use App\Http\Controllers\Dashboard\ProductController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
@@ -53,13 +54,15 @@ Route::get('/alamat_saya', function() {
     return view('address.alamat');
 });
 
-Route::get('/tambah_alamat', function() {
-    return view('address.form-alamat');
-});
-
-Route::get('/profil_saya', function() {
-    return view('profile');
-});
+// route profile
+Route::get('/profil_saya', [ProfileController::class, 'profile_saya']);
+Route::post('/update_profile', [ProfileController::class, 'update_profile']);
+Route::get('/tambah_alamat', [ProfileController::class, 'add_address']);
+Route::post('/create_address', [ProfileController::class, 'create_address_user']);
+Route::get('/get_districts', [ProfileController::class, 'show_district']);
+Route::get('/ubah_alamat/{id}', [ProfileController::class, 'edit_address']);
+Route::post('/update_address/{id}', [ProfileController::class, 'update_address_user']);
+// route profile
 
 Route::get('/rincian_pesanan', function() {
     return view('rincian-pesanan');
@@ -147,49 +150,44 @@ Route::get('/dashboard/database', function() {
 })->name('prefix-dashboard');
 
 // route db-profile-rasa
-Route::get('/dashboard/database/profile_rasa', [DBController::class, 'profile_rasa'])->name('prefix-dashboard');
-Route::post('dashboard/database/profile_rasa/create', [DBController::class, 'create_profile_rasa']);
-Route::delete('/dashboard/database/profile_rasa/{id}', [DBController::class, 'delete_profile_rasa']);
+    Route::get('/dashboard/database/profile_rasa', [DBController::class, 'profile_rasa'])->name('prefix-dashboard');
+    Route::post('dashboard/database/profile_rasa/create', [DBController::class, 'create_profile_rasa']);
+    Route::delete('/dashboard/database/profile_rasa/{id}', [DBController::class, 'delete_profile_rasa']);
 // route db-profile-rasa
 
-Route::get('/dashboard/database/bahan_dikirim', function() {
-    return view('dashboard.database.bahan-dikirim',[
-        "menus" => WeeklyMenu::all(),
-    ]);
-})->name('prefix-dashboard');
+// route db-bahan-dikirim
+    Route::get('/dashboard/database/bahan_dikirim', [DBController::class, 'bahan_dikirim'])->name('prefix-dashboard');
+    Route::get('/dashboard/database/tambah_bahan', [DBController::class, 'add_bahan'])->name('prefix-dashboard');
+    Route::post('/dashboard/database/bahan_dikirim/create', [DBController::class, 'create_bahan_dikirim']);
+    Route::get('/dashboard/database/bahan_dikirim/{id}', [DBController::class, 'detail_bahan'])->name('prefix-dashboard');
+    Route::post('/dashboard/database/bahan_dikirim/{id}', [DBController::class, 'update_bahan_dikirim']);
+    Route::delete('/dashboard/database/bahan_dikirim/{id}', [DBController::class, 'delete_bahan_dikirim']);
+// route db-bahan-dikirim
 
-Route::get('/dashboard/database/bahan_dikirim/edit_bahan', function() {
-    return view('dashboard.database.edit-bahan',[
-        "menus" => WeeklyMenu::all(),
-    ]);
-})->name('prefix-dashboard');
+// route db-satuan-unit
+Route::get('/dashboard/database/satuan_unit', [DBController::class, 'satuan_unit'])->name('prefix-dashboard');
+Route::post('/dashboard/database/satuan_unit/create', [DBController::class, 'create_satuan_unit']);
+Route::delete('/dashboard/database/satuan_unit/{id}', [DBController::class, 'delete_satuan_unit']);
+// route db-satuan-unit
 
-Route::get('/dashboard/database/satuan_unit', function() {
-    return view('dashboard.database.satuan-unit',[
-        "menus" => WeeklyMenu::all(),
-    ]);
-})->name('prefix-dashboard');
+// route db-data-alamat
+Route::get('/dashboard/database/data_alamat', [AddressController::class, 'data_alamat'])->name('prefix-dashboard');
+Route::post('/dashboard/database/data_alamat/create', [AddressController::class, 'create_data_alamat']);
+Route::get('/dashboard/database/data_alamat/{id}', [AddressController::class, 'edit_alamat'])->name('prefix-dashboard');
+Route::post('/dashboard/database/data_alamat/{id}', [AddressController::class, 'update_data_alamat']);
+Route::delete('/dashboard/database/data_alamat/{id}', [AddressController::class, 'delete_data_alamat']);
 
-Route::get('/dashboard/database/data_alamat', function() {
-    return view('dashboard.database.data-alamat',[
-        "menus" => WeeklyMenu::all(),
-    ]);
-})->name('prefix-dashboard');
+    // district
+    Route::post('/dashboard/database/district/{id}', [AddressController::class, 'district_add']);
+    Route::delete('/dashboard/database/district/{id}', [AddressController::class, 'district_del']);
 
-Route::get('/dashboard/database/data_alamat/edit_alamat', function() {
-    return view('dashboard.database.edit-alamat',[
-        "menus" => WeeklyMenu::all(),
-    ]);
-})->name('prefix-dashboard');
+// route db-data-alamat
+
 // end-dashboard
 
 Route::get('/email/verify', function() {
     return redirect('/register')->with('success', 'Please check your email to complete the registration.');
 })->middleware('auth')->name('verification.notice');
-
-Route::post('/update_profile/{id}', [AuthController::class, 'update_profile']);
-Route::post('/update_pp/{id}', [AuthController::class, 'update_pp']);
-Route::post('/reset_password/{id}', [AuthController::class, 'reset_password']);
 
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
@@ -203,3 +201,8 @@ Route::get('/verified', function() {
 
 // payment
 Route::post('/order', [PaymentController::class, 'create']);
+
+
+// Route::post('/update_profile/{id}', [AuthController::class, 'update_profile']);
+// Route::post('/update_pp/{id}', [AuthController::class, 'update_pp']);
+// Route::post('/reset_password/{id}', [AuthController::class, 'reset_password']);
