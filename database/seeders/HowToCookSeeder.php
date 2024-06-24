@@ -17,20 +17,20 @@ class HowToCookSeeder extends Seeder
             [
                 'menu_id'=> 1,
                 'step_number'=> 1,
-                'intruction'=> 'Ukuran kotak tulisan mengikuti panjang tulisan',
-                'image'=> '/img_menu/card1-sec2.png',
+                'instruction'=> 'Ukuran kotak tulisan mengikuti panjang tulisan',
+                'image'=> 'img_menu/card1-sec2.png',
             ],
             [
                 'menu_id'=> 1,
                 'step_number'=> 2,
-                'intruction'=> 'tESS TEEs',
-                'image'=> '/img_menu/card1-sec2.png',
+                'instruction'=> 'tESS TEEs',
+                'image'=> 'img_menu/card1-sec2.png',
             ],
             [
                 'menu_id'=> 1,
                 'step_number'=> 3,
-                'intruction'=> 'Trigger adalah sebuah program kecil dalam basis data yang secara otomatis berjalan ketika ada perubahan di tabel, Trigger adalah sebuah program kecil dalam basis data yang secara otomatis berjalan ketika ada perubahan di tabel',
-                'image'=> '/img_menu/card1-sec2.png',
+                'instruction'=> 'Trigger adalah sebuah program kecil dalam basis data yang secara otomatis berjalan ketika ada perubahan di tabel, Trigger adalah sebuah program kecil dalam basis data yang secara otomatis berjalan ketika ada perubahan di tabel Trigger adalah sebuah program kecil dalam basis data Trigger adalah sebuah program kecil dalam basis data',
+                'image'=> 'img_menu/card1-sec2.png',
             ], 
         ])->each(function ($how_to_cook){
             DB::table('how_to_cooks')->insert($how_to_cook);

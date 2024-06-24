@@ -15,12 +15,18 @@ return new class extends Migration
             $table->id();
             $table->foreignId('menu_id');
             $table->double('karbohidrat');
+            $table->foreignId('karbohidrat_unit');
             $table->double('protein');
+            $table->foreignId('protein_unit');
             $table->double('lemak');
+            $table->foreignId('lemak_unit');
             $table->double('serat');
+            $table->foreignId('serat_unit');
             $table->double('natrium');
+            $table->foreignId('natrium_unit');
             $table->double('kalori');
-            $table->foreignId('unit_id');
+            $table->foreignId('kalori_unit');
+            $table->foreignId('unit_id')->nullable();
             $table->timestamps();
         });
     }

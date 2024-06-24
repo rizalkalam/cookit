@@ -16,11 +16,12 @@ class MenuSeeder extends Seeder
         collect([
             [
                 'name'=>'Cheese Burger',
-                'type'=>'Burger Arena',
+                'description'=>'tes1233',
                 'profile_yt'=>'testing',
                 'link_yt'=>'ou5a0DkiN10?si=auK-v0z28sZVH9W7',
-                'img_menu'=> '/img_menu/card1-sec2.png',
-                'flavor_id'=>1
+                'img_menu'=> 'assets/img-default.png',
+                'flavor_id'=>1,
+                'price'=>13000
             ],
         ])->each(function ($menu){
             DB::table('menus')->insert($menu);

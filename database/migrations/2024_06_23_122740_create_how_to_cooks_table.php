@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('how_to_cooks', function (Blueprint $table) {
             $table->id();
             $table->foreignId('menu_id');
-            $table->integer('step_number');
-            $table->string('intruction');
-            $table->string('image');
+            $table->integer('step_number')->nullable();
+            $table->text('instruction');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

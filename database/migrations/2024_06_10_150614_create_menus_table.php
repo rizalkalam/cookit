@@ -14,11 +14,12 @@ return new class extends Migration
         Schema::create('menus', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('type');
+            $table->string('description');
             $table->string('profile_yt');
             $table->string('link_yt');
             $table->string('img_menu');
             $table->foreignId('flavor_id');
+            $table->integer('price');
             $table->timestamps();
         });
     }

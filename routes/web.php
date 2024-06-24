@@ -87,7 +87,22 @@ Route::get('/dashboard/home', function() {
     return view('dashboard.home');
 })->name('prefix-dashboard');
 
+// route product
 Route::get('/dashboard/product', [ProductController::class, 'dashboard_product'])->name('prefix-dashboard');
+Route::get('/dashboard/product/menu/{id}', [ProductController::class, 'edit_menu'])->name('prefix-dashboard');
+Route::get('/dashboard/product/menu', [ProductController::class, 'tambah_menu'])->name('prefix-dashboard');
+Route::post('/dashboard/product/menu/{id}', [ProductController::class, 'update_menu']);
+
+Route::post('/to_sent/create/{id}', [ProductController::class, 'create_tosent']);
+Route::post('/to_sent/update/{id}', [ProductController::class, 'update_tosent']);
+Route::delete('/to_sent/delete/{id}', [ProductController::class, 'delete_tosent']);
+
+Route::post('/nutrition/update/{id}', [ProductController::class, 'update_nutrition']);
+
+Route::post('/tutorial/create/{id}', [ProductController::class, 'create_tutorial']);
+Route::post('/tutorial/update/{id}', [ProductController::class, 'update_tutorial']);
+Route::delete('/tutorial/delete/{id}', [ProductController::class, 'delete_tutorial']);
+// route product
 
 Route::get('/dashboard/product/detail_paket', function() {
     return view('dashboard.product.detail-paket',[
@@ -95,17 +110,6 @@ Route::get('/dashboard/product/detail_paket', function() {
     ]);
 })->name('prefix-dashboard');
 
-Route::get('/dashboard/product/edit_product', function() {
-    return view('dashboard.product.edit-product',[
-        "menus" => WeeklyMenu::all(),
-    ]);
-})->name('prefix-dashboard');
-
-Route::get('/dashboard/product/edit_menu', function() {
-    return view('dashboard.product.edit-menu',[
-        "menus" => WeeklyMenu::all(),
-    ]);
-})->name('prefix-dashboard');
 
 Route::get('/dashboard/product/live_to_promote', function() {
     return view('dashboard.product.live-to-promote',[

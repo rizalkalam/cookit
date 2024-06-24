@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="/css/dashboard-product.css">
     <link rel="stylesheet" href="/css/dashboard-detail-paket.css">
     <link rel="stylesheet" href="/css/dashboard-edit-product.css">
+    <link rel="stylesheet" href="/css/dashboard-add-menu.css">
     <link rel="stylesheet" href="/css/dashboard-edit-menu.css">
     <link rel="stylesheet" href="/css/dashboard-edit-live-to-promote.css">
     <link rel="stylesheet" href="/css/dashboard-archived-menu.css">

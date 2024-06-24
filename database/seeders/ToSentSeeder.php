@@ -22,8 +22,14 @@ class ToSentSeeder extends Seeder
             ],
             [
                 'menu_id'=> 1,
-                'material_id'=> 2,
+                'material_id'=> 3,
                 'qty'=> 3,
+                'unit_id'=>1,
+            ],
+            [
+                'menu_id'=> 1,
+                'material_id'=> 2,
+                'qty'=> 40,
                 'unit_id'=>1,
             ],
         ])->each(function ($to_sent){
