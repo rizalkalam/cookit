@@ -11,13 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('live_products', function (Blueprint $table) {
+        Schema::create('menu_types', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('section_id');
-            $table->date('delivery');
-            $table->date('pre_order_from');
-            $table->date('pre_order_until');
-            $table->enum('status', ['empty', 'uncompleted', 'live'])->default('empty');
+            $table->string('name_type');
             $table->timestamps();
         });
     }
@@ -27,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('live_products');
+        Schema::dropIfExists('menu_types');
     }
 };

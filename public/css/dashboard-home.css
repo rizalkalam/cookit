@@ -5,6 +5,13 @@
   /* height: 1000px; */
 }
 
+.con-page-null{
+  height: 42vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* sidebar */
 .wrap-side{
     background-color: #fff;

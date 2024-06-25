@@ -56,29 +56,28 @@
     {{-- end-content-section-1 --}}
 
     {{-- content-section-2 --}}
-    <div class="content-section-2">
+    <div class="content-home-section-2">
         <div class="title-section-2">
             <p>Redy to Order</p>
         </div>
         <div class="link-weeklymenu">
             <a href="/weekly-menu">See Our Weekly Menu ></a>
         </div>
-        <div class="container-carousel">
-            <div class="carousel-view">
+        <div class="container-carousel-home">
+        <div class="carousel-view-home">
                 <!-- Left Button -->
                 <button id="prev-btn" class="prev-btn"><img src="/assets/icn-arrow-left.svg" alt=""></button>
                   <!-- List Container -->
-                  <div id="item-list" class="item-list">
+                  <div id="item-list-home" class="item-list-home">
                     <!-- Items -->
                     @foreach ($menus as $menu)    
-                    <div class="item">
-                        <img id="item" class="item-img" src="{{ $menu->img_menu }}"/>
+                    <div class="item-weekly-home">
+                        <div class="item-img">
+                            <img id="item" src="{{ $menu->img_menu }}"/>
+                        </div>
                         <div class="dsc-card-section-2">
                             <p class="title-dsc-card-sec2">{{ $menu->menu_name }}</p>
-                            <div class="location-section-2">
-                                <img src="/assets/map-marker.svg">
-                                <p class="txt-map-sec2">{{ $menu->store }}</p>
-                            </div>
+                            <p class="txt-flavor-sec2">Manis</p>
                             <p class="price-sec2">${{ $menu->price }}</p>
                             <a href="/detail/{{ $menu->menu_name }}">
                                 <button class="btn-ordernow-sec2">Order Now</button>
@@ -95,7 +94,7 @@
     {{-- end-content-section-2 --}}
 
     {{-- additional-section --}}
-    <div class="content-additional-section">
+    {{-- <div class="content-additional-section">
         <div class="title-section-2">
             <p>Go Saver With Bundle</p>
         </div>
@@ -189,7 +188,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     {{-- end-additional-section --}}
 
     {{-- content-section-3 --}}
@@ -342,13 +341,13 @@
 
         const prev = document.getElementById('prev-btn');
         const next = document.getElementById('next-btn');
-        const list = document.getElementById('item-list');
+        const list = document.getElementById('item-list-home');
 
         const itemWidth = 150;
         const padding = 10;
 
         prev.addEventListener('click', () => {
-            list.scrollright -= itemWidth + padding;
+            list.scrollLeft -= itemWidth + padding;
         });
 
         next.addEventListener('click', () => {

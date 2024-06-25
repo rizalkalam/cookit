@@ -5,13 +5,16 @@ namespace App\Http\Controllers\Dashboard;
 use App\Models\Menu;
 use App\Models\Unit;
 use App\Models\ToSent;
+use App\Models\MenuType;
 use App\Models\HowToCook;
 use App\Models\LiveProduct;
 use App\Models\MaterialSent;
 use Illuminate\Http\Request;
 use App\Models\FlavorProfile;
 use App\Models\NutritionsMenu;
+use App\Models\SectionProduct;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -20,37 +23,39 @@ class ProductController extends Controller
 {
     public function dashboard_product()
     {
-        // dates
-            $dates = LiveProduct::select('delivery')->get();
-            // Carbon::setLocale('id');
+        $live_products = LiveProduct::get();
 
-            $months = [];
-            $days = [];
-        
-            foreach ($dates as $date) {
-                $parsedDate = Carbon::parse($date->delivery);
-                $months[] = $parsedDate->translatedFormat('F');
-                $days[] = $parsedDate->format('d');
-            }
-        // end-dates
+        $section_id = [];
+        $months = [];
+        $days = [];
+    
+        foreach ($live_products as $live_product) {
+            $section_id[] = $live_product->section_id;
+            $date = Carbon::parse($live_product->delivery);
+            $months[] = $date->format('F'); // Full month name, e.g., January
+            $days[] = $date->day;
+        }
 
-        // card
-            $data = LiveProduct::select([
-                'delivery',
-            ])->get();
-        // end-card
+        $section = SectionProduct::get();
+    
 
-        // data menu
-                // $menus = Live;
         return view('dashboard.product.product',[
+            "sections" => $section,
+            "section_id" => $section_id,
             "months" => $months,
             "days" => $days,
         ]);
+
+        // return response()->json([
+        //     "sections" => $section,
+        //     "months" => $months,
+        //     "days" => $days,
+        // ]);
     }
 
-    public function tambah_menu()
+    public function edit_product()
     {
-        return view('dashboard.product.add-menu',[
+        return view('dashboard.product.edit-product',[
             // 'menu' => $menu,
             // 'to_sents' => $to_sents,
             // 'flavors' => $list_flavors,
@@ -61,9 +66,35 @@ class ProductController extends Controller
         ]);
     }
 
-    public function edit_menu($id)
+    public function tambah_menu($section_number, $type)
     {
-        $menu = Menu::where('id', $id)->first();
+        $menu_type = MenuType::where('name_type', '=', $type )->value('id');
+
+        $list_flavors = FlavorProfile::get();
+        return view('dashboard.product.add-menu',[
+            'section_id' => $section_number,
+            'type' => $type,
+            'type_id' => $menu_type,
+            'flavors' => $list_flavors,
+            // 'menu' => $menu,
+            // 'to_sents' => $to_sents,
+            // 'materials' => $list_materials,
+            // 'units' => $list_units,
+            // 'nutritions' => $nutritions,
+            // 'tutorials' => $how_to_cook,
+        ]);
+    }
+
+    public function edit_menu($section_number, $type, $id)
+    {
+        // $menu = Menu::where('id', $id)->first();
+
+        $lowerCaseType = strtolower(str_replace(' ', '', $type));
+
+        $menu = LiveProduct::join('section_products', 'section_products.id', '=', 'live_products.section_id')
+        ->join('menus', 'menus.id', '=', $lowerCaseType.'_menu_id')
+        ->where('menus.id', $id)
+        ->first();
 
         $to_sents = ToSent::join('material_sents', 'material_sents.id', '=', 'to_sents.material_id')
         ->join('units', 'units.id', '=', 'to_sents.unit_id')
@@ -80,8 +111,7 @@ class ProductController extends Controller
         $list_materials = MaterialSent::get();
         $list_units = Unit::get();
 
-        $nutritions = NutritionsMenu::join('units', 'units.id', '=', 'nutritions_menus.unit_id')
-        ->where('nutritions_menus.menu_id', $id)
+        $nutritions = NutritionsMenu::where('nutritions_menus.menu_id', $id)
         ->get([
             'nutritions_menus.id',
             'nutritions_menus.karbohidrat',
@@ -96,7 +126,6 @@ class ProductController extends Controller
             'nutritions_menus.natrium_unit',
             'nutritions_menus.kalori',
             'nutritions_menus.kalori_unit',
-            'units.unit'
         ]);
 
         $how_to_cook = HowToCook::where('menu_id', $id)->get(['how_to_cooks.id', 'how_to_cooks.instruction', 'how_to_cooks.image']);
@@ -110,7 +139,21 @@ class ProductController extends Controller
             'units' => $list_units,
             'nutritions' => $nutritions,
             'tutorials' => $how_to_cook,
+            'type' => $type
         ]);
+
+        // return response()->json([
+        //     'menu' => $menu,
+        //     'to_sents' => $to_sents,
+        //     'flavors' => $list_flavors,
+        //     'materials' => $list_materials,
+        //     'units' => $list_units,
+        //     'nutritions' => $nutritions,
+        //     'tutorials' => $how_to_cook,
+        //     'section' => $section_number,
+        //     'type' => $type,
+        //     'id' => $id
+        // ]);
     }
 
     public function create_tosent(Request $request, $id)
@@ -137,7 +180,7 @@ class ProductController extends Controller
                 'unit_id' => $request->unit_id,
             ]);
 
-            return redirect('/dashboard/product/menu/'.$id)->with('success', 'Produk berhasil ditambahkan !');
+            return back()->with('success', 'User berhasil ditambahkan!');
         } catch (\Throwable $th) {
             //throw $th;
             // return response()->json([
@@ -281,7 +324,7 @@ class ProductController extends Controller
                 'image' => $stored_img_path
             ]);
 
-            return redirect('/dashboard/product/menu/'.$id)->with('success', 'Produk berhasil ditambahkan !');
+            return back()->with('success', 'User berhasil ditambahkan!');
         } catch (\Throwable $th) {
             //throw $th;
             return redirect('/dashboard/product')->with('error', 'Gagal menambah data !');
@@ -354,6 +397,38 @@ class ProductController extends Controller
         
     }
 
+    public function delete_menu($id)
+    {
+        try {
+            // Menggunakan transaksi untuk memastikan semua operasi berhasil atau gagal bersama-sama
+            DB::beginTransaction();
+    
+            // Menghapus data dari tabel ToSent
+            ToSent::where('menu_id', $id)->delete();
+    
+            // Menghapus data dari tabel NutritionsMenu
+            NutritionsMenu::where('menu_id', $id)->delete();
+    
+            // Menghapus data dari tabel HowToCook
+            HowToCook::where('menu_id', $id)->delete();
+    
+            // Menghapus data dari tabel Menu
+            Menu::where('id', $id)->delete();
+    
+            // Commit transaksi jika semua operasi berhasil
+            DB::commit();
+    
+            // Redirect atau response berhasil
+            return redirect('dashboard/edit_product')->with('success', 'Data berhasil dihapus !');
+        } catch (\Exception $e) {
+            // Rollback transaksi jika terjadi error
+            DB::rollback();
+    
+            // Redirect atau response gagal
+            return redirect()->back()->with('error', 'Gagal menghapus menu: ' . $e->getMessage());
+        }
+    }
+
     public function update_menu(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
@@ -364,9 +439,7 @@ class ProductController extends Controller
             'profile_yt' => 'required',
             'link_yt' => 'required',
             'flavor_id' => 'required',
-            'qty' => 'required',
-            'material_id' => 'required', // Pastikan ini sesuai dengan kebutuhan Anda
-            'unit_id' => 'required', // Pastikan ini sesuai dengan kebutuhan Anda
+            'type_id' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -407,51 +480,125 @@ class ProductController extends Controller
                 'profile_yt' => $request->profile_yt,
                 'link_yt' => $request->link_yt,
                 'flavor_id' => $request->flavor_id,
+                'type_id' => $request->type_id
             ]);
 
-            // Update data terkait lainnya
-            $to_sent = ToSent::where('id',$id)->first();
-            $to_sent->update([
-                'menu_id' => $id,
-                'material_id' => $request->material_id,
-                'qty' => $request->qty,
-                'unit_id' => $request->unit_id,
-            ]);
-
-            
-             // Terima value yang digabungkan dari request
-            // $to_sent_combined = $request->input('to_sent_combined');
-
-            // Pisahkan value menjadi dua bagian
-            // list($material_id, $to_sent_id) = explode('_', $to_sent_combined);
-
-            // $material = MaterialSent::find($material_id);
-            // $toSent = ToSent::find($to_sent_id);
-
-            // $nutrition = NutritionsMenu::where('menu_id', $id)->first();
-
-            // $nutrition->update([
-            //     'karbohidrat' => $request->karbohidrat,
-            //     'karbohidrat_unit' => $request->karbohidrat_unit,
-            //     'protein' => $request->protein,
-            //     'protein_unit' => $request->protein_unit,
-            //     'lemak' => $request->lemak,
-            //     'lemak_unit' => $request->lemak_unit,
-            //     'serat' => $request->serat,
-            //     'serat_unit' => $request->serat_unit,
-            //     'natrium' => $request->natrium,
-            //     'natrium_unit' => $request->natrium_unit,
-            //     'kalori' => $request->kalori,
-            //     'kalori_unit' => $request->kalori_unit,
-            // ]);
+            return redirect('dashboard/product')->with('success', 'Produk berhasil ditambahkan !');
 
             // return response()->json([
-            //     'message' => 'Data kode guru baru berhasil dibuat',
-            //     'a' => $menu,
-            //     'b' => $to_sent,
-            //     'c' => $nutrition
+            //     'value' => $status
             // ]);
-            return redirect('/dashboard/product/menu/'.$id)->with('success', 'Produk berhasil ditambahkan !');
+        } catch (\Throwable $th) {
+            //throw $th;
+            return response()->json([
+                'message' => 'failed',
+                'errors' => $th->getMessage(),
+            ], 400);
+            // return redirect('/dashboard/product')->with('error', 'Gagal menambah data !');
+        }
+    }
+
+    public function create_menu(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'img_menu' => 'nullable|mimes:jpeg,png,jpg|file|max:3048',
+            'price' => 'required',
+            'name' => 'required',
+            'description' => 'required',
+            'profile_yt' => 'required',
+            'link_yt' => 'required',
+            'flavor_id' => 'required',
+            'type_id' => 'required',
+            'section_id' => 'required',
+            
+            // 'karbohidrat' => 'required',
+            // 'karbohidrat_unit' => 'required',
+            // 'protein' => 'required',
+            // 'protein_unit' => 'required',
+            // 'lemak' => 'required',
+            // 'lemak_unit' => 'required',
+            // 'serat' => 'required',
+            // 'serat_unit' => 'required',
+            // 'natrium' => 'required',
+            // 'natrium_unit' => 'required',
+            // 'kalori' => 'required',
+            // 'kalori_unit' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => $validator->errors(),
+                'data' => [],
+            ], 400);
+        }
+
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => $validator->errors(),
+                'data' => [],
+            ], 400);
+        }
+
+        try {
+            //img
+            $img_menu = $request->file('img_menu');
+
+            if ($img_menu) {
+                $img_name = $img_menu->getClientOriginalName();
+                $stored_img_path = $img_menu->storeAs('img_menu', $img_name);
+            } else {
+                $stored_img_path = 'assets/img-default.png';
+            }
+
+            $menu = Menu::create([
+                'img_menu' => $stored_img_path,
+                'price' => $request->price,
+                'name' => $request->name,
+                'description' => $request->description,
+                'profile_yt' => $request->profile_yt,
+                'link_yt' => $request->link_yt,
+                'flavor_id' => $request->flavor_id,
+                'type_id' => $request->type_id
+            ]);
+
+            $nutrition = NutritionsMenu::create([
+                'menu_id'=> $menu->id,
+                'karbohidrat' => 0,
+                'karbohidrat_unit' => 1,
+                'protein' => 0,
+                'protein_unit' => 1,
+                'lemak' => 0,
+                'lemak_unit' => 1,
+                'serat' => 0,
+                'serat_unit' => 1,
+                'natrium' => 0,
+                'natrium_unit' => 1,
+                'kalori' => 0,
+                'kalori_unit' => 1,
+            ]);
+
+            //update on section
+        $section = SectionProduct::where('id', $request->section_id)->first();
+
+            if ($request->type_id == 1) {
+                $section->update([
+                    'appetizer_menu_id' => $menu->id
+                ]);
+            } elseif ($request->type_id == 2) {
+                $section->update([
+                    'maincourse_menu_id' => $menu->id
+                ]);
+            } else {
+                $section->update([
+                    'dessert_menu_id' => $menu->id
+                ]);
+            }
+
+
+            
+            return redirect('/dashboard/edit_product')->with('success', 'Produk berhasil ditambahkan !');
         } catch (\Throwable $th) {
             //throw $th;
             return response()->json([

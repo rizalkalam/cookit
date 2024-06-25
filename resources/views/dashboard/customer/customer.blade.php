@@ -14,7 +14,7 @@
         <div id="side-menu">
             <div id="mark"></div>
             <a href="/dashboard/product">
-                <iconify-icon  icon="fluent:box-multiple-checkmark-24-regular" width="20"></iconify-icon>
+                <iconify-icon icon="fluent:box-multiple-checkmark-24-regular" width="20"></iconify-icon>
                 Products
             </a>
         </div>
@@ -27,21 +27,21 @@
         </div>
         <div id="side-menu">
             <div id="mark"></div>
-            <a href="#about">
+            <a href="/dashboard/review">
                 <iconify-icon icon="solar:hand-stars-linear" width="20"></iconify-icon>
                 Review
             </a>
         </div>
         <div id="side-menu">
             <div id="mark" class="active"></div>
-            <a class="active" href="#about">
+            <a class="active" href="/dashboard/customer">
                 <iconify-icon class="active" icon="humbleicons:users" width="20"></iconify-icon>
                 Customer
             </a>
         </div>
         <div id="side-menu">
             <div id="mark"></div>
-            <a href="#about">
+            <a href="/dashboard/database">
                 <iconify-icon icon="iconoir:database" width="20"></iconify-icon>
                 Database
             </a>

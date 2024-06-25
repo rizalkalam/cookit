@@ -10,6 +10,7 @@ use Database\Seeders\UserSeeder;
 use Database\Seeders\ToSentSeeder;
 use Database\Seeders\DistrictSeeder;
 use Database\Seeders\MaterialSeeder;
+use Database\Seeders\MenuTypeSeeder;
 use Database\Seeders\HowToCookSeeder;
 use Database\Seeders\WeeklyMenuSeeder;
 use Database\Seeders\AddressUserSeeder;
@@ -18,6 +19,7 @@ use Database\Seeders\AddressDetailSeeder;
 use Database\Seeders\FlavorProfileSeeder;
 use Database\Seeders\TutorialsMenuSeeder;
 use Database\Seeders\NutritionsMenuSeeder;
+use Database\Seeders\SectionProductSeeder;
 use Database\Seeders\OtherInformationsMenuSeeder;
 
 class DatabaseSeeder extends Seeder
@@ -36,8 +38,10 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             UserSeeder::class,
-            LiveProductSeeder::class,
+            MenuTypeSeeder::class,
             MenuSeeder::class,
+            SectionProductSeeder::class,
+            LiveProductSeeder::class,
             NutritionsMenuSeeder::class,
             HowToCookSeeder::class,
             ToSentSeeder::class,

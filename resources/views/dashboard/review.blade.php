@@ -27,21 +27,21 @@
         </div>
         <div id="side-menu">
             <div id="mark" class="active"></div>
-            <a class="active" href="#about">
+            <a class="active" href="/dashboard/review">
                 <iconify-icon class="active" icon="solar:hand-stars-linear" width="20"></iconify-icon>
                 Review
             </a>
         </div>
         <div id="side-menu">
             <div id="mark"></div>
-            <a href="#about">
+            <a href="/dashboard/customer">
                 <iconify-icon icon="humbleicons:users" width="20"></iconify-icon>
                 Customer
             </a>
         </div>
         <div id="side-menu">
             <div id="mark"></div>
-            <a href="#about">
+            <a href="/dashboard/database">
                 <iconify-icon icon="iconoir:database" width="20"></iconify-icon>
                 Database
             </a>
@@ -66,7 +66,10 @@
 {{-- end-sidebar --}}
 
 <div class="dashboard-content">
-    <p class="title-dashboard">Reviews and Quote</p>
+    <div class="con-page-null">
+        <h3>Halaman belum tersedia</h3>
+    </div>
+    {{-- <p class="title-dashboard">Reviews and Quote</p>
     <div class="container-review">
         <div class="con-left-review">
             <p class="name-reviewers">Jullu Jalal</p>
@@ -170,7 +173,7 @@
                 <p>panjang ato pendek quotenya ttp segini ukurannya.. cuman batas maksimal pesan yg dikirim tu 280 karakter</p>
             </div>
         </div>
-    </div>    
+    </div>     --}}
 </div>
 
 <script>

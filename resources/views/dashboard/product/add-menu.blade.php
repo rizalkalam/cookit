@@ -27,21 +27,21 @@
         </div>
         <div id="side-menu">
             <div id="mark"></div>
-            <a href="#about">
+            <a href="/dashboard/review">
                 <iconify-icon icon="solar:hand-stars-linear" width="20"></iconify-icon>
                 Review
             </a>
         </div>
         <div id="side-menu">
             <div id="mark"></div>
-            <a href="#about">
+            <a href="/dashboard/customer">
                 <iconify-icon icon="humbleicons:users" width="20"></iconify-icon>
                 Customer
             </a>
         </div>
         <div id="side-menu">
             <div id="mark"></div>
-            <a href="#about">
+            <a href="/dashboard/database">
                 <iconify-icon icon="iconoir:database" width="20"></iconify-icon>
                 Database
             </a>
@@ -68,285 +68,92 @@
 <div class="dashboard-content">
     <p class="title-dashboard">Add Menu</p>
     <div class="container-edit-menu">
-        <div class="head-sec-edit-menu">
-            <div class="head-sec-edit-menu-top">
-                <p class="txt-type">Type:</p>
-                <div class="warp-save-archive">
-                    <a href="/detail/product">
-                        <button class="btn-save-menu">Save</button>
-                    </a>
-                    <a href="/detail/product">
-                        <button class="btn-archive-menu">Archive</button>
-                    </a>
-                </div>
-            </div>
-            <div class="head-sec-edit-menu-bot">
-                <p class="type-menu">Appetizer</p>
-            </div>
-        </div>
-        <div class="sec1-edit-menu">
-            <div class="wrap-left-sec1-edit-menu">
-                <div class="left-sec1-edit-menu">
-                    <img src="/img_menu/card1-sec2.png" alt="">
-                    <div class="con-btn-sec1-edit-menu">
+        <form action="/dashboard/product/menu" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="head-sec-edit-menu">
+                <div class="head-sec-edit-menu-top">
+                    <p class="txt-type">Type:</p>
+                    <div class="warp-save-archive">
                         <a href="/detail/product">
-                            <button class="btn-upload-menu">Upload</button>
+                            <button type="submit" class="btn-save-menu">Save</button>
                         </a>
                         <a href="/detail/product">
-                            <button class="btn-delete-menu">Delete</button>
+                            <button class="btn-archive-menu">Archive</button>
                         </a>
                     </div>
                 </div>
-                <div class="con-price-dshb-menu">
-                    <label for="">Harga (Rp)</label>
-                    <input type="text" placeholder="34.000">
+                <div class="head-sec-edit-menu-bot">
+                    <p class="type-menu">{{ $type }}</p>
+                    <input type="hidden" name="type_id" id="type_id" value="{{ $type_id }}">
+                    <input type="hidden" name="section_id" value="{{ $section_id }}">
                 </div>
             </div>
-            <div class="right-sec1-edit-menu">
-                <div class="input-form-edit-menu">
-                    <p>Nama Menu: </p>
-                    <input type="name" name="name" id="name" required />
-                </div>
-                <div class="input-form-edit-menu">
-                    <p>Profil Youtube:</p>
-                    <input type="password" name="password" id="password" required />
-                </div>
-                <div class="input-form-edit-menu">
-                    <p>Link Youtube:</p>
-                    <input type="password" name="password" id="password" required />
-                </div>
-            </div>
-        </div>
-        <div class="sec2-edit-menu">
-            <p class="title-con-edit-menu">Yang kami kirim</p>
-                <div class="table-edit-menu-warp">
-                    <table id="edit-menu">
-                        <tr>
-                          <th>Name</th>
-                          <th>Qty</th>
-                          <th>Unit</th>
-                        </tr>
-                        <tr>
-                          <td class="input-name-edit-menu"><input type="password" placeholder="Ragi instan" name="password" id="password" required /></td>
-                          <td class="input-qty-edit-menu"><input type="password" placeholder="1" name="password" id="password" required /></td>
-                          <td class="input-unit-edit-menu">
-                            <select name="languages" id="lang">
-                                <option value="javascript">JavaScript</option>
-                                <option value="php">PHP</option>
-                                <option value="java">Java</option>
-                            </select>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="input-name-edit-menu"><input type="password" placeholder="Ragi instan" name="password" id="password" required /></td>
-                          <td class="input-qty-edit-menu"><input type="password" placeholder="1" name="password" id="password" required /></td>
-                          <td class="input-unit-edit-menu">
-                            <select name="languages" id="lang">
-                                <option value="javascript">JavaScript</option>
-                                <option value="php">PHP</option>
-                                <option value="java">Java</option>
-                            </select>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="input-name-edit-menu"><input type="password" placeholder="Ragi instan" name="password" id="password" required /></td>
-                          <td class="input-qty-edit-menu"><input type="password" placeholder="1" name="password" id="password" required /></td>
-                          <td class="input-unit-edit-menu">
-                            <select name="languages" id="lang">
-                                <option value="javascript">JavaScript</option>
-                                <option value="php">PHP</option>
-                                <option value="java">Java</option>
-                            </select>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="input-name-edit-menu"><input type="password" placeholder="Ragi instan" name="password" id="password" required /></td>
-                          <td class="input-qty-edit-menu"><input type="password" placeholder="1" name="password" id="password" required /></td>
-                          <td class="input-unit-edit-menu">
-                            <select name="languages" id="lang">
-                                <option value="javascript">JavaScript</option>
-                                <option value="php">PHP</option>
-                                <option value="java">Java</option>
-                            </select>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="input-name-edit-menu"><input type="password" placeholder="Ragi instan" name="password" id="password" required /></td>
-                          <td class="input-qty-edit-menu"><input type="password" placeholder="1" name="password" id="password" required /></td>
-                          <td class="input-unit-edit-menu">
-                            <select name="languages" id="lang">
-                                <option value="javascript">JavaScript</option>
-                                <option value="php">PHP</option>
-                                <option value="java">Java</option>
-                            </select>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="input-name-edit-menu"><input type="password" placeholder="Ragi instan" name="password" id="password" required /></td>
-                          <td class="input-qty-edit-menu"><input type="password" placeholder="1" name="password" id="password" required /></td>
-                          <td class="input-unit-edit-menu">
-                            <select name="languages" id="lang">
-                                <option value="javascript">JavaScript</option>
-                                <option value="php">PHP</option>
-                                <option value="java">Java</option>
-                            </select>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="input-name-edit-menu"><input type="password" placeholder="Ragi instan" name="password" id="password" required /></td>
-                          <td class="input-qty-edit-menu"><input type="password" placeholder="1" name="password" id="password" required /></td>
-                          <td class="input-unit-edit-menu">
-                            <select name="languages" id="lang">
-                                <option value="javascript">JavaScript</option>
-                                <option value="php">PHP</option>
-                                <option value="java">Java</option>
-                            </select>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="input-name-edit-menu"><input type="password" placeholder="Ragi instan" name="password" id="password" required /></td>
-                          <td class="input-qty-edit-menu"><input type="password" placeholder="1" name="password" id="password" required /></td>
-                          <td class="input-unit-edit-menu">
-                            <select name="languages" id="lang">
-                                <option value="javascript">JavaScript</option>
-                                <option value="php">PHP</option>
-                                <option value="java">Java</option>
-                            </select>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="input-name-edit-menu"><input type="password" placeholder="Ragi instan" name="password" id="password" required /></td>
-                          <td class="input-qty-edit-menu"><input type="password" placeholder="1" name="password" id="password" required /></td>
-                          <td class="input-unit-edit-menu">
-                            <select name="languages" id="lang">
-                                <option value="javascript">JavaScript</option>
-                                <option value="php">PHP</option>
-                                <option value="java">Java</option>
-                            </select>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="input-name-edit-menu"><input type="password" placeholder="Ragi instan" name="password" id="password" required /></td>
-                          <td class="input-qty-edit-menu"><input type="password" placeholder="1" name="password" id="password" required /></td>
-                          <td class="input-unit-edit-menu">
-                            <select name="languages" id="lang">
-                                <option value="javascript">JavaScript</option>
-                                <option value="php">PHP</option>
-                                <option value="java">Java</option>
-                            </select>
-                          </td>
-                        </tr>
-                      </table>
-                </div>
-        </div>
-        {{-- section-3 --}}
-        <div class="sec3-edit-menu">
-            <p class="title-con-edit-menu">Nutrition Corner</p>
-            <div class="container-sec3-edit-menu">
-                <div class="con-left-sec3-edit-menu">
-                    <div class="input-karbohidrat">
-                        <p>Karbohidrat :</p>
-                        <div class="input-form-sec3">
-                            <input type="text" placeholder="1" name="password" id="password" required />
-                            <select name="languages" id="lang">
-                                <option value="javascript">JavaScript</option>
-                                <option value="php">PHP</option>
-                                <option value="java">Java</option>
-                            </select>
+            <div class="sec1-edit-menu">
+                <div class="wrap-left-sec1-edit-menu">
+                    <div class="left-sec1-edit-menu">
+                        <img id="output_img_bahan" src="/assets/img-default.png" alt="">
+                        <div class="con-btn-sec1-edit-menu">
+                            <div class="btn-upload-menu">
+                                <label for="input_img_bahan">Upload</label>
+                                <input id="input_img_bahan" name="img_menu"  type="file" accept="image/*" onchange="loadFile(event)" style="display: none">
+                            </div>
+                            <button type="button" id="clearBtn" class="btn-delete-menu">Delete</button>
                         </div>
                     </div>
-                    <div class="input-protein">
-                        <p>Protein :</p>
-                        <div class="input-form-sec3">
-                            <input type="text" placeholder="1" name="password" id="password" required />
-                            <select name="languages" id="lang">
-                                <option value="javascript">JavaScript</option>
-                                <option value="php">PHP</option>
-                                <option value="java">Java</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="input-lemak">
-                        <p>Lemak :</p>
-                        <div class="input-form-sec3">
-                            <input type="text" placeholder="1" name="password" id="password" required />
-                            <select name="languages" id="lang">
-                                <option value="javascript">JavaScript</option>
-                                <option value="php">PHP</option>
-                                <option value="java">Java</option>
-                            </select>
-                        </div>
+                    <div class="con-price-dshb-menu">
+                        <label for="">Harga (Rp)</label>
+                        <input type="number" name="price" placeholder="34.000">
                     </div>
                 </div>
-                <div class="line-gap-sec3"></div>
-                <div class="con-right-sec3-edit-menu">
-                    <div class="input-karbohidrat">
-                        <p>Serat :</p>
-                        <div class="input-form-sec3">
-                            <input type="text" placeholder="1" name="password" id="password" required />
-                            <select name="languages" id="lang">
-                                <option value="javascript">JavaScript</option>
-                                <option value="php">PHP</option>
-                                <option value="java">Java</option>
-                            </select>
-                        </div>
+                <div class="right-sec1-edit-menu">
+                    <div class="input-form-edit-menu">
+                        <p>Nama Menu: </p>
+                        <input type="name" name="name" id="name" required />
                     </div>
-                    <div class="input-protein">
-                        <p>Natrium :</p>
-                        <div class="input-form-sec3">
-                            <input type="text" placeholder="1" name="password" id="password" required />
-                            <select name="languages" id="lang">
-                                <option value="javascript">JavaScript</option>
-                                <option value="php">PHP</option>
-                                <option value="java">Java</option>
-                            </select>
-                        </div>
+                    <div class="input-form-edit-menu">
+                        <p>Profil Youtube:</p>
+                        <input type="text" name="profile_yt" id="password" required />
                     </div>
-                    <div class="input-lemak">
-                        <p>Kalori :</p>
-                        <div class="input-form-sec3">
-                            <input type="text" placeholder="1" name="password" id="password" required />
-                            <select name="languages" id="lang">
-                                <option value="javascript">JavaScript</option>
-                                <option value="php">PHP</option>
-                                <option value="java">Java</option>
-                            </select>
-                        </div>
+                    <div class="input-form-edit-menu">
+                        <p>Link Youtube:</p>
+                        <input type="text" name="link_yt" id="password" required />
+                    </div>
+                    <div class="input-form-edit-menu">
+                        <p>Deskripsi Menu:</p>
+                        <input type="text" name="description" id="description" required />
+                    </div>
+                    <div class="input-form-edit-menu">
+                        <p>Profil Rasa:</p>
+                        <select name="flavor_id" id="lang">
+                            @foreach ($flavors as $flavor)
+                                <option value="{{ $flavor->id }}">{{ $flavor->flavor }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
             </div>
-        </div>
-        {{-- end-section-3 --}}
-
-        {{-- section-4 --}}
-        <div class="sec4-edit-menu">
-            <p class="title-con-edit-menu">How to Cook</p>
-            <div class="container-form-sec4-edit-menu">
-                <div class="container-sec4-edit-menu">
-                    <input class="input-number-sec4" type="text" placeholder="1" name="password" id="password" required />
-                    <input class="input-dsc-sec4" type="text" placeholder="tes" name="password" id="password" required />
-                </div>
-                <div class="container-sec4-edit-menu">
-                    <input class="input-number-sec4" type="text" placeholder="1" name="password" id="password" required />
-                    <input class="input-dsc-sec4" type="text" placeholder="tes" name="password" id="password" required />
-                </div>
-                <div class="container-sec4-edit-menu">
-                    <input class="input-number-sec4" type="text" placeholder="1" name="password" id="password" required />
-                    <input class="input-dsc-sec4" type="text" placeholder="tes" name="password" id="password" required />
-                </div>
-                <div class="container-sec4-edit-menu-last">
-                    <div class=""></div>
-                    <a class="icn-add-data-sec4" href="#contact">
-                        <iconify-icon icon="material-symbols-light:add-box-outline" width="38"></iconify-icon>
-                    </a>
-                </div>
-            </div>
-        </div>
-        {{-- end-section-4 --}}
+        </form>
     </div>
 </div>
 
 <script>
-    
+     // preview upload img
+     input_img_bahan.onchange = evt => {
+    const [file] = input_img_bahan.files
+        if (file) {
+            output_img_bahan.src = URL.createObjectURL(file)
+            output_img_bahan.style.display = 'block';
+            default_img_bahan.style.display = 'none';
+        }
+
+        clearBtn.onclick = () => {
+            input_img_bahan.value = ""; // Mengosongkan input file
+            output_img_bahan.src = "#"; // Mengatur ulang sumber gambar
+            output_img_bahan.style.display = 'none'; // Menyembunyikan gambar pratinjau
+            default_img_bahan.style.display = 'block';
+        }
+    }
 </script>
+
+
 @endsection

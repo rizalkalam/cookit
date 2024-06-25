@@ -1,21 +1,21 @@
 document.addEventListener('DOMContentLoaded', function() {
     var addButton = document.getElementById('add-tutorial');
-    var addModal = document.getElementById('modal-add-tutorial');
+    var addModalTutorial = document.getElementById('modal-add-tutorial');
     var closeAddModal = document.getElementById('close-add-tutorial');
     
     addButton.addEventListener('click', function(event) {
         event.preventDefault();
-        console.log('muncul data woi:', addButton); // Log for debugging
-        addModal.style.display = 'block';
+        console.log('muncul data woi:', addModalTutorial); // Log for debugging
+        addModalTutorial.style.display = 'block';
     });
 
     closeAddModal.addEventListener('click', function() {
-        addModal.style.display = 'none';
+        addModalTutorial.style.display = 'none';
     });
 
     window.addEventListener('click', function(event) {
-        if (event.target == addModal) {
-            addModal.style.display = 'none';
+        if (event.target == addModalTutorial) {
+            addModalTutorial.style.display = 'none';
         }
     });
 });

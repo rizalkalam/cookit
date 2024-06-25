@@ -15,46 +15,35 @@ class LiveProductSeeder extends Seeder
     {
         collect([
             [
-                'name'=>'#Section 1',
-                'delivery'=>'2023-05-04',
-                'pre_order_from'=>'2023-05-04',
-                'pre_order_until'=>'2023-05-28',
-                'appetizer_menu_id'=> null,
-                'main_course_menu_id'=>null,
-                'dessert_menu_id'=>null,
-                'status'=>'empty',
+                'section_id'=> 1,
+                'delivery'=>'2024-07-04',
+                'pre_order_from'=>'2024-07-04',
+                'pre_order_until'=>'2024-07-28',
+                'status'=>2,
             ],
 
             [
-                'name'=>'#Section 2',
-                'delivery'=>'2023-05-05',
-                'pre_order_from'=>'2023-05-05',
-                'pre_order_until'=>'2023-05-28',
-                'appetizer_menu_id'=> null,
-                'main_course_menu_id'=>null,
-                'dessert_menu_id'=>null,
-                'status'=>'empty',
+                'section_id'=> 2,
+                'delivery'=>'2024-07-05',
+                'pre_order_from'=>'2024-07-05',
+                'pre_order_until'=>'2024-07-28',
+                'status'=>2,
             ],
 
             [
-                'name'=>'#Section 3',
-                'delivery'=>'2023-05-06',
-                'pre_order_from'=>'2023-05-06',
-                'pre_order_until'=>'2023-05-28',
-                'appetizer_menu_id'=> null,
-                'main_course_menu_id'=>null,
-                'dessert_menu_id'=>null,
-                'status'=>'empty',
+                'section_id'=> 3,
+                'delivery'=>'2024-07-06',
+                'pre_order_from'=>'2024-07-06',
+                'pre_order_until'=>'2024-07-28',
+                'status'=>1,
             ],
 
             [
-                'name'=>'#Section 4',
-                'delivery'=>'2023-05-07',
-                'pre_order_from'=>'2023-05-07',
-                'pre_order_until'=>'2023-05-28',
-                'appetizer_menu_id'=> null,
-                'main_course_menu_id'=>null,
-                'dessert_menu_id'=>null,
+                'section_id'=> 4,
+                'delivery'=>'2024-07-07',
+                'pre_order_from'=>'2024-07-07',
+                'pre_order_until'=>'2024-07-28',
+                'status'=>1
             ],
         ])->each(function ($live_product){
             DB::table('live_products')->insert($live_product);

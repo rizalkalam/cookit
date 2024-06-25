@@ -27,21 +27,21 @@
         </div>
         <div id="side-menu">
             <div id="mark"></div>
-            <a href="#about">
+            <a href="/dashboard/review">
                 <iconify-icon icon="solar:hand-stars-linear" width="20"></iconify-icon>
                 Review
             </a>
         </div>
         <div id="side-menu">
             <div id="mark"></div>
-            <a href="#about">
+            <a href="/dashboard/customer">
                 <iconify-icon icon="humbleicons:users" width="20"></iconify-icon>
                 Customer
             </a>
         </div>
         <div id="side-menu">
             <div id="mark"></div>
-            <a href="#about">
+            <a href="/dashboard/database">
                 <iconify-icon icon="iconoir:database" width="20"></iconify-icon>
                 Database
             </a>
@@ -75,13 +75,14 @@
                 <p class="txt-type">Type:</p>
                 <div class="warp-save-archive">
                     <button type="submit" class="btn-save-menu">Save</button>
-                    <a href="/detail/product">
-                        <button class="btn-archive-menu">Archive</button>
+                    <a href="#delModal" id="delete_menu" data-id-menu="{{ $menu->id }}">
+                        <button class="btn-popup-del-menu">Delete</button>
                     </a>
                 </div>
             </div>
             <div class="head-sec-edit-menu-bot">
-                <p class="type-menu">Appetizer</p>
+                <p class="type-menu">{{ $type }}</p>
+                <input type="hidden" name="type_id" value="{{ old('type_id', $menu->type_id) }}">
             </div>
         </div>
         <div class="sec1-edit-menu">
@@ -142,41 +143,45 @@
                           <th>Qty</th>
                           <th>Unit</th>
                         </tr>
-                        
                         @foreach ($to_sents as $to_sent)    
-                            <tr>
-                            <td class="input-name-edit-menu">
-                                <input type="material_name" name="text" id="text" value="{{ old('material_name', $to_sent->material_name) }}" disabled />
-                            </td>
-                            <td class="input-qty-edit-menu">
-                                <input type="text" name="qty" id="qty" value="{{ old('qty', $to_sent->qty) }}" disabled />
-                            </td>
-                            <td class="input-unit-edit-menu">
-                                    @foreach ($units as $unit)
-                                        @if (old('unit_id', $to_sent->unit_id == $unit->id))
-                                            <input type="text" value="{{ $unit->unit }}" disabled/>
-                                        @endif
-                                    @endforeach
-                            </td>
-                            <td>
-                                <div class="edit-to-sent">
-                                    <a class="icn-edit-to-sent" href="#editModal" id="edit-tosent"
-                                       data-id-tosent="{{ $to_sent->id }}" 
-                                       data-material-id="{{ $to_sent->material_id }}"
-                                       data-qty="{{ $to_sent->qty }}"
-                                       data-unit-id="{{ $to_sent->unit_id }}">
-                                        <iconify-icon icon="lucide:edit" width="18"></iconify-icon>
-                                    </a>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="edit-to-sent">
-                                    <a class="icn-edit-to-sent" href="#delModal" id="delete-tosent" data-id-tosent="{{ $to_sent->id }}">
-                                        <iconify-icon icon="typcn:delete" width="25" style="color: red"></iconify-icon>
-                                    </a>
-                                </div>                                
-                            </td>
-                            </tr>
+                        @if ($to_sent->count() === null)
+                            <h1>Data belum ditambahkan.. silahkan tambahkan data!</h1>
+                        @else
+
+                        <tr>
+                        <td class="input-name-edit-menu">
+                            <input type="material_name" name="text" id="text" value="{{ old('material_name', $to_sent->material_name) }}" disabled />
+                        </td>
+                        <td class="input-qty-edit-menu">
+                            <input type="text" name="qty" id="qty" value="{{ old('qty', $to_sent->qty) }}" disabled />
+                        </td>
+                        <td class="input-unit-edit-menu">
+                                @foreach ($units as $unit)
+                                    @if (old('unit_id', $to_sent->unit_id == $unit->id))
+                                        <input type="text" value="{{ $unit->unit }}" disabled/>
+                                    @endif
+                                @endforeach
+                        </td>
+                        <td>
+                            <div class="edit-to-sent">
+                                <a class="icn-edit-to-sent" href="#editModal" id="edit-tosent"
+                                   data-id-tosent="{{ $to_sent->id }}" 
+                                   data-material-id="{{ $to_sent->material_id }}"
+                                   data-qty="{{ $to_sent->qty }}"
+                                   data-unit-id="{{ $to_sent->unit_id }}">
+                                    <iconify-icon icon="lucide:edit" width="18"></iconify-icon>
+                                </a>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="edit-to-sent">
+                                <a class="icn-edit-to-sent" href="#delModal" id="delete-tosent" data-id-tosent="{{ $to_sent->id }}">
+                                    <iconify-icon icon="typcn:delete" width="25" style="color: red"></iconify-icon>
+                                </a>
+                            </div>                                
+                        </td>
+                        </tr>
+                        @endif
                         @endforeach
                       </table>
                       <div class="add-to-sent">
@@ -317,9 +322,25 @@
     </div>
 </div>
 
+{{-- modal-delete-menu --}}
+<div id="modal-delete-menu" style="display: none;">
+    <div id="editTosentModal" class="reveal-modal-tutorial">
+        <span class="btn-close-modal" id="close-delete-menu"><img src="/assets/close-modal.svg" alt="Close"></span>
+        <p>Apakah Anda yakin ingin menghapus data ini?</p>
+        <form action="/dashboard/product/menu/{{ $menu->id }}" method="POST" id="deleteForm">
+            @csrf
+            @method('DELETE')
+            <input type="hidden" name="menuId" id="menuId_delete">
+            <button type="submit" class="btn-delete">Ya, Hapus</button>
+        </form>
+    </div>
+</div>
+{{-- modal-delete-menu --}}
+
 {{-- modal-add-tosent --}}
 <form action="/to_sent/create/{{ $menu->id }}" method="POST" id="addTosentForm">
 @csrf
+@method('POST')
 <div id="modal-add-tosent" style="display:none;">
     <div id="tosentModal" class="reveal-modal-edit-tosent">
         <span class="btn-close-modal" id="close-add-modal"><img src="/assets/close-modal.svg" alt="Close"></span>
@@ -455,8 +476,7 @@
 {{-- modal-edit-nutrition --}}
 
 {{-- modal-add-tutorials --}}
-@foreach ($tutorials as $tutorial)    
-<form action="/tutorial/create/{{ $tutorial->id }}" method="POST" enctype="multipart/form-data">
+<form action="/tutorial/create/{{ $menu->id }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div id="modal-add-tutorial" style="display: none;">
         <div id="exampleModal" class="reveal-modal-tutorial">
@@ -472,7 +492,6 @@
         </div>
     </div>
 </form>
-@endforeach
 {{-- modal-add-tutorials --}}
 
 {{-- modal-edit-tutorials --}} 
@@ -513,6 +532,7 @@
 {{-- modal-delete-tutorial --}}
 
 <script src="/js/modal-form-menu.js"></script>
+<script src="/js/modal-form-delmenu.js"></script>
 <script src="/js/modal-form-nutrition.js"></script>
 <script src="/js/modal-form-tutorial.js"></script>
 <script>

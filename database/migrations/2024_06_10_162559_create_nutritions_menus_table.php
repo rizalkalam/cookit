@@ -26,7 +26,6 @@ return new class extends Migration
             $table->foreignId('natrium_unit');
             $table->double('kalori');
             $table->foreignId('kalori_unit');
-            $table->foreignId('unit_id')->nullable();
             $table->timestamps();
         });
     }

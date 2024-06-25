@@ -39,6 +39,7 @@
     border-radius: 5px;
     font-size: 12px;
     font-weight: 500;
+    cursor: pointer;
 }
 
 .btn-archive-menu{
@@ -51,6 +52,20 @@
     border-radius: 5px;
     font-size: 12px;
     font-weight: 500;
+    cursor: pointer;
+}
+
+.btn-popup-del-menu{
+    width: 70px;
+    padding: 8px 0px;
+    border: none;
+    background-color: red;
+    color: #fff;
+    border: 1px solid red;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
 }
 
 .sec1-edit-menu{

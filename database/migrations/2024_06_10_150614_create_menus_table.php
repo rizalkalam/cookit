@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('img_menu');
             $table->foreignId('flavor_id');
             $table->integer('price');
+            $table->foreignId('type_id');
             $table->timestamps();
         });
     }

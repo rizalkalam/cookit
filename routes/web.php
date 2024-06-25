@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Menu;
 use App\Models\WeeklyMenu;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
@@ -10,6 +11,7 @@ use App\Http\Controllers\Dashboard\DBController;
 use App\Http\Controllers\Dashboard\AddressController;
 use App\Http\Controllers\Dashboard\ProductController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use App\Http\Controllers\Dashboard\LiveProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,13 +26,13 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 Route::get('/', function () {
     return view('home', [
-        "menus" => WeeklyMenu::all(),
+        "menus" => Menu::all(),
     ]);
 });
 
 Route::get('/home', function() {
     return view('home', [
-        "menus" => WeeklyMenu::all(),
+        "menus" => Menu::all(),
     ]);
 });
 
@@ -89,9 +91,14 @@ Route::get('/dashboard/home', function() {
 
 // route product
 Route::get('/dashboard/product', [ProductController::class, 'dashboard_product'])->name('prefix-dashboard');
-Route::get('/dashboard/product/menu/{id}', [ProductController::class, 'edit_menu'])->name('prefix-dashboard');
-Route::get('/dashboard/product/menu', [ProductController::class, 'tambah_menu'])->name('prefix-dashboard');
+Route::get('/dashboard/edit_product', [LiveProductController::class, 'show'])->name('prefix-dashboard');
+Route::post('/dashboard/live_product/{id}', [LiveProductController::class, 'update_liveproduct']);
+
+Route::get('/dashboard/product/tambah_menu/{section_number}/{type}', [ProductController::class, 'tambah_menu'])->name('prefix-dashboard');
+Route::get('/dashboard/product/menu/{section_number}/{type}/{id}', [ProductController::class, 'edit_menu'])->name('prefix-dashboard');
+Route::post('/dashboard/product/menu', [ProductController::class, 'create_menu']);
 Route::post('/dashboard/product/menu/{id}', [ProductController::class, 'update_menu']);
+Route::delete('/dashboard/product/menu/{id}', [ProductController::class, 'delete_menu']);
 
 Route::post('/to_sent/create/{id}', [ProductController::class, 'create_tosent']);
 Route::post('/to_sent/update/{id}', [ProductController::class, 'update_tosent']);

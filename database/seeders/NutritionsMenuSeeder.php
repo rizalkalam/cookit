@@ -28,7 +28,6 @@ class NutritionsMenuSeeder extends Seeder
                 'natrium_unit'=> 1,
                 'kalori'=> 8,
                 'kalori_unit'=> 3,
-                'unit_id'=>1,
             ],
         ])->each(function ($nutritions_menu){
             DB::table('nutritions_menus')->insert($nutritions_menu);

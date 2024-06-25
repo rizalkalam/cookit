@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('content')
-    {{-- sidebar --}}
+{{-- sidebar --}}
 <div class="wrap-side">
     <div class="sidebar">
         <div class="side-menu" id="side-menu">
@@ -26,21 +26,21 @@
         </div>
         <div id="side-menu">
             <div id="mark"></div>
-            <a href="#about">
+            <a href="/dashboard/review">
                 <iconify-icon icon="solar:hand-stars-linear" width="20"></iconify-icon>
                 Review
             </a>
         </div>
         <div id="side-menu">
             <div id="mark"></div>
-            <a href="#about">
+            <a href="/dashboard/customer">
                 <iconify-icon icon="humbleicons:users" width="20"></iconify-icon>
                 Customer
             </a>
         </div>
         <div id="side-menu">
             <div id="mark" class="active"></div>
-            <a class="active" href="#about">
+            <a class="active" href="/dashboard/database">
                 <iconify-icon class="active" icon="iconoir:database" width="20"></iconify-icon>
                 Database
             </a>

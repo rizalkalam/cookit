@@ -65,7 +65,12 @@
 </div>
 {{-- end-sidebar --}}
 <div class="dashboard-content">
-    <div>
+
+    <div class="con-page-null">
+        <h3>Halaman belum tersedia</h3>
+    </div>
+
+    {{-- <div>
         <canvas id="chart"></canvas>
     </div>
     
@@ -76,7 +81,7 @@
                 <img id="MeterHand" class="meter-hand" src="/assets/arrow-meter.svg" alt="">
             </div>
         </div>
-    </div>
+    </div> --}}
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

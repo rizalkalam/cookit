@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('live_products', function (Blueprint $table) {
+        Schema::create('section_products', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('section_id');
-            $table->date('delivery');
-            $table->date('pre_order_from');
-            $table->date('pre_order_until');
-            $table->enum('status', ['empty', 'uncompleted', 'live'])->default('empty');
+            $table->string('section_number');
+            $table->foreignId('appetizer_menu_id')->nullable();
+            $table->foreignId('maincourse_menu_id')->nullable();
+            $table->foreignId('dessert_menu_id')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('live_products');
+        Schema::dropIfExists('section_products');
     }
 };

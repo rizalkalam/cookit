@@ -27,21 +27,21 @@
         </div>
         <div id="side-menu">
             <div id="mark"></div>
-            <a href="#about">
+            <a href="/dashboard/review">
                 <iconify-icon icon="solar:hand-stars-linear" width="20"></iconify-icon>
                 Review
             </a>
         </div>
         <div id="side-menu">
             <div id="mark"></div>
-            <a href="#about">
+            <a href="/dashboard/customer">
                 <iconify-icon icon="humbleicons:users" width="20"></iconify-icon>
                 Customer
             </a>
         </div>
         <div id="side-menu">
             <div id="mark"></div>
-            <a href="#about">
+            <a href="/dashboard/database">
                 <iconify-icon icon="iconoir:database" width="20"></iconify-icon>
                 Database
             </a>
@@ -65,60 +65,88 @@
 </div>
 {{-- end-sidebar --}}
 
+
 <div class="dashboard-content">
     <p class="title-dashboard">Products</p>
     <div class="container-dshb-product">
         <p class="title-con-product">Live Product</p>
-        <a class="edit-txt" href="/dashboard/product/edit_product">Edit</a>
+        <a class="edit-txt" href="/dashboard/edit_product">Edit</a>
         <div class="con-dshb-product">
             <div class="sec1-dshb-product">
-                <ul class="dshb-monthly-links">
+                <ul class="dshb-monthly-links">                
                     @foreach ($months as $index => $month)    
-                        <li class="dshb-monthly selected">
-                            <a href="">
+                        <li class="dshb-monthly {{ $index === 0 ? 'selected' : '' }}">
+                            <a href="javascript:void(0);" data-target="section_{{ $section_id[$index] }}">
                                 <p class="dshb-month">{{ $month }}</p>
                                 <p class="day">{{ $days[$index] }}</p>
                             </a>
                         </li>
                     @endforeach
                 </ul>
-                <div class="dshb-product-list">
-                    <div class="item-dshb-product">
-                        <img class="item-dshb-product-img" src="/img_menu/card1-sec2.png"/>
-                        <div class="dsc-card-dshb-product">
-                            <p class="title-dsc-card-dshb-product">Cheese Burger</p>
-                            <p class="dsc-dshb-product">Pedas, Gurih</p>
-                            <p class="price-dshb-product">388</p>
-                            <a href="/detail/product">
-                                <button class="btn-ordernow-dshb-product">Edit Product</button>
-                            </a>
+                @foreach ($sections as $index => $section)
+                <div class="dshb-product-list" id="section_{{ $section->id }}" style="display: {{ $index === 0 ? 'block' : 'none' }};">
+                    @if (!$section->menu_appetizer && !$section->menu_maincourse && !$section->menu_dessert)
+                        <div class="item-dshb-product">
+                            <div class="dshb-product-list-null">
+                                <div class="item-dshb-product">
+                                    <h4 class="txt-ifnull">Data kosong</h4>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    {{-- <div class="item-dshb-product">
-                        <img class="item-dshb-product-img" src="/img_menu/card1-sec2.png"/>
-                        <div class="dsc-card-dshb-product">
-                            <p class="title-dsc-card-dshb-product">Cheese Burger</p>
-                            <p class="dsc-dshb-product">Pedas, Gurih</p>
-                            <p class="price-dshb-product">388</p>
-                            <a href="/detail/product">
-                                <button class="btn-ordernow-dshb-product">Edit Product</button>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="item-dshb-product">
-                        <img class="item-dshb-product-img" src="/img_menu/card1-sec2.png"/>
-                        <div class="dsc-card-dshb-product">
-                            <p class="title-dsc-card-dshb-product">Cheese Burger</p>
-                            <p class="dsc-dshb-product">Pedas, Gurih</p>
-                            <p class="price-dshb-product">388</p>
-                            <a href="/detail/product">
-                                <button class="btn-ordernow-dshb-product">Edit Product</button>
-                            </a>
-                        </div>
-                    </div> --}}
+                    @else
+                        @if ($section->menu_appetizer)
+                            <div class="item-dshb-product">
+                                <div class="item-dshb-product-img">
+                                    <img src="/{{ $section->menu_appetizer->img_menu }}"/>
+                                </div>
+                                <div class="dsc-card-dshb-product">
+                                    <p class="title-dsc-card-dshb-product">{{ $section->menu_appetizer->name }}</p>
+                                    <p class="dsc-dshb-product">{{ $section->menu_appetizer->flavor->flavor }}</p>
+                                    <p class="price-dshb-product">{{ $section->menu_appetizer->price }}</p>
+                                    <a href="/dashboard/product/menu/{{ $section->id }}/{{ $section->menu_appetizer->type->name_type }}/{{ $section->menu_appetizer->id }}">
+                                        <button class="btn-ordernow-dshb-product">Edit Product</button>
+                                    </a>
+                                </div>
+                            </div>
+                        @endif
+                        @if ($section->menu_maincourse)
+                            <div class="item-dshb-product">
+                                <div class="item-dshb-product-img">
+                                    <img src="/{{ $section->menu_maincourse->img_menu }}"/>
+                                </div>
+                                <div class="dsc-card-dshb-product">
+                                    <p class="title-dsc-card-dshb-product">{{ $section->menu_maincourse->name }}</p>
+                                    <p class="dsc-dshb-product">{{ $section->menu_maincourse->flavor->flavor }}</p>
+                                    <p class="price-dshb-product">{{ $section->menu_maincourse->price }}</p>
+                                    <a href="/dashboard/product/menu/{{ $section->id }}/{{ $section->menu_maincourse->type->name_type }}/{{ $section->menu_maincourse->id }}">
+                                        <button class="btn-ordernow-dshb-product">Edit Product</button>
+                                    </a>
+                                </div>
+                            </div>
+                        @endif
+                        @if ($section->menu_dessert)
+                            <div class="item-dshb-product">
+                                <div class="item-dshb-product-img">
+                                    <img src="/{{ $section->menu_dessert->img_menu }}"/>
+                                </div>
+                                <div class="dsc-card-dshb-product">
+                                    <p class="title-dsc-card-dshb-product">{{ $section->menu_dessert->name }}</p>
+                                    <p class="dsc-dshb-product">{{ $section->menu_dessert->flavor->flavor }}</p>
+                                    <p class="price-dshb-product">{{ $section->menu_dessert->price }}</p>
+                                    <a href="/dashboard/product/menu/{{ $section->id }}/{{ $section->menu_dessert->type->name_type }}/{{ $section->menu_dessert->id }}">
+                                        <a href="/dashboard/product/menu/{{ $section->id }}/{{ $section->menu_dessert->type->name_type }}/{{ $section->menu_dessert->id }}">
+                                        <button class="btn-ordernow-dshb-product">Edit Product</button>
+                                    </a>
+                                </div>
+                            </div>
+                        @endif
+                    @endif
                 </div>
+                @endforeach
             </div>
-            <div class="sec2-dshb-product">
+
+            {{-- section-promotion --}}
+            {{-- <div class="sec2-dshb-product">
                 <p class="title-con-product">On Promotion</p>
                 <img class="item-dshb-product-img-sec2" src="/img_menu/card1-sec2.png"/>
                 <div class="dsc-card-dshb-product-sec2">
@@ -129,9 +157,11 @@
                         <button class="btn-ordernow-dshb-product-sec2">Edit Product</button>
                     </a>
                 </div>
-            </div>
+            </div> --}}
+            {{-- section-promotion --}}
 
-            <div class="sec3-dshb-product">
+            {{-- section-bundling --}}
+            {{-- <div class="sec3-dshb-product">
                 <p class="title-con-product">PaketBundling</p>
                 <div class="container-sec3">
                     <div class="card-bundling-dshb">
@@ -262,9 +292,11 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
+            {{-- section-bundling --}}
 
-            <div class="sec4-dshb-product">
+            {{-- section-arsip --}}
+            {{-- <div class="sec4-dshb-product">
                 <h1 class="title-con-product">Archived</h1>
                 <div class="table-warp">
                     <table id="customers">
@@ -337,11 +369,13 @@
                       </table>
                       <a href="">Show More ></a>
                 </div>
-            </div>
+            </div> --}}
+            {{-- section-arsip --}}
         </div>
     </div>
 </div>
 
+<script src="/js/dashboard-product.js"></script>
 <script>
     
 </script>

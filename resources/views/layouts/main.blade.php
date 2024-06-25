@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CookItUp</title>
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/modal-form.css">
     <link rel="stylesheet" href="/css/auth.css">
     <link rel="stylesheet" href="/css/profile.css">
     <link rel="stylesheet" href="/css/home.css">
