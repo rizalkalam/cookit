@@ -15,7 +15,7 @@ class MenuSeeder extends Seeder
     {
         collect([
             [
-                'name'=>'Cheese Burger',
+                'name'=>'Nasgor',
                 'description'=>'tes1233',
                 'profile_yt'=>'testing',
                 'link_yt'=>'ou5a0DkiN10?si=auK-v0z28sZVH9W7',
@@ -45,7 +45,7 @@ class MenuSeeder extends Seeder
                 'type_id'=>3
             ],
             [
-                'name'=>'Nasgor',
+                'name'=>'Lontong Sayur',
                 'description'=>'tes1233',
                 'profile_yt'=>'testing',
                 'link_yt'=>'ou5a0DkiN10?si=auK-v0z28sZVH9W7',

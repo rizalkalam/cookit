@@ -5,11 +5,16 @@ use App\Models\WeeklyMenu;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CheckOutController;
+use App\Http\Controllers\WeeklyMenuController;
+use App\Http\Controllers\AddressUserController;
 use App\Http\Controllers\Dashboard\DBController;
 use App\Http\Controllers\Dashboard\AddressController;
 use App\Http\Controllers\Dashboard\ProductController;
+use App\Http\Controllers\Dashboard\OrderListController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Controllers\Dashboard\LiveProductController;
 
@@ -36,34 +41,33 @@ Route::get('/home', function() {
     ]);
 });
 
-Route::get('/weekly_menu', function() {
-    return view('weekly_menu');
-});
+Route::get('/weekly_menu', [WeeklyMenuController::class, 'index']);
 
 Route::get('/bundling', function() {
     return view('bundling');
 });
 
-Route::get('/keranjang', function() {
-    return view('keranjang');
-});
+Route::get('/keranjang', [CartController::class, 'index']);
+Route::post('/cart/create', [CartController::class, 'add_to_cart']);
+Route::delete('/cart/delete/{id}', [CartController::class, 'delete_cart']);
 
-Route::get('/check_out', function() {
-    return view('check-out');
-});
+Route::get('/check_out', [CheckOutController::class, 'index']);
+Route::get('/rincian_pesanan/{id}', [CheckOutController::class, 'invoice']);
 
-Route::get('/alamat_saya', function() {
-    return view('address.alamat');
-});
+Route::get('/alamat_saya', [AddressUserController::class, 'index']);
+Route::post('/change/my_address', [AddressUserController::class, 'update_selected_address']);
 
 // route profile
 Route::get('/profil_saya', [ProfileController::class, 'profile_saya']);
 Route::post('/update_profile', [ProfileController::class, 'update_profile']);
-Route::get('/tambah_alamat', [ProfileController::class, 'add_address']);
-Route::post('/create_address', [ProfileController::class, 'create_address_user']);
-Route::get('/get_districts', [ProfileController::class, 'show_district']);
-Route::get('/ubah_alamat/{id}', [ProfileController::class, 'edit_address']);
-Route::post('/update_address/{id}', [ProfileController::class, 'update_address_user']);
+
+    // address user
+    Route::get('/tambah_alamat', [ProfileController::class, 'add_address']);
+    Route::post('/create_address', [ProfileController::class, 'create_address_user']);
+    Route::get('/get_districts', [ProfileController::class, 'show_district']);
+    Route::get('/ubah_alamat/{id}', [ProfileController::class, 'edit_address']);
+    Route::post('/update_address/{id}', [ProfileController::class, 'update_address_user']);
+    Route::delete('/delete_address/{id}', [ProfileController::class, 'delete_address_user']);
 // route profile
 
 Route::get('/rincian_pesanan', function() {
@@ -74,7 +78,7 @@ Route::get('/rincian_pesanan', function() {
 //     return view('product');
 // });
 
-Route::get('/detail/{menu:menu_name}', [Controller::class, 'detail_menu']);
+Route::get('/detail/{menu:name}', [Controller::class, 'detail_menu']);
 
 Route::get('/login', [AuthController::class, 'login'])->name('no-partials');
 Route::get('/register', [AuthController::class, 'register'])->name('no-partials');
@@ -111,6 +115,12 @@ Route::post('/tutorial/update/{id}', [ProductController::class, 'update_tutorial
 Route::delete('/tutorial/delete/{id}', [ProductController::class, 'delete_tutorial']);
 // route product
 
+// route orderlist
+Route::get('/dashboard/order_list', [OrderListController::class, 'index'])->name('prefix-dashboard');
+Route::get('/order_list/{id}', [OrderListController::class, 'detail']);
+Route::post('/order_list/{id}', [OrderListController::class, 'update_status']);
+// route orderlist
+
 Route::get('/dashboard/product/detail_paket', function() {
     return view('dashboard.product.detail-paket',[
         "menus" => WeeklyMenu::all(),
@@ -126,12 +136,6 @@ Route::get('/dashboard/product/live_to_promote', function() {
 
 Route::get('/dashboard/product/archived_menu', function() {
     return view('dashboard.product.archived-menu',[
-        "menus" => WeeklyMenu::all(),
-    ]);
-})->name('prefix-dashboard');
-
-Route::get('/dashboard/order_list', function() {
-    return view('dashboard.order-list',[
         "menus" => WeeklyMenu::all(),
     ]);
 })->name('prefix-dashboard');
@@ -190,6 +194,7 @@ Route::delete('/dashboard/database/data_alamat/{id}', [AddressController::class,
 
     // district
     Route::post('/dashboard/database/district/{id}', [AddressController::class, 'district_add']);
+    Route::post('/dashboard/database/district_update/{id}', [AddressController::class, 'district_update']);
     Route::delete('/dashboard/database/district/{id}', [AddressController::class, 'district_del']);
 
 // route db-data-alamat
@@ -211,7 +216,7 @@ Route::get('/verified', function() {
 })->middleware(['auth', 'verified']);
 
 // payment
-Route::post('/order', [PaymentController::class, 'create']);
+Route::post('/order', [CheckOutController::class, 'payment']);
 
 
 // Route::post('/update_profile/{id}', [AuthController::class, 'update_profile']);

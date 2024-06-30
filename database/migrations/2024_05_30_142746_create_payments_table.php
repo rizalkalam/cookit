@@ -15,11 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('order_id');
             $table->string('status');
-            $table->double('price');
-            $table->string('item_name');
             $table->string('customer_first_name');
             $table->string('customer_email');
+            $table->string('customer_address');
             $table->timestamps();
+            // $table->double('price');
+            // $table->string('item_name');
         });
     }
 

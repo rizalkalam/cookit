@@ -151,3 +151,15 @@
 
 }
 /* end-section-3 */
+
+/* btn */
+.btn-order{
+    font-size: 12px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #F46A45;
+    border: none;
+    padding: 12px 14px;
+    cursor: pointer;
+}
+/* btn */

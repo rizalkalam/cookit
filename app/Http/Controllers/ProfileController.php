@@ -123,7 +123,7 @@ class ProfileController extends Controller
                 'complete_address' => $request->complete_address
             ]);
 
-            return redirect('/profil_saya')->with('success', 'Alamat berhasil ditambahkan !');
+            return redirect('/alamat_saya')->with('success', 'Alamat berhasil ditambahkan !');
         } catch (\Throwable $th) {
             //throw $th;
             return redirect('/tambah_alamat')->with('error', 'Gagal mengubah data !');
@@ -173,9 +173,25 @@ class ProfileController extends Controller
                 'complete_address' => $request->complete_address
             ]);
 
-            return redirect('/profil_saya')->with('success', 'Alamat berhasil diubah !');
+            return redirect('/alamat_saya')->with('success', 'Alamat berhasil diubah !');
         } catch (\Throwable $th) {
             return redirect('/ubah_alamat')->with('error', 'Gagal mengubah data !');
+        }
+    }
+
+    public function delete_address_user($id)
+    {
+        try {
+            $data = AddressUser::where('id', $id)->first();
+
+            $data->delete();
+            return redirect('/alamat_saya')->with('success', 'Alamat berhasil dihapus !');
+        } catch (\Throwable $th) {
+            //throw $th;
+            return response()->json([
+                'message' => 'failed',
+                'errors' => $th->getMessage(),
+            ], 400);
         }
     }
 }

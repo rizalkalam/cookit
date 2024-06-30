@@ -5,7 +5,7 @@
         </a>
     </div>
     <div id="nav-links">
-        <div class="nav-con">
+        {{-- <div class="nav-con">
             <li>
                 <a href="/weekly-menu">
                     <img src="/assets/map-marker.svg">
@@ -15,19 +15,25 @@
                     </div>
                 </a>
             </li>
-        </div>
+        </div> --}}
         <div class="right-nav">
             <form action="/action_page.php">
-                <img src="/assets/icn-search.svg" alt="">
+                <img class="search" src="/assets/icn-search.svg" alt="">
                 <input type="text" placeholder="Search Food" name="search">
               {{-- <button type="submit"><i class="fa fa-search"></i></button> --}}
             </form>
+            <a href="/keranjang" class="shipping_cart">
+                <img src="/assets/shipping_cart.svg" alt="">
+            </a>
             <div class="dropdown">
                 <a class="nav-auth-name" href="/logout">
                     Hi, {{ auth()->user()->name }}!
                 </a>
                 <div class="dropdown-content">
                     <a class="option-profile" href="/myaccount">Akun Saya</a>
+                    @if (Auth::user()->hasRole('admin'))
+                    <a class="option-profile" href="/dashboard/produk">Dashboard</a>
+                    @endif
                     <form action="/logout" method="post">
                         @csrf
                         <button class="option-out" type="submit">Keluar</button>

@@ -1,3 +1,40 @@
+/* additional-for-details */
+.con-select-status{
+  width: 152vh;
+  display: flex;
+  justify-content: space-between;
+}
+
+.con-select-status p{
+  font-size: 20px;
+}
+
+.wrap-select-status{
+  display: flex;
+  gap: 20px;
+}
+
+.btn-status-orderlist{
+  background-color: #F46A45;
+  padding: 10px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-status-orderlist.checked{
+  background-color: #D8D8D8;
+  padding: 10px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-status-orderlist p{
+  font-size: 12px;
+  font-weight: bold;
+  color: #fff;
+}
+/* additional-for-details */
+
 .head-order-list{
     display: flex;
     align-items: center;
@@ -83,6 +120,11 @@
 
       #orderlist tr{
         background-color: #fff;
+        cursor: pointer;
+      }
+
+      #orderlist tr:hover{
+        background-color: #D5D5D5;
       }
 
       #orderlist th{

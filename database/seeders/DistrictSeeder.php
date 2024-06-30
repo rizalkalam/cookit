@@ -17,19 +17,25 @@ class DistrictSeeder extends Seeder
             [
                 'area_id' => 1,
                 'district_name' => 'Bubutan',
-                'shipping_cost' => 13.000
+                'shipping_cost' => 12000
             ],
 
             [
                 'area_id' => 1,
                 'district_name' => 'Genteng',
-                'shipping_cost' => 13.000
+                'shipping_cost' => 18000
             ],
 
             [
                 'area_id' => 1,
                 'district_name' => 'Gubeng',
-                'shipping_cost' => 13.000
+                'shipping_cost' => 22000
+            ],
+
+            [
+                'area_id' => 1,
+                'district_name' => 'Banyuanyar',
+                'shipping_cost' => 11000
             ],
         ])->each(function ($district){
             DB::table('districts')->insert($district);

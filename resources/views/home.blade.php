@@ -61,7 +61,7 @@
             <p>Redy to Order</p>
         </div>
         <div class="link-weeklymenu">
-            <a href="/weekly-menu">See Our Weekly Menu ></a>
+            <a href="/weekly_menu">See Our Weekly Menu ></a>
         </div>
         <div class="container-carousel-home">
         <div class="carousel-view-home">
@@ -76,10 +76,10 @@
                             <img id="item" src="{{ $menu->img_menu }}"/>
                         </div>
                         <div class="dsc-card-section-2">
-                            <p class="title-dsc-card-sec2">{{ $menu->menu_name }}</p>
+                            <p class="title-dsc-card-sec2">{{ $menu->name }}</p>
                             <p class="txt-flavor-sec2">Manis</p>
                             <p class="price-sec2">${{ $menu->price }}</p>
-                            <a href="/detail/{{ $menu->menu_name }}">
+                            <a href="/detail/{{ $menu->name }}">
                                 <button class="btn-ordernow-sec2">Order Now</button>
                             </a>
                         </div>

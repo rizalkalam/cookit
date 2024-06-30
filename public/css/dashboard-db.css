@@ -70,12 +70,13 @@
     border: 1px solid #F46A45;
     border-radius: 5px;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
     cursor: pointer;
 }
 
-.btn-delete-db{
+.delete-data-detaildb{
     width: 80px;
+    margin-bottom: 5px;
     padding: 8px 15px;
     background-color: #fff;
     color: black;
@@ -349,6 +350,31 @@
 
 .con-disctrict{
     display: flex;
-    align-items: center;
+    gap: 5px;
+    align-items: end;
 }
+
+.btn-more-db{
+    background-color: #F46A45;
+    border-radius: 7px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    cursor: pointer;
+}
+
+    /* modal */
+    #moreModal{
+        width: 100%;
+        height: 100%;
+        z-index: 5;
+        top: 0;
+        position: fixed;
+        display: none;
+        background-color: rgba(22,22,22,0.5); /* complimenting your modal colors */
+    }
+    /* modal */
+
 /* end-data-alamat */

@@ -103,22 +103,46 @@
     color: rgba(0, 0, 0, 0.5);
 }
 
-.img-week-right{
+.con-img{
     width: 650px;
-    height: 100%;
     border-radius: 0px 12px 12px 0px;
+    position: relative;
+    overflow: hidden;
 }
 
-.img-week-left{
-    width: 650px;
-    height: 100%;
+.con-img-left{
     border-radius: 12px 0px 0px 12px;
+}
+
+.con-img img{
+    width: 100%;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 
 .section-weekly{
     display: flex;
     border-radius: 12px;
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.section-weekly-null{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    padding: 100px 0px;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.section-weekly-null h3{
+
 }
 
 .left-con-week{

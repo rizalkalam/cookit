@@ -5,7 +5,7 @@
         </a>
     </div>
     <div id="nav-links">
-        <div class="nav-con">
+        {{-- <div class="nav-con">
             <li>
                 <a href="/weekly-menu">
                     <img src="/assets/map-marker.svg">
@@ -15,7 +15,7 @@
                     </div>
                 </a>
             </li>
-        </div>
+        </div> --}}
         <div class="right-nav">
             <a href="/login">
                 <button class="nav-btn-login"><img src="/assets/icn-user.svg" alt="">Login</button>

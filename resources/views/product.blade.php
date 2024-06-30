@@ -1,9 +1,16 @@
 @extends('layouts.main')
 @section('content')
+<form action="/cart/create" method="POST">
+    @csrf
+    {{-- data-input-to-cart --}}
+    <input type="hidden" name="id" value="{{ $menu->id }}">
+    <input type="hidden" name="qty" value="1">
+    <input type="hidden" name="total_price" value="{{ $menu->price }}">
+    {{-- data-input-to-cart --}}
     <div class="container-product">
         {{-- section-1 --}}
         <div class="section-1">
-            <p class="title-product">{{ $menu->menu_name }}</p>
+            <p class="title-product">{{ $menu->name }}</p>
             <div class="publisher">
                 <img src="/assets/gyj.jpeg">
                 <p>by Go Yoon Jung</p>
@@ -22,36 +29,13 @@
                       <!-- List Container -->
                       <div id="material-list" class="material-list">
                         <!-- Items -->
+                        @foreach ($to_sents as $to_sent)    
                         <div class="material">
                             <img id="material" class="material-img" src="/assets/card1-sec2.png"/>
-                            <p>250 g
-                                Tepung Terigu Protein Sedang</p>
+                            <p>{{ $to_sent->qty }} {{ $to_sent->unit->unit }} 
+                                {{ $to_sent->material->material_name }}</p>
                         </div>
-                        <div class="material">
-                            <img id="material" class="material-img" src="/assets/card2-sec2.png"/>
-                            <p>1 sdt
-                                Ragi Instan</p>
-                        </div>
-                        <div class="material">
-                            <img id="material" class="material-img" src="/assets/card3-sec2.png"/>
-                            <p>Tes 12345</p>
-                        </div>
-                        <div class="material">
-                            <img id="material" class="material-img" src="/assets/card4-sec2.png"/>
-                            <p>Tes 12345</p>
-                        </div>
-                        <div class="material">
-                            <img id="material" class="material-img" src="/assets/card5-sec2.png"/>
-                            <p>Tes 12345</p>
-                        </div>
-                        <div class="material">
-                            <img id="material" class="material-img" src="/assets/card2-sec2.png"/>
-                            <p>Tes 12345</p>
-                        </div>
-                        <div class="material">
-                            <img id="material" class="material-img" src="/assets/card4-sec2.png"/>
-                            <p>Tes 12345</p>
-                        </div>
+                        @endforeach
                       </div>
                     <!-- Right Button -->
                     <button id="next-btn-mtrl" class="next-btn-mtrl"><img src="/assets/icn-arrow-right.svg" alt=""></button>
@@ -103,9 +87,9 @@
                 </div>
             </div>
             <div class="btn-section-34">
-                <a href="">
-                    <button class="btn-order-now">Pesan Sekarang</button>
-                </a>
+                {{-- <a href=""> --}}
+                    <button class="btn-order-now" type="submit">Pesan Sekarang</button>
+                {{-- </a> --}}
             </div>
         </div>
         {{-- end-section-3 --}}
@@ -170,14 +154,39 @@
                 </div>
             </div>
             <div class="btn-section-34">
-                <a href="/pay/{{ $menu->menu_name }}">
-                    <button class="btn-order-now">Pesan Sekarang</button>
-                </a>
+                {{-- <a href="/pay/{{ $menu->menu_name }}"> --}}
+                    <button class="btn-order-now" type="submit">Pesan Sekarang</button>
+                {{-- </a> --}}
             </div>
         </div>
         {{-- end-section-4 --}}
     </div>
+</form>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+{{-- modal-popup-cart --}}
+<div id="successModal" style="display: none;">
+    <div id="editTosentModal" class="reveal-modal-tutorial">
+        <span class="btn-close-modal" id="close-delete-tutorial"><img src="/assets/close-modal.svg" alt="Close"></span>
+        <p>Menu berhasil ditambahkan ke keranjang</p>
+        <a href="/keranjang">
+            <button class="btn-delete">Lihat keranjang</button>
+        </a>
+    </div>
+</div>
+{{-- modal-popup-cart --}}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        @if(session('show_modal'))
+            $('#successModal').show();
+        @endif
+
+        $('.close-btn').on('click', function() {
+            $('#successModal').hide();
+        });
+    });
+</script>
 @endsection

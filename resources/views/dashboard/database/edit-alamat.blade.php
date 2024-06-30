@@ -70,23 +70,25 @@
         @csrf
         <div class="sec-button-db-form">
             <button type="submit" class="btn-add-db">Save</button>
-            <a href="#" class="delete-data-detaildb" data-alamat-id="{{ $addres->id }}">
-                <button type="button" class="btn-delete-db">Delete</button>
-            </a>
+            <button type="button" class="delete-data-detaildb" data-alamat-id="{{ $addres->id }}">Delete</button>
         </div>
         <div class="container-data-alamat">
             <div class="input-form-data-alamat">
                 <p>Area</p>
-                <input type="text" name="area" id="area" placeholder="{{ $addres->area }}" required />
+                <input type="text" name="area" id="area" placeholder="{{ $addres->area }}" value="{{ old('area', $addres->area) }}" required />
             </div>
             <div class="input-form-data-alamat">
                 <p>Kecamatan</p>
                 @foreach ($districts as $district) 
                     <div class="con-disctrict">
                         <input type="name" name="name" id="name" placeholder="{{ $district->district_name }}" disabled />
-                        <a href="#" class="delete-district" data-district-id="{{ $district->id }}">
-                            <button type="button" class="btn-delete-db">Hapus</button>
-                        </a>
+                        <button type="button" class="btn-more-db" id="btn-more-address" 
+                        data-district-id="{{ $district->id }}"
+                        data-district-name="{{ $district->district_name }}"
+                        data-district-cost="{{ $district->shipping_cost }}"
+                        >
+                            <iconify-icon icon="jam:more-vertical-f" width="25" style="color: #fff"></iconify-icon>
+                        </button>
                     </div>   
                 @endforeach
             </div>
@@ -106,6 +108,7 @@
         <div id="exampleModal" class="reveal-modal-profilerasa">
             <button class="btn-close-modal"><img src="/assets/close-modal.svg" alt=""></button>
             <input type="text" placeholder="tambah kecamatan" name="district_name" id="district_name" required>
+            <input type="number" placeholder="ongkir" name="shipping_cost" id="shipping_cost" required>
             <div class="">
                 <button class="btn-modal-livetopromote" type="submit">Submit</button>
             </div>
@@ -113,6 +116,35 @@
     </div>
 </form>
 {{-- modal --}}
+
+{{-- modal-more --}}
+@foreach ($districts as $district)
+<div id="moreModal" style="display: none;">
+    <div id="editTosentModal" class="reveal-modal-tutorial">
+        <span class="btn-close-modal" id="close-more-modal"><img src="/assets/close-modal.svg" alt="Close"></span>
+        <p>Silahkan edit/hapus data</p>
+        <form action="/dashboard/database/district_update/{{ $district->id }}" method="POST">
+            @csrf
+            <input type="hidden" name="district_id" id="districtId">
+            <div class="input-modal-liveproduct">
+                <label class="label-input-liveproduct" for="districtName">Kecamatan</label>
+                <input type="text" name="district_name" id="districtName">
+            </div>
+            <div class="input-modal-liveproduct">
+                <label class="label-input-liveproduct" for="districtCost">Ongkir</label>
+                <input type="text" name="shipping_cost" id="districtCost">
+            </div>
+            <div class="sec-btn-moremodal">
+                <a href="#" class="delete-district" data-district-id="{{ $district->id }}">
+                    <button class="btn-delete">Hapus</button>
+                </a>
+                <button type="submit" class="btn-delete">Simpan perubahan</button>
+            </div>
+        </form>
+    </div>
+</div>
+@endforeach
+{{-- modal-more --}}
 
 <!-- Form untuk menghapus data (di dalam loop) -->   
 <form id="delete-alamat-{{ $addres->id }}" method="POST" action="/dashboard/database/data_alamat/{{ $addres->id }}" style="display:none;">
@@ -128,6 +160,7 @@
     </form>
 @endforeach
 
+<script src="/js/modal-form-dbaddres.js"></script>
 <script>
     // Get the modal
     var modal = document.getElementById("modal-add-profilerasa");

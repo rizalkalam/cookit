@@ -24,36 +24,50 @@
             <p class="addres-check-out">{{ $addres->complete_address }}</p>
         </div>
 
-        @if ($order_status === 'on_processed')
         <div class="kode-pesanan">
             <p class="txt-kode-pesanan">Kode Pesanan :{{ strtoupper($order_id) }}</p>
-            <div class="status-pesanan yellow-status">
-                <p>{{ $order_status }}</p>
-            </div>
         </div>
-        @elseif($order_status === 'in_delivery')
-        <div class="kode-pesanan">
-            <p class="txt-kode-pesanan">Kode Pesanan :{{ strtoupper($order_id) }}</p>
-            <div class="status-pesanan orange-status">
-                <p>{{ $order_status }}</p>
-            </div>
+
+        <div class="con-select-status">
+            <p>Aktivitas Pesanan</p>
+            <form id="orderStatusForm" action="/order_list/{{ $order_id }}" method="POST">
+                @csrf
+                <input type="hidden" id="input-status-order" name="status" value="">
+                <div class="wrap-select-status">
+                    @if ($order_status === 'on_processed')
+                    <div class="btn-status-orderlist checked" data-status="1">
+                        <p>Sedang diproses</p>
+                    </div>
+                    <div class="btn-status-orderlist" data-status="2">
+                        <p>Sedang dikirim</p>
+                    </div>
+                    <div class="btn-status-orderlist" data-status="4">
+                        <p>Pesanan selesai</p>
+                    </div>
+                    @elseif($order_status === 'in_delivery')
+                    <div class="btn-status-orderlist checked" data-status="1">
+                        <p>Sedang diproses</p>
+                    </div>
+                    <div class="btn-status-orderlist checked" data-status="2">
+                        <p>Sedang dikirim</p>
+                    </div>
+                    <div class="btn-status-orderlist" data-status="4">
+                        <p>Pesanan selesai</p>
+                    </div>
+                    @elseif($order_status === 'completed' || $order_status === 'received' || $order_status === 'rejected')
+                    <div class="btn-status-orderlist checked" data-status="1">
+                        <p>Sedang diproses</p>
+                    </div>
+                    <div class="btn-status-orderlist checked" data-status="2">
+                        <p>Sedang dikirim</p>
+                    </div>
+                    <div class="btn-status-orderlist checked" data-status="4">
+                        <p>Pesanan selesai</p>
+                    </div>
+                    @endif
+                </div>
+            </form>
         </div>
-        @elseif($order_status === 'received' || $order_status === 'completed')
-        <div class="kode-pesanan">
-            <p class="txt-kode-pesanan">Kode Pesanan :{{ strtoupper($order_id) }}</p>
-            <div class="status-pesanan green-status">
-                <p>{{ $order_status }}</p>
-            </div>
-        </div>
-        @elseif($order_status === 'rejected')    
-        <div class="kode-pesanan">
-            <p class="txt-kode-pesanan">Kode Pesanan :{{ strtoupper($order_id) }}</p>
-            <div class="status-pesanan red-status">
-                <p>{{ $order_status }}</p>
-            </div>
-        </div>
-        @endif
-        
 
         <div class="sec2-rincian-pesanan">
             <div class="head-sec2-rincian-pesanan">
@@ -112,7 +126,7 @@
                 </div>
                 <div class="con-sec3-rincian-pesanan">
                     <p>Total ongkos kirim</p>
-                    <p>Rp.<span>{{ $shippingCost = auth()->user()->addres->district->shipping_cost }}</p>
+                    <p>Rp.<span>{{ $shippingCost = $user->addres->district->shipping_cost }}</p>
                 </div>
                 {{-- <div class="con-sec3-rincian-pesanan">
                     <p>Diskon Voucher</p>
@@ -122,8 +136,27 @@
                     <p>Total Pembayaran</p>
                     <p>Rp.<span>{{ $subtotal + $shippingCost }}</span></p>
                 </div>
-                <button id="pay-button" class="btn-order">Hubungi Penjual</button>
+                <button id="pay-button" class="btn-order">Hubungi Pembeli</button>
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('orderStatusForm');
+            const hiddenInput = document.getElementById('input-status-order');
+            const statusButtons = document.querySelectorAll('.btn-status-orderlist');
+
+            statusButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const status = this.getAttribute('data-status');
+                    hiddenInput.value = status;
+                    console.log('Status changed to:', status);
+                    form.submit();
+                });
+            });
+        });
+
+
+    </script>
 @endsection

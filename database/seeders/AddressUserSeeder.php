@@ -18,8 +18,8 @@ class AddressUserSeeder extends Seeder
                 'user_id' => 2,
                 'full_name' => 'Bae Suzy',
                 'phone_address' => '85177770503',
-                'area' => 'Surabaya Kota',
-                'district' => 'Gubeng',
+                'area_id' => 1,
+                'district_id' => '1',
                 'complete_address' => 'Jalan Kejawan Putih Mutiara VI Blok c3 No.333A, Kejawen Putih Tambak, Mulyorejo (pagar ke2 stlh belok), KOTA SURABAYA - MULYOREJO, JAWA TIMUR, ID 60112',
             ],
 
@@ -27,8 +27,8 @@ class AddressUserSeeder extends Seeder
                 'user_id' => 2,
                 'full_name' => 'Sarah Melati',
                 'phone_address' => '85190050718',
-                'area' => 'Surakarta',
-                'district' => 'Banjarsari',
+                'area_id' => 1,
+                'district_id' => '2',
                 'complete_address' => 'Jl. Tarumanegara No.3, Banyuanyar, Kec. Banjarsari, Kota Surakarta, Jawa Tengah 57137',
             ],
 
@@ -36,8 +36,8 @@ class AddressUserSeeder extends Seeder
                 'user_id' => 2,
                 'full_name' => 'Kamal',
                 'phone_address' => '85155370503',
-                'area' => 'Kudus',
-                'district' => 'Gebog',
+                'area_id' => 1,
+                'district_id' => '3',
                 'complete_address' => 'Jalan Sukun Raya No.09, Besito Kulon, Besito, Kec. Gebog, Kabupaten Kudus, Jawa Tengah 59333',
             ],
         ])->each(function ($address_user){

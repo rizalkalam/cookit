@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Payment;
 use App\Models\WeeklyMenu;
 use Illuminate\Support\Str;
@@ -16,13 +17,6 @@ class PaymentController extends Controller
             'transaction_details' => array(
                 'order_id' => Str::uuid(),
                 'gross_amount' => $request->price,                
-            ),
-            'item_details' => array(
-                array(
-                    'price' => $request->price,
-                    'quantity' => 1,
-                    'name' => $request->menu_name,
-                )
             ),
             'customer_details' => array(
                 'first_name' => $request->customer_first_name,
@@ -44,18 +38,23 @@ class PaymentController extends Controller
         $payment = new Payment;
         $payment->order_id = $params['transaction_details']['order_id'];
         $payment->status = 'pending';
-        $payment->price = $request->price;
         $payment->customer_first_name = $request->customer_first_name;
         $payment->customer_email = $request->customer_email;
-        $payment->item_name = $request->menu_name;
+        $payment->customer_address = $request->customer_address;
         $payment->save();
+        // $payment->item_name = $request->menu_name;
+        // $payment->price = $request->price;
 
         // dd($response->token);
         // return response()->json($response);
-        return view('payment_testing',[
+
+        // data check-out
+        $data_cart = Cart::where('id', $request->id)->first();
+
+        return redirect('/check_out')->with([
             'snapToken' => $response->token,
+            'carts' => $data_cart
         ]);
-        
     }
 
     public function webhook(Request $request)

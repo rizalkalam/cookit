@@ -37,16 +37,56 @@
     color: #202224;
 }
 
-.status-pesanan{
+.status-pesanan.green-status{
     padding: 8px 15px;
     border-radius: 5px;
     background-color: rgba(0, 182, 155, 22%);
 }
 
-.status-pesanan p{
+.status-pesanan.green-status p{
     font-size: 12px;
     font-weight: bold;
+    text-align: center;
     color: #00B69B;
+}
+
+.status-pesanan.yellow-status{
+    padding: 8px 15px;
+    border-radius: 5px;
+    background-color: rgba(253, 153, 0, 22%);
+}
+
+.status-pesanan.yellow-status p{
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    color: #FF9900;
+}
+
+.status-pesanan.orange-status{
+    padding: 8px 15px;
+    border-radius: 5px;
+    background-color: rgba(241, 114, 0, 22%);
+}
+
+.status-pesanan.orange-status p{
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    color: #F17228;
+}
+
+.status-pesanan.red-status{
+    padding: 8px 15px;
+    border-radius: 5px;
+    background-color: rgba(239, 56, 38, 22%);
+}
+
+.status-pesanan.red-status p{
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    color: #EF3826;
 }
 
 .contact-rincian-pesanan{

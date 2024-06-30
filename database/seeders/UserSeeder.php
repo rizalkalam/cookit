@@ -23,15 +23,17 @@ class UserSeeder extends Seeder
             'phone' => '0000000000',
             'email' => 'admin@example.com',
             'password' => bcrypt('password'),
+            'address_id' => null,
         ]);
 
         $user = User::create([
-            'full_name' => 'user1',
-            'name' => 'new_user1',
+            'full_name' => 'Calvin Winata',
+            'name' => 'cwskie',
             'phone' => '085155370503',
-            'email' => 'user1@example.com',
-            'password' => bcrypt('user123'),
-            'photo_profile' => 'assets/img-default.png'
+            'email' => 'cwskie1@example.com',
+            'password' => bcrypt('password123'),
+            'photo_profile' => 'assets/img-default.png',
+            'address_id' => 1,
         ]);
 
         $admin->assignRole('admin');

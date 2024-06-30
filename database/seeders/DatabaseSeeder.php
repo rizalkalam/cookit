@@ -4,10 +4,13 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Database\Seeders\CartSeeder;
 use Database\Seeders\MenuSeeder;
 use Database\Seeders\UnitSeeder;
 use Database\Seeders\UserSeeder;
+use Database\Seeders\OrderSeeder;
 use Database\Seeders\ToSentSeeder;
+use Database\Seeders\PaymentSeeder;
 use Database\Seeders\DistrictSeeder;
 use Database\Seeders\MaterialSeeder;
 use Database\Seeders\MenuTypeSeeder;
@@ -52,6 +55,9 @@ class DatabaseSeeder extends Seeder
             AddressDetailSeeder::class,
             DistrictSeeder::class,
             AddressUserSeeder::class,
+            CartSeeder::class,
+            PaymentSeeder::class,
+            OrderSeeder::class,
         ]);
     }
 }
