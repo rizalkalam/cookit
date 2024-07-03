@@ -66,6 +66,27 @@
             </div>
             <div class="list-rincian-pesanan">
                 @foreach ($orders as $order)
+                @if ($order->menu_type === 'Bundling')
+                <div class="item-rincian-pesanan">
+                    <div class="left-list-bskt">
+                        <div class="image">
+                          <img src="/assets/1.jpg" alt="" />
+                        </div>
+                        <div class="description">
+                            <p class="title-menu-bskt">{{ $order->menu_name }}</p>
+                            <div class="bundling-badge">
+                                <p>Bundling</p>
+                            </div>
+                            <p class="dsc-menu-bskt">{{ $order->menu_dsc }}</p>
+                        </div>
+                    </div>
+                    <div class="right-list-rincian-pesanan">
+                        <div class="price-rincian-pesanan">Rp.<span class="price-bskt" data-unit-price="13000">{{ number_format($order->total_price / $order->qty, 0, ',', '.') }}</span></div>
+                        <p class="count-rincian-pesanan">{{ $order->qty }}</p>
+                        <div class="sub-price-chek-out">Rp.<span class="price-bskt" data-unit-price="13000">{{ $order->total_price }}</span></div>
+                    </div>
+                </div>
+                @else
                 <div class="item-rincian-pesanan">
                     <div class="left-list-bskt">
                         <div class="image">
@@ -85,6 +106,7 @@
                         <div class="sub-price-chek-out">Rp.<span class="price-bskt" data-unit-price="13000">{{ $order->total_price }}</span></div>
                     </div>
                 </div>
+                @endif
                 @endforeach
             </div>
             <div class="line-gap-rincian-pesanan"></div>
@@ -122,7 +144,9 @@
                     <p>Total Pembayaran</p>
                     <p>Rp.<span>{{ $subtotal + $shippingCost }}</span></p>
                 </div>
-                <button id="pay-button" class="btn-order">Hubungi Penjual</button>
+                <a href="https://api.whatsapp.com/send?phone=6285155493451">
+                    <button id="pay-button" class="btn-order">Hubungi Penjual</button>
+                </a>
             </div>
         </div>
     </div>

@@ -5,15 +5,18 @@ namespace App\Http\Controllers\Dashboard;
 use App\Models\Menu;
 use App\Models\Unit;
 use App\Models\ToSent;
+use App\Models\Bundling;
 use App\Models\MenuType;
 use App\Models\HowToCook;
 use App\Models\LiveProduct;
+use App\Models\BundlingType;
 use App\Models\MaterialSent;
 use Illuminate\Http\Request;
 use App\Models\FlavorProfile;
 use App\Models\NutritionsMenu;
 use App\Models\SectionProduct;
 use Illuminate\Support\Carbon;
+use App\Models\PromotionProduct;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
@@ -37,6 +40,66 @@ class ProductController extends Controller
         }
 
         $section = SectionProduct::get();
+
+        $promotion = PromotionProduct::first();
+
+        $bundling_snackattack = BundlingType::where('bundling_id', 1)
+        ->where('status_bundling', 1)
+        ->get();
+        $bundling_cooktheday = BundlingType::where('bundling_id', 2)
+        ->where('status_bundling', 1)
+        ->get();
+        $bundling_cookitonce = BundlingType::where('bundling_id', 3)
+        ->where('status_bundling', 1)
+        ->get();
+        $bundling_adorableweek = BundlingType::where('bundling_id', 4)
+        ->where('status_bundling', 1)
+        ->get();
+
+        $snackattack = $bundling_snackattack->first();
+        $cooktheday = $bundling_cooktheday->first();
+        $cookitonce = $bundling_cookitonce->first();
+        $adorableweek = $bundling_adorableweek->first();
+
+        $snackattack_appetizer = $bundling_snackattack->filter(function($item) {
+            return $item->name_type === 'Bundling Appetizer';
+        });
+        $snackattack_maincourse = $bundling_snackattack->filter(function($item) {
+            return $item->name_type === 'Bundling Maincourse';
+        });
+        $snackattack_dessert = $bundling_snackattack->filter(function($item) {
+            return $item->name_type === 'Bundling Dessert';
+        });
+
+        $cooktheday_appetizer = $bundling_cooktheday->filter(function($item){
+            return $item->name_type === 'Bundling Appetizer';
+        });
+        $cooktheday_maincourse = $bundling_cooktheday->filter(function($item){
+            return $item->name_type === 'Bundling Maincourse';
+        });
+        $cooktheday_dessert = $bundling_cooktheday->filter(function($item){
+            return $item->name_type === 'Bundling Dessert';
+        });
+
+        $cookitonce_appetizer = $bundling_cookitonce->filter(function($item){
+            return $item->name_type === 'Bundling Appetizer';
+        });
+        $cookitonce_maincourse = $bundling_cookitonce->filter(function($item){
+            return $item->name_type === 'Bundling Maincourse';
+        });
+        $cookitonce_dessert = $bundling_cookitonce->filter(function($item){
+            return $item->name_type === 'Bundling Dessert';
+        });
+
+        $adorableweek_appetizer = $bundling_adorableweek->filter(function($item){
+            return $item->name_type === 'Bundling Appetizer';
+        });
+        $adorableweek_maincourse = $bundling_adorableweek->filter(function($item){
+            return $item->name_type === 'Bundling Maincourse';
+        });
+        $adorableweek_dessert = $bundling_adorableweek->filter(function($item){
+            return $item->name_type === 'Bundling Dessert';
+        });
     
 
         return view('dashboard.product.product',[
@@ -44,6 +107,27 @@ class ProductController extends Controller
             "section_id" => $section_id,
             "months" => $months,
             "days" => $days,
+            "promotion" => $promotion,
+            "bundling_snackattack" => $bundling_snackattack,
+            "bundling_cooktheday" => $bundling_cooktheday,
+            "bundling_cookitonce" => $bundling_cookitonce,
+            "bundling_adorableweek" => $bundling_adorableweek,
+            "snackattack" => $snackattack,
+            "cooktheday" => $cooktheday,
+            "cookitonce" => $cookitonce,
+            "adorableweek" => $adorableweek,
+            "snackattack_appetizer" => $snackattack_appetizer,
+            "snackattack_maincourse" => $snackattack_maincourse,
+            "snackattack_dessert" => $snackattack_dessert,
+            "cooktheday_appetizer" => $cooktheday_appetizer,
+            "cooktheday_maincourse" => $cooktheday_maincourse,
+            "cooktheday_dessert" => $cooktheday_dessert,
+            "cookitonce_appetizer" => $cookitonce_appetizer,
+            "cookitonce_maincourse" => $cookitonce_maincourse,
+            "cookitonce_dessert" => $cookitonce_dessert,
+            "adorableweek_appetizer" => $adorableweek_appetizer,
+            "adorableweek_maincourse" => $adorableweek_maincourse,
+            "adorableweek_dessert" => $adorableweek_dessert,
         ]);
 
         // return response()->json([
@@ -180,6 +264,11 @@ class ProductController extends Controller
                 'unit_id' => $request->unit_id,
             ]);
 
+            $menu = Menu::where('id', $id)->first();
+            $menu->update([
+                'update_at' => Carbon::now()
+            ]);
+
             return back()->with('success', 'User berhasil ditambahkan!');
         } catch (\Throwable $th) {
             //throw $th;
@@ -216,6 +305,11 @@ class ProductController extends Controller
                 'unit_id' => $request->unit_id
             ]);
 
+            $menu = Menu::where('id', $id)->first();
+            $menu->update([
+                'update_at' => Carbon::now()
+            ]);
+
             return redirect('/dashboard/product/menu/'.$id)->with('success', 'Produk berhasil ditambahkan !');
         } catch (\Throwable $th) {
             //throw $th;
@@ -233,6 +327,12 @@ class ProductController extends Controller
         $data = ToSent::where('id', $request->tosentId)->first();
 
         $data->delete();
+
+        $menu = Menu::where('id', $id)->first();
+            $menu->update([
+                'update_at' => Carbon::now()
+            ]);
+
         return redirect('/dashboard/product/menu/'.$id)->with('success', 'Produk berhasil ditambahkan !');
     }
 
@@ -280,6 +380,11 @@ class ProductController extends Controller
                 // 'unit_id' => $request->unit_id
             ]);
 
+            $menu = Menu::where('id', $id)->first();
+            $menu->update([
+                'update_at' => Carbon::now()
+            ]);
+
             return redirect('/dashboard/product/menu/'.$id)->with('success', 'Produk berhasil ditambahkan !');
         } catch (\Throwable $th) {
             //throw $th;
@@ -324,6 +429,11 @@ class ProductController extends Controller
                 'image' => $stored_img_path
             ]);
 
+            $menu = Menu::where('id', $id)->first();
+            $menu->update([
+                'update_at' => Carbon::now()
+            ]);
+
             return back()->with('success', 'User berhasil ditambahkan!');
         } catch (\Throwable $th) {
             //throw $th;
@@ -353,8 +463,13 @@ class ProductController extends Controller
 
             $tutorial->update([
                 'instruction' => $request->instructionInput,
-                // 'menu_id' => $id,
+                'menu_id' => $id,
                 // 'image' => $stored_img_path
+            ]);
+
+            $menu = Menu::where('id', $id)->first();
+            $menu->update([
+                'update_at' => Carbon::now()
             ]);
 
             return redirect('/dashboard/product/menu/'.$id)->with('success', 'Produk berhasil ditambahkan !');
@@ -385,6 +500,12 @@ class ProductController extends Controller
             $data = HowToCook::where('id', $request->tutorialId)->first();
 
             $data->delete();
+
+            $menu = Menu::where('id', $id)->first();
+            $menu->update([
+                'update_at' => Carbon::now()
+            ]);
+
             return redirect('/dashboard/product/menu/'.$id)->with('success', 'Produk berhasil ditambahkan !');
         } catch (\Throwable $th) {
             //throw $th;
@@ -403,6 +524,9 @@ class ProductController extends Controller
             // Menggunakan transaksi untuk memastikan semua operasi berhasil atau gagal bersama-sama
             DB::beginTransaction();
     
+            // Menghapus data dari tabel BundlingType
+            BundlingType::where('menu_id', $id)->delete();
+
             // Menghapus data dari tabel ToSent
             ToSent::where('menu_id', $id)->delete();
     
@@ -480,7 +604,8 @@ class ProductController extends Controller
                 'profile_yt' => $request->profile_yt,
                 'link_yt' => $request->link_yt,
                 'flavor_id' => $request->flavor_id,
-                'type_id' => $request->type_id
+                'type_id' => $request->type_id,
+                'update_at' => Carbon::now()
             ]);
 
             return redirect('dashboard/product')->with('success', 'Produk berhasil ditambahkan !');
@@ -560,7 +685,9 @@ class ProductController extends Controller
                 'profile_yt' => $request->profile_yt,
                 'link_yt' => $request->link_yt,
                 'flavor_id' => $request->flavor_id,
-                'type_id' => $request->type_id
+                'type_id' => $request->type_id,
+                'created_at' => Carbon::now(),
+                'update_at' => Carbon::now()
             ]);
 
             $nutrition = NutritionsMenu::create([
@@ -578,6 +705,22 @@ class ProductController extends Controller
                 'kalori' => 0,
                 'kalori_unit' => 1,
             ]);
+
+            $type_name = MenuType::where('id', $menu->type_id)->value('name_type');
+
+            $bundling_nametype = str_replace('', '', $type_name);
+
+            $bundling_ids = [1, 2, 3, 4];
+            foreach ($bundling_ids as $bundling_id) {
+                BundlingType::create([
+                    'name_type' => $bundling_nametype,
+                    'bundling_id' => $bundling_id,
+                    'menu_id' => $menu->id,
+                    'qty' => 0,
+                    'status_bundling' => 2
+                ]);
+            }
+            
 
             //update on section
         $section = SectionProduct::where('id', $request->section_id)->first();

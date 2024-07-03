@@ -295,6 +295,7 @@
 }
 
 .left-dsc-additional-section{
+    max-width: 400px;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -304,6 +305,7 @@
 }
 
 .right-dsc-additional-section{
+    max-width: 400px;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -328,6 +330,7 @@
 .right-dsc-bundle{
     font-size: 20px;
     font-weight: 500;
+    text-align: start;
 }
 
 .btn-additional-section{
@@ -344,6 +347,7 @@
     border-radius: 5px;
     font-size: 16px;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .line-gap-additional-section{

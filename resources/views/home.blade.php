@@ -65,6 +65,27 @@
         </div>
         <div class="container-carousel-home">
         <div class="carousel-view-home">
+            @if (count($menus) < 6)
+                  <!-- List Container -->
+                  <div id="item-list-home" class="item-list-home">
+                    <!-- Items -->
+                    @foreach ($menus as $menu)    
+                    <div class="item-weekly-home">
+                        <div class="item-img">
+                            <img id="item" src="{{ $menu->img_menu }}"/>
+                        </div>
+                        <div class="dsc-card-section-2">
+                            <p class="title-dsc-card-sec2">{{ $menu->name }}</p>
+                            <p class="txt-flavor-sec2">Manis</p>
+                            <p class="price-sec2">${{ $menu->price }}</p>
+                            <a href="/detail/{{ $menu->name }}">
+                                <button class="btn-ordernow-sec2">Order Now</button>
+                            </a>
+                        </div>
+                    </div>
+                    @endforeach
+                  </div>
+            @else
                 <!-- Left Button -->
                 <button id="prev-btn" class="prev-btn"><img src="/assets/icn-arrow-left.svg" alt=""></button>
                   <!-- List Container -->
@@ -88,13 +109,15 @@
                   </div>
                 <!-- Right Button -->
                 <button id="next-btn" class="next-btn"><img src="/assets/icn-arrow-right.svg" alt=""></button>
+            @endif
+                
             </div>
         </div>
     </div>
     {{-- end-content-section-2 --}}
 
     {{-- additional-section --}}
-    {{-- <div class="content-additional-section">
+    <div class="content-additional-section">
         <div class="title-section-2">
             <p>Go Saver With Bundle</p>
         </div>
@@ -102,19 +125,27 @@
             <div class="con-left-additional-section">
                 <div class="left-additional-section">
                     <div class="left-dsc-additional-section">
-                        <a href="" class="title-bundle">Snack Attack</a>
-                        <p class="left-dsc-bundle">4 Appetizer + 4 Dessert</p>
+                        <a href="/bundling/{{ $snackattack->bundling_name }}" class="title-bundle">Snack Attack</a>
+                        <p class="left-dsc-bundle">
+                            {{ $qty_snackattack_appetizer ?? '' ? $qty_snackattack_appetizer . ' Appetizer +' : '' }}
+                            {{ $qty_snackattack_maincourse ?? '' ? $qty_snackattack_maincourse . ' Maincourse +' : '' }}
+                            {{ $qty_snackattack_dessert ?? '' ? $qty_snackattack_dessert . ' Dessert' : '' }}
+                        </p>
                         <div class="btn-additional-section">
                             <p class="left-dsc-bundle">only</p>
-                            <a href="/detail/product">
-                                <button class="btn-price-additional-section">Rp30.000</button>
-                            </a>
+                            <form action="/cart/bundling_create" method="POST">
+                                @csrf
+                                <input type="hidden" name="bundling_id" value="{{ $snackattack->id }}">
+                                <input type="hidden" name="bundling_qty" value="{{ $total_snackattack }}">
+                                <input type="hidden" name="bundling_price" value="{{ $snackattack->price }}">
+                                <button type="submit" class="btn-price-additional-section">Rp{{ number_format($snackattack->price, 0, ',', '.') }}</button>
+                            </form>
                         </div>
                     </div>
                     <div class="line-gap-additional-section"></div>
                     <div class="left-total-menu-additional-section">
-                        <p class="number-bundle">8</p>
-                        <p class="txt-menu-bundle">Menu</p>
+                        <p class="number-bundle">{{ $total_snackattack ?? '' }}</p>
+                        <p class="txt-menu-bundle">Porsi</p>
                     </div>
                 </div>
                 <div class="none-additional-section">
@@ -124,19 +155,27 @@
             <div class="con-right-additional-section">
                 <div class="right-additional-section">
                     <div class="right-dsc-additional-section">
-                        <a href="" class="title-bundle">Snack Attack</a>
-                        <p class="right-dsc-bundle">4 Appetizer + 4 Dessert</p>
+                        <a href="/bundling/{{ $cooktheday->bundling_name }}" class="title-bundle">Cook The Day</a>
+                        <p class="right-dsc-bundle">
+                            {{ $qty_cooktheday_appetizer ?? '' ? $qty_cooktheday_appetizer . ' Appetizer +' : '' }}
+                            {{ $qty_cooktheday_maincourse ?? '' ? $qty_cooktheday_maincourse . ' Maincourse +' : '' }}
+                            {{ $qty_cooktheday_dessert ?? '' ? $qty_cooktheday_dessert . ' dessert' : '' }}
+                        </p>
                         <div class="btn-additional-section">
                             <p class="right-dsc-bundle">only</p>
-                            <a href="/detail/product">
-                                <button class="btn-price-additional-section">Rp30.000</button>
-                            </a>
+                            <form action="/cart/bundling_create" method="POST">
+                                @csrf
+                                <input type="hidden" name="bundling_id" value="{{ $cooktheday->id }}">
+                                <input type="hidden" name="bundling_qty" value="{{ $total_cooktheday }}">
+                                <input type="hidden" name="bundling_price" value="{{ $cooktheday->price }}">
+                                <button type="submit" class="btn-price-additional-section">Rp{{ number_format($cooktheday->price, 0, ',', '.') }}</button>
+                            </form>
                         </div>
                     </div>
                     <div class="line-gap-additional-section"></div>
                     <div class="right-total-menu-additional-section">
-                        <p class="number-bundle">8</p>
-                        <p class="txt-menu-bundle">Menu</p>
+                        <p class="number-bundle">{{ $total_cooktheday ?? '' }}</p>
+                        <p class="txt-menu-bundle">Porsi</p>
                     </div>
                 </div>
                 <div class="none-additional-section">
@@ -146,19 +185,27 @@
             <div class="con-left-additional-section">
                 <div class="left-additional-section">
                     <div class="left-dsc-additional-section">
-                        <a href="" class="title-bundle">Snack Attack</a>
-                        <p class="left-dsc-bundle">4 Appetizer + 4 Dessert</p>
+                        <a href="/bundling/{{ $cookitonce->bundling_name }}" class="title-bundle">Cook It Once</a>
+                        <p class="left-dsc-bundle">
+                            {{ $qty_cookitonce_appetizer ?? '' ? $qty_cookitonce_appetizer . ' Appetizer +' : '' }}
+                            {{ $qty_cookitonce_maincourse ?? '' ? $qty_cookitonce_maincourse . ' Maincourse +' : '' }}
+                            {{ $qty_cookitonce_dessert ?? '' ? $qty_cookitonce_dessert . ' dessert' : '' }}
+                        </p>
                         <div class="btn-additional-section">
                             <p class="left-dsc-bundle">only</p>
-                            <a href="/detail/product">
-                                <button class="btn-price-additional-section">Rp30.000</button>
-                            </a>
+                            <form action="/cart/bundling_create" method="POST">
+                                @csrf
+                                <input type="hidden" name="bundling_id" value="{{ $cookitonce->id }}">
+                                <input type="hidden" name="bundling_qty" value="{{ $total_cookitonce }}">
+                                <input type="hidden" name="bundling_price" value="{{ $cookitonce->price }}">
+                                <button type="submit" class="btn-price-additional-section">Rp{{ number_format($cookitonce->price, 0, ',', '.') }}</button>
+                            </form>
                         </div>
                     </div>
                     <div class="line-gap-additional-section"></div>
                     <div class="left-total-menu-additional-section">
-                        <p class="number-bundle">8</p>
-                        <p class="txt-menu-bundle">Menu</p>
+                        <p class="number-bundle">{{ $total_cookitonce ?? '' }}</p>
+                        <p class="txt-menu-bundle">Porsi</p>
                     </div>
                 </div>
                 <div class="none-additional-section">
@@ -168,19 +215,27 @@
             <div class="con-right-additional-section">
                 <div class="right-additional-section">
                     <div class="right-dsc-additional-section">
-                        <a href="" class="title-bundle">Snack Attack</a>
-                        <p class="right-dsc-bundle">4 Appetizer + 4 Dessert</p>
+                        <a href="/bundling/{{ $adorableweek->bundling_name }}" class="title-bundle">Adorable Week</a>
+                        <p class="right-dsc-bundle">
+                            {{ $qty_adorableweek_appetizer ?? '' ? $qty_adorableweek_appetizer . ' Appetizer +' : '' }}
+                            {{ $qty_adorableweek_maincourse ?? '' ? $qty_adorableweek_maincourse . ' Maincourse +' : '' }}
+                            {{ $qty_adorableweek_dessert ?? '' ? $qty_adorableweek_dessert . ' dessert' : '' }}
+                        </p>
                         <div class="btn-additional-section">
                             <p class="right-dsc-bundle">only</p>
-                            <a href="/detail/product">
-                                <button class="btn-price-additional-section">Rp30.000</button>
-                            </a>
+                            <form action="/cart/bundling_create" method="POST">
+                                @csrf
+                                <input type="hidden" name="bundling_id" value="{{ $adorableweek->id }}">
+                                <input type="hidden" name="bundling_qty" value="{{ $total_adorableweek }}">
+                                <input type="hidden" name="bundling_price" value="{{ $adorableweek->price }}">
+                                <button type="submit" class="btn-price-additional-section">Rp{{ number_format($adorableweek->price, 0, ',', '.') }}</button>
+                            </form>
                         </div>
                     </div>
                     <div class="line-gap-additional-section"></div>
                     <div class="right-total-menu-additional-section">
-                        <p class="number-bundle">8</p>
-                        <p class="txt-menu-bundle">Menu</p>
+                        <p class="number-bundle">{{ $total_adorableweek ?? '' }}</p>
+                        <p class="txt-menu-bundle">Porsi</p>
                     </div>
                 </div>
                 <div class="none-additional-section">
@@ -188,11 +243,11 @@
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
     {{-- end-additional-section --}}
 
     {{-- content-section-3 --}}
-    <div class="content-section-3">
+    {{-- <div class="content-section-3">
         <div class="txt1-section-3">
             <p>TESTIMONIALS</p>
         </div>
@@ -316,13 +371,34 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     {{-- end-content-section-3 --}}
+
+    {{-- modal-popup-cart --}}
+    <div id="successModal" style="display: none;">
+        <div id="editTosentModal" class="reveal-modal-tutorial">
+            <span class="btn-close-modal" id="close-modal-carthome"><img src="/assets/close-modal.svg" alt="Close"></span>
+            <p>Menu berhasil ditambahkan ke keranjang</p>
+            <a href="/keranjang">
+                <button class="btn-delete">Lihat keranjang</button>
+            </a>
+        </div>
+    </div>
+    {{-- modal-popup-cart --}}
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 
     <script>
+         $(document).ready(function() {
+            @if(session('show_modal'))
+                $('#successModal').show();
+            @endif
+
+            $('#close-modal-carthome').on('click', function() {
+                $('#successModal').hide();
+            });
+        });
         // modal
         function openForm() {
         document.getElementById("modal").style.display = "block";

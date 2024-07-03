@@ -27,21 +27,21 @@
         </div>
         <div id="side-menu">
             <div id="mark"></div>
-            <a href="#about">
+            <a href="/dashboard/review">
                 <iconify-icon icon="solar:hand-stars-linear" width="20"></iconify-icon>
                 Review
             </a>
         </div>
         <div id="side-menu">
             <div id="mark"></div>
-            <a href="#about">
+            <a href="/dashboard/customer">
                 <iconify-icon icon="humbleicons:users" width="20"></iconify-icon>
                 Customer
             </a>
         </div>
         <div id="side-menu">
             <div id="mark"></div>
-            <a href="#about">
+            <a href="/dashboard/database">
                 <iconify-icon icon="iconoir:database" width="20"></iconify-icon>
                 Database
             </a>
@@ -76,66 +76,27 @@
                 </div>
                 <div class="line-right-livetopromote"></div>
             </div>
+            @if ($menu_appetizer->isEmpty())
             <div class="con-list-livetopromote">
-                <div class="left-list-livetopromote">
-                    <div class="img-list-livetopromote">
-                        <img src="/assets/8.jpg" alt="">
-                    </div>
-                    <div class="txt-list-livetopromote">
-                        <p class="title-list-livetopromote">Go Yoon Jung</p>
-                        <p class="dsc-list-livetopromote">Manis</p>
-                        <p class="price-list-livetopromote">$4.00</p>
-                    </div>
-                </div>
-                
-                    <button class="btn-promote-livetopromote" onclick="openForm()">Promote</button>
-                
+                <h3>data kosong</h3>
             </div>
-            <div class="con-list-livetopromote">
-                <div class="left-list-livetopromote">
-                    <div class="img-list-livetopromote">
-                        <img src="/assets/8.jpg" alt="">
+            @else    
+            @foreach ($menu_appetizer as $menu)    
+                <div class="con-list-livetopromote">
+                    <div class="left-list-livetopromote">
+                        <div class="img-list-livetopromote">
+                            <img src="/{{ $menu->img_menu }}" alt="">
+                        </div>
+                        <div class="txt-list-livetopromote">
+                            <p class="title-list-livetopromote">{{ $menu->name }}</p>
+                            <p class="dsc-list-livetopromote">{{ $menu->flavor->flavor }}</p>
+                            <p class="price-list-livetopromote">Rp. {{ $menu->price }}</p>
+                        </div>
                     </div>
-                    <div class="txt-list-livetopromote">
-                        <p class="title-list-livetopromote">Go Yoon Jung</p>
-                        <p class="dsc-list-livetopromote">Manis</p>
-                        <p class="price-list-livetopromote">$4.00</p>
-                    </div>
+                    <button class="btn-promote-livetopromote" onclick="openForm('{{ $menu->id }}')">Promote</button>
                 </div>
-                
-                    <button class="btn-promote-livetopromote" onclick="openForm()">Promote</button>
-                
-            </div>
-            <div class="con-list-livetopromote">
-                <div class="left-list-livetopromote">
-                    <div class="img-list-livetopromote">
-                        <img src="/assets/8.jpg" alt="">
-                    </div>
-                    <div class="txt-list-livetopromote">
-                        <p class="title-list-livetopromote">Go Yoon Jung</p>
-                        <p class="dsc-list-livetopromote">Manis</p>
-                        <p class="price-list-livetopromote">$4.00</p>
-                    </div>
-                </div>
-                
-                    <button class="btn-promote-livetopromote" onclick="openForm()">Promote</button>
-                
-            </div>
-            <div class="con-list-livetopromote">
-                <div class="left-list-livetopromote">
-                    <div class="img-list-livetopromote">
-                        <img src="/assets/8.jpg" alt="">
-                    </div>
-                    <div class="txt-list-livetopromote">
-                        <p class="title-list-livetopromote">Go Yoon Jung</p>
-                        <p class="dsc-list-livetopromote">Manis</p>
-                        <p class="price-list-livetopromote">$4.00</p>
-                    </div>
-                </div>
-                
-                    <button class="btn-promote-livetopromote" onclick="openForm()">Promote</button>
-                
-            </div>
+            @endforeach
+            @endif
         </div>
         <div class="content-livetopromote">
             <div class="head-con-livetopromote">
@@ -145,51 +106,27 @@
                 </div>
                 <div class="line-right-livetopromote"></div>
             </div>
+            @if ($menu_maincourse->isEmpty())
             <div class="con-list-livetopromote">
-                <div class="left-list-livetopromote">
-                    <div class="img-list-livetopromote">
-                        <img src="/assets/8.jpg" alt="">
-                    </div>
-                    <div class="txt-list-livetopromote">
-                        <p class="title-list-livetopromote">Go Yoon Jung</p>
-                        <p class="dsc-list-livetopromote">Manis</p>
-                        <p class="price-list-livetopromote">$4.00</p>
-                    </div>
-                </div>
-                
-                    <button class="btn-promote-livetopromote" onclick="openForm()">Promote</button>
-                
+                <h3>data kosong</h3>
             </div>
-            <div class="con-list-livetopromote">
-                <div class="left-list-livetopromote">
-                    <div class="img-list-livetopromote">
-                        <img src="/assets/8.jpg" alt="">
-                    </div>
-                    <div class="txt-list-livetopromote">
-                        <p class="title-list-livetopromote">Go Yoon Jung</p>
-                        <p class="dsc-list-livetopromote">Manis</p>
-                        <p class="price-list-livetopromote">$4.00</p>
-                    </div>
+            @else    
+            @foreach ($menu_maincourse as $menu)    
+                <div class="con-list-livetopromote">
+                    <div class="left-list-livetopromote">
+                        <div class="img-list-livetopromote">
+                            <img src="/{{ $menu->img_menu }}" alt="">
+                        </div>
+                        <div class="txt-list-livetopromote">
+                            <p class="title-list-livetopromote">{{ $menu->name }}</p>
+                            <p class="dsc-list-livetopromote">{{ $menu->flavor->flavor }}</p>
+                            <p class="price-list-livetopromote">Rp. {{ $menu->price }}</p>
+                        </div>
+                    </div>    
+                <button class="btn-promote-livetopromote" onclick="openForm('{{ $menu->id }}')">Promote</button>
                 </div>
-                
-                    <button class="btn-promote-livetopromote" onclick="openForm()">Promote</button>
-                
-            </div>
-            <div class="con-list-livetopromote">
-                <div class="left-list-livetopromote">
-                    <div class="img-list-livetopromote">
-                        <img src="/assets/8.jpg" alt="">
-                    </div>
-                    <div class="txt-list-livetopromote">
-                        <p class="title-list-livetopromote">Go Yoon Jung</p>
-                        <p class="dsc-list-livetopromote">Manis</p>
-                        <p class="price-list-livetopromote">$4.00</p>
-                    </div>
-                </div>
-                
-                    <button class="btn-promote-livetopromote" onclick="openForm()">Promote</button>
-                
-            </div>
+            @endforeach
+            @endif
         </div>
         <div class="content-livetopromote">
             <div class="head-con-livetopromote">
@@ -199,72 +136,52 @@
                 </div>
                 <div class="line-right-livetopromote"></div>
             </div>
+            @if ($menu_dessert->isEmpty())
             <div class="con-list-livetopromote">
-                <div class="left-list-livetopromote">
-                    <div class="img-list-livetopromote">
-                        <img src="/assets/8.jpg" alt="">
-                    </div>
-                    <div class="txt-list-livetopromote">
-                        <p class="title-list-livetopromote">Go Yoon Jung</p>
-                        <p class="dsc-list-livetopromote">Manis</p>
-                        <p class="price-list-livetopromote">$4.00</p>
-                    </div>
-                </div>
-                
-                    <button class="btn-promote-livetopromote" onclick="openForm()">Promote</button>
-                
+                <h3>data kosong</h3>
             </div>
-            <div class="con-list-livetopromote">
-                <div class="left-list-livetopromote">
-                    <div class="img-list-livetopromote">
-                        <img src="/assets/8.jpg" alt="">
-                    </div>
-                    <div class="txt-list-livetopromote">
-                        <p class="title-list-livetopromote">Go Yoon Jung</p>
-                        <p class="dsc-list-livetopromote">Manis</p>
-                        <p class="price-list-livetopromote">$4.00</p>
-                    </div>
+            @else    
+            @foreach ($menu_dessert as $menu)
+                <div class="con-list-livetopromote">
+                    <div class="left-list-livetopromote">
+                        <div class="img-list-livetopromote">
+                            <img src="/{{ $menu->img_menu }}" alt="">
+                        </div>
+                        <div class="txt-list-livetopromote">
+                            <p class="title-list-livetopromote">{{ $menu->name }}</p>
+                            <p class="dsc-list-livetopromote">{{ $menu->flavor->flavor }}</p>
+                            <p class="price-list-livetopromote">Rp. {{ $menu->price }}</p>
+                        </div>
+                    </div>    
+                <button class="btn-promote-livetopromote" onclick="openForm('{{ $menu->id }}')">Promote</button>
                 </div>
-                
-                    <button class="btn-promote-livetopromote" onclick="openForm()">Promote</button>
-                
-            </div>
-            <div class="con-list-livetopromote">
-                <div class="left-list-livetopromote">
-                    <div class="img-list-livetopromote">
-                        <img src="/assets/8.jpg" alt="">
-                    </div>
-                    <div class="txt-list-livetopromote">
-                        <p class="title-list-livetopromote">Go Yoon Jung</p>
-                        <p class="dsc-list-livetopromote">Manis</p>
-                        <p class="price-list-livetopromote">$4.00</p>
-                    </div>
-                </div>
-                
-                    <button class="btn-promote-livetopromote" onclick="openForm()">Promote</button>
-                
-            </div>
+            @endforeach
+            @endif
         </div>
     </div>
 </div>
+
 {{-- modal --}}
-<div id="modal-livetopromote">
-    <div id="exampleModal" class="reveal-modal-livetopromote">
-        <button class="btn-close-modal" onclick="closeForm()"><img src="/assets/close-modal.svg" alt=""></button>
-        <p class="title-modal">Warning</p>
-        <p class="dsc-modal-livetopromote">Only one menu can be displayed in the promotion banner. The last promotion will automatically end</p>
-        <div class="">
-            <a href="">
-                <button class="btn-modal-livetopromote">Start Promotion</button>
-            </a>
+<form action="" method="POST" id="promotionForm">
+    @csrf
+    <div id="modal-livetopromote" style="display: none;">
+        <div id="exampleModal" class="reveal-modal-livetopromote">
+            <button class="btn-close-modal" type="button" onclick="closeForm()"><img src="/assets/close-modal.svg" alt=""></button>
+            <p class="title-modal">Warning</p>
+            <p class="dsc-modal-livetopromote">Only one menu can be displayed in the promotion banner. The last promotion will automatically end</p>
+            <div class="">
+                <button type="submit" class="btn-modal-livetopromote">Start Promotion</button>
+            </div>
         </div>
     </div>
-</div>
+</form>
 {{-- modal --}}
 
 <script>
         // modal
-        function openForm() {
+        function openForm(menuId) {
+            console.log(menuId)
+            document.getElementById("promotionForm").action = "/change/promotion/" + menuId;
             document.getElementById("modal-livetopromote").style.display = "block";
         }
 

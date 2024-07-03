@@ -17,6 +17,8 @@ use App\Http\Controllers\Dashboard\ProductController;
 use App\Http\Controllers\Dashboard\OrderListController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Controllers\Dashboard\LiveProductController;
+use App\Http\Controllers\Dashboard\BundlingMenuController;
+use App\Http\Controllers\Dashboard\PromotionMenuController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,27 +31,18 @@ use App\Http\Controllers\Dashboard\LiveProductController;
 |
 */
 
-Route::get('/', function () {
-    return view('home', [
-        "menus" => Menu::all(),
-    ]);
-});
+Route::get('/', [Controller::class, 'home']);
 
-Route::get('/home', function() {
-    return view('home', [
-        "menus" => Menu::all(),
-    ]);
-});
+Route::get('/home', [Controller::class, 'home']);
 
 Route::get('/weekly_menu', [WeeklyMenuController::class, 'index']);
 
-Route::get('/bundling', function() {
-    return view('bundling');
-});
+Route::get('/bundling/{bundling}', [Controller::class, 'bundling']);
 
 Route::get('/keranjang', [CartController::class, 'index']);
 Route::post('/cart/create', [CartController::class, 'add_to_cart']);
 Route::delete('/cart/delete/{id}', [CartController::class, 'delete_cart']);
+Route::post('/cart/bundling_create', [CartController::class, 'bundling_to_cart']);
 
 Route::get('/check_out', [CheckOutController::class, 'index']);
 Route::get('/rincian_pesanan/{id}', [CheckOutController::class, 'invoice']);
@@ -113,6 +106,14 @@ Route::post('/nutrition/update/{id}', [ProductController::class, 'update_nutriti
 Route::post('/tutorial/create/{id}', [ProductController::class, 'create_tutorial']);
 Route::post('/tutorial/update/{id}', [ProductController::class, 'update_tutorial']);
 Route::delete('/tutorial/delete/{id}', [ProductController::class, 'delete_tutorial']);
+
+Route::get('/dashboard/product/live_to_promote', [PromotionMenuController::class, 'index'])->name('prefix-dashboard');
+Route::post('/change/promotion/{id}', [PromotionMenuController::class, 'change_promotion']);
+
+Route::get('/dashboard/bundling/{bundling}', [BundlingMenuController::class, 'index'])->name('prefix-dashboard');
+Route::post('/create/status_bundling', [BundlingMenuController::class, 'create_status_bundling']);
+Route::post('/update/status_bundling', [BundlingMenuController::class, 'update_status_bundling']);
+Route::post('/update/bundling/{bundling}', [BundlingMenuController::class, 'update_bundling'])->name('menu.updateBundlingStatus');
 // route product
 
 // route orderlist
@@ -128,11 +129,7 @@ Route::get('/dashboard/product/detail_paket', function() {
 })->name('prefix-dashboard');
 
 
-Route::get('/dashboard/product/live_to_promote', function() {
-    return view('dashboard.product.live-to-promote',[
-        "menus" => WeeklyMenu::all(),
-    ]);
-})->name('prefix-dashboard');
+
 
 Route::get('/dashboard/product/archived_menu', function() {
     return view('dashboard.product.archived-menu',[

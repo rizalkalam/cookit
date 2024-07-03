@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="/css/dashboard-add-menu.css">
     <link rel="stylesheet" href="/css/dashboard-edit-menu.css">
     <link rel="stylesheet" href="/css/dashboard-edit-live-to-promote.css">
+    <link rel="stylesheet" href="/css/dashboard-bundling.css">
     <link rel="stylesheet" href="/css/dashboard-archived-menu.css">
     <link rel="stylesheet" href="/css/dashboard-orderlist.css">
     <link rel="stylesheet" href="/css/dashboard-review.css">

@@ -8,6 +8,7 @@ use App\Models\Payment;
 use App\Models\AddressUser;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Http;
 
 class CheckOutController extends Controller
@@ -16,12 +17,27 @@ class CheckOutController extends Controller
     {
         $addres = AddressUser::where('id', auth()->user()->address_id)->first();
         $carts = Cart::where('user_id', auth()->user()->id)->get();
+
+        $product_id = Cart::where('user_id', auth()->user()->id)
+        ->whereNull('bundling_id')
+        ->get();
+
+        $bundling_id = Cart::where('user_id', auth()->user()->id)
+        ->whereNull('product_id')
+        ->get();
         // $shipping_cart = AddressUser::where('user_id', auth()->user()->id)
 
 
-        return view('check-out', [
-            'addres' => $addres,
-            'carts' => $carts
+        // return view('check-out', [
+        //     'cart_products' => $product_id,
+        //     'cart_bundlings' => $bundling_id,
+        //     'addres' => $addres,
+        //     'carts' => $carts
+        // ]);
+
+        return response()->json([
+            'data_menu' => $product_id,
+            'data_bundling' => $bundling_id,
         ]);
     }
 
@@ -49,14 +65,14 @@ class CheckOutController extends Controller
     {
         $params = array(
             'transaction_details' => array(
-                'order_id' => Str::uuid(),
+                'order_id' => Str::uuid()->toString(),
                 'gross_amount' => $request->price,                
             ),
             'customer_details' => array(
                 'first_name' => $request->customer_first_name,
                 'email' => $request->customer_email
             ),
-            'enabled_payments' => array('credit_card', 'bca_va', 'bni_va', 'bri_va')
+            'enabled_payments' => array('indomaret', 'shopeepay', 'credit_card', 'bca_va', 'bni_va', 'bri_va'),
         );
 
         $auth = base64_encode(env('MIDTRANS_SERVER_KEY'));
@@ -79,24 +95,36 @@ class CheckOutController extends Controller
         // $payment->item_name = $request->menu_name;
         // $payment->price = $request->price;
 
-        // dd($response->token);
-        // return response()->json($response);
-
         // data check-out
+        $product_id = Cart::where('user_id', auth()->user()->id)
+        ->whereNull('bundling_id')
+        ->get();
+
+        $bundling_id = Cart::where('user_id', auth()->user()->id)
+        ->whereNull('product_id')
+        ->get();
+
         $carts = Cart::where('user_id', auth()->user()->id)->get();
         $address_id = auth()->user()->address_id;
         foreach ($carts as $cart) {
+            $menuName = $cart->menu->name ?? $cart->bundling->bundling_name;
+            $menuType = $cart->menu->type->name_type ?? ' ';
+            $menuDsc = $cart->menu->description ?? ' ';
+
             $order = Order::create([
                 'user_id' => auth()->id(),
                 'order_id' => $payment->order_id,
-                'menu_name' => $cart->menu->name,
-                'menu_type' => $cart->menu->type->name_type,
-                'menu_dsc' => $cart->menu->description,
+                'menu_name' => $menuName,
+                'menu_type' => $menuType,
+                'menu_dsc' => $menuDsc,
                 'qty' => $cart->qty,
                 'total_price' => $cart->total_price,
                 'status' => 1,
                 'address_user_id' => $address_id,
+                'date'=> Carbon::now()
             ]);
+
+            $cart = Cart::where('id', $cart->id)->delete();
         }
 
 
@@ -104,12 +132,24 @@ class CheckOutController extends Controller
             // $payment = Payment::where('customer_email', $request->customer_email)->first();
             $oreder_id = Order::where('order_id', $payment->order_id)->value('order_id');
 
+        // dd($response->token);
         return view('check-out',[
             'snapToken' => $response->token,
             'addres' => $addres,
             'carts' => $carts,
             'order_id' => $oreder_id,
+            'cart_products' => $product_id,
+            'cart_bundlings' => $bundling_id,
         ]);
+
+        // return response()->json([
+        //     'snapToken' => $response->token,
+        //     'addres' => $addres,
+        //     'carts' => $carts,
+        //     'order_id' => $oreder_id,
+        //     'cart_products' => $product_id,
+        //     'cart_bundlings' => $bundling_id,
+        // ]);
     }
 
     public function invoice($id)

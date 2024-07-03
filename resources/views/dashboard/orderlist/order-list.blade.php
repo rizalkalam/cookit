@@ -113,6 +113,16 @@
                 </tr>
             </thead>
             <tbody>
+                @if ($data->isEmpty())
+                <tr>
+                    <td><h3>Tidak ada data</h3></td>
+                    <td><h3>Tidak ada data</h3></td>
+                    <td><h3>Tidak ada data</h3></td>
+                    <td><h3>Tidak ada data</h3></td>
+                    <td><h3>Tidak ada data</h3></td>
+                    <td><h3>Tidak ada data</h3></td>
+                </tr>
+                @else
                 @foreach ($data as $orderlist)    
                     <tr data-url="/order_list/{{ $orderlist->order_id }}">
                       <td>{{ $orderlist->order_id }}</td>
@@ -141,6 +151,7 @@
                       </td>
                     </tr>
                 @endforeach
+                @endif
             </tbody>
         </table>
         <div class="line-gap-orderlist"></div>

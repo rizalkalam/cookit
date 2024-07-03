@@ -215,7 +215,7 @@
   }
 
   .price-con-total-bskt {
-    width: 83px;
+    max-width: 90px;
     margin-right: 35px;
     text-align: center;
     font-size: 16px;

@@ -131,7 +131,6 @@
     -moz-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    /* border-radius: 16px; */
 }
 
 .con-dshb-product{
@@ -179,12 +178,6 @@
     gap: 80px;
 }
 
-.item-dshb-product-img-sec2{
-    width: 200px;
-    height: auto;
-    border-radius: 16px;
-}
-
 .dsc-card-dshb-product-sec2{
     width: 220px;
     display: flex;
@@ -202,6 +195,7 @@
     font-size: 12px;
     font-weight: bold;
     margin-top: 60px;
+    cursor: pointer;
 }
 /* end-section-2 */
 
@@ -269,6 +263,7 @@
     border-radius: 5px;
     font-size: 12px;
     font-weight: bold;
+    cursor: pointer;
 }
 /* end-section-3 */
 

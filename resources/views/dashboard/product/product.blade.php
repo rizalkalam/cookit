@@ -144,155 +144,170 @@
                 </div>
                 @endforeach
             </div>
-
             {{-- section-promotion --}}
-            {{-- <div class="sec2-dshb-product">
+            <div class="sec2-dshb-product">
                 <p class="title-con-product">On Promotion</p>
-                <img class="item-dshb-product-img-sec2" src="/img_menu/card1-sec2.png"/>
+                <div class="item-dshb-product-img">
+                    <img src="/{{ $promotion->menu->img_menu }}">
+                </div>
                 <div class="dsc-card-dshb-product-sec2">
-                    <p class="title-dsc-card-dshb-product">Cheese Burger</p>
-                    <p class="dsc-dshb-product">Pedas, Gurih</p>
-                    <p class="price-dshb-product">388</p>
-                    <a href="/detail/product">
+                    <p class="title-dsc-card-dshb-product">{{ $promotion->menu->name }}</p>
+                    <p class="dsc-dshb-product">{{ $promotion->menu->flavor->flavor }}</p>
+                    <p class="price-dshb-product">{{ $promotion->menu->price }}</p>
+                    <a href="/dashboard/product/live_to_promote">
                         <button class="btn-ordernow-dshb-product-sec2">Edit Product</button>
                     </a>
                 </div>
-            </div> --}}
+            </div>
             {{-- section-promotion --}}
 
+
             {{-- section-bundling --}}
-            {{-- <div class="sec3-dshb-product">
+            <div class="sec3-dshb-product">
                 <p class="title-con-product">PaketBundling</p>
                 <div class="container-sec3">
                     <div class="card-bundling-dshb">
-                        <p class="title-card-bundling-dshb">Snack Attack</p>
+                        <p class="title-card-bundling-dshb">{{ $snackattack->bundling->bundling_name }}</p>
                         <div class="content-bundling-dshb">
                             <div class="con-bundling-dshb">
                                 <p class="title-con-bundling-dshb">Appetizer</p>
                                 <ul class="a">
-                                    <li>Coffee</li>
-                                    <li>Tea</li>
-                                    <li>Coca Cola</li>
-                                  </ul>
+                                    @foreach ($snackattack_appetizer as $item)
+                                    <li>{{ $item->qty }} {{ $item->menu->name }}</li>
+                                    @endforeach
+                                </ul>
                             </div>
                             <div class="con-bundling-dshb">
                                 <p class="title-con-bundling-dshb">Main Course</p>
-                                
+                                <ul class="a">
+                                    @foreach ($snackattack_maincourse as $item)
+                                    <li>{{ $item->qty }} {{ $item->menu->name }}</li>
+                                    @endforeach
+                                </ul>
                             </div>
                             <div class="con-bundling-dshb">
                                 <p class="title-con-bundling-dshb">Dessert</p>
                                 <ul class="a">
-                                    <li>Coffee</li>
-                                    <li>Tea</li>
-                                    <li>Coca Cola</li>
+                                    @foreach ($snackattack_dessert as $item)
+                                    <li>{{ $item->qty }} {{ $item->menu->name }}</li>
+                                    @endforeach
                                   </ul>
                             </div>
                         </div>
                         <div class="bottom-bundling-dshb">
-                            <p class="price-bundling-dshb">Rp93.000</p>
-                            <a href="/detail/product">
+                            <p class="price-bundling-dshb">Rp.{{ $snackattack->bundling->price }}</p>
+                            <a href="/dashboard/bundling/{{ $snackattack->bundling->bundling_name }}">
                                 <button class="btn-edit-bundle-dshb">Edit</button>
                             </a>
                         </div>
                     </div>
                     <div class="card-bundling-dshb">
-                        <p class="title-card-bundling-dshb">Cook The Day</p>
+                        <p class="title-card-bundling-dshb">{{ $cooktheday->bundling->bundling_name }}</p>
                         <div class="content-bundling-dshb">
                             <div class="con-bundling-dshb">
                                 <p class="title-con-bundling-dshb">Appetizer</p>
                                 <ul class="a">
-                                    <li>Coffee</li>
-                                    <li>Tea</li>
-                                    <li>Coca Cola</li>
-                                  </ul>
+                                    @foreach ($cooktheday_appetizer as $item)
+                                    <li>{{ $item->qty }} {{ $item->menu->name }}</li>
+                                    @endforeach
+                                </ul>
                             </div>
                             <div class="con-bundling-dshb">
                                 <p class="title-con-bundling-dshb">Main Course</p>
                                 <ul class="a">
-                                    <li>Coffee</li>
-                                    <li>Tea</li>
-                                  </ul>
+                                    @foreach ($cooktheday_maincourse as $item)
+                                    <li>{{ $item->qty }} {{ $item->menu->name }}</li>
+                                    @endforeach
+                                </ul>
                             </div>
                             <div class="con-bundling-dshb">
                                 <p class="title-con-bundling-dshb">Dessert</p>
                                 <ul class="a">
-                                    <li>Coffee</li>
-                                    <li>Tea</li>
-                                    <li>Coca Cola</li>
-                                  </ul>
+                                    @foreach ($cooktheday_dessert as $item)
+                                    <li>{{ $item->qty }} {{ $item->menu->name }}</li>
+                                    @endforeach
+                                </ul>
                             </div>
                         </div>
                         <div class="bottom-bundling-dshb">
-                            <p class="price-bundling-dshb">Rp93.000</p>
-                            <a href="/detail/product">
+                            <p class="price-bundling-dshb">Rp.{{ $cooktheday->bundling->price }}</p>
+                            <a href="/dashboard/bundling/{{ $cooktheday->bundling->bundling_name }}">
                                 <button class="btn-edit-bundle-dshb">Edit</button>
                             </a>
                         </div>
                     </div>
                     <div class="card-bundling-dshb">
-                        <p class="title-card-bundling-dshb">Snack Attack</p>
+                        <p class="title-card-bundling-dshb">{{ $cookitonce->bundling->bundling_name }}</p>
                         <div class="content-bundling-dshb">
                             <div class="con-bundling-dshb">
                                 <p class="title-con-bundling-dshb">Appetizer</p>
                                 <ul class="a">
-                                    <li>Coffee</li>
-                                    <li>Tea</li>
-                                    <li>Coca Cola</li>
-                                  </ul>
+                                    @foreach ($cookitonce_appetizer as $item)
+                                    <li>{{ $item->qty }} {{ $item->menu->name }}</li>
+                                    @endforeach
+                                </ul>
                             </div>
                             <div class="con-bundling-dshb">
                                 <p class="title-con-bundling-dshb">Main Course</p>
-                                
+                                <ul class="a">
+                                    @foreach ($cookitonce_maincourse as $item)
+                                    <li>{{ $item->qty }} {{ $item->menu->name }}</li>
+                                    @endforeach
+                                </ul>
                             </div>
                             <div class="con-bundling-dshb">
                                 <p class="title-con-bundling-dshb">Dessert</p>
                                 <ul class="a">
-                                    <li>Coffee</li>
-                                    <li>Tea</li>
-                                    <li>Coca Cola</li>
-                                  </ul>
+                                    @foreach ($cookitonce_dessert as $item)
+                                    <li>{{ $item->qty }} {{ $item->menu->name }}</li>
+                                    @endforeach
+                                </ul>
                             </div>
                         </div>
                         <div class="bottom-bundling-dshb">
-                            <p class="price-bundling-dshb">Rp93.000</p>
-                            <a href="/detail/product">
+                            <p class="price-bundling-dshb">Rp.{{ $cookitonce->bundling->price }}</p>
+                            <a href="/dashboard/bundling/{{ $cookitonce->bundling->bundling_name }}">
                                 <button class="btn-edit-bundle-dshb">Edit</button>
                             </a>
                         </div>
                     </div>
                     <div class="card-bundling-dshb">
-                        <p class="title-card-bundling-dshb">Snack Attack</p>
+                        <p class="title-card-bundling-dshb">{{ $adorableweek->bundling->bundling_name }}</p>
                         <div class="content-bundling-dshb">
                             <div class="con-bundling-dshb">
                                 <p class="title-con-bundling-dshb">Appetizer</p>
                                 <ul class="a">
-                                    <li>Coffee</li>
-                                    <li>Tea</li>
-                                    <li>Coca Cola</li>
-                                  </ul>
+                                    @foreach ($adorableweek_appetizer as $item)
+                                    <li>{{ $item->qty }} {{ $item->menu->name }}</li>
+                                    @endforeach
+                                </ul>
                             </div>
                             <div class="con-bundling-dshb">
                                 <p class="title-con-bundling-dshb">Main Course</p>
-                                
+                                <ul class="a">
+                                    @foreach ($adorableweek_maincourse as $item)
+                                    <li>{{ $item->qty }} {{ $item->menu->name }}</li>
+                                    @endforeach
+                                </ul>
                             </div>
                             <div class="con-bundling-dshb">
                                 <p class="title-con-bundling-dshb">Dessert</p>
                                 <ul class="a">
-                                    <li>Coffee</li>
-                                    <li>Tea</li>
-                                    <li>Coca Cola</li>
-                                  </ul>
+                                    @foreach ($adorableweek_dessert as $item)
+                                    <li>{{ $item->qty }} {{ $item->menu->name }}</li>
+                                    @endforeach
+                                </ul>
                             </div>
                         </div>
                         <div class="bottom-bundling-dshb">
-                            <p class="price-bundling-dshb">Rp93.000</p>
-                            <a href="/detail/product">
+                            <p class="price-bundling-dshb">Rp.{{ $adorableweek->bundling->price }}</p>
+                            <a href="/dashboard/bundling/{{ $adorableweek->bundling->bundling_name }}">
                                 <button class="btn-edit-bundle-dshb">Edit</button>
                             </a>
                         </div>
                     </div>
                 </div>
-            </div> --}}
+            </div>
             {{-- section-bundling --}}
 
             {{-- section-arsip --}}
