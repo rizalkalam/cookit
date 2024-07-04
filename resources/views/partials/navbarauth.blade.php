@@ -17,20 +17,19 @@
             </li>
         </div> --}}
         <div class="right-nav">
-            <form action="/action_page.php">
+            {{-- <form action="/action_page.php">
                 <img class="search" src="/assets/icn-search.svg" alt="">
                 <input type="text" placeholder="Search Food" name="search">
-              {{-- <button type="submit"><i class="fa fa-search"></i></button> --}}
-            </form>
+            </form> --}}
             <a href="/keranjang" class="shipping_cart">
                 <img src="/assets/shipping_cart.svg" alt="">
             </a>
             <div class="dropdown">
-                <a class="nav-auth-name" href="/logout">
+                <a class="nav-auth-name" style="cursor: pointer">
                     Hi, {{ auth()->user()->name }}!
                 </a>
                 <div class="dropdown-content">
-                    <a class="option-profile" href="/myaccount">Akun Saya</a>
+                    <a class="option-profile" href="/profil_saya">Akun Saya</a>
                     @if (Auth::user()->hasRole('admin'))
                     <a class="option-profile" href="/dashboard/produk">Dashboard</a>
                     @endif
