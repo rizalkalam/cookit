@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Order;
 use App\Models\District;
 use App\Models\AddressUser;
 use Illuminate\Http\Request;
@@ -15,12 +16,35 @@ class ProfileController extends Controller
     public function profile_saya()
     {
         $data = User::where('id', auth()->user()->id)->get();
+
+        $orders = Order::where('user_id', auth()->user()->id)->get();
+
+        $groupedOrders = collect($orders)->groupBy(function ($item) {
+            return $item['date'] . '_' . $item['order_id'];
+        });
+    
+        // Memformat hasil sesuai dengan keinginan
+        $formattedOrders = $groupedOrders->map(function ($group, $key) {
+            list($date, $order_id) = explode('_', $key);
+            return [
+                'date' => $date,
+                'order_id' => $order_id,
+                'data' => $group->toArray()
+            ];
+        })->values()->toArray();
+
         $addresses = AddressUser::where('user_id', auth()->user()->id)->get();
         
         return view('profile', [
             'profiles' => $data,
+            'orders' => $orders,
+            'formattedOrders' => $formattedOrders,
             'addresses' => $addresses,
         ]);
+
+        // return response()->json([
+        //     'orders'=>$orders
+        // ]);
     }
 
     public function update_profile(Request $request)

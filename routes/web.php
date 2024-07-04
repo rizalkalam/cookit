@@ -14,6 +14,8 @@ use App\Http\Controllers\AddressUserController;
 use App\Http\Controllers\Dashboard\DBController;
 use App\Http\Controllers\Dashboard\AddressController;
 use App\Http\Controllers\Dashboard\ProductController;
+use App\Http\Controllers\Dashboard\RevenueController;
+use App\Http\Controllers\Dashboard\CustomerController;
 use App\Http\Controllers\Dashboard\OrderListController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Controllers\Dashboard\LiveProductController;
@@ -82,9 +84,10 @@ Route::post('/registration', [AuthController::class, 'registration']);
 Route::post('/logout', [AuthController::class, 'logout']);
 
 // dashboard
-Route::get('/dashboard/home', function() {
-    return view('dashboard.home');
-})->name('prefix-dashboard');
+
+// dashboard-home
+Route::get('/dashboard/home', [RevenueController::class, 'index'])->name('prefix-dashboard');
+// dashboard-home
 
 // route product
 Route::get('/dashboard/product', [ProductController::class, 'dashboard_product'])->name('prefix-dashboard');
@@ -145,17 +148,15 @@ Route::get('/dashboard/review', function() {
     ]);
 })->name('prefix-dashboard');
 
-Route::get('/dashboard/customer', function() {
-    return view('dashboard.customer.customer',[
-        "menus" => WeeklyMenu::all(),
-    ]);
-})->name('prefix-dashboard');
+// customer
+Route::get('/dashboard/customer', [CustomerController::class, 'index'])->name('prefix-dashboard');
 
 Route::get('/dashboard/customer/detail', function() {
     return view('dashboard.customer.detail',[
         "menus" => WeeklyMenu::all(),
     ]);
 })->name('prefix-dashboard');
+// customer
 
 Route::get('/dashboard/database', function() {
     return view('dashboard.database.database',[
