@@ -134,6 +134,49 @@
                 </div>
             </div>
         </div>
+        </form>
+        <form action="/further_information/update/{{ $menu->id }}" method="POST">
+            @csrf
+            <div class="further-information-edit-menu">
+                <p class="title-con-edit-menu">Further Information</p>
+                
+                <div class="tools-further-information">
+                    <p>Alat yang dibutuhkan</p>
+                    <textarea name="tools" id="tools" cols="30" rows="10">{{ old('tools', $further_information->tools) }}</textarea>
+                </div>
+                
+                <div class="tools-further-information">
+                    <p>Tingkat Kesusahan</p>
+                    <select name="difficulty" id="difficulty">
+                        <option value="Mudah" {{ $further_information->difficulty === 'Mudah' ? 'selected' : '' }}>Mudah</option>
+                        <option value="Sedang" {{ $further_information->difficulty === 'Sedang' ? 'selected' : '' }}>Sedang</option>
+                        <option value="Sulit" {{ $further_information->difficulty === 'Sulit' ? 'selected' : '' }}>Sulit</option>
+                    </select>
+                </div>
+                
+                <div class="tools-further-information">
+                    <p>Bahan yang dibutuhkan</p>
+                    <textarea name="material" id="material" cols="30" rows="10">{{ old('material', $further_information->material) }}</textarea>
+                </div>
+                
+                <div class="tools-further-information last">
+                    <p>Waktu Penyajian</p>
+                    <input type="text" name="serving_time" id="serving_time" value="{{ old('serving_time', $further_information->serving_time) }}">
+                    <select name="format_time" id="time_format">
+                        <option value="Menit" {{ $further_information->time_format === 'Menit' ? 'selected' : '' }}>Menit</option>
+                        <option value="Jam" {{ $further_information->time_format === 'Jam' ? 'selected' : '' }}>Jam</option>
+                    </select>
+                </div>
+                
+                <div class="edit-further-information">
+                    <button type="submit">
+                        <iconify-icon icon="bi:save-fill" width="28" style="color: #979797; cursor: pointer;"></iconify-icon>
+                    </button>
+                </div>
+            </div>
+        </form>
+        
+        
         <div class="sec2-edit-menu">
             <p class="title-con-edit-menu">Yang kami kirim</p>
                 <div class="table-edit-menu-warp">
@@ -281,7 +324,7 @@
             </div>
         </div>
         {{-- end-section-3 --}}
-    </form>
+    
 
         {{-- section-4 --}}
         <div class="sec4-edit-menu">
@@ -297,8 +340,9 @@
                             <div class="edit-to-sent">
                                 <a class="icn-edit-to-sent" href="#delModal" id="edit-tutorial" 
                                     data-id_tutorial="{{ $tutorial->id }}"
+                                    data-stepnumber="{{ $tutorial->step_number }}"
+                                    data-title_instruction="{{ $tutorial->title_instruction }}"
                                     data-instruction="{{ $tutorial->instruction }}"
-
                                     >
                                     <iconify-icon icon="lucide:edit" width="18" style="color: #F46A45"></iconify-icon>
                                 </a>
@@ -321,6 +365,15 @@
         {{-- end-section-4 --}}
     </div>
 </div>
+
+{{-- modal-popup-success --}}
+<div id="successModal" style="display: none;">
+    <div id="editTosentModal" class="reveal-modal-tutorial">
+        <span class="btn-close-modal" id="close-modal-carthome"><img src="/assets/close-modal.svg" alt="Close"></span>
+        <p>Further Information berhasil tersimpan</p>
+    </div>
+</div>
+{{-- modal-popup-success --}}
 
 {{-- modal-delete-menu --}}
 <div id="modal-delete-menu" style="display: none;">
@@ -482,9 +535,13 @@
         <div id="exampleModal" class="reveal-modal-tutorial">
             <span class="btn-close-modal" id="close-add-tutorial"><img src="/assets/close-modal.svg" alt=""></span>
             <div class="con-input-tutorial">
-                <label for="input_image_toturials">Upload</label>
                 <input id="input_image_toturials" type="file" name="image" style="display: none">
-                <input type="text" placeholder="tambahkan instruksi" name="instruction" id="instruction"  required>
+                <div class="input-tutorial-modal">
+                    <label for="input_image_toturials">Upload</label>
+                    <input type="number" name="stepnumber" placeholder="masukkan urutan tutorial" id="stepnumber">
+                </div>
+                <input class="title-instruction" type="text" placeholder="masukkan judul instruksi" name="titleInstruction" id="title_instruction" >
+                <textarea placeholder="masukkan instruksi" class="input-modal-instruction" id="instructionInput" name="instructionInput" required></textarea>
             </div>
             <div class="">
                 <button class="btn-modal-livetopromote" type="submit">Submit</button>
@@ -502,10 +559,15 @@
         <div id="exampleModal" class="reveal-modal-tutorial">
             <span class="btn-close-modal" id="close-edit-tutorial"><img src="/assets/close-modal.svg" alt=""></span>
             <div class="con-input-tutorial">
-                <label for="input_image_toturials_{{ $tutorial->id }}">Upload</label>
                 <input id="input_image_toturials_{{ $tutorial->id }}" type="file" name="image" style="display: none">
-                <input type="text" name="tutorialId" id="tutorialId" >
-                <textarea class="input-modal-instruction" id="instructionInput" name="instructionInput" required>{{ old('instructionInput', $tutorial->instruction) }}</textarea>
+                <div class="input-tutorial-modal">
+                    <label for="input_image_toturials_{{ $tutorial->id }}">Upload</label>
+                    <input type="number" name="stepnumber" placeholder="masukkan urutan tutorial" id="stepnumberModal">
+                </div>
+                <input type="hidden" name="tutorialId" id="tutorialId" >
+                <input id="titleInstruction" class="title-instruction" type="text" placeholder="masukkan judul instruksi" name="titleInstruction">
+                <textarea placeholder="masukkan instruksi" class="input-modal-instruction" id="instructionInputModal" name="instructionInput" required></textarea>
+                {{-- <textarea placeholder="masukkan instruksi" class="input-modal-instruction" id="instructionInput" name="instructionInput" required></textarea> --}}
             </div>
             <div class="">
                 <button class="btn-modal-livetopromote" type="submit">Submit</button>
@@ -536,6 +598,17 @@
 <script src="/js/modal-form-nutrition.js"></script>
 <script src="/js/modal-form-tutorial.js"></script>
 <script>
+
+$(document).ready(function() {
+            @if(session('show_modal'))
+                $('#successModal').show();
+            @endif
+
+            $('#close-modal-carthome').on('click', function() {
+                $('#successModal').hide();
+            });
+        });
+
     // preview upload img
     const loadFile = event => {
         const output = document.getElementById('output_img_bahan');

@@ -18,16 +18,20 @@ class FurtherInformationSeeder extends Seeder
                 'menu_id'=> 1,
                 'tools'=> 'Tusukan kayu/sate',
                 'difficulty'=> 'Sedang',
-                'unit_id'=>1,
+                'material'=>'Air mineral 200ml',
+                'serving_time'=> '45',
+                'time_format'=>'Menit'
             ],
             [
                 'menu_id'=> 2,
-                'tools'=> '',
-                'qty'=> 3,
-                'unit_id'=>1,
+                'tools'=> 'Panci',
+                'difficulty'=> 'Sulit',
+                'material'=>'Air mineral 200ml',
+                'serving_time'=> '2',
+                'time_format'=>'Jam'
             ],
-        ])->each(function ($to_sent){
-            DB::table('to_sents')->insert($to_sent);
+        ])->each(function ($further_information){
+            DB::table('further_information')->insert($further_information);
         });
     }
 }

@@ -17,6 +17,7 @@ use App\Models\NutritionsMenu;
 use App\Models\SectionProduct;
 use Illuminate\Support\Carbon;
 use App\Models\PromotionProduct;
+use App\Models\FurtherInformation;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
@@ -180,6 +181,8 @@ class ProductController extends Controller
         ->where('menus.id', $id)
         ->first();
 
+        $further_information = FurtherInformation::where('menu_id', $id)->first();
+
         $to_sents = ToSent::join('material_sents', 'material_sents.id', '=', 'to_sents.material_id')
         ->join('units', 'units.id', '=', 'to_sents.unit_id')
         ->where('to_sents.menu_id', $id)
@@ -199,24 +202,32 @@ class ProductController extends Controller
         ->get([
             'nutritions_menus.id',
             'nutritions_menus.karbohidrat',
-            'nutritions_menus.karbohidrat_unit',
+            'nutritions_menus.karbohidrat_unit_id',
             'nutritions_menus.protein',
-            'nutritions_menus.protein_unit',
+            'nutritions_menus.protein_unit_id',
             'nutritions_menus.lemak',
-            'nutritions_menus.lemak_unit',
+            'nutritions_menus.lemak_unit_id',
             'nutritions_menus.serat',
-            'nutritions_menus.serat_unit',
+            'nutritions_menus.serat_unit_id',
             'nutritions_menus.natrium',
-            'nutritions_menus.natrium_unit',
+            'nutritions_menus.natrium_unit_id',
             'nutritions_menus.kalori',
-            'nutritions_menus.kalori_unit',
+            'nutritions_menus.kalori_unit_id',
         ]);
 
-        $how_to_cook = HowToCook::where('menu_id', $id)->get(['how_to_cooks.id', 'how_to_cooks.instruction', 'how_to_cooks.image']);
+        $how_to_cook = HowToCook::where('menu_id', $id)
+        ->orderBy('how_to_cooks.step_number', 'asc')
+        ->get([
+            'how_to_cooks.id', 
+            'how_to_cooks.step_number',
+            'how_to_cooks.title_instruction',
+            'how_to_cooks.instruction', 
+            'how_to_cooks.image']);
 
 
         return view('dashboard.product.edit-menu',[
             'menu' => $menu,
+            'further_information' => $further_information,
             'to_sents' => $to_sents,
             'flavors' => $list_flavors,
             'materials' => $list_materials,
@@ -238,6 +249,44 @@ class ProductController extends Controller
         //     'type' => $type,
         //     'id' => $id
         // ]);
+    }
+
+    public function update_furtherinformation(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+                'tools'=>'required',
+                'difficulty'=>'required',
+                'material'=>'required',
+                'serving_time'=>'required',
+                'format_time'=>'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => $validator->errors(),
+                'data' => [],
+            ], 400);
+        }   
+
+        try {
+            $data = FurtherInformation::where('menu_id', $id)->first();
+            $data->update([
+                'tools'=>$request->tools,
+                'difficulty'=>$request->difficulty,
+                'material'=>$request->material,
+                'serving_time'=>$request->serving_time,
+                'format_time'=>$request->format_time,
+            ]);
+
+            return back()->with(['success', 'User berhasil ditambahkan!', 'show_modal' => true]); 
+        } catch (\Throwable $th) {
+            //throw $th;
+            return response()->json([
+                'message' => 'failed',
+                'errors' => $th->getMessage(),
+            ], 400);
+        }
     }
 
     public function create_tosent(Request $request, $id)
@@ -366,17 +415,17 @@ class ProductController extends Controller
             $data = NutritionsMenu::where('menu_id', $id)->first();
             $data->update([
                 'karbohidrat' => $request->karbohidrat,
-                'karbohidrat_unit' => $request->karbohidrat_unit,
+                'karbohidrat_unit_id' => $request->karbohidrat_unit,
                 'protein' => $request->protein,
-                'protein_unit' => $request->protein_unit,
+                'protein_unit_id' => $request->protein_unit,
                 'lemak' => $request->lemak,
-                'lemak_unit' => $request->lemak_unit,
+                'lemak_unit_id' => $request->lemak_unit,
                 'serat' => $request->serat,
-                'serat_unit' => $request->serat_unit,
+                'serat_unit_id' => $request->serat_unit,
                 'natrium' => $request->natrium,
-                'natrium_unit' => $request->natrium_unit,
+                'natrium_unit_id' => $request->natrium_unit,
                 'kalori' => $request->kalori,
-                'kalori_unit' => $request->kalori_unit,
+                'kalori_unit_id' => $request->kalori_unit,
                 // 'unit_id' => $request->unit_id
             ]);
 
@@ -399,7 +448,9 @@ class ProductController extends Controller
     public function create_tutorial(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'instruction' => 'required',
+            'stepnumber'=> 'required',
+            'titleInstruction' =>'required',
+            'instructionInput' => 'required',
             'image' => 'nullable|mimes:jpeg,png,jpg|file|max:3048',
             // 'step_number' => 'required',
         ]);
@@ -425,7 +476,9 @@ class ProductController extends Controller
              
             $data = HowToCook::create([
                 'menu_id' => $id,
-                'instruction' => $request->instruction,
+                'step_number'=> $request->stepnumber,
+                'title_instruction'=> $request->titleInstruction,
+                'instruction' => $request->instructionInput,
                 'image' => $stored_img_path
             ]);
 
@@ -437,7 +490,10 @@ class ProductController extends Controller
             return back()->with('success', 'User berhasil ditambahkan!');
         } catch (\Throwable $th) {
             //throw $th;
-            return redirect('/dashboard/product')->with('error', 'Gagal menambah data !');
+            return response()->json([
+                'message' => 'failed',
+                'errors' => $th->getMessage(),
+            ], 400);
         }
     }
 
@@ -446,6 +502,8 @@ class ProductController extends Controller
         $validator = Validator::make($request->all(), [
             'tutorialId'=>'required',
             'instructionInput' => 'required',
+            'stepnumber'=> 'required',
+            'titleInstruction' =>'required',
             'image' => 'nullable|mimes:jpeg,png,jpg|file|max:3048',
             // 'step_number' => 'required',
         ]);
@@ -460,11 +518,32 @@ class ProductController extends Controller
 
         try {
             $tutorial = HowToCook::where('id', $request->tutorialId)->first();
+            // $menu = Menu::where('id', $id)->first();
+            //img
+            $image = $request->file('image');
+
+            if ($image) {
+                // Delete the old image file if it exists and is not the default image
+                if ($tutorial->image && $tutorial->image != 'assets/img-default.png') {
+                    Storage::delete($tutorial->image);
+                }
+
+                $img_name = $image->getClientOriginalName();
+                $stored_img_path = $image->storeAs('image', $img_name);
+            } else {
+                if ($tutorial->image && $tutorial->image != 'assets/img-default.png') {
+                    Storage::delete($tutorial->image);
+                }
+
+                $stored_img_path = 'assets/img-default.png';
+            }
 
             $tutorial->update([
+                'step_number'=> $request->stepnumber,
+                'title_instruction' => $request->titleInstruction,
                 'instruction' => $request->instructionInput,
                 'menu_id' => $id,
-                // 'image' => $stored_img_path
+                'image' => $stored_img_path
             ]);
 
             $menu = Menu::where('id', $id)->first();
@@ -472,7 +551,7 @@ class ProductController extends Controller
                 'update_at' => Carbon::now()
             ]);
 
-            return redirect('/dashboard/product/menu/'.$id)->with('success', 'Produk berhasil ditambahkan !');
+            return back()->with('success', 'Produk berhasil ditambahkan !');
         } catch (\Throwable $th) {
             //throw $th;
             return response()->json([
@@ -690,20 +769,29 @@ class ProductController extends Controller
                 'update_at' => Carbon::now()
             ]);
 
+            $further_information = FurtherInformation::create([
+                'menu_id'=> $menu->id,
+                'tools'=>null,
+                'difficulty'=>null,
+                'material'=>null,
+                'serving_time'=>null,
+                'time_format'=>null
+            ]);
+
             $nutrition = NutritionsMenu::create([
                 'menu_id'=> $menu->id,
                 'karbohidrat' => 0,
-                'karbohidrat_unit' => 1,
+                'karbohidrat_unit_id' => 1,
                 'protein' => 0,
-                'protein_unit' => 1,
+                'protein_unit_id' => 1,
                 'lemak' => 0,
-                'lemak_unit' => 1,
+                'lemak_unit_id' => 1,
                 'serat' => 0,
-                'serat_unit' => 1,
+                'serat_unit_id' => 1,
                 'natrium' => 0,
-                'natrium_unit' => 1,
+                'natrium_unit_id' => 1,
                 'kalori' => 0,
-                'kalori_unit' => 1,
+                'kalori_unit_id' => 1,
             ]);
 
             $type_name = MenuType::where('id', $menu->type_id)->value('name_type');

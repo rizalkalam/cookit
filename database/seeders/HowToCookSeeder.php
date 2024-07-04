@@ -17,18 +17,21 @@ class HowToCookSeeder extends Seeder
             [
                 'menu_id'=> 1,
                 'step_number'=> 1,
+                'title_instruction'=>'coba',
                 'instruction'=> 'Ukuran kotak tulisan mengikuti panjang tulisan',
                 'image'=> 'img_menu/card1-sec2.png',
             ],
             [
                 'menu_id'=> 1,
                 'step_number'=> 2,
+                'title_instruction'=>'coba lagi',
                 'instruction'=> 'tESS TEEs',
                 'image'=> 'img_menu/card1-sec2.png',
             ],
             [
                 'menu_id'=> 1,
                 'step_number'=> 3,
+                'title_instruction'=>'ampe capek',
                 'instruction'=> 'Trigger adalah sebuah program kecil dalam basis data yang secara otomatis berjalan ketika ada perubahan di tabel, Trigger adalah sebuah program kecil dalam basis data yang secara otomatis berjalan ketika ada perubahan di tabel Trigger adalah sebuah program kecil dalam basis data Trigger adalah sebuah program kecil dalam basis data',
                 'image'=> 'img_menu/card1-sec2.png',
             ], 

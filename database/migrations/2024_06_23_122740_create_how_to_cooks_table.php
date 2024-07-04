@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('menu_id');
             $table->integer('step_number')->nullable();
+            $table->string('title_instruction');
             $table->text('instruction');
             $table->string('image')->nullable();
             $table->timestamps();

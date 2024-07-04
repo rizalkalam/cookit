@@ -17,17 +17,17 @@ class NutritionsMenuSeeder extends Seeder
             [
                 'menu_id'=> 1,
                 'karbohidrat'=> 1,
-                'karbohidrat_unit'=> 1,
+                'karbohidrat_unit_id'=> 1,
                 'protein'=> 13,
-                'protein_unit'=> 2,
+                'protein_unit_id'=> 2,
                 'lemak'=> 17,
-                'lemak_unit'=> 1,
+                'lemak_unit_id'=> 1,
                 'serat'=> 77,
-                'serat_unit'=> 2,
+                'serat_unit_id'=> 2,
                 'natrium'=> 20,
-                'natrium_unit'=> 1,
+                'natrium_unit_id'=> 1,
                 'kalori'=> 8,
-                'kalori_unit'=> 3,
+                'kalori_unit_id'=> 3,
             ],
         ])->each(function ($nutritions_menu){
             DB::table('nutritions_menus')->insert($nutritions_menu);

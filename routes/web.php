@@ -97,6 +97,8 @@ Route::post('/dashboard/product/menu', [ProductController::class, 'create_menu']
 Route::post('/dashboard/product/menu/{id}', [ProductController::class, 'update_menu']);
 Route::delete('/dashboard/product/menu/{id}', [ProductController::class, 'delete_menu']);
 
+Route::post('/further_information/update/{id}', [ProductController::class, 'update_furtherinformation']);
+
 Route::post('/to_sent/create/{id}', [ProductController::class, 'create_tosent']);
 Route::post('/to_sent/update/{id}', [ProductController::class, 'update_tosent']);
 Route::delete('/to_sent/delete/{id}', [ProductController::class, 'delete_tosent']);

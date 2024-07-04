@@ -21,7 +21,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- @TODO: replace SET_YOUR_CLIENT_KEY_HERE with your client key -->
     <script type="text/javascript"
-    src="https://app.sandbox.midtrans.com/snap/snap.js"
+    src="https://app.midtrans.com/snap/snap.js"
     data-client-key="SB-Mid-server-qcwSPi9JWa2q1rbWKW_cu_m4"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 </head>
