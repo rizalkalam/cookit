@@ -185,7 +185,8 @@
 
   .item-img img{
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
     position: absolute;
     left: 50%;
     top: 50%;
