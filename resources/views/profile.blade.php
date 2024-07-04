@@ -37,30 +37,30 @@
     <div class="sec2-detail-customer">
         <p class="title-sec-detail-customer">Riwayat Pesanan</p>
         <div class="container-sec2-detail-customer">
-            <div class="con-sec2-detail-customer">
-                <p class="date-history-detail-customer">Januari, 2024</p>
-                <div class="table-detail-customer">
-                    <div class="head-table-con-sec2">
-                        <p class="txt-kode-pemesanan">Kode Pesanan :PACKBUNDL0DL00Q</p>
-                        <div class="txt-completed">
-                            <p class="txt-completed">Completed</p>
+            @foreach ($formattedOrders as $orderGroup)
+                <div class="con-sec2-detail-customer">
+                    <p class="date-history-detail-customer">{{ $orderGroup['date'] }}</p>
+                    <div class="table-detail-customer">
+                        <div class="head-table-con-sec2">
+                            <p class="txt-kode-pemesanan">Kode Pesanan :{{ $orderGroup['order_id'] }}</p>
+                            <div class="txt-completed">
+                                <p class="txt-completed">{{ ucfirst($orderGroup['data'][0]['status']) }}</p>
+                            </div>
                         </div>
+                        @foreach ($orderGroup['data'] as $order)
+                            <table id="detail-customer">
+                                <tr>
+                                    <td class="td-menu"><img src="/img_menu/card1-sec2.png" alt="">{{ $order['menu_name'] }}</td>
+                                    <td>{{ $order['date'] }}</td>
+                                    <td>Germany</td> <!-- Ganti dengan data sesuai yang Anda inginkan -->
+                                </tr>
+                            </table>
+                        @endforeach
                     </div>
-                    <table id="detail-customer">
-                        <tr>
-                          <td class="td-menu"><img src="/img_menu/card1-sec2.png" alt="">Alfreds Futterkiste</td>
-                          <td>06/09/2023</td>
-                          <td>Germany</td>
-                        </tr>
-                        <tr>
-                          <td class="td-menu"><img src="/img_menu/card1-sec2.png" alt="">Berglunds snabbköp</td>
-                          <td>06/09/2023</td>
-                          <td>Sweden</td>
-                        </tr>
-                      </table>
                 </div>
-            </div>
-            <div class="con-sec2-detail-customer">
+            @endforeach
+
+            {{-- <div class="con-sec2-detail-customer">
                 <p class="date-history-detail-customer">Desember, 2023</p>
                 <div class="table-detail-customer">
                     <div class="head-table-con-sec2">
@@ -122,8 +122,8 @@
                           </tr>
                       </table>
                 </div>
-            </div>
-            <a class="show-more-detail-customer" href="">Show More ></a>
+            </div> --}}
+            {{-- <a class="show-more-detail-customer" href="">Show More ></a> --}}
         </div>
     </div>
 

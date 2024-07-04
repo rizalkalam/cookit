@@ -56,10 +56,11 @@
         </div>
         <div id="side-menu">
             <div id="mark"></div>
-            <a href="#about">
-                <iconify-icon icon="ph:power" width="20"></iconify-icon>
-                Logout
-            </a>
+            <form action="/logout" method="post">
+                @csrf
+                <button type="submit"><iconify-icon icon="ph:power" width="20"></iconify-icon>
+                Logout</button>
+            </form>
         </div>
     </div>
 </div>
@@ -68,11 +69,12 @@
 <div class="dashboard-content">
     <p class="title-dashboard">Contact</p>  
     <div class="container-customer">
+        @foreach ($data as $user)    
         <div class="card-customer">
             <div class="img-customer">
-                <img src="/assets/gyj.jpeg" alt="">
+                <img src="/{{ $user->photo_profile }}" alt="">
             </div>
-            <p class="name-customer">Go YoonJung</p>
+            <p class="name-customer">{{ $user->name }}</p>
             <div class="btn-dshb-customer">
                 <a href="/detail/product">
                     <button class="btn-message">Message</button>
@@ -82,202 +84,7 @@
                 </a>
             </div>
         </div>
-        <div class="card-customer">
-            <div class="img-customer">
-                <img src="/assets/1.jpg" alt="">
-            </div>
-            <p class="name-customer">Bae Suzy</p>
-            <div class="btn-dshb-customer">
-                <a href="/detail/product">
-                    <button class="btn-message">Message</button>
-                </a>
-                <a href="/detail/product">
-                    <button class="btn-detail-dshb-contact">Details</button>
-                </a>
-            </div>
-        </div>
-        <div class="card-customer">
-            <div class="img-customer">
-                <img src="/assets/5.jpg" alt="">
-            </div>
-            <p class="name-customer">Lee Ji-eun</p>
-            <div class="btn-dshb-customer">
-                <a href="/detail/product">
-                    <button class="btn-message">Message</button>
-                </a>
-                <a href="/detail/product">
-                    <button class="btn-detail-dshb-contact">Details</button>
-                </a>
-            </div>
-        </div>
-        <div class="card-customer">
-            <div class="img-customer">
-                <img src="/assets/gyj.jpeg" alt="">
-            </div>
-            <p class="name-customer">Go YoonJung</p>
-            <div class="btn-dshb-customer">
-                <a href="/detail/product">
-                    <button class="btn-message">Message</button>
-                </a>
-                <a href="/detail/product">
-                    <button class="btn-detail-dshb-contact">Details</button>
-                </a>
-            </div>
-        </div>
-        <div class="card-customer">
-            <div class="img-customer">
-                <img src="/assets/1.jpg" alt="">
-            </div>
-            <p class="name-customer">Bae Suzy</p>
-            <div class="btn-dshb-customer">
-                <a href="/detail/product">
-                    <button class="btn-message">Message</button>
-                </a>
-                <a href="/detail/product">
-                    <button class="btn-detail-dshb-contact">Details</button>
-                </a>
-            </div>
-        </div>
-        <div class="card-customer">
-            <div class="img-customer">
-                <img src="/assets/5.jpg" alt="">
-            </div>
-            <p class="name-customer">Lee Ji-eun</p>
-            <div class="btn-dshb-customer">
-                <a href="/detail/product">
-                    <button class="btn-message">Message</button>
-                </a>
-                <a href="/detail/product">
-                    <button class="btn-detail-dshb-contact">Details</button>
-                </a>
-            </div>
-        </div>
-        <div class="card-customer">
-            <div class="img-customer">
-                <img src="/assets/gyj.jpeg" alt="">
-            </div>
-            <p class="name-customer">Go YoonJung</p>
-            <div class="btn-dshb-customer">
-                <a href="/detail/product">
-                    <button class="btn-message">Message</button>
-                </a>
-                <a href="/detail/product">
-                    <button class="btn-detail-dshb-contact">Details</button>
-                </a>
-            </div>
-        </div>
-        <div class="card-customer">
-            <div class="img-customer">
-                <img src="/assets/1.jpg" alt="">
-            </div>
-            <p class="name-customer">Bae Suzy</p>
-            <div class="btn-dshb-customer">
-                <a href="/detail/product">
-                    <button class="btn-message">Message</button>
-                </a>
-                <a href="/detail/product">
-                    <button class="btn-detail-dshb-contact">Details</button>
-                </a>
-            </div>
-        </div>
-        <div class="card-customer">
-            <div class="img-customer">
-                <img src="/assets/5.jpg" alt="">
-            </div>
-            <p class="name-customer">Lee Ji-eun</p>
-            <div class="btn-dshb-customer">
-                <a href="/detail/product">
-                    <button class="btn-message">Message</button>
-                </a>
-                <a href="/detail/product">
-                    <button class="btn-detail-dshb-contact">Details</button>
-                </a>
-            </div>
-        </div>
-        <div class="card-customer">
-            <div class="img-customer">
-                <img src="/assets/gyj.jpeg" alt="">
-            </div>
-            <p class="name-customer">Go YoonJung</p>
-            <div class="btn-dshb-customer">
-                <a href="/detail/product">
-                    <button class="btn-message">Message</button>
-                </a>
-                <a href="/detail/product">
-                    <button class="btn-detail-dshb-contact">Details</button>
-                </a>
-            </div>
-        </div>
-        <div class="card-customer">
-            <div class="img-customer">
-                <img src="/assets/1.jpg" alt="">
-            </div>
-            <p class="name-customer">Bae Suzy</p>
-            <div class="btn-dshb-customer">
-                <a href="/detail/product">
-                    <button class="btn-message">Message</button>
-                </a>
-                <a href="/detail/product">
-                    <button class="btn-detail-dshb-contact">Details</button>
-                </a>
-            </div>
-        </div>
-        <div class="card-customer">
-            <div class="img-customer">
-                <img src="/assets/5.jpg" alt="">
-            </div>
-            <p class="name-customer">Lee Ji-eun</p>
-            <div class="btn-dshb-customer">
-                <a href="/detail/product">
-                    <button class="btn-message">Message</button>
-                </a>
-                <a href="/detail/product">
-                    <button class="btn-detail-dshb-contact">Details</button>
-                </a>
-            </div>
-        </div>
-        <div class="card-customer">
-            <div class="img-customer">
-                <img src="/assets/5.jpg" alt="">
-            </div>
-            <p class="name-customer">Lee Ji-eun</p>
-            <div class="btn-dshb-customer">
-                <a href="/detail/product">
-                    <button class="btn-message">Message</button>
-                </a>
-                <a href="/detail/product">
-                    <button class="btn-detail-dshb-contact">Details</button>
-                </a>
-            </div>
-        </div>
-        <div class="card-customer">
-            <div class="img-customer">
-                <img src="/assets/5.jpg" alt="">
-            </div>
-            <p class="name-customer">Lee Ji-eun</p>
-            <div class="btn-dshb-customer">
-                <a href="/detail/product">
-                    <button class="btn-message">Message</button>
-                </a>
-                <a href="/detail/product">
-                    <button class="btn-detail-dshb-contact">Details</button>
-                </a>
-            </div>
-        </div>
-        <div class="card-customer">
-            <div class="img-customer">
-                <img src="/assets/5.jpg" alt="">
-            </div>
-            <p class="name-customer">Lee Ji-eun</p>
-            <div class="btn-dshb-customer">
-                <a href="/detail/product">
-                    <button class="btn-message">Message</button>
-                </a>
-                <a href="/detail/product">
-                    <button class="btn-detail-dshb-contact">Details</button>
-                </a>
-            </div>
-        </div>
+        @endforeach
     </div> 
 </div>
 

@@ -55,10 +55,11 @@
         </div>
         <div id="side-menu">
             <div id="mark"></div>
-            <a href="#about">
-                <iconify-icon icon="ph:power" width="20"></iconify-icon>
-                Logout
-            </a>
+            <form action="/logout" method="post">
+                @csrf
+                <button type="submit"><iconify-icon icon="ph:power" width="20"></iconify-icon>
+                Logout</button>
+            </form>
         </div>
     </div>
 </div>

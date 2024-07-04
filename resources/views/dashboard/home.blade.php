@@ -56,18 +56,74 @@
         </div>
         <div id="side-menu">
             <div id="mark"></div>
-            <a href="#about">
-                <iconify-icon icon="ph:power" width="20"></iconify-icon>
-                Logout
-            </a>
+            <form action="/logout" method="post">
+                @csrf
+                <button type="submit"><iconify-icon icon="ph:power" width="20"></iconify-icon>
+                Logout</button>
+            </form>
         </div>
     </div>
 </div>
 {{-- end-sidebar --}}
 <div class="dashboard-content">
-
-    <div class="con-page-null">
-        <h3>Halaman belum tersedia</h3>
+    <p class="title-dashboard">Dashboard</p>
+    <div class="section-dashboard-home">
+        <div class="con-total-customer">
+            <div class="content-total-customer">
+                <div class="content-count-total-customer">
+                    <p>Total Customer</p>
+                    <p>{{ $user_count }}</p>
+                </div>
+                <div class="icon-total-customer">
+                    <iconify-icon icon="majesticons:users" width="28"></iconify-icon>
+                </div>
+            </div>
+            <div class="dsc-total-customer">
+                <p>{{ $user_percentage_increase }}% Up from yesterday</p>
+            </div>
+        </div>
+        <div class="con-total-customer">
+            <div class="content-total-customer">
+                <div class="content-count-total-customer">
+                    <p>Total Order</p>
+                    <p>{{ $order_count }}</p>
+                </div>
+                <div class="icon-total-customer">
+                    <iconify-icon icon="ri:box-3-fill" width="28"></iconify-icon>
+                </div>
+            </div>
+            <div class="dsc-total-customer">
+                <p>{{ $order_percentage_increase }}% Up from yesterday</p>
+            </div>
+        </div>
+        <div class="con-total-customer">
+            <div class="content-total-customer">
+                <div class="content-count-total-customer">
+                    <p>Total Sales</p>
+                    <p>{{ $order_completed_count }}</p>
+                </div>
+                <div class="icon-total-customer">
+                    <iconify-icon icon="octicon:graph-16" width="28"></iconify-icon>
+                </div>
+            </div>
+            <div class="dsc-total-customer">
+                <p>{{ $completed_percentage_increase }}% Up from yesterday</p>
+            </div>
+        </div>
+        <div class="con-total-customer">
+            <div class="content-total-customer">
+                <div class="content-count-total-customer">
+                    <p>Total Canceled</p>
+                    <p>{{ $order_rejected_count }}</p>
+                </div>
+                <div class="icon-total-customer">
+                    <iconify-icon icon="material-symbols:history" width="28"></iconify-icon>
+                </div>
+            </div>
+            <div class="dsc-total-customer">
+                <p>{{ $rejected_percentage_increase }}% Up from yesterday</p>
+            </div>
+        </div>
     </div>
 
     {{-- <div>
