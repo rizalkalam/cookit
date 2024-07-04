@@ -175,6 +175,54 @@
 
 /* end-section-1 */
 
+/* further-information */
+.further-information-edit-menu{
+    width: 100%;
+    margin: 50px 0px;
+    padding: 0px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.tools-further-information{
+    display: flex;
+    gap: 20px;
+}
+
+.tools-further-information p{
+    width: 200px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.tools-further-information textarea{
+    width: 120vh;
+    height: 70px;
+    padding: 10px;
+}
+
+.tools-further-information select{
+    width: 120vh;
+    height: 30px;
+}
+
+.tools-further-information.last select{
+    width: 10vh;
+    height: 30px;
+}
+
+.edit-further-information{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.edit-further-information button{
+    background-color: transparent;
+    border: none;
+}
+/* further-information */
+
 /* section-2 */
 .sec2-edit-menu{
     margin-top: 50px;
@@ -426,7 +474,8 @@
 #modal-add-tosent,
 #modal-delete-tosent,
 #modal-edit-tutorial,
-#modal-delete-tutorial {
+#modal-delete-tutorial,
+#successModal {
     width: 100%;
     height: 100%;
     z-index: 5;
@@ -542,14 +591,15 @@
         gap: 25px;
     }
 
-    .reveal-modal-tutorial input{
+    /* .reveal-modal-tutorial input{
         width: 40vh;
         padding: 8px 5px;
         border: 2px solid #202224;
-    }
+    } */
 
     .con-input-tutorial{
         display: flex;
+        flex-direction: column;
         gap: 10px;
     }
 
@@ -567,18 +617,25 @@
 
     .con-btn-tutorial{
         display: flex;
-        flex-direction: column;
         align-items: center;
     }
 
-    .input-modal-insturction{
-        max-width: 390px;
-        width: 390px; /* Lebar 100% agar mengisi container */
+    .con-input-tutorial input{
+        width: 100%;
+    }
+
+    .input-modal-instruction{
+        width: 100%; /* Lebar 100% agar mengisi container */
         height: auto; /* Tinggi menyesuaikan dengan konten */
         padding: 12px 18px;
         font-size: 14px;
         border-radius: 5px;
         border: 1px solid #D5D5D5;
         box-sizing: border-box; /* Padding dan border dihitung sebagai bagian dari lebar dan tinggi */
+    }
+
+    .input-tutorial-modal{
+        display: flex;
+        gap: 10px;
     }
 /* modal-add-tutorial */

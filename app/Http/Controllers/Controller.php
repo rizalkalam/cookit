@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Menu;
 use App\Models\ToSent;
 use App\Models\Bundling;
+use App\Models\HowToCook;
 use App\Models\WeeklyMenu;
 use App\Models\BundlingType;
+use App\Models\NutritionsMenu;
+use App\Models\FurtherInformation;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -201,14 +204,38 @@ class Controller extends BaseController
     public function detail_menu(Menu $menu)
     {
         $to_sents = ToSent::where('menu_id', $menu->id)->get();
+        
+        $videoUrl = $menu->link_yt;
+        $videoId = $this->extractVideoId($videoUrl);
+
+        $further_information = FurtherInformation::where('menu_id', $menu->id)->first();
+
+        $nutritions = NutritionsMenu::where('menu_id', $menu->id)->get();
+
+        $tutorials = HowToCook::where('menu_id', $menu->id)->orderBy('how_to_cooks.step_number', 'asc')->get();
+
         return view('product',[
             'menu' => $menu,
-            'to_sents' => $to_sents
+            'youtube' => $videoId,
+            'to_sents' => $to_sents,
+            'further_information' => $further_information,
+            'nutritions' => $nutritions,
+            'tutorials' => $tutorials,
         ]);
 
         // return response()->json([
         //     'menu' => $menu,
         //     'to_sents' => $to_sents
         // ]);
+    }
+
+    protected function extractVideoId($url)
+    {
+        if (preg_match('/youtube\.com\/watch\?v=([a-zA-Z0-9_-]+)/', $url, $matches)) {
+            return $matches[1];
+        } elseif (preg_match('/youtu\.be\/([a-zA-Z0-9_-]+)/', $url, $matches)) {
+            return $matches[1];
+        }
+        return null;
     }
 }

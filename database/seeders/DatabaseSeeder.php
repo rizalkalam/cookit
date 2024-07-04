@@ -9,6 +9,7 @@ use Database\Seeders\MenuSeeder;
 use Database\Seeders\UnitSeeder;
 use Database\Seeders\UserSeeder;
 use Database\Seeders\OrderSeeder;
+use App\Models\FurtherInformation;
 use Database\Seeders\ToSentSeeder;
 use Database\Seeders\PaymentSeeder;
 use Database\Seeders\BundlingSeeder;
@@ -26,6 +27,7 @@ use Database\Seeders\TutorialsMenuSeeder;
 use Database\Seeders\NutritionsMenuSeeder;
 use Database\Seeders\SectionProductSeeder;
 use Database\Seeders\PromotionProductSeeder;
+use Database\Seeders\FurtherInformationSeeder;
 use Database\Seeders\OtherInformationsMenuSeeder;
 
 class DatabaseSeeder extends Seeder
@@ -48,6 +50,7 @@ class DatabaseSeeder extends Seeder
             MenuSeeder::class,
             SectionProductSeeder::class,
             LiveProductSeeder::class,
+            FurtherInformationSeeder::class,
             NutritionsMenuSeeder::class,
             HowToCookSeeder::class,
             ToSentSeeder::class,

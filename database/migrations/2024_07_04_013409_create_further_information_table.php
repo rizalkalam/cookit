@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('further_information', function (Blueprint $table) {
             $table->id();
             $table->foreignId('menu_id');
-            $table->string('tools');
-            $table->string('difficulty');
-            $table->string('material');
-            $table->string('serving_time');
-            $table->string('time_format');
+            $table->string('tools')->nullable();
+            $table->string('difficulty')->nullable();
+            $table->string('material')->nullable();
+            $table->integer('serving_time')->nullable();
+            $table->string('time_format')->nullable();
             $table->timestamps();
         });
     }

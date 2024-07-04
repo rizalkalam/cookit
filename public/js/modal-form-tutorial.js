@@ -32,15 +32,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Ambil id dan instruction dari data attribute
             var tutorialId = this.getAttribute('data-id_tutorial');
+            var stepnumber = this.getAttribute('data-stepnumber');
+            var title_instruction = this.getAttribute('data-title_instruction');
             var instruction = this.getAttribute('data-instruction');
 
             // Log untuk debugging
             console.log('ID:', tutorialId);
+            console.log('Stepnumber:', stepnumber);
+            console.log('Title_instruction:', title_instruction);
             console.log('Instruction:', instruction);
             
 
             document.getElementById('tutorialId').value = tutorialId;
-            document.getElementById('instructionInput').value = instruction;
+            document.getElementById('stepnumberModal').value = stepnumber;
+            document.getElementById('titleInstruction').value = title_instruction;
+            document.getElementById('instructionInputModal').value = instruction;
+
+            // console.log(document.getElementById('instructionInput')); // Cek elemen textarea
 
             editModal.style.display = 'block';
         });
