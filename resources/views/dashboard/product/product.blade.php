@@ -102,7 +102,7 @@
                                 <div class="dsc-card-dshb-product">
                                     <p class="title-dsc-card-dshb-product">{{ $section->menu_appetizer->name }}</p>
                                     <p class="dsc-dshb-product">{{ $section->menu_appetizer->flavor->flavor }}</p>
-                                    <p class="price-dshb-product">{{ $section->menu_appetizer->price }}</p>
+                                    <p class="price-dshb-product">Rp{{ number_format($section->menu_appetizer->price, '0', ',', '.') }}</p>
                                     <a href="/dashboard/product/menu/{{ $section->id }}/{{ $section->menu_appetizer->type->name_type }}/{{ $section->menu_appetizer->id }}">
                                         <button class="btn-ordernow-dshb-product">Edit Product</button>
                                     </a>
@@ -117,7 +117,7 @@
                                 <div class="dsc-card-dshb-product">
                                     <p class="title-dsc-card-dshb-product">{{ $section->menu_maincourse->name }}</p>
                                     <p class="dsc-dshb-product">{{ $section->menu_maincourse->flavor->flavor }}</p>
-                                    <p class="price-dshb-product">{{ $section->menu_maincourse->price }}</p>
+                                    <p class="price-dshb-product">Rp{{ number_format($section->menu_maincourse->price, '0', ',', '.') }}</p>
                                     <a href="/dashboard/product/menu/{{ $section->id }}/{{ $section->menu_maincourse->type->name_type }}/{{ $section->menu_maincourse->id }}">
                                         <button class="btn-ordernow-dshb-product">Edit Product</button>
                                     </a>
@@ -132,7 +132,7 @@
                                 <div class="dsc-card-dshb-product">
                                     <p class="title-dsc-card-dshb-product">{{ $section->menu_dessert->name }}</p>
                                     <p class="dsc-dshb-product">{{ $section->menu_dessert->flavor->flavor }}</p>
-                                    <p class="price-dshb-product">{{ $section->menu_dessert->price }}</p>
+                                    <p class="price-dshb-product">Rp{{ number_format($section->menu_dessert->price, '0', ',', '.') }}</p>
                                     <a href="/dashboard/product/menu/{{ $section->id }}/{{ $section->menu_dessert->type->name_type }}/{{ $section->menu_dessert->id }}">
                                         <a href="/dashboard/product/menu/{{ $section->id }}/{{ $section->menu_dessert->type->name_type }}/{{ $section->menu_dessert->id }}">
                                         <button class="btn-ordernow-dshb-product">Edit Product</button>
@@ -153,7 +153,7 @@
                 <div class="dsc-card-dshb-product-sec2">
                     <p class="title-dsc-card-dshb-product">{{ $promotion->menu->name }}</p>
                     <p class="dsc-dshb-product">{{ $promotion->menu->flavor->flavor }}</p>
-                    <p class="price-dshb-product">{{ $promotion->menu->price }}</p>
+                    <p class="price-dshb-product">Rp{{ number_format($promotion->menu->price, '0', ',', '.') }}</p>
                     <a href="/dashboard/product/live_to_promote">
                         <button class="btn-ordernow-dshb-product-sec2">Edit Product</button>
                     </a>
