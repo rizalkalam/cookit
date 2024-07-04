@@ -14,10 +14,9 @@ class PaymentSeeder extends Seeder
      */
     public function run(): void
     {
-        $faker = Factory::create();
         collect([
             [
-                'order_id'=>$faker->unique()->numerify('ORD###'),
+                'order_id'=>'OR13332638GFH',
                 'status'=>'pending',
                 'customer_first_name'=>'kalma',
                 'customer_email'=>'rizalkalam@gmail.com',
