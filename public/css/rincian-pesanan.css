@@ -219,3 +219,209 @@
 
 }
 /* end-section-3 */
+
+/* responsive-tab */
+@media only screen and (max-width: 835px) {
+    .section-rincian-pesanan{
+        /* display: flex;
+        flex-direction: column;
+        gap: 20px; */
+        padding: 90px 50px;
+    }
+
+    .sec1-rincian-pesanan{
+        width: 700px;
+    }
+
+    .kode-pesanan{
+        width: 700px;
+    }
+
+    
+    .sec2-rincian-pesanan{
+        width: 700px;
+    }
+    
+    .head-sec2-rincian-pesanan{
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 20px 10px 20px;
+      }
+
+    .head-sec2-rincian-pesanan p{
+        font-size: 14px;
+      }
+
+    .head-sec2-rincian-pesanan-con{
+        display: flex;
+        gap: 20px;
+    }
+
+    .item-rincian-pesanan{
+        justify-content: space-around;
+        padding: 20px 0px 20px 10px;
+        height: 120px;
+    }
+
+    .left-list-bskt{
+        gap: 15px;
+    }
+    
+    .right-list-rincian-pesanan{
+        gap: 20px;
+        padding: 10px;
+    }
+
+    .sec3-rincian-pesanan{
+        width: 700px;
+    }
+}
+/* responsive-tab */
+
+/* responsive-phone */
+@media only screen and (max-width: 480px){
+    .icn-location-checkout{
+        width: 20px;
+    }
+    
+
+    .section-rincian-pesanan{
+        padding: 20px;
+    }
+
+    .contact-check-out{
+        font-size: 8px;
+    }
+
+    .addres-check-out{
+        font-size: 8px;
+    }
+
+    .txt-kode-pesanan{
+        font-size: 8px;
+    }
+
+    .sec1-rincian-pesanan{
+        width: 320px;
+    }
+
+    .status-pesanan.green-status{
+        padding: 4px 10px;
+    }
+
+    .status-pesanan.green-status p{
+        font-size: 10px;
+    }
+
+    .status-pesanan.yellow-status{
+        padding: 4px 10px;
+    }
+
+    .status-pesanan.orange-status{
+        padding: 4px 10px;
+    }
+
+    .status-pesanan.orange-status p{
+        font-size: 10px;
+    }
+
+    .status-pesanan.yellow-status p{
+        font-size: 10px;
+    }
+
+    .status-pesanan.orange-status{
+        padding: 4px 10px;
+    }
+
+    .status-pesanan.orange-status p{
+        font-size: 10px;
+    }
+
+    .status-pesanan.red-status{
+        padding: 4px 10px;
+    }
+
+    .status-pesanan.red-status p{
+        font-size: 10px;
+    }
+
+    .head-sec2-rincian-pesanan{
+        padding: 10px 10px 10px 20px;
+      }
+
+
+    .head-sec2-rincian-pesanan p{
+        font-size: 8px;
+    }
+    
+    .title-menu-invoice{
+        font-size: 10px;
+        font-weight: bold;
+    }
+
+    .kode-pesanan{
+        width: 320px;
+    }
+
+    .dsc-menu-bskt{
+        overflow: hidden;
+        /* width: 20px; */
+    }
+
+    .bundling-badge{
+        background-color: #00B69B;
+        width: 40px;
+        padding: 2px 2px;
+        border-radius: 10px;
+      }
+      
+      .bundling-badge p{
+          font-family: "Nerko One", cursive;
+          font-size: 6px;
+          font-weight: 100;
+          text-align: center;
+          color: #fff;
+      }
+
+      .price-rincian-pesanan{
+        margin-right: 8px;
+        font-size: 8px;
+    }
+
+    .sub-price-chek-out{
+        margin-right: 8px;
+        font-size: 8px;
+    }
+
+    .count-rincian-pesanan{
+        margin-right: 8px;
+        font-size: 8px;
+    }
+    
+    .con-total-rincian-pesanan{
+        justify-content: space-between;
+        font-size: 12px;
+    }
+
+    .sec2-rincian-pesanan{
+        width: 320px;
+    }
+
+    .sec3-rincian-pesanan{
+        width: 320px;
+    }
+
+    .sec3-rincian-pesanan p{
+        font-size: 10px;
+    }
+
+    .content-sec3-rincian-pesanan{
+        padding: 0px 20px 20px 12px;
+    }
+
+    .btn-order{
+        padding: 8px 6px;
+        font-size: 10px;
+    }
+}
+/* responsive-phone */

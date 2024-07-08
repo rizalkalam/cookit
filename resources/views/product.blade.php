@@ -51,19 +51,19 @@
                 <div class="con-left-product">
                     <div class="txt-sec3">
                         <p class="title-txt-sec3">Alat yang dibutuhkan</p>
-                        <p class="dsc-txt-sec3">{{ $further_information->tools }}</p>
+                        <p class="dsc-txt-sec3">{{ $further_information->tools  ?? '  ' }}</p>
                     </div>
                     <div class="txt-sec3">
                         <p class="title-txt-sec3">Tingkat Kesusahan</p>
-                        <p class="dsc-txt-sec3">{{ $further_information->difficulty }}</p>
+                        <p class="dsc-txt-sec3">{{ $further_information->difficulty  ?? '  ' }}</p>
                     </div>
                     <div class="txt-sec3">
                         <p class="title-txt-sec3">Bahan yang dibutuhkan</p>
-                        <p class="dsc-txt-sec3">{{ $further_information->material }}</p>
+                        <p class="dsc-txt-sec3">{{ $further_information->material  ?? '  ' }}</p>
                     </div>
                     <div class="txt-sec3">
                         <p class="title-txt-sec3">Waktu Penyajian</p>
-                        <p class="dsc-txt-sec3">{{ $further_information->serving_time }} {{ $further_information->time_format }}</p>
+                        <p class="dsc-txt-sec3">{{ $further_information->serving_time  ?? '  ' }} {{ $further_information->time_format  ?? '  ' }}</p>
                     </div>
                 </div>
                 <div class="nutritions-facts">
@@ -96,10 +96,13 @@
                     @endforeach
                 </div>
             </div>
+            @auth
             <div class="btn-section-34">
-                {{-- <a href=""> --}}
-                    <button class="btn-order-now" type="submit">Pesan Sekarang</button>
-                {{-- </a> --}}
+                <button class="btn-order-now" type="submit">Pesan Sekarang</button>
+            </div>
+            @endauth
+            <div class="btn-section-34">
+                <button class="btn-bundle-guest btn-order-now" type="button">Pesan Sekarang</button>
             </div>
         </div>
         {{-- end-section-3 --}}
@@ -120,15 +123,27 @@
                 </div>
                 @endforeach
             </div>
+            @auth    
             <div class="btn-section-34">
-                {{-- <a href="/pay/{{ $menu->menu_name }}"> --}}
                     <button class="btn-order-now" type="submit">Pesan Sekarang</button>
-                {{-- </a> --}}
+            </div>
+            @endauth
+            <div class="btn-section-34">
+                <button class="btn-bundle-guest btn-order-now" type="button">Pesan Sekarang</button>
             </div>
         </div>
         {{-- end-section-4 --}}
     </div>
 </form>
+
+{{-- modal-popup-guest --}}
+<div id="guestModal" style="display: none;">
+    <div id="editTosentModal" class="reveal-modal-tutorial">
+        <span class="btn-close-modal" id="close-modal-guest"><img src="/assets/close-modal.svg" alt="Close"></span>
+        <p>Silahkan login terlebih dahulu</p>
+    </div>
+</div>
+{{-- modal-popup-guest --}}
 
 {{-- modal-popup-cart --}}
 <div id="successModal" style="display: none;">
@@ -147,11 +162,22 @@
 
 <script>
     $(document).ready(function() {
+            // Menampilkan modal ketika tombol diklik
+            $('.btn-bundle-guest').on('click', function() {
+                $('#guestModal').show();
+            });
+
+            // Menutup modal ketika tombol close diklik
+            $('#close-modal-guest').on('click', function() {
+                $('#guestModal').hide();
+            });
+        });
+    $(document).ready(function() {
         @if(session('show_modal'))
             $('#successModal').show();
         @endif
 
-        $('.close-btn').on('click', function() {
+        $('#close-delete-tutorial').on('click', function() {
             $('#successModal').hide();
         });
     });

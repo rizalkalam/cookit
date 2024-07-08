@@ -19,7 +19,7 @@
     <div class="section-rincian-pesanan">
         <p class="title-keranjang">Rincian Pesanan</p>
         <div class="sec1-rincian-pesanan">
-            <iconify-icon icon="zondicons:location" width="35"></iconify-icon>
+            <iconify-icon icon="zondicons:location" width="28"></iconify-icon>
             <p class="contact-check-out">{{ $addres->full_name }} (+62) {{ $addres->phone_address }}</p>
             <p class="addres-check-out">{{ $addres->complete_address }}</p>
         </div>
@@ -73,7 +73,7 @@
                           <img src="/assets/1.jpg" alt="" />
                         </div>
                         <div class="description">
-                            <p class="title-menu-bskt">{{ $order->menu_name }}</p>
+                            <p class="title-menu-invoice">{{ $order->menu_name }}</p>
                             <div class="bundling-badge">
                                 <p>Bundling</p>
                             </div>
@@ -81,9 +81,9 @@
                         </div>
                     </div>
                     <div class="right-list-rincian-pesanan">
-                        <div class="price-rincian-pesanan">Rp.<span class="price-bskt" data-unit-price="13000">{{ number_format($order->total_price / $order->qty, 0, ',', '.') }}</span></div>
+                        <div class="price-rincian-pesanan">Rp.<span class="price-" data-unit-price="13000">{{ number_format($order->total_price / $order->qty, 0, ',', '.') }}</span></div>
                         <p class="count-rincian-pesanan">{{ $order->qty }}</p>
-                        <div class="sub-price-chek-out">Rp.<span class="price-bskt" data-unit-price="13000">{{ $order->total_price }}</span></div>
+                        <div class="sub-price-chek-out">Rp.<span class="price-" data-unit-price="13000">{{ $order->total_price }}</span></div>
                     </div>
                 </div>
                 @else
@@ -93,7 +93,7 @@
                           <img src="/assets/1.jpg" alt="" />
                         </div>
                         <div class="description">
-                            <p class="title-menu-bskt">{{ $order->menu_name }}</p>
+                            <p class="title-menu-invoice">{{ $order->menu_name }}</p>
                             {{-- <div class="bundling-badge">
                                 <p>Bundling</p>
                             </div> --}}
@@ -101,9 +101,9 @@
                         </div>
                     </div>
                     <div class="right-list-rincian-pesanan">
-                        <div class="price-rincian-pesanan">Rp.<span class="price-bskt" data-unit-price="13000">{{ number_format($order->total_price / $order->qty, 0, ',', '.') }}</span></div>
+                        <div class="price-rincian-pesanan">Rp.<span class="price-" data-unit-price="13000">{{ number_format($order->total_price / $order->qty, 0, ',', '.') }}</span></div>
                         <p class="count-rincian-pesanan">{{ $order->qty }}</p>
-                        <div class="sub-price-chek-out">Rp.<span class="price-bskt" data-unit-price="13000">{{ $order->total_price }}</span></div>
+                        <div class="sub-price-chek-out">Rp.<span class="price-" data-unit-price="13000">{{ $order->total_price }}</span></div>
                     </div>
                 </div>
                 @endif

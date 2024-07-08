@@ -4,23 +4,23 @@
     <form action="/update_profile" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="con-head-profile">
-        <p class="title-dashboard">Profile Saya</p>
+        <p class="title-profile">Profile Saya</p>
         <button type="submit" class="btn-sv-profile">Save</button>
     </div>
 
     <div class="sec1-form-profile">
             @foreach ($profiles as $profile)    
                 <div class="left-db-form">
-                    <div class="img-db-form">
+                    <div class="img-profile-picture">
                         <img id="output_img_bahan" src="/{{ $profile->photo_profile }}" alt="">
                         <img id="default_img_bahan" src="/assets/img-default.png" alt="" style="display: none">
                     </div>
-                    <div class="con-btn-form-bahan">
+                    <div class="con-btn-form-profile">
                         <div class="">
-                            <label for="input_img_bahan" class="btn-upload-img-bahan">Upload</label>
+                            <label for="input_img_bahan" class="btn-upload-img-profile">Upload</label>
                             <input id="input_img_bahan" name="photo_profile"  type="file" accept="image/*" onchange="loadFile(event)" style="display: none">
                         </div>
-                        <button type="button" id="clearBtn" class="btn-delete-img-bahan">Delete</button>
+                        <button type="button" id="clearBtn" class="btn-delete-img-profile">Delete</button>
                     </div>
                 </div>
                 <div class="input-form-profile">
@@ -35,20 +35,20 @@
     </form>
 
     <div class="sec2-detail-customer">
-        <p class="title-sec-detail-customer">Riwayat Pesanan</p>
+        <p class="title-sec-profile">Riwayat Pesanan</p>
         <div class="container-sec2-detail-customer">
             @foreach ($formattedOrders as $orderGroup)
                 <div class="con-sec2-detail-customer">
                     <p class="date-history-detail-customer">{{ $orderGroup['date'] }}</p>
                     <div class="table-detail-customer">
                         <div class="head-table-con-sec2">
-                            <p class="txt-kode-pemesanan">Kode Pesanan :{{ $orderGroup['order_id'] }}</p>
+                            <p class="txt-kode-profile">Kode Pesanan :{{ $orderGroup['order_id'] }}</p>
                             <div class="txt-completed">
                                 <p class="txt-completed">{{ ucfirst($orderGroup['data'][0]['status']) }}</p>
                             </div>
                         </div>
                         @foreach ($orderGroup['data'] as $order)
-                            <table id="detail-customer">
+                            <table id="detail-profile">
                                 <tr>
                                     <td class="td-menu"><img src="/img_menu/card1-sec2.png" alt="">{{ $order['menu_name'] }}</td>
                                     <td>{{ $order['date'] }}</td>
@@ -128,15 +128,15 @@
     </div>
 
     <div class="sec3-detail-customer">
-        <p class="title-sec-detail-customer">Alamat</p>
+        <p class="title-sec-profile">Alamat</p>
         <div class="container-sec3-detail-customer">
             @foreach ($addresses as $address)    
-                <div class="con-alamat-detail-customer">
-                    <div class="name-number-detail-customer">
+                <div class="con-alamat-detail-profile">
+                    <div class="name-number-detail-profile">
                         <p>{{ $address->full_name }}</p>
                         <p>(+62) {{ $address->phone_address }}</p>
                     </div>
-                    <p class="address-detail-customer">{{ $address->complete_address }}</p>
+                    <p class="address-detail-profile">{{ $address->complete_address }}</p>
                     <a href="/ubah_alamat/{{ $address->id }}">Ubah</a>
                 </div>
             @endforeach

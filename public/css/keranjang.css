@@ -215,7 +215,7 @@
   }
 
   .price-con-total-bskt {
-    max-width: 90px;
+    max-width: 100px;
     margin-right: 35px;
     text-align: center;
     font-size: 16px;
@@ -230,3 +230,138 @@
     background-color: #F46A45;
     cursor: pointer;
   }
+
+/* responsive-tab */
+@media only screen and (max-width: 835px) {
+  .section-bskt{
+    padding: 30px 30px;
+  }
+}
+/* responsive-tab */
+
+/* responsive-phone */
+@media only screen and (max-width: 480px){
+  .section-bskt{
+    gap: 20px;
+  }
+
+  .title-keranjang{
+    font-size: 18px;
+  }
+
+  .head-bskt{
+    padding: 8px 20px 8px 20px;
+    font-size: 14px;
+  }
+
+  .head-bskt-con{
+    gap: 20px;
+  }
+
+  .head-bskt-con p{
+    font-size: 12px;
+  }
+
+  .item {
+    padding: 8px 0px 8px 10px;
+    height: 86px;
+  }
+
+  .left-list-bskt{
+    align-items: center;
+    gap: 12px;
+  }
+  .right-list-bskt{
+    gap: 12px;
+  }
+
+  .image {
+    width: 60px;
+    height: 60px;
+  }
+
+  .description {
+    
+    gap: 5px;
+    width: 60px;
+  }
+
+  .title-menu-bskt{
+    font-size: 12px;
+  }
+
+  .dsc-menu-bskt{
+    font-size: 8px;
+  }
+
+  .price-con-bskt {
+    width: 40px;
+    padding-top: 27px;
+    margin-right: 18px;
+    font-size: 10px;
+  }
+
+  .quantity {
+    padding-top: 20px;
+    margin-right: 5px;
+  }
+  .quantity input {
+    -webkit-appearance: none;
+    border: none;
+    text-align: center;
+    width: 15px;
+    font-size: 12px;
+    color: #43484D;
+    font-weight: 300;
+  }
+   
+  button[class*=btn-bskt] {
+    width: 18px;
+    height: 18px;
+    background-color: #E1E8EE;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .minus-btn img {
+    margin-bottom: 3px;
+  }
+  .plus-btn img {
+    margin-top: 2px;
+  }
+
+  .delete-item-cart{
+    font-size: 10px;
+  }
+
+  .sec-total-bskt{
+    padding: 5px;
+  }
+
+  .right-total-bskt{
+    display: none;
+  }
+
+  .left-total-bskt{
+   display: flex; 
+   justify-content: flex-end;
+  }
+
+  .left-total-bskt p{
+    width: 130px;
+    font-size: 8px;
+  }
+
+  .price-con-total-bskt {
+    max-width: 80px;
+    margin-right: 5px;
+    font-size: 10px;
+  }
+
+  .btn-checkout{
+    padding: 5px 10px;
+    font-size: 8px;
+  }
+}
+/* responsive-phone */
