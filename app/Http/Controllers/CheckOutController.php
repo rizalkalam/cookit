@@ -212,7 +212,7 @@ class CheckOutController extends Controller
         Cart::where('user_id', auth()->user()->id)->delete();
 
         // Prepare WhatsApp message
-        $phoneNumber = '6281295822119'; // Nomor telepon yang akan dikirimi pesan
+        $phoneNumber = \App\Models\User::first()->phone;; // Nomor telepon yang akan dikirimi pesan
 
         // Format chat
         $message = "=== Data Customer ===\n";
