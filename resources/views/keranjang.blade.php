@@ -161,6 +161,14 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
+        // refresh
+        window.addEventListener('pageshow', function(event) {
+                    if (event.persisted) {
+                        window.location.reload();
+                    }
+                });
+        // refresh
+
          function updatePrice($quantityInput) {
             var $item = $quantityInput.closest('.item');
             var unitPrice = parseFloat($item.find('.unit-price-bskt').data('unit-price'));
