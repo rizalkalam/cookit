@@ -22,6 +22,7 @@
                 @endforeach
             </div>
             <div class="sec-button-bundling">
+                @auth
                 <form action="/cart/bundling_create" method="POST">
                     @csrf
                     <input type="hidden" name="bundling_id" value="{{ $input_data->id }}">
@@ -29,9 +30,21 @@
                     <input type="hidden" name="bundling_price" value="{{ $input_data->price }}">
                     <button type="submit" class="btn-order-bundling">Order Now Only Rp30.000</button>
                 </form>
+                @else
+                <button type="button" class="btn-bundle-guest btn-order-bundling">Order Now Only Rp30.000</button>
+                @endauth
             </div>
         </div>
     </div>
+
+    {{-- modal-popup-guest --}}
+    <div id="guestModal" style="display: none;">
+        <div id="editTosentModal" class="reveal-modal-tutorial">
+            <span class="btn-close-modal" id="close-modal-guest"><img src="/assets/close-modal.svg" alt="Close"></span>
+            <p>Silahkan login terlebih dahulu</p>
+        </div>
+    </div>
+    {{-- modal-popup-guest --}}
 
     {{-- modal-popup-cart --}}
     <div id="successModalBundling" style="display: none;">
@@ -46,6 +59,17 @@
     {{-- modal-popup-cart --}}
 
     <script>
+        $(document).ready(function() {
+            // Menampilkan modal ketika tombol diklik
+            $('.btn-bundle-guest').on('click', function() {
+                $('#guestModal').show();
+            });
+
+            // Menutup modal ketika tombol close diklik
+            $('#close-modal-guest').on('click', function() {
+                $('#guestModal').hide();
+            });
+        });
        $(document).ready(function() {
             @if(session('show_modal'))
                 $('#successModalBundling').show();

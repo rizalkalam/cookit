@@ -1,11 +1,10 @@
 @extends('layouts.main')
 @section('content')
     <div class="container-home">
-        <p class="title-home">[tawaran paket 
-            yang lagi live]</p>
+        <p class="title-home">{{ $banner->name }}</p>
         <p class="dsc-home">CookIt For Good Eat!</p>
-        <a href="">
-            <button class="btn-mulai-sekarang">CookIt for Rp.20k</button>
+        <a href="/detail/{{ $banner->name }}">
+            <button class="btn-mulai-sekarang">CookIt for Rp{{ number_format($banner->price, 0, ',', '.') }}</button>
         </a>
     </div>
 
@@ -133,6 +132,7 @@
                         </p>
                         <div class="btn-additional-section">
                             <p class="left-dsc-bundle">only</p>
+                            @auth  
                             <form action="/cart/bundling_create" method="POST">
                                 @csrf
                                 <input type="hidden" name="bundling_id" value="{{ $snackattack->id }}">
@@ -140,6 +140,9 @@
                                 <input type="hidden" name="bundling_price" value="{{ $snackattack->price }}">
                                 <button type="submit" class="btn-price-additional-section">Rp{{ number_format($snackattack->price, 0, ',', '.') }}</button>
                             </form>
+                            @else
+                            <button class="btn-bundle-guest btn-price-additional-section">Rp{{ number_format($snackattack->price, 0, ',', '.') }}</button>
+                            @endauth
                         </div>
                     </div>
                     <div class="line-gap-additional-section"></div>
@@ -163,6 +166,7 @@
                         </p>
                         <div class="btn-additional-section">
                             <p class="right-dsc-bundle">only</p>
+                            @auth    
                             <form action="/cart/bundling_create" method="POST">
                                 @csrf
                                 <input type="hidden" name="bundling_id" value="{{ $cooktheday->id }}">
@@ -170,6 +174,9 @@
                                 <input type="hidden" name="bundling_price" value="{{ $cooktheday->price }}">
                                 <button type="submit" class="btn-price-additional-section">Rp{{ number_format($cooktheday->price, 0, ',', '.') }}</button>
                             </form>
+                            @else
+                            <button class="btn-bundle-guest btn-price-additional-section">Rp{{ number_format($cooktheday->price, 0, ',', '.') }}</button>
+                            @endauth
                         </div>
                     </div>
                     <div class="line-gap-additional-section"></div>
@@ -193,6 +200,7 @@
                         </p>
                         <div class="btn-additional-section">
                             <p class="left-dsc-bundle">only</p>
+                            @auth    
                             <form action="/cart/bundling_create" method="POST">
                                 @csrf
                                 <input type="hidden" name="bundling_id" value="{{ $cookitonce->id }}">
@@ -200,6 +208,9 @@
                                 <input type="hidden" name="bundling_price" value="{{ $cookitonce->price }}">
                                 <button type="submit" class="btn-price-additional-section">Rp{{ number_format($cookitonce->price, 0, ',', '.') }}</button>
                             </form>
+                            @else
+                            <button class="btn-bundle-guest btn-price-additional-section">Rp{{ number_format($cookitonce->price, 0, ',', '.') }}</button>
+                            @endauth
                         </div>
                     </div>
                     <div class="line-gap-additional-section"></div>
@@ -223,6 +234,7 @@
                         </p>
                         <div class="btn-additional-section">
                             <p class="right-dsc-bundle">only</p>
+                            @auth    
                             <form action="/cart/bundling_create" method="POST">
                                 @csrf
                                 <input type="hidden" name="bundling_id" value="{{ $adorableweek->id }}">
@@ -230,6 +242,9 @@
                                 <input type="hidden" name="bundling_price" value="{{ $adorableweek->price }}">
                                 <button type="submit" class="btn-price-additional-section">Rp{{ number_format($adorableweek->price, 0, ',', '.') }}</button>
                             </form>
+                            @else
+                            <button class="btn-bundle-guest btn-price-additional-section">Rp{{ number_format($adorableweek->price, 0, ',', '.') }}</button>
+                            @endauth
                         </div>
                     </div>
                     <div class="line-gap-additional-section"></div>
@@ -374,6 +389,15 @@
     </div> --}}
     {{-- end-content-section-3 --}}
 
+    {{-- modal-popup-guest --}}
+    <div id="guestModal" style="display: none;">
+        <div id="editTosentModal" class="reveal-modal-tutorial">
+            <span class="btn-close-modal" id="close-modal-guest"><img src="/assets/close-modal.svg" alt="Close"></span>
+            <p>Silahkan login terlebih dahulu</p>
+        </div>
+    </div>
+    {{-- modal-popup-guest --}}
+
     {{-- modal-popup-cart --}}
     <div id="successModal" style="display: none;">
         <div id="editTosentModal" class="reveal-modal-tutorial">
@@ -390,7 +414,18 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 
     <script>
-         $(document).ready(function() {
+        $(document).ready(function() {
+            // Menampilkan modal ketika tombol diklik
+            $('.btn-bundle-guest').on('click', function() {
+                $('#guestModal').show();
+            });
+
+            // Menutup modal ketika tombol close diklik
+            $('#close-modal-guest').on('click', function() {
+                $('#guestModal').hide();
+            });
+        });
+        $(document).ready(function() {
             @if(session('show_modal'))
                 $('#successModal').show();
             @endif

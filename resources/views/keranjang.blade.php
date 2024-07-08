@@ -43,14 +43,14 @@
                                     <div class="end-con-list-bskt">
                                         <div class="quantity">
                                             <button class="minus-btn-bskt" type="button" name="button" data-cart-id="{{ $item->id }}">
-                                                <iconify-icon icon="ic:baseline-minus" width="20"></iconify-icon>
+                                                <iconify-icon icon="ic:baseline-minus" width="12"></iconify-icon>
                                             </button>
                                             <input type="text" name="quantities[{{ $item->id }}]" value="{{ $item->qty }}">
                                             <button class="plus-btn-bskt" type="button" name="button" data-cart-id="{{ $item->id }}">
-                                                <iconify-icon icon="material-symbols:add" width="20"></iconify-icon>
+                                                <iconify-icon icon="material-symbols:add" width="12"></iconify-icon>
                                             </button>
                                         </div>
-                                        <a href="" class="delete-item" id="btn-delete-cart" data-id="{{ $item->id }}">Delete</a>
+                                        <a href="" class="delete-item-cart" id="btn-delete-cart" data-id="{{ $item->id }}">Delete</a>
                                     </div>
                                 </div>
                             </div>
@@ -126,8 +126,8 @@
                 <p>Total (<span class="total-items">{{ $cart_products->sum('qty') + $cart_bundlings->sum('qty') }}</span> Produk)</p>
                 <div class="price-con-total-bskt">Rp.<span class="total-price">
                     {{ number_format(
-                        $cart_products->sum(function($item) { return $item->menu->price * $item->qty; }) +
-                        $cart_bundlings->sum('total_price'), 0, ',', '.') }}
+                        ($cart_products ? $cart_products->sum(function($item) { return $item->menu->price * $item->qty; }) : 0) +
+                        ($cart_bundlings ? $cart_bundlings->sum('total_price') : 0), 0, ',', '.') }}
                 </span></div>
                 <a href="/check_out">
                     <button type="submit" class="btn-checkout">Check Out</button>

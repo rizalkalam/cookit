@@ -53,7 +53,7 @@ Route::get('/alamat_saya', [AddressUserController::class, 'index']);
 Route::post('/change/my_address', [AddressUserController::class, 'update_selected_address']);
 
 // route profile
-Route::get('/profil_saya', [ProfileController::class, 'profile_saya']);
+Route::get('/profil_saya', [ProfileController::class, 'profile_saya'])->middleware('auth');
 Route::post('/update_profile', [ProfileController::class, 'update_profile']);
 
     // address user

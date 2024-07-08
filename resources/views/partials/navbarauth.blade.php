@@ -31,7 +31,7 @@
                 <div class="dropdown-content">
                     <a class="option-profile" href="/profil_saya">Akun Saya</a>
                     @if (Auth::user()->hasRole('admin'))
-                    <a class="option-profile" href="/dashboard/produk">Dashboard</a>
+                    <a class="option-profile" href="/dashboard/home">Dashboard</a>
                     @endif
                     <form action="/logout" method="post">
                         @csrf
