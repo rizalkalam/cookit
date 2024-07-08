@@ -216,7 +216,10 @@ Route::get('/verified', function() {
 })->middleware(['auth', 'verified']);
 
 // payment
-Route::post('/order', [CheckOutController::class, 'payment']);
+// Route::post('/order', [CheckOutController::class, 'payment']);
+
+// send oreder wa.me
+Route::post('/order', [CheckOutController::class, 'payment_link']);
 
 
 // Route::post('/update_profile/{id}', [AuthController::class, 'update_profile']);

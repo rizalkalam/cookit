@@ -9,6 +9,7 @@ use App\Models\AddressUser;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 
 class CheckOutController extends Controller
@@ -167,5 +168,66 @@ class CheckOutController extends Controller
             'orders' => $orders,
             'addres' => $address
         ]);
+    }
+
+    public function payment_link(Request $request)
+    {
+        $order_id = 'ORD-' . md5(uniqid(rand(), true));
+        $carts = Cart::where('user_id', auth()->user()->id)->get();
+        $address_id = auth()->user()->address_id;
+        $user = Auth::user();
+
+        // Initialize total price and order details string
+        $totalPrice = 0;
+        $orderDetails = "";
+
+        // Process each cart item
+        foreach ($carts as $cart) {
+            $menuName = $cart->menu->name ?? $cart->bundling->bundling_name;
+            $menuType = $cart->menu->type->name_type ?? ' ';
+            $menuDsc = $cart->menu->description ?? ' ';
+            $menuPrice = $cart->menu->price ?? $cart->bundling->price;
+            $qty = $cart->qty;
+
+            $orderDetails .= "{$menuName} ({$qty} x Rp " . number_format($menuPrice, 0, ',', '.') . ")\n";
+
+            $order = new Order();
+            $order->order_id = $order_id;
+            $order->user_id = auth()->id();
+            $order->menu_name = $menuName;
+            $order->menu_type = $menuType;
+            $order->menu_dsc = $menuDsc;
+            $order->qty = $qty;
+            $order->total_price = $qty * $menuPrice;
+            $order->status = 1;
+            $order->address_user_id = $address_id;
+            $order->date = Carbon::now();
+            $order->save(); // Simpan order ke database
+
+            // Calculate total price
+            $totalPrice += $qty * $menuPrice;
+        }
+
+        // Hapus semua cart setelah loop selesai
+        Cart::where('user_id', auth()->user()->id)->delete();
+
+        // Prepare WhatsApp message
+        $phoneNumber = '6281295822119'; // Nomor telepon yang akan dikirimi pesan
+
+        // Format chat
+        $message = "=== Data Customer ===\n";
+        $message .= " - Nama : {$user->full_name}\n";
+        $message .= " - Email : {$user->email}\n";
+        $message .= " - Alamat : {$user->addres->complete_address}\n";
+        $message .= " - No Wa : {$user->phone}\n";
+        $message .= "=== Data Pesanan ===\n";
+        $message .= $orderDetails;
+        $message .= "TOTAL : Rp " . number_format($totalPrice, 0, ',', '.');
+
+        // Membuat URL WhatsApp
+        $waLink = "https://wa.me/$phoneNumber?text=" . urlencode($message);
+
+        // Redirect ke URL WhatsApp
+        return redirect($waLink);
     }
 }
