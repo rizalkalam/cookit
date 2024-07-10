@@ -28,4 +28,11 @@ class Order extends Model
     {
         return $this->belongsTo(AddressUser::class, 'address_user_id');
     }
+
+    public function scopeFilter($query, array $filters)
+    {
+        $query->when($filters['date']??false, function($query, $date){
+            return $query->where('date', $date);
+        });
+    }
 }
