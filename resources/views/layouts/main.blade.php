@@ -48,11 +48,14 @@
     />
     <meta
       property="og:image"
-      content="https://azizwira.github.io/otomotif1/assets/promo/img-promo1.jpg"
+      {{-- content="https://azizwira.github.io/otomotif1/assets/promo/img-promo1.jpg" --}}
     />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet">
+
+     <!-- Include Bootstrap CSS -->
+     {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"> --}}
     <!--  -->
 </head>
 <body>

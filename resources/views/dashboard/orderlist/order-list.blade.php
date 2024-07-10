@@ -65,7 +65,7 @@
     </div>
 </div>
 {{-- end-sidebar --}}
-
+<form method="GET" action="/dashboard/order_list">
 <div class="dashboard-content">
     <p class="title-dashboard">Order Lists</p>
     <div class="head-order-list">
@@ -73,34 +73,32 @@
             <iconify-icon icon="akar-icons:filter" width="28"></iconify-icon>
         </div>
         <div class="filter-by">
-            <p>Filter By</p>
+            <p>Filter</p>
         </div>
-        <div class="input-filter-orderlist">
+        <div class="reset-filter">
+            <input type="date" name="date" value="{{ request('date') }}">
+            <button type="submit">Filter data</button>
+        </div>
+        {{-- <div class="input-filter-orderlist">
             <select name="languages" id="lang">
-                <option value="javascript">JavaScript</option>
-                <option value="php">PHP</option>
-                <option value="java">Java</option>
+                <option value="javascript">Date</option>
+                <option value="javascript">Oldest</option>
+                <option value="php">Latest</option>
             </select>
-        </div>
-        <div class="input-filter-orderlist">
+        </div> --}}
+        {{-- <div class="input-filter-orderlist">
             <select name="languages" id="lang">
-                <option value="javascript">JavaScript</option>
-                <option value="php">PHP</option>
-                <option value="java">Java</option>
-            </select>            
-        </div>
-        <div class="input-filter-orderlist">
-            <select name="languages" id="lang">
-                <option value="javascript">JavaScript</option>
-                <option value="php">PHP</option>
-                <option value="java">Java</option>
+                <option value="javascript">Order Status</option>
+                <option value="php">Completed</option>
+                <option value="java">In Delivery</option>
             </select>
         </div>
         <div class="reset-filter">
             <iconify-icon icon="carbon:reset" width="20"></iconify-icon>
             <p>Reset Filter</p>
-        </div>
-    </div>
+        </div> --}}
+</div>
+</form>
     <div class="warp-orderlist-table">
         <table id="orderlist">
             <thead>
@@ -129,7 +127,7 @@
                       <td>{{ $orderlist->order_id }}</td>
                       <td>{{ $orderlist->user->name }}</td>
                       <td>{{ $orderlist->addres->complete_address }}</td>
-                      <td>{{ \Carbon\Carbon::parse($orderlist->date)->format('d-m-Y') }}</td>
+                      <td>{{ \Carbon\Carbon::parse($orderlist->date)->format('d F Y') }}</td>
                       <td>{{ $orderlist->menu_type }}</td>
                       <td>
                         @if ($orderlist->status === 'on_processed')
@@ -152,11 +150,13 @@
                       </td>
                     </tr>
                 @endforeach
-                @endif
-            </tbody>
-        </table>
+                  <!-- Pagination Links -->
+                  @endif
+                </tbody>
+            </table>
+            {!! $data->links('vendor.pagination.default') !!}
         <div class="line-gap-orderlist"></div>
-        <p class="showing-txt-orderlist">Showing 1-09 of 78</p>
+        {{-- <p class="showing-txt-orderlist">Showing 1-09 of 78</p> --}}
     </div>
 </div>
 

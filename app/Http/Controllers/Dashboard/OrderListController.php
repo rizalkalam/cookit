@@ -12,11 +12,15 @@ class OrderListController extends Controller
 {
     public function index()
     {
-        $data = Order::get();
-
+        $data = Order::filter(request(['date']))->paginate(10);
+        
         return view('dashboard.orderlist.order-list', [
             'data' => $data
         ]);
+        
+        // return response()->json([
+        //     'data'=>$data
+        // ]);
     }
 
     public function detail($id)
