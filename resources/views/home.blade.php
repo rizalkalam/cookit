@@ -98,7 +98,7 @@
                         <div class="dsc-card-section-2">
                             <p class="title-dsc-card-sec2">{{ $menu->name }}</p>
                             <p class="txt-flavor-sec2">Manis</p>
-                            <p class="price-sec2">${{ $menu->price }}</p>
+                            <p class="price-sec2">Rp{{ number_format($menu->price, 0, ',', '.') }}</p>
                             <a href="/detail/{{ $menu->name }}">
                                 <button class="btn-ordernow-sec2">Order Now</button>
                             </a>
