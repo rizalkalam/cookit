@@ -16,19 +16,19 @@ class BundlingSeeder extends Seeder
         collect([
             [
                 'bundling_name' => 'Snack Attack',
-                'price' => 99000,
+                'price' => 0,
             ],
             [
                 'bundling_name' => 'Cook The Day',
-                'price' => 99000,
+                'price' => 0,
             ],
             [
                 'bundling_name' => 'Cook It Once',
-                'price' => 99000,
+                'price' => 0,
             ],
             [
                 'bundling_name' => 'Adorable Week',
-                'price' => 99000,
+                'price' => 0,
             ],
         ])->each(function ($bundling){
             DB::table('bundlings')->insert($bundling);
