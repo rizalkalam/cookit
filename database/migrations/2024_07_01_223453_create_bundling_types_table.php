@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name_type');
             $table->foreignId('bundling_id')->nullable();
-            $table->foreignId('menu_id');
-            $table->integer('qty');
+            $table->foreignId('menu_id')->nullable();
+            $table->integer('qty')->nullable();
             $table->enum('status_bundling', ['on_bundling', 'off_bundling'])->default('off_bundling');
             $table->timestamps();
         });

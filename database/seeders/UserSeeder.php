@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
         $admin = User::create([
             'full_name' => 'Admin User',
             'name' => 'cookitadmin',
-            'phone' => '6285159064429', //nomor kak nala
+            'phone' => '6289697166633', //nomor target
             'email' => 'cookitadmin@cookit.com',
             'password' => bcrypt('cookitadmin8989'),
             'address_id' => null,

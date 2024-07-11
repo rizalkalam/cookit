@@ -27,7 +27,7 @@
     
                     <input type="text" name="name" id="name" value="{{ old('name', $profile->name) }}" required />
                     {{-- <p>@tess</p> --}}
-                    <input type="text" name="phone" id="phone" value="{{ old('phone', $profile->phone) }}" required />
+                    <input type="text" placeholder="masukkan format nomor (62XXXXXXXXXXX)" name="phone" id="phone" value="{{ old('phone', $profile->phone) }}" required />
                     <input type="text" name="email" id="email" value="{{ old('email', $profile->email) }}" required />
                 </div>
             @endforeach

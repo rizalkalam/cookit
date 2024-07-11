@@ -1,10 +1,10 @@
 @extends('layouts.main')
 @section('content')
     <div class="container-home">
-        <p class="title-home">{{ $banner->name }}</p>
+        <p class="title-home">{{ $banner->name ?? '[Tawaran Produk Live]' }}</p>
         <p class="dsc-home">CookIt For Good Eat!</p>
-        <a href="/detail/{{ $banner->name }}">
-            <button class="btn-mulai-sekarang">CookIt for Rp{{ number_format($banner->price, 0, ',', '.') }}</button>
+        <a href="/detail/{{ $banner->name ?? '#' }}">
+            <button class="btn-mulai-sekarang">CookIt for Rp{{ number_format($banner->price ?? '0' , 0, ',', '.') }}</button>
         </a>
     </div>
 

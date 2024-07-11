@@ -4,9 +4,10 @@
         <p class="title-product">{{ $title }}</p>
     </div>
     <div class="section-content-bundling">
+        @if (isset($bundlings) && !$bundlings->isEmpty())
         <div class="con-list-bundling">
             <div class="container-bundling">
-                @foreach ($bundlings as $item)    
+                @foreach ($bundlings as $item)  
                 <div class="card-bundling">
                     <div class="img-bundling">
                         <img src="/{{ $item->menu->img_menu }}" alt="">
@@ -34,7 +35,12 @@
                 <button type="button" class="btn-bundle-guest btn-order-bundling">Order Now Only Rp30.000</button>
                 @endauth
             </div>
-        </div>
+        </div>    
+        @else
+        <div class="con-list-bundling">
+            <h3>data kosong</h3>
+        </div>    
+        @endif
     </div>
 
     {{-- modal-popup-guest --}}
