@@ -14,16 +14,18 @@ class RevenueController extends Controller
     {
         $yesterday = Carbon::yesterday();
         $users = User::whereNot('id', 1)->get();
-        $user_count = count($users);
-        $users_yesterday = User::whereNot('id', 1)
-        ->whereDate('created_at', $yesterday)
-        ->count();
+        $user_count = $users->count();
+        $users_yesterday_count = User::whereNot('id', 1)
+            ->whereDate('created_at', $yesterday)
+            ->count();
+
         // Hitung persentase kenaikan
-        if ($users_yesterday > 0) {
-            $user_percentage_increase = (($users - $users_yesterday) / $users_yesterday) * 100;
+        if ($users_yesterday_count > 0) {
+            $user_percentage_increase = (($user_count - $users_yesterday_count) / $users_yesterday_count) * 100;
         } else {
             $user_percentage_increase = 0; // Jika tidak ada data kemarin, persentase kenaikan dianggap 0
         }
+
         $user_percentage_increase_formatted = number_format($user_percentage_increase, 1);
 
 

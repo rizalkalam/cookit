@@ -72,56 +72,56 @@
             <div class="content-total-customer">
                 <div class="content-count-total-customer">
                     <p>Total Customer</p>
-                    <p>{{ $user_count }}</p>
+                    <p>{{ $user_count ?? '0' }}</p>
                 </div>
                 <div class="icon-total-customer">
                     <iconify-icon icon="majesticons:users" width="28"></iconify-icon>
                 </div>
             </div>
             <div class="dsc-total-customer">
-                <p>{{ $user_percentage_increase }}% Up from yesterday</p>
+                <p>{{ $user_percentage_increase ?? '0' }}% Up from yesterday</p>
             </div>
         </div>
         <div class="con-total-customer">
             <div class="content-total-customer">
                 <div class="content-count-total-customer">
                     <p>Total Order</p>
-                    <p>{{ $order_count }}</p>
+                    <p>{{ $order_count ?? '0' }}</p>
                 </div>
                 <div class="icon-total-customer">
                     <iconify-icon icon="ri:box-3-fill" width="28"></iconify-icon>
                 </div>
             </div>
             <div class="dsc-total-customer">
-                <p>{{ $order_percentage_increase }}% Up from yesterday</p>
+                <p>{{ $order_percentage_increase ?? '0' }}% Up from yesterday</p>
             </div>
         </div>
         <div class="con-total-customer">
             <div class="content-total-customer">
                 <div class="content-count-total-customer">
                     <p>Total Sales</p>
-                    <p>{{ $order_completed_count }}</p>
+                    <p>{{ $order_completed_count ?? '0' }}</p>
                 </div>
                 <div class="icon-total-customer">
                     <iconify-icon icon="octicon:graph-16" width="28"></iconify-icon>
                 </div>
             </div>
             <div class="dsc-total-customer">
-                <p>{{ $completed_percentage_increase }}% Up from yesterday</p>
+                <p>{{ $completed_percentage_increase ?? '0' }}% Up from yesterday</p>
             </div>
         </div>
         <div class="con-total-customer">
             <div class="content-total-customer">
                 <div class="content-count-total-customer">
                     <p>Total Canceled</p>
-                    <p>{{ $order_rejected_count }}</p>
+                    <p>{{ $order_rejected_count ?? '0' }}</p>
                 </div>
                 <div class="icon-total-customer">
                     <iconify-icon icon="material-symbols:history" width="28"></iconify-icon>
                 </div>
             </div>
             <div class="dsc-total-customer">
-                <p>{{ $rejected_percentage_increase }}% Up from yesterday</p>
+                <p>{{ $rejected_percentage_increase ?? '0' }}% Up from yesterday</p>
             </div>
         </div>
     </div>
