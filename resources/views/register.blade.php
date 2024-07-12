@@ -34,23 +34,27 @@
                 @csrf
                 <div class="input-form-register">
                     <p>Full name: </p>
-                    <input type="text" name="full_name" id="full_name" class="input-reg" required />
+                    <input type="text" name="full_name" id="full_name" class="input-reg" placeholder="nama lengkap" required />
                 </div>
                 <div class="input-form-register">
                     <p>Username:</p>
-                    <input type="text" name="name" id="name" class="input-reg" required />
+                    <input type="text" name="name" id="name" class="input-reg" placeholder="nama pengguna" required />
                 </div>
                 <div class="input-form-register">
                     <p>Email:</p>
-                    <input type="email" name="email" id="email" class="input-reg" required />
+                    <input type="email" name="email" id="email" class="input-reg" placeholder="masukkan email google anda" required />
                 </div>
                 <div class="input-form-register">
                     <p>Password:</p>
-                    <input type="password" name="password" id="password" class="input-reg" required />
+                    <input type="password" name="password" id="input_pw_reg" class="input-reg" required />
                 </div>
                 <div class="input-form-register">
                     <p>Confirm Password:</p>
-                    <input type="confirm-password" name="confirm-password" id="confirm-password" class="input-reg" required />
+                    <input type="password" name="confirm-password" id="confirm_pw_reg" class="input-reg" required />
+                </div>
+                <div class="show-password-register">
+                    <input type="checkbox" onclick="visiblePassword()">
+                    <p>show password</p>
                 </div>
                 <button class="btn-create-account" id="confirmPassword" type="submit">Register</button>
                 <div class="txt-create-account">
@@ -85,6 +89,20 @@
 </footer>
 
 <script>
+    function visiblePassword() {
+    var x = document.getElementById("input_pw_reg");
+    var y = document.getElementById("confirm_pw_reg");
+    
+        if (x.type === "password" && y.type === "password") {
+            x.type = "text";
+            y.type = "text";
+        } else {
+            x.type = "password";
+            y.type = "password";
+        }
+    }
+
+
     function validatePassword() {
         var password = document.getElementById("passsword").value;
         var confirmPassword = document.getElementById("confirm-password").value;

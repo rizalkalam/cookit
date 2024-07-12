@@ -103,22 +103,46 @@
     color: rgba(0, 0, 0, 0.5);
 }
 
-.img-week-right{
+.con-img{
     width: 650px;
-    height: 100%;
     border-radius: 0px 12px 12px 0px;
+    position: relative;
+    overflow: hidden;
 }
 
-.img-week-left{
-    width: 650px;
-    height: 100%;
+.con-img-left{
     border-radius: 12px 0px 0px 12px;
+}
+
+.con-img img{
+    width: 100%;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 
 .section-weekly{
     display: flex;
     border-radius: 12px;
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.section-weekly-null{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    padding: 100px 0px;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.section-weekly-null h3{
+
 }
 
 .left-con-week{
@@ -173,9 +197,9 @@
             padding: 0px 28px 18px 28px;
         }
     
-        /* .section-weekly{
-            
-        } */
+        .section-weekly{
+            height: 440px;
+        }   
     
         #right{
             display: flex;
@@ -200,10 +224,27 @@
         }
     
         .con-img{
+            width: 100%;
+            height: 100%;
+            border-radius: 12px 12px 0px 0px;
             position: relative;
             overflow: hidden;
-            height: 220px;
-            border-radius: 8px 8px 0px 0px;
+        }
+        
+        .con-img-left{
+            border-radius: 0;
+        }
+        
+        .con-img img{
+            width: 100%;
+            height: auto;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
         }
     
         .img-week-right,
@@ -225,6 +266,10 @@
 
 /* responsive-phone */
 @media only screen and (max-width: 480px){
+
+    .container-weekly{
+    }
+
     .head-weekly{
         display: flex;
         flex-direction: column;
@@ -259,9 +304,9 @@
         padding: 0px 28px 18px 28px;
     }
 
-    /* .section-weekly{
-        
-    } */
+    .section-weekly{
+        height: 340px;   
+    }
 
     #right{
         display: flex;
@@ -286,10 +331,27 @@
     }
 
     .con-img{
+        width: 100%;
+        height: 100%;
+        border-radius: 12px 12px 0px 0px;
         position: relative;
         overflow: hidden;
-        height: 220px;
-        border-radius: 8px 8px 0px 0px;
+    }
+    
+    .con-img-left{
+        border-radius: 0;
+    }
+    
+    .con-img img{
+        width: 100%;
+        height: auto;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
     }
 
     .img-week-right,

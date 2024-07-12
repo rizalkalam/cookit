@@ -6,18 +6,31 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CookItUp</title>
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/modal-form.css">
     <link rel="stylesheet" href="/css/auth.css">
     <link rel="stylesheet" href="/css/profile.css">
     <link rel="stylesheet" href="/css/home.css">
     <link rel="stylesheet" href="/css/weekly_menu.css">
+    <link rel="stylesheet" href="/css/bundling.css">
     <link rel="stylesheet" href="/css/product.css">
+    <link rel="stylesheet" href="/css/keranjang.css">
+    <link rel="stylesheet" href="/css/check-out.css">
+    <link rel="stylesheet" href="/css/alamat.css">
+    <link rel="stylesheet" href="/css/rincian-pesanan.css">
     <link rel="stylesheet" href="/css/dashboard-home.css">
     <link rel="stylesheet" href="/css/dashboard-product.css">
+    <link rel="stylesheet" href="/css/dashboard-detail-paket.css">
     <link rel="stylesheet" href="/css/dashboard-edit-product.css">
+    <link rel="stylesheet" href="/css/dashboard-add-menu.css">
     <link rel="stylesheet" href="/css/dashboard-edit-menu.css">
+    <link rel="stylesheet" href="/css/dashboard-edit-live-to-promote.css">
+    <link rel="stylesheet" href="/css/dashboard-bundling.css">
+    <link rel="stylesheet" href="/css/dashboard-archived-menu.css">
     <link rel="stylesheet" href="/css/dashboard-orderlist.css">
     <link rel="stylesheet" href="/css/dashboard-review.css">
     <link rel="stylesheet" href="/css/dashboard-customer.css">
+    <link rel="stylesheet" href="/css/dashboard-detail-customer.css">
+    <link rel="stylesheet" href="/css/dashboard-db.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
 
@@ -35,9 +48,14 @@
     />
     <meta
       property="og:image"
-      content="https://azizwira.github.io/otomotif1/assets/promo/img-promo1.jpg"
+      {{-- content="https://azizwira.github.io/otomotif1/assets/promo/img-promo1.jpg" --}}
     />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet">
+
+     <!-- Include Bootstrap CSS -->
+     {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"> --}}
     <!--  -->
 </head>
 <body>

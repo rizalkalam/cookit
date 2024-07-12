@@ -33,8 +33,9 @@ a {
     top: 0;
     display: flex;
     align-items: center;
-    gap: 225px;
-    justify-content: center;
+    justify-content: space-between;
+    /* gap: 225px;
+    justify-content: center; */
     text-align: center;
     margin: 0 auto;
     padding: 10px 100px;
@@ -117,7 +118,27 @@ a {
     font-weight: 400;
 }
 
-.right-nav img{
+.shipping_cart{
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.shipping_cart img{
+    width: 100%;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.search{
     width: 16px;
     height: auto;
 }

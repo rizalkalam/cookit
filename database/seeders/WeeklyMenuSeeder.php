@@ -62,8 +62,8 @@ class WeeklyMenuSeeder extends Seeder
                 'price'=>'2300000',
                 'img_menu'=>'img_menu/card5-sec2.png',
             ],
-        ])->each(function ($barang){
-            DB::table('weekly_menus')->insert($barang);
+        ])->each(function ($weekly_menu){
+            DB::table('weekly_menus')->insert($weekly_menu);
         });
     }
 }

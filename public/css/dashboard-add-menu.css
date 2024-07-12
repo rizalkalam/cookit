@@ -1,0 +1,569 @@
+/* section-1 */
+.container-edit-menu{
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin: 20px 10px;
+    padding: 30px 40px;
+    border-radius: 25px;
+    background-color: #fff;
+}
+
+.head-sec-edit-menu{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+.txt-type{
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.head-sec-edit-menu-top{
+    display: flex;
+    justify-content: space-between;
+}
+
+.type-menu{
+    font-size: 28px;
+    font-weight: 500;
+}
+
+.btn-save-menu{
+    width: 70px;
+    padding: 9px 0px;
+    border: none;
+    background-color: #F46A45;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.btn-archive-menu{
+    width: 70px;
+    padding: 8px 0px;
+    border: none;
+    background-color: #fff;
+    color: black;
+    border: 1px solid #D5D5D5;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.sec1-edit-menu{
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: space-between;
+}
+
+.wrap-left-sec1-edit-menu{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.left-sec1-edit-menu{
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    position: relative;
+}
+
+.left-sec1-edit-menu img{
+    width: 250px;
+    height: auto;
+}
+
+.con-btn-sec1-edit-menu{
+    max-width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 83%;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(43, 48, 52, 80%);
+}
+
+.btn-upload-menu{
+    width: 125px;
+    padding: 12px 0px;
+    border: none;
+    background-color: transparent;
+    color: #43BE83;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+.btn-delete-menu{
+    width: 125px;
+    padding: 12px 0px;
+    border: none;
+    background-color: transparent;
+    color: #F93C65;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    border-width: 1px 1px 1px 0px;
+    border-style: solid;
+    border-color: black;
+}
+
+.con-price-dshb-menu{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 5px;
+    margin-bottom: 20px;
+}
+
+.con-price-dshb-menu input{
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 5px;
+    border: 1px solid rgba(43, 48, 52, 0.4);
+}
+
+.right-sec1-edit-menu{
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+}
+
+.input-form-edit-menu p{
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.input-form-edit-menu input{
+    width: 750px;
+    font-size: 16px;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #D5D5D5;
+    border-radius: 5px;
+}
+
+.input-form-edit-menu select{
+    width: 750px;
+    height: 40px;
+    border: 1px solid #D5D5D5;
+    border-radius: 5px;
+}
+
+/* end-section-1 */
+
+/* section-2 */
+.sec2-edit-menu{
+    margin-top: 50px;
+}
+
+.title-con-edit-menu{
+    font-size: 26px;
+    font-weight: 500;
+}
+
+.table-edit-menu-warp{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    margin-top: 10px;
+    
+}
+    /* table */
+    #edit-menu {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    #edit-menu th{
+        border-bottom: 1px solid #D5D5D5;
+    }
+
+    .select-material-menu{
+        width: 750px;
+        height: 40px;
+        border: 1px solid #D5D5D5;
+        border-radius: 5px;
+        padding: 0px 10px;
+    }
+
+    /* .input-name-edit-menu select{
+        width: 750px;
+        height: 40px;
+        border: 1px solid #D5D5D5;
+        border-radius: 5px;
+    } */
+
+    .input-qty-edit-menu{
+        width: 100px;
+        height: 65px;
+    }
+
+    .input-qty-edit-menu input{
+        width: 60%;
+        height: 60%;
+        border: 1px solid #D5D5D5;
+        border-radius: 5px;
+        padding: 0px 10px;
+    }
+
+    .input-unit-edit-menu{
+        width: 90px;
+        height: 65px;
+    }
+
+    .input-unit-edit-menu input{
+        width: 70%;
+        height: 60%;
+        border: 1px solid #D5D5D5;
+        border-radius: 5px;
+    }
+    
+    /* #edit-menu tr:hover {background-color: #ddd;} */
+    
+    #edit-menu th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #fff;
+        color: black;
+    }
+    /* end-table */
+
+.edit-to-sent{
+    margin-top: 3px;
+}
+
+.edit-to-sent iconify-icon{
+    color: #F46A45;
+}
+
+.add-to-sent{
+    display: flex;
+    align-self: flex-end;
+    margin-bottom: 20px;
+}
+    
+.icn-add-to-sent iconify-icon{
+    color: #979797;
+}
+/* end-section-2 */
+
+/* section-3 */
+.sec3-edit-menu{
+    display: flex;
+    flex-direction: column;
+}
+
+.container-sec3-edit-menu{
+    padding: 30px 0px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.con-left-sec3-edit-menu{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.con-right-sec3-edit-menu{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.input-form-sec3{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.input-nutrition{
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.input-nutrition p{
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.nutrition_value{
+    font-size: 16px;
+    height: 38px;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid #D5D5D5;
+}
+
+.input-nutrition select{
+    font-size: 12px;
+    width: 80px;
+    height: 38px;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid #D5D5D5;
+}
+
+.nutrition_unit{
+    font-size: 12px;
+    width: 80px;
+    height: 38px;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid #D5D5D5;
+}
+
+.line-gap-sec3{
+    height: auto;
+    border: 0.9px solid #D5D5D5;
+}
+
+.edit-nutrition{
+    display: flex;
+    align-self: flex-end;
+}
+/* end-section-3 */
+
+/* section-4 */
+.container-form-sec4-edit-menu{
+    padding: 30px 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.container-sec4-edit-menu{
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.list-img-sec4-edit-menu{
+    width: 80px;
+    height: 60px;
+    position: relative;
+    overflow: hidden;
+}
+
+.list-img-sec4-edit-menu img{
+    width: 100%;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.input-number-sec4{
+    width: 90px;
+    height: 38px;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid #D5D5D5;
+}
+
+.input-dsc-sec4{
+    max-width: 700px;
+    width: 700px; /* Lebar 100% agar mengisi container */
+    height: auto; /* Tinggi menyesuaikan dengan konten */
+    padding: 12px 18px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #D5D5D5;
+    box-sizing: border-box; /* Padding dan border dihitung sebagai bagian dari lebar dan tinggi */
+}
+
+.container-sec4-edit-menu-last{
+    width: 936px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.icn-add-data-sec4 {
+    
+}
+
+.icn-add-data-sec4 iconify-icon{
+    color: #979797;
+}
+
+/* end-section-4 */
+
+/* modal-edit-tosent */
+#modal-edit-tosent,
+#modal-add-tosent,
+#modal-delete-tosent,
+#modal-edit-tutorial,
+#modal-delete-tutorial {
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    top: 0;
+    position: fixed;
+    display: none;
+    background-color: rgba(22,22,22,0.5); /* complimenting your modal colors */
+}
+
+.reveal-modal-edit-tosent {
+    width: 42vw;
+    height: auto;
+    border-radius: 20px;
+    position: relative;
+    margin: 0 auto;
+    padding: 30px 70px;
+    top: 38%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+.reveal-modal-tosent input{
+    width: 40vh;
+    padding: 8px 5px;
+    border: 2px solid #202224;
+}
+
+.con-input-tosent{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.con-input-tosent label{
+    width: 80px;
+    padding: 8px 15px;
+    background-color: #F46A45;
+    color: #fff;
+    border: 1px solid #F46A45;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+}
+/* modal-edit-tosent */
+
+/* modal-edit-nutrition */
+#modal-edit-nutrition{
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    top: 0;
+    position: fixed;
+    display: none;
+    background-color: rgba(22,22,22,0.5); /* complimenting your modal colors */
+}
+
+.reveal-modal-edit-nutrition {
+    width: 60vw;
+    height: auto;
+    border-radius: 20px;
+    position: relative;
+    margin: 0 auto;
+    padding: 30px 70px;
+    top: 30%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+.con-modal-nutrition{
+    display: flex;
+    gap: 20px;
+}
+
+.input-nutrition-modal input{
+    width: 100px;
+    height: 38px;
+    border: 1px solid #D5D5D5;
+    padding-left: 10px;
+    border-radius: 5px;
+}
+/* modal-edit-nutrition */
+
+/* modal-add-tutorial */
+    #modal-add-tutorial {
+        width: 100%;
+        height: 100%;
+        z-index: 5;
+        top: 0;
+        position: fixed;
+        display: none;
+        background-color: rgba(22,22,22,0.5); /* complimenting your modal colors */
+    }
+
+    .reveal-modal-tutorial {
+        width: 42vw;
+        height: auto;
+        border-radius: 20px;
+        position: relative;
+        margin: 0 auto;
+        padding: 30px 70px;
+        top: 38%;
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+    }
+
+    .reveal-modal-tutorial input{
+        width: 40vh;
+        padding: 8px 5px;
+        border: 2px solid #202224;
+    }
+
+    .con-input-tutorial{
+        display: flex;
+        gap: 10px;
+    }
+
+    .con-input-tutorial label{
+        width: 80px;
+        padding: 8px 15px;
+        background-color: #F46A45;
+        color: #fff;
+        border: 1px solid #F46A45;
+        border-radius: 5px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+    }
+
+    .con-btn-tutorial{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .input-modal-insturction{
+        max-width: 390px;
+        width: 390px; /* Lebar 100% agar mengisi container */
+        height: auto; /* Tinggi menyesuaikan dengan konten */
+        padding: 12px 18px;
+        font-size: 14px;
+        border-radius: 5px;
+        border: 1px solid #D5D5D5;
+        box-sizing: border-box; /* Padding dan border dihitung sebagai bagian dari lebar dan tinggi */
+    }
+/* modal-add-tutorial */

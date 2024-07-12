@@ -2,7 +2,7 @@
     <img class="img-background-sec-end" src="/assets/img-sec4-res.png" alt="">
     <div class="con-section-end">
         <p class="txt-sec-end">Are you ready to order with the best deals?</p>
-        <a href="">
+        <a href="/weekly_menu">
             <button class="btn-check-menu">CHECK OUR MENU<img src="/assets/icn-next.svg"></button>
         </a>
     </div>

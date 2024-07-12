@@ -19,19 +19,21 @@ class UserSeeder extends Seeder
 
         $admin = User::create([
             'full_name' => 'Admin User',
-            'name' => 'admin',
-            'phone' => '0000000000',
-            'email' => 'admin@example.com',
-            'password' => bcrypt('password'),
+            'name' => 'cookitadmin',
+            'phone' => '6289697166633', //nomor target
+            'email' => 'cookitadmin@cookit.com',
+            'password' => bcrypt('cookitadmin8989'),
+            'address_id' => null,
         ]);
 
         $user = User::create([
-            'full_name' => 'user1',
-            'name' => 'new_user1',
+            'full_name' => 'User Testing',
+            'name' => 'testing',
             'phone' => '085155370503',
-            'email' => 'user1@example.com',
-            'password' => bcrypt('user123'),
-            'photo_profile' => 'assets/gyj.jpeg'
+            'email' => 'usertesting@cookit.com',
+            'password' => bcrypt('password123'),
+            'photo_profile' => 'assets/img-default.png',
+            'address_id' => 1,
         ]);
 
         $admin->assignRole('admin');

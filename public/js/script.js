@@ -1,7 +1,7 @@
 function initializeSlick() {
   if (window.innerWidth <= 480) {
-      if (!$(".item-list").hasClass('slick-initialized')) {
-          $(".item-list").slick({
+      if (!$(".item-list-home").hasClass('slick-initialized')) {
+          $(".item-list-home").slick({
               centerMode: true,
               autoplay: false,
               dots: false,
@@ -25,8 +25,8 @@ function initializeSlick() {
           })
       }
   } else if(window.innerWidth <= 835) {
-      if (!$(".item-list").hasClass('slick-initialized')) {
-        $(".item-list").slick({
+      if (!$(".item-list-home").hasClass('slick-initialized')) {
+        $(".item-list-home").slick({
             centerMode: true,
             autoplay: false,
             dots: false,
@@ -50,8 +50,8 @@ function initializeSlick() {
           })
       }
   } else {
-    if ($(".item-list").hasClass('slick-initialized')) {
-        $(".item-list").slick('unslick');
+    if ($(".item-list-home").hasClass('slick-initialized')) {
+        $(".item-list-home").slick('unslick');
     }
   }
 }

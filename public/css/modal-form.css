@@ -1,0 +1,68 @@
+/* modal-edit-liveproduct */
+#modal-edit-liveproduct {
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    top: 0;
+    position: fixed;
+    display: none;
+    background-color: rgba(22,22,22,0.5); /* complimenting your modal colors */
+}
+
+.reveal-modal-edit-liveproduct {
+    width: 42vw;
+    height: auto;
+    border-radius: 20px;
+    position: relative;
+    margin: 0 auto;
+    padding: 30px 70px;
+    top: 30%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+.input-modal-liveproduct{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: center;
+}
+
+.input-modal-liveproduct input{
+    width: 40vh;
+    padding: 5px 5px;
+    border: 1px solid #202224;
+    border-radius: 5px;
+}
+
+.con-input-liveproduct{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.con-input-tosent label{
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+}
+/* modal-edit-liveproduct */
+
+/* modal-delete-menu */
+#modal-delete-menu {
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    top: 0;
+    position: fixed;
+    display: none;
+    background-color: rgba(22,22,22,0.5); /* complimenting your modal colors */
+}
+
+.btn-delete{
+    
+}
+/* modal-delete-menu */
