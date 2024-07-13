@@ -76,7 +76,7 @@
                 </div>
                 <p>{{ $material->material_name }}</p>
             </div>
-            <a class="delete-data-detaildb" href="/dashboard/database/bahan_dikirim/{{ $material->id }}">Edit</a>
+            <a class="btn-edit-material-db" href="/dashboard/database/bahan_dikirim/{{ $material->id }}">Edit</a>
         </div>
         @endforeach
         <a href="/dashboard/database/tambah_bahan">

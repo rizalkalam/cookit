@@ -72,7 +72,7 @@
         <div class="sec-button-db-form">
             <button type="submit" class="btn-add-db">Save</button>
             <a href="#" class="delete-data-detaildb" data-bahan-id="{{ $material->id }}">
-                <button class="btn-delete-db">Delete</button>
+                <button class="btn-delete-db-material">Delete</button>
             </a>
         </div>
         <div class="sec-content-db-form">

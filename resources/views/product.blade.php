@@ -31,7 +31,9 @@
                         <!-- Items -->
                         @foreach ($to_sents as $to_sent)    
                         <div class="material">
-                            <img id="material" class="material-img" src="/assets/card1-sec2.png"/>
+                            <div class="material-img">
+                                <img id="material" src="/{{ $to_sent->material->material_img }}">
+                            </div>
                             <p>{{ $to_sent->qty }} {{ $to_sent->unit->unit }} 
                                 {{ $to_sent->material->material_name }}</p>
                         </div>
