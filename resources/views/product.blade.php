@@ -100,10 +100,11 @@
             <div class="btn-section-34">
                 <button class="btn-order-now" type="submit">Pesan Sekarang</button>
             </div>
-            @endauth
+            @else
             <div class="btn-section-34">
                 <button class="btn-bundle-guest btn-order-now" type="button">Pesan Sekarang</button>
             </div>
+            @endauth
         </div>
         {{-- end-section-3 --}}
 
@@ -127,10 +128,11 @@
             <div class="btn-section-34">
                     <button class="btn-order-now" type="submit">Pesan Sekarang</button>
             </div>
-            @endauth
+            @else
             <div class="btn-section-34">
                 <button class="btn-bundle-guest btn-order-now" type="button">Pesan Sekarang</button>
             </div>
+            @endauth
         </div>
         {{-- end-section-4 --}}
     </div>
