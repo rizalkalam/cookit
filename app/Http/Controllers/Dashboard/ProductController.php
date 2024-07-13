@@ -258,7 +258,7 @@ class ProductController extends Controller
                 'difficulty'=>'required',
                 'material'=>'required',
                 'serving_time'=>'required',
-                'format_time'=>'required',
+                'time_format'=>'required',
         ]);
 
         if ($validator->fails()) {
@@ -276,7 +276,7 @@ class ProductController extends Controller
                 'difficulty'=>$request->difficulty,
                 'material'=>$request->material,
                 'serving_time'=>$request->serving_time,
-                'format_time'=>$request->format_time,
+                'time_format'=>$request->time_format,
             ]);
 
             return back()->with(['success', 'User berhasil ditambahkan!', 'show_modal' => true]); 
@@ -359,7 +359,7 @@ class ProductController extends Controller
                 'update_at' => Carbon::now()
             ]);
 
-            return redirect('/dashboard/product/menu/'.$id)->with('success', 'Produk berhasil ditambahkan !');
+            return redirect()->back()->with('success', 'Produk berhasil ditambahkan!');
         } catch (\Throwable $th) {
             //throw $th;
             return response()->json([
@@ -382,7 +382,7 @@ class ProductController extends Controller
                 'update_at' => Carbon::now()
             ]);
 
-        return redirect('/dashboard/product/menu/'.$id)->with('success', 'Produk berhasil ditambahkan !');
+        return redirect()->back()->with('success', 'Produk berhasil ditambahkan!');
     }
 
     public function update_nutrition(Request $request, $id)
@@ -434,7 +434,7 @@ class ProductController extends Controller
                 'update_at' => Carbon::now()
             ]);
 
-            return redirect('/dashboard/product/menu/'.$id)->with('success', 'Produk berhasil ditambahkan !');
+            return redirect()->back()->with('success', 'Produk berhasil ditambahkan!');
         } catch (\Throwable $th) {
             //throw $th;
             return response()->json([
@@ -585,7 +585,7 @@ class ProductController extends Controller
                 'update_at' => Carbon::now()
             ]);
 
-            return redirect('/dashboard/product/menu/'.$id)->with('success', 'Produk berhasil ditambahkan !');
+            return redirect()->back()->with('success', 'Produk berhasil ditambahkan!');
         } catch (\Throwable $th) {
             //throw $th;
             return response()->json([
