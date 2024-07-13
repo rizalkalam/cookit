@@ -257,6 +257,15 @@
     font-weight: 500;
     cursor: pointer;
 }
+
+.btn-delete-db-material{
+    border: none;
+    background-color: transparent;
+}
+
+.btn-edit-material-db{
+    
+}
 /* bahan-dikirim-end */
 
 /* edit-bahan */

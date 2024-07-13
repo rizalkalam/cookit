@@ -142,12 +142,12 @@
                 <p class="title-con-edit-menu">Further Information</p>
                 
                 <div class="tools-further-information">
-                    <p>Alat yang dibutuhkan</p>
+                    <p>Peralatan Khusus</p>
                     <textarea name="tools" id="tools" cols="30" rows="10">{{ old('tools', $further_information->tools) }}</textarea>
                 </div>
                 
                 <div class="tools-further-information">
-                    <p>Tingkat Kesusahan</p>
+                    <p>Tingkat Kesulitan</p>
                     <select name="difficulty" id="difficulty">
                         <option value="Mudah" {{ $further_information->difficulty === 'Mudah' ? 'selected' : '' }}>Mudah</option>
                         <option value="Sedang" {{ $further_information->difficulty === 'Sedang' ? 'selected' : '' }}>Sedang</option>
@@ -156,7 +156,7 @@
                 </div>
                 
                 <div class="tools-further-information">
-                    <p>Bahan yang dibutuhkan</p>
+                    <p>Bahan Tambahan</p>
                     <textarea name="material" id="material" cols="30" rows="10">{{ old('material', $further_information->material) }}</textarea>
                 </div>
                 
