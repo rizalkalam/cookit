@@ -163,7 +163,7 @@
                 <div class="tools-further-information last">
                     <p>Waktu Penyajian</p>
                     <input type="text" name="serving_time" id="serving_time" value="{{ old('serving_time', $further_information->serving_time) }}">
-                    <select name="format_time" id="time_format">
+                    <select name="time_format" id="time_format">
                         <option value="Menit" {{ $further_information->time_format === 'Menit' ? 'selected' : '' }}>Menit</option>
                         <option value="Jam" {{ $further_information->time_format === 'Jam' ? 'selected' : '' }}>Jam</option>
                     </select>

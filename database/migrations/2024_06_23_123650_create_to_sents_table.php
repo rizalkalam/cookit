@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('menu_id');
             $table->foreignId('material_id');
-            $table->integer('qty');
+            $table->string('qty');
             $table->foreignId('unit_id');
             $table->timestamps();
         });

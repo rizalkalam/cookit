@@ -19,8 +19,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-
-
 document.addEventListener('DOMContentLoaded', function() {
     var editButtons = document.querySelectorAll('#edit-tosent');
     var editModal = document.getElementById('modal-edit-tosent');
