@@ -425,7 +425,7 @@
     <div id="editTosentModal" class="reveal-modal-edit-tosent">
         <span class="btn-close-modal" id="close-edit-modal"><img src="/assets/close-modal.svg" alt="Close"></span>
         <div class="con-input-tosent">
-                <input type="text" name="tosentId" id="tosentId">
+                <input type="hidden" name="tosentId" id="tosentId">
                 <select name="material_id" id="material_id">
                     @foreach ($materials as $material)
                         <option value="{{ $material->id }}">{{ $material->material_name }}</option>
