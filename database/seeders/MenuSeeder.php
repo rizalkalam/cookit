@@ -16,11 +16,11 @@ class MenuSeeder extends Seeder
     {
         collect([
             [
-                'name'=>'Nasgor',
+                'name'=>'Dimsum Ayam',
                 'description'=>'tes1233',
                 'profile_yt'=>'testing',
                 'link_yt'=>'https://www.youtube.com/watch?v=NyUTYwZe_l4',
-                'img_menu'=> 'assets/card3.png',
+                'img_menu'=> 'assets/dimsum-ayam.jpg',
                 'flavor_id'=>1,
                 'price'=>13000,
                 'type_id'=>1,

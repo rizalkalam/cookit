@@ -848,8 +848,8 @@
     }
 
     .item-img{
-        width: 200px;
-        height: 200px;
+        width: 160px;
+        height: 160px;
         border-radius: 16px;
         position: relative;
         overflow: hidden;
@@ -857,7 +857,8 @@
     
       .item-img img{
         width: 100%;
-        height: auto;
+        height: 100%;
+        object-fit: cover;
         position: absolute;
         left: 50%;
         top: 50%;
@@ -910,8 +911,8 @@
 
         /* slick-jquery */
         .slick-slider .slick-list, .slick-slider .slick-track{
-            padding-top: 12px;
-            padding-bottom: 12px;
+            height: 350px;
+            padding-top: 10px;
         }
 
         .item-weekly-home.slick-slide {
@@ -1232,7 +1233,8 @@
     
       .item-img img{
         width: 100%;
-        height: auto;
+        height: 100%;
+        object-fit: cover;
         position: absolute;
         left: 50%;
         top: 50%;

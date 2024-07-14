@@ -9,6 +9,7 @@ use App\Models\HowToCook;
 use App\Models\WeeklyMenu;
 use App\Models\BundlingType;
 use App\Models\NutritionsMenu;
+use App\Models\PromotionProduct;
 use App\Models\FurtherInformation;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -153,7 +154,7 @@ class Controller extends BaseController
 
         return view('home', [
             "menus" => Menu::all(),
-            'banner' => Menu::first(),
+            'banner' => PromotionProduct::first()->menu ?? 0,
             'qty_snackattack_appetizer' => $totalQty_snackattack_appetizer,
             'qty_snackattack_maincourse' => $totalQty_snackattack_maincourse,
             'qty_snackattack_dessert' => $totalQty_snackattack_dessert,
