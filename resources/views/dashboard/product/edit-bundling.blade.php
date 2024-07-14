@@ -80,106 +80,124 @@
         </div>
         <div class="content-bundling">
             <div class="table-warp-bundling">
-                <table id="bundling">
-                    <tr>
-                      <th></th>
-                      <th>Appetizer</th>
-                      <th>Last Modified</th>
-                      <th>Price</th>
-                      <th>Qty</th>
-                    </tr>
-                    @foreach ($menu_appetizer as $menu)
-                    <tr>
-                      <td><input class="menu-checkbox" disabled type="checkbox" data-menu-id="{{ $menu->menu_id }}" data-menu-price="{{ $menu->price }}" data-menu-qty="{{ $menu->qty }}"  id="status_bundling" name="status_bundling" {{ $menu->status_bundling === 'on_bundling' ? 'checked' : '' }}></td>
-                      <td class="td-menu"><img src="/img_menu/card1-sec2.png" alt="">{{ $menu->name }}</td>
-                      <td>{{ \Carbon\Carbon::parse($menu->updated_at)->format('d-m-Y'); }}</td>
-                      <td>Rp. <span class="unit-price-bskt" data-unit-price="{{ $menu->price }}">{{ $menu->price }}</span></td>
-                      <td>
-                        <div class="qty-items-bundling">
-                            <input type="text" name="quantities[]" value="{{ $menu->qty }}">
-                          </div>
-                      </td>
-                      <td>
-                        <iconify-icon icon="ic:round-read-more" width="30" style="color: #F46A45; cursor: pointer;"
-                        id="edit-status-bundling"
-                        data-bundling-id="{{ $menu->id }}"
-                        data-bundling-old_id="{{ $menu->bundling_id }}"
-                        data-menu-id="{{ $menu->menu_id }}"
-                        data-menu-status="{{ $menu->status_bundling }}"
-                        data-menu-qty="{{ $menu->qty }}"
-                        ></iconify-icon>
-                      </td>
-                    </tr>
-                    @endforeach
-                  </table>
+                @if (isset($menu_appetizer) && !$menu_appetizer->isEmpty())
+                    <table id="bundling">
+                        <tr>
+                        <th></th>
+                        <th>Appetizer</th>
+                        <th>Last Modified</th>
+                        <th>Price</th>
+                        <th>Qty</th>
+                        </tr>
+                        @foreach ($menu_appetizer as $menu)
+                        <tr>
+                        <td><input class="menu-checkbox" disabled type="checkbox" data-menu-id="{{ $menu->menu_id }}" data-menu-price="{{ $menu->price }}" data-menu-qty="{{ $menu->qty }}"  id="status_bundling" name="status_bundling" {{ $menu->status_bundling === 'on_bundling' ? 'checked' : '' }}></td>
+                        <td class="td-menu"><img src="/img_menu/card1-sec2.png" alt="">{{ $menu->name }}</td>
+                        <td>{{ \Carbon\Carbon::parse($menu->updated_at)->format('d-m-Y'); }}</td>
+                        <td>Rp. <span class="unit-price-bskt" data-unit-price="{{ $menu->price }}">{{ $menu->price }}</span></td>
+                        <td>
+                            <div class="qty-items-bundling">
+                                <input type="text" name="quantities[]" value="{{ $menu->qty }}">
+                            </div>
+                        </td>
+                        <td>
+                            <iconify-icon icon="ic:round-read-more" width="30" style="color: #F46A45; cursor: pointer;"
+                            id="edit-status-bundling"
+                            data-bundling-id="{{ $menu->id }}"
+                            data-bundling-old_id="{{ $menu->bundling_id }}"
+                            data-menu-id="{{ $menu->menu_id }}"
+                            data-menu-status="{{ $menu->status_bundling }}"
+                            data-menu-qty="{{ $menu->qty }}"
+                            ></iconify-icon>
+                        </td>
+                        </tr>
+                        @endforeach
+                    </table>
+                @else        
+                    <br>
+                        <h3>Data menu appetizer kosong</h3>  
+                    <br>                          
+                @endif
             </div>
             <div class="table-warp-bundling">
-                <table id="bundling">
-                    <tr>
-                      <th></th>
-                      <th>Maincourse</th>
-                      <th>Last Modified</th>
-                      <th>Price</th>
-                      <th>Qty</th>
-                    </tr>
-                    @foreach ($menu_maincourse as $menu)
-                    <tr>
-                      <td><input class="menu-checkbox" disabled type="checkbox" data-menu-id="{{ $menu->id }}" data-menu-price="{{ $menu->price }}" data-menu-qty="{{ $menu->qty }}"  id="status_bundling" name="status_bundling" {{ $menu->status_bundling === 'on_bundling' ? 'checked' : '' }}></td>
-                      <td class="td-menu"><img src="/img_menu/card1-sec2.png" alt="">{{ $menu->name }}</td>
-                      <td>{{ \Carbon\Carbon::parse($menu->updated_at)->format('d-m-Y'); }}</td>
-                      <td>Rp. <span class="unit-price-bskt" data-unit-price="{{ $menu->price }}">{{ $menu->price }}</span></td>
-                      <td>
-                        <div class="qty-items-bundling">
-                            <input type="text" name="quantities[]" value="{{ $menu->qty }}">
-                          </div>
-                      </td>
-                      <td>
-                        <iconify-icon icon="ic:round-read-more" width="30" style="color: #F46A45; cursor: pointer;"
-                        id="edit-status-bundling"
-                        data-bundling-id="{{ $menu->id }}"
-                        data-bundling-old_id="{{ $menu->bundling_id }}"
-                        data-menu-id="{{ $menu->menu_id }}"
-                        data-menu-status="{{ $menu->status_bundling }}"
-                        data-menu-qty="{{ $menu->qty }}"
-                        ></iconify-icon>
-                      </td>
-                    </tr>
-                    @endforeach
-                  </table>
+                @if (isset($menu_maincourse) && !$menu_maincourse->isEmpty())
+                    <table id="bundling">
+                        <tr>
+                        <th></th>
+                        <th>Maincourse</th>
+                        <th>Last Modified</th>
+                        <th>Price</th>
+                        <th>Qty</th>
+                        </tr>
+                        @foreach ($menu_maincourse as $menu)
+                        <tr>
+                        <td><input class="menu-checkbox" disabled type="checkbox" data-menu-id="{{ $menu->id }}" data-menu-price="{{ $menu->price }}" data-menu-qty="{{ $menu->qty }}"  id="status_bundling" name="status_bundling" {{ $menu->status_bundling === 'on_bundling' ? 'checked' : '' }}></td>
+                        <td class="td-menu"><img src="/img_menu/card1-sec2.png" alt="">{{ $menu->name }}</td>
+                        <td>{{ \Carbon\Carbon::parse($menu->updated_at)->format('d-m-Y'); }}</td>
+                        <td>Rp. <span class="unit-price-bskt" data-unit-price="{{ $menu->price }}">{{ $menu->price }}</span></td>
+                        <td>
+                            <div class="qty-items-bundling">
+                                <input type="text" name="quantities[]" value="{{ $menu->qty }}">
+                            </div>
+                        </td>
+                        <td>
+                            <iconify-icon icon="ic:round-read-more" width="30" style="color: #F46A45; cursor: pointer;"
+                            id="edit-status-bundling"
+                            data-bundling-id="{{ $menu->id }}"
+                            data-bundling-old_id="{{ $menu->bundling_id }}"
+                            data-menu-id="{{ $menu->menu_id }}"
+                            data-menu-status="{{ $menu->status_bundling }}"
+                            data-menu-qty="{{ $menu->qty }}"
+                            ></iconify-icon>
+                        </td>
+                        </tr>
+                        @endforeach
+                    </table>
+                @else
+                    <br>
+                        <h3>Data menu maincourse kosong</h3>  
+                    <br>                          
+                @endif
             </div>
             <div class="table-warp-bundling">
-                <table id="bundling">
-                    <tr>
-                      <th></th>
-                      <th>Dessert</th>
-                      <th>Last Modified</th>
-                      <th>Price</th>
-                      <th>Qty</th>
-                    </tr>
-                    @foreach ($menu_dessert as $menu)
-                    <tr>
-                      <td><input class="menu-checkbox" disabled type="checkbox" data-menu-id="{{ $menu->menu_id }}" data-menu-price="{{ $menu->price }}" data-menu-qty="{{ $menu->qty }}"  id="status_bundling" name="status_bundling" {{ $menu->status_bundling === 'on_bundling' ? 'checked' : '' }}></td>
-                      <td class="td-menu"><img src="/img_menu/card1-sec2.png" alt="">{{ $menu->name }}</td>
-                      <td>{{ \Carbon\Carbon::parse($menu->updated_at)->format('d-m-Y'); }}</td>
-                      <td>Rp. <span class="unit-price-bskt" data-unit-price="{{ $menu->price }}">{{ $menu->price }}</span></td>
-                      <td>
-                        <div class="qty-items-bundling">
-                            <input type="text" name="quantities[]" value="{{ $menu->qty }}">
-                          </div>
-                      </td>
-                      <td>
-                        <iconify-icon icon="ic:round-read-more" width="30" style="color: #F46A45; cursor: pointer;"
-                        id="edit-status-bundling"
-                        data-bundling-id="{{ $menu->id }}"
-                        data-bundling-old_id="{{ $menu->bundling_id }}"
-                        data-menu-id="{{ $menu->menu_id }}"
-                        data-menu-status="{{ $menu->status_bundling }}"
-                        data-menu-qty="{{ $menu->qty }}"
-                        ></iconify-icon>
-                      </td>
-                    </tr>
-                    @endforeach
-                  </table>
+                @if (isset($menu_dessert) && !$menu_dessert->isEmpty())
+                    <table id="bundling">
+                        <tr>
+                        <th></th>
+                        <th>Dessert</th>
+                        <th>Last Modified</th>
+                        <th>Price</th>
+                        <th>Qty</th>
+                        </tr>
+                        @foreach ($menu_dessert as $menu)
+                        <tr>
+                        <td><input class="menu-checkbox" disabled type="checkbox" data-menu-id="{{ $menu->menu_id }}" data-menu-price="{{ $menu->price }}" data-menu-qty="{{ $menu->qty }}"  id="status_bundling" name="status_bundling" {{ $menu->status_bundling === 'on_bundling' ? 'checked' : '' }}></td>
+                        <td class="td-menu"><img src="/img_menu/card1-sec2.png" alt="">{{ $menu->name }}</td>
+                        <td>{{ \Carbon\Carbon::parse($menu->updated_at)->format('d-m-Y'); }}</td>
+                        <td>Rp. <span class="unit-price-bskt" data-unit-price="{{ $menu->price }}">{{ $menu->price }}</span></td>
+                        <td>
+                            <div class="qty-items-bundling">
+                                <input type="text" name="quantities[]" value="{{ $menu->qty }}">
+                            </div>
+                        </td>
+                        <td>
+                            <iconify-icon icon="ic:round-read-more" width="30" style="color: #F46A45; cursor: pointer;"
+                            id="edit-status-bundling"
+                            data-bundling-id="{{ $menu->id }}"
+                            data-bundling-old_id="{{ $menu->bundling_id }}"
+                            data-menu-id="{{ $menu->menu_id }}"
+                            data-menu-status="{{ $menu->status_bundling }}"
+                            data-menu-qty="{{ $menu->qty }}"
+                            ></iconify-icon>
+                        </td>
+                        </tr>
+                        @endforeach
+                    </table> 
+                @else
+                    <br>
+                        <h3>Data menu dessert kosong</h3>  
+                    <br>                          
+                @endif
             </div>
             <div class="con-count-bundling">
                 <div class="top-count-bundling">
@@ -190,7 +208,7 @@
                     <p>
                         Harga Spesial bundling
                     </p>
-                    <div class="input-price-bundling">Rp. <input type="text" name="price" value="{{ number_format($bundling_price->price, 0, ',', '.') }}"></div>
+                    <div class="input-price-bundling">Rp. <input type="text" name="price" value="{{ number_format($bundling_price->price ?? '0', 0, ',', '.') }}"></div>
                 </div>
             </div>
         </div>

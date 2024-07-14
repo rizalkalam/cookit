@@ -182,6 +182,7 @@ iframe{
 
 .con-left-product{
     width: 100vh;
+    display: flex;
     flex-direction: column;
     padding: 30px 80px;
     gap: 20px;

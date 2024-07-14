@@ -25,14 +25,19 @@ class PromotionMenuController extends Controller
     {
         try {
             $promotion = PromotionProduct::first();
-
-            $promotion->update([
-                'menu_id' => $id
-            ]);
-
+    
+            if ($promotion == null) {
+                PromotionProduct::create([
+                    'menu_id' => $id
+                ]);
+            } else {
+                $promotion->update([
+                    'menu_id' => $id
+                ]);
+            }
+    
             return redirect('/dashboard/product')->with('success', 'Produk berhasil ditambahkan !');
         } catch (\Throwable $th) {
-            //throw $th;
             return response()->json([
                 'message' => 'failed',
                 'errors' => $th->getMessage(),
