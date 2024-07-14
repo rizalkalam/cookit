@@ -51,7 +51,7 @@ class DatabaseSeeder extends Seeder
             SectionProductSeeder::class,
             LiveProductSeeder::class,
             // FurtherInformationSeeder::class,
-            NutritionsMenuSeeder::class,
+            // NutritionsMenuSeeder::class,
             // HowToCookSeeder::class,
             ToSentSeeder::class,
             // WeeklyMenuSeeder::class,
