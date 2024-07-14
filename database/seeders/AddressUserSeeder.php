@@ -15,6 +15,15 @@ class AddressUserSeeder extends Seeder
     {
         collect([
             [
+                'user_id' => 1,
+                'full_name' => 'Admin',
+                'phone_address' => '85177770503',
+                'area_id' => 1,
+                'district_id' => '1',
+                'complete_address' => 'Jl. semin-cawas',
+            ],
+
+            [
                 'user_id' => 2,
                 'full_name' => 'Bae Suzy',
                 'phone_address' => '85177770503',
