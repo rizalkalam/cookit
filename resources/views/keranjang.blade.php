@@ -124,11 +124,14 @@
             <div class="right-total-bskt"></div>
             <div class="left-total-bskt">
                 <p>Total (<span class="total-items">{{ $cart_products->sum('qty') + $cart_bundlings->sum('qty') }}</span> Produk)</p>
-                <div class="price-con-total-bskt">Rp.<span class="total-price">
-                    {{ number_format(
-                        ($cart_products ? $cart_products->sum(function($item) { return $item->menu->price * $item->qty; }) : 0) +
-                        ($cart_bundlings ? $cart_bundlings->sum('total_price') : 0), 0, ',', '.') }}
-                </span></div>
+                <div class="price-con-total-bskt">
+                    Rp.<span class="total-price">
+                        {{ (
+                            ($cart_products ? $cart_products->sum(fn($item) => $item->menu->price * $item->qty) : 0) +
+                            ($cart_bundlings ? $cart_bundlings->sum('total_price') : 0)
+                        ) }}
+                    </span>
+                </div>
                 <a href="/check_out">
                     <button type="submit" class="btn-checkout">Check Out</button>
                 </a>

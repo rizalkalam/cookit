@@ -23,7 +23,7 @@ class UserSeeder extends Seeder
             'phone' => '6289697166633', //nomor target
             'email' => 'cookitadmin@cookit.com',
             'password' => bcrypt('cookitadmin8989'),
-            'address_id' => null,
+            'address_id' => 1,
         ]);
 
         $user = User::create([
@@ -33,7 +33,7 @@ class UserSeeder extends Seeder
             'email' => 'usertesting@cookit.com',
             'password' => bcrypt('password123'),
             'photo_profile' => 'assets/img-default.png',
-            'address_id' => 1,
+            'address_id' => 2,
         ]);
 
         $admin->assignRole('admin');
