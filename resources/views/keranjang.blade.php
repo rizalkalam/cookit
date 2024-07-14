@@ -75,7 +75,7 @@
                             <div class="item" data-id-cart="{{ $item->id }}">
                                 <div class="left-list-bskt">
                                     <div class="image">
-                                        <img src="/" alt="" />
+                                        <img src="/assets/card3-sec2.png" alt="" />
                                     </div>
                                     <div class="description">
                                         <p class="title-menu-bskt">{{ $item->bundling->bundling_name }}</p>
