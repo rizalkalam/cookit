@@ -14,61 +14,48 @@ class BundlingMenuController extends Controller
     public function index($bundling)
     {
         $lowerCaseType = strtolower(str_replace(' ', '', $bundling));
-        $menu_appetizer = BundlingType::leftjoin('bundlings', 'bundlings.id', '=', 'bundling_types.bundling_id')
-        ->leftjoin('menus', 'menus.id', '=', 'bundling_types.menu_id')
-        ->where('bundlings.bundling_name',$bundling)
-        ->where('bundling_types.name_type', 'Bundling Appetizer')
-        ->where('menus.type_id', 1)
-        ->select([
-            'bundling_types.id as id',
-            'bundling_types.id as bundling_id',
-            'bundling_types.menu_id as menu_id',
-            'menus.name as name',
-            'menus.updated_at as updated_as',
-            'menus.price as price',
-            'bundling_types.qty as qty',
-            'bundling_types.status_bundling as status_bundling',
-        ])
-        ->get(); 
-        $menu_maincourse = BundlingType::leftjoin('bundlings', 'bundlings.id', '=', 'bundling_types.bundling_id')
-        ->leftjoin('menus', 'menus.id', '=', 'bundling_types.menu_id')
-        ->where('bundlings.bundling_name',$bundling)
-        ->where('bundling_types.name_type', 'Bundling Maincourse')
-        ->where('menus.type_id', 2)
-        ->select([
-            'bundling_types.id as id',
-            'bundling_types.id as bundling_id',
-            'bundling_types.menu_id as menu_id',
-            'menus.name as name',
-            'menus.updated_at as updated_as',
-            'menus.price as price',
-            'bundling_types.qty as qty',
-            'bundling_types.status_bundling as status_bundling',
-        ])
-        ->get(); 
-        $menu_dessert = BundlingType::leftjoin('bundlings', 'bundlings.id', '=', 'bundling_types.bundling_id')
-        ->leftjoin('menus', 'menus.id', '=', 'bundling_types.menu_id')
-        ->where('bundlings.bundling_name',$bundling)
-        ->where('bundling_types.name_type', 'Bundling Dessert')
-        ->where('menus.type_id', 3)
-        ->select([
-            'bundling_types.id as id',
-            'bundling_types.id as bundling_id',
-            'bundling_types.menu_id as menu_id',
-            'menus.name as name',
-            'menus.updated_at as updated_as',
-            'menus.price as price',
-            'bundling_types.qty as qty',
-            'bundling_types.status_bundling as status_bundling',
-        ])
-        ->get();
+
+        $bundlingTypes = [
+            'Bundling Appetizer' => 1,
+            'Bundling Maincourse' => 2,
+            'Bundling Dessert' => 3,
+        ];
+
+        $menus = [];
+
+        foreach ($bundlingTypes as $type => $typeId) {
+            $menus[$type] = BundlingType::leftJoin('bundlings', 'bundlings.id', '=', 'bundling_types.bundling_id')
+                ->leftJoin('menus', 'menus.id', '=', 'bundling_types.menu_id')
+                ->where('bundlings.bundling_name', $bundling)
+                ->where('bundling_types.name_type', $type)
+                ->where('menus.type_id', $typeId)
+                ->select([
+                    'bundling_types.id as id',
+                    'bundling_types.bundling_id as bundling_id',
+                    'bundling_types.menu_id as menu_id',
+                    'menus.name as name',
+                    'menus.updated_at as updated_at',
+                    'menus.price as price',
+                    'bundling_types.qty as qty',
+                    'bundling_types.status_bundling as status_bundling',
+                ])
+                ->get();
+        }
+
+        // Accessing individual menu types
+        $menu_appetizer = $menus['Bundling Appetizer'];
+        $menu_maincourse = $menus['Bundling Maincourse'];
+        $menu_dessert = $menus['Bundling Dessert'];
 
         $bundling_price = BundlingType::leftjoin('bundlings', 'bundlings.id', '=', 'bundling_types.bundling_id')
         ->where('bundlings.bundling_name', $bundling)
         ->first();
 
         // return response()->json([
-        //     'data'=>$menu_dessert
+        //     'bundling' => $bundling,
+        //     'menu_appetizer' => $menu_appetizer,
+        //     'menu_maincourse' => $menu_maincourse,
+        //     'menu_dessert' => $menu_dessert,
         // ]);
 
         return view('dashboard.product.edit-bundling', [

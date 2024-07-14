@@ -147,7 +147,7 @@
             </div>
 
             {{-- section-promotion --}}
-            @if (isset($promotion) && !$promotion->isEmpty())
+            @if (isset($promotion) && $promotion->count() > 0)
                 @if (isset($promotion->menu))
                     <div class="sec2-dshb-product">
                         <p class="title-con-product">On Promotion</p>
@@ -164,22 +164,37 @@
                         </div>
                     </div>
                 @else
-                    <div class="sec2-dshb-product">
-                        <p class="title-con-product">On Promotion</p>
-                        <div class="dsc-card-dshb-product-sec2">
-                            <h3>data kosong</h3>
-                        </div>
-                    </div>
-                @endif
-            @else
                 <div class="sec2-dshb-product">
                     <p class="title-con-product">On Promotion</p>
+                    <div class="item-dshb-product-img">
+                        <img src="/{{ $promotion->menu->img_menu ?? '' }}">
+                    </div>
                     <div class="dsc-card-dshb-product-sec2">
-                        <h3>data kosong</h3>
+                        <p class="title-dsc-card-dshb-product">{{ $promotion->menu->name ?? '' }}</p>
+                        <p class="dsc-dshb-product">{{ $promotion->menu->flavor->flavor ?? '' }}</p>
+                        <p class="price-dshb-product">Rp{{ number_format($promotion->menu->price ?? '0', 0, ',', '.') }}</p>
+                        <a href="/dashboard/product/live_to_promote">
+                            <button class="btn-ordernow-dshb-product-sec2">Edit Product</button>
+                        </a>
                     </div>
                 </div>
+                @endif
+            @else
+            <div class="sec2-dshb-product">
+                <p class="title-con-product">On Promotion</p>
+                <div class="item-dshb-product-img">
+                    <img src="/{{ $promotion->menu->img_menu ?? '' }}">
+                </div>
+                <div class="dsc-card-dshb-product-sec2">
+                    <p class="title-dsc-card-dshb-product">{{ $promotion->menu->name ?? '' }}</p>
+                    <p class="dsc-dshb-product">{{ $promotion->menu->flavor->flavor ?? '' }}</p>
+                    <p class="price-dshb-product">Rp{{ number_format($promotion->menu->price ?? '0', 0, ',', '.') }}</p>
+                    <a href="/dashboard/product/live_to_promote">
+                        <button class="btn-ordernow-dshb-product-sec2">Edit Product</button>
+                    </a>
+                </div>
+            </div>
             @endif
-
             {{-- section-promotion --}}
 
 
@@ -217,7 +232,7 @@
                         </div>
                         <div class="bottom-bundling-dshb">
                             <p class="price-bundling-dshb">Rp.{{ $snackattack->bundling->price ?? '0' }}</p>
-                            <a href="/dashboard/bundling/{{ $snackattack->bundling->bundling_name ?? '#' }}">
+                            <a href="/dashboard/bundling/{{ $snackattack->bundling->bundling_name ?? 'Snack Attack' }}">
                                 <button class="btn-edit-bundle-dshb">Edit</button>
                             </a>
                         </div>
@@ -252,7 +267,7 @@
                         </div>
                         <div class="bottom-bundling-dshb">
                             <p class="price-bundling-dshb">Rp.{{ $cooktheday->bundling->price ?? '0' }}</p>
-                            <a href="/dashboard/bundling/{{ $cooktheday->bundling->bundling_name ?? '#' }}">
+                            <a href="/dashboard/bundling/{{ $cooktheday->bundling->bundling_name ?? 'Cook The Day' }}">
                                 <button class="btn-edit-bundle-dshb">Edit</button>
                             </a>
                         </div>
@@ -287,7 +302,7 @@
                         </div>
                         <div class="bottom-bundling-dshb">
                             <p class="price-bundling-dshb">Rp.{{ $cookitonce->bundling->price ?? '0' }}</p>
-                            <a href="/dashboard/bundling/{{ $cookitonce->bundling->bundling_name ?? '#' }}">
+                            <a href="/dashboard/bundling/{{ $cookitonce->bundling->bundling_name ?? 'Cook It Once' }}">
                                 <button class="btn-edit-bundle-dshb">Edit</button>
                             </a>
                         </div>
@@ -322,7 +337,7 @@
                         </div>
                         <div class="bottom-bundling-dshb">
                             <p class="price-bundling-dshb">Rp.{{ $adorableweek->bundling->price ?? '0' }}</p>
-                            <a href="/dashboard/bundling/{{ $adorableweek->bundling->bundling_name ?? '#' }}">
+                            <a href="/dashboard/bundling/{{ $adorableweek->bundling->bundling_name ?? 'Adorable Week' }}">
                                 <button class="btn-edit-bundle-dshb">Edit</button>
                             </a>
                         </div>

@@ -796,17 +796,32 @@ class ProductController extends Controller
 
             $type_name = MenuType::where('id', $menu->type_id)->value('name_type');
 
-            $bundling_nametype = str_replace('', '', $type_name);
+            // $bundling_nametype = str_replace('', '', $type_name);
+            
+            // Mengubah nama jenis menjadi huruf kecil tanpa spasi
+            $lowerCaseType = strtolower(str_replace(' ', '', $type_name));
 
+            // Pemetaan jenis bundling
+            $bundlingTypes = [
+                'Appetizer' => 'Bundling Appetizer',
+                'Main Course' => 'Bundling Maincourse',
+                'Dessert' => 'Bundling Dessert',
+            ];
+
+            // ID bundling yang ingin dibuat
             $bundling_ids = [1, 2, 3, 4];
+
+            // Loop untuk membuat entri di tabel BundlingType
             foreach ($bundling_ids as $bundling_id) {
-                BundlingType::create([
-                    'name_type' => $bundling_nametype,
-                    'bundling_id' => $bundling_id,
-                    'menu_id' => $menu->id,
-                    'qty' => 0,
-                    'status_bundling' => 2
-                ]);
+                foreach ($bundlingTypes as $type => $bundlingName) {
+                    BundlingType::create([
+                        'name_type' => $bundlingName, // Menggunakan nama bundling yang sesuai
+                        'bundling_id' => $bundling_id,
+                        'menu_id' => $menu->id,
+                        'qty' => 0,
+                        'status_bundling' => 2
+                    ]);
+                }
             }
             
 
