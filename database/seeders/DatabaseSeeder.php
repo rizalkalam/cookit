@@ -47,14 +47,14 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserSeeder::class,
             MenuTypeSeeder::class,
-            MenuSeeder::class,
+            // MenuSeeder::class,
             SectionProductSeeder::class,
             LiveProductSeeder::class,
-            FurtherInformationSeeder::class,
-            NutritionsMenuSeeder::class,
-            HowToCookSeeder::class,
+            // FurtherInformationSeeder::class,
+            // NutritionsMenuSeeder::class,
+            // HowToCookSeeder::class,
             ToSentSeeder::class,
-            WeeklyMenuSeeder::class,
+            // WeeklyMenuSeeder::class,
             FlavorProfileSeeder::class,
             MaterialSeeder::class,
             UnitSeeder::class,
@@ -64,9 +64,9 @@ class DatabaseSeeder extends Seeder
             // CartSeeder::class,
             // PaymentSeeder::class,
             // OrderSeeder::class,
-            PromotionProductSeeder::class,
+            // PromotionProductSeeder::class,
             BundlingSeeder::class,
-            BundlingTypeSeeder::class,
+            // BundlingTypeSeeder::class,
         ]);
     }
 }
