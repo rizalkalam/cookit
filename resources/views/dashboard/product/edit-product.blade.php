@@ -93,15 +93,15 @@
                         <p>Pre Order Opens</p>
                     </div>
                     <div class="row2-edit-product">
-                        <input type="date" value="{{ $live_product->delivery }}" />
+                        <input type="date" disabled value="{{ $live_product->delivery }}" />
                         <div class="con-inpt-date">
                             <div class="from-date">
                                 <p>From</p>
-                                <input type="date" value="{{ $live_product->pre_order_from }}" />
+                                <input type="date" disabled value="{{ $live_product->pre_order_from }}" />
                             </div>
                             <div class="until-date">
                                 <p>Until</p>
-                                <input type="date" value="{{ $live_product->pre_order_until }}" />
+                                <input type="date" disabled value="{{ $live_product->pre_order_until }}" />
                             </div>
                         </div>
                     </div>
