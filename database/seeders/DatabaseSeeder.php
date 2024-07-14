@@ -59,7 +59,7 @@ class DatabaseSeeder extends Seeder
             MaterialSeeder::class,
             UnitSeeder::class,
             AddressDetailSeeder::class,
-            // DistrictSeeder::class,
+            DistrictSeeder::class,
             AddressUserSeeder::class,
             // CartSeeder::class,
             // PaymentSeeder::class,

@@ -222,11 +222,13 @@ iframe{
 
 .title-txt-nutritions-facts{
     font-weight: bold;
+    font-size: 14px;
     width: 100px;
 }
 
 .dsc-txt-nutritions-facts{
     max-width: 150px;
+    font-size: 14px;
     /* white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis; */
