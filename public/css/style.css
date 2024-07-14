@@ -439,7 +439,7 @@ footer {
 
     #nav-links {
         position: fixed;
-        height: 10vh;
+        height: 11vh;
         width: inherit;
         max-width: 836px;
         top: 40px;
@@ -472,7 +472,11 @@ footer {
     }
 
     .right-nav{
-        width: 80px;
+        width: 200px;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        gap: 20px;
     }
 
     .nav-btn-login{
@@ -518,6 +522,16 @@ footer {
         padding: 15px 15px 10px 15px;
     }
     /* end-navbar */
+
+    /* navbar-auth */
+    .shipping_cart{
+        width: 26px;
+    }
+    .dropdown{
+        width: 150px;
+        overflow: visible;
+    }
+    /* navbar-auth */
 
     /* footer */
     .content-section-end{
@@ -578,22 +592,6 @@ footer {
         justify-content: space-between;
     }
 
-    nav #nav-links{
-        position: fixed;
-        height: 100vh;
-        width: 100%;
-        max-width: 255px;
-        top: 40px;
-        right: 0%;
-        padding: 30px 30px;
-        display: none;
-        flex-direction: column-reverse;
-        justify-content: start;
-        gap: 15px;
-        background: #fff;
-        animation: custom 0.2s ease-in-out; 
-    }
-
     @keyframes custom { 
         0% { 
             opacity: 0; 
@@ -612,7 +610,17 @@ footer {
     }
 
     .right-nav{
-        width: 80px;
+        width: 180px;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .dropdown{
+        width: 100%;
+        text-align: left;
+        font-size: 12px;
     }
 
     .nav-btn-login{
@@ -654,6 +662,10 @@ footer {
 
     .nav-right {
         display: block;
+    }
+
+    .nav-auth-name{
+        font-size: 12px;
     }
     /* end-navbar */
 
