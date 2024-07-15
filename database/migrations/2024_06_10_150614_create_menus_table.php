@@ -22,6 +22,9 @@ return new class extends Migration
             $table->integer('price');
             $table->foreignId('type_id');
             $table->timestamps();
+
+            // Add unique index to the id column
+            $table->unique('id');
         });
     }
 

@@ -53,7 +53,7 @@ class DatabaseSeeder extends Seeder
             // FurtherInformationSeeder::class,
             // NutritionsMenuSeeder::class,
             // HowToCookSeeder::class,
-            ToSentSeeder::class,
+            // ToSentSeeder::class,
             // WeeklyMenuSeeder::class,
             FlavorProfileSeeder::class,
             MaterialSeeder::class,
