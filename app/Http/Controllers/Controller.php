@@ -128,7 +128,7 @@ class Controller extends BaseController
         }
 
         // Total jumlah qty snackattack
-        $total_snackattack = $totalQty_cookitonce_appetizer + $totalQty_cookitonce_maincourse + $totalQty_cookitonce_dessert;
+        $total_snackattack = $totalQty_snackattack_appetizer + $totalQty_snackattack_maincourse + $totalQty_snackattack_dessert;
         // Total jumlah qty cooktheday
         $total_cooktheday = $totalQty_cooktheday_appetizer + $totalQty_cookitonce_maincourse + $totalQty_cooktheday_dessert;
         // Total jumlah qty cookitonce
