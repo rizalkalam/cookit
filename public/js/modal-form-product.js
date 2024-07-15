@@ -29,6 +29,10 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('untilDate').value = untilDate;
             document.getElementById('statusLive').value = statusLive;
 
+            // Update the form action dynamically
+            var form = document.getElementById('editLiveproductForm');
+            form.action = '/dashboard/live_product/' + liveproductId;
+
             editModal.style.display = 'block';
         });
     });
