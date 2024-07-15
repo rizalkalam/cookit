@@ -135,7 +135,7 @@ class LiveProductController extends Controller
             $status = $request->statusLive;
             $data->update([
                 'delivery' => $request->deliveryDate,
-                'pr_order_from' => $request->fromDate,
+                'pre_order_from' => $request->fromDate,
                 'pre_order_until' => $request->untilDate,
                 'status' => $request->statusLive
             ]);
