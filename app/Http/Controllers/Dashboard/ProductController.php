@@ -227,7 +227,7 @@ class ProductController extends Controller
 
         return view('dashboard.product.edit-menu',[
             'menu' => $menu,
-            'further_information' => $further_information,
+            'further_information' => $further_information ?? 0,
             'to_sents' => $to_sents,
             'flavors' => $list_flavors,
             'materials' => $list_materials,

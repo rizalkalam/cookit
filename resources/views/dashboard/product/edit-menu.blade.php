@@ -143,29 +143,29 @@
                 
                 <div class="tools-further-information">
                     <p>Peralatan Khusus</p>
-                    <textarea name="tools" id="tools" cols="30" rows="10">{{ old('tools', $further_information->tools) }}</textarea>
+                    <textarea name="tools" id="tools" cols="30" rows="10">{{ old('tools', $further_information->tools ?? '') }}</textarea>
                 </div>
                 
                 <div class="tools-further-information">
                     <p>Tingkat Kesulitan</p>
                     <select name="difficulty" id="difficulty">
-                        <option value="Mudah" {{ $further_information->difficulty === 'Mudah' ? 'selected' : '' }}>Mudah</option>
-                        <option value="Sedang" {{ $further_information->difficulty === 'Sedang' ? 'selected' : '' }}>Sedang</option>
-                        <option value="Sulit" {{ $further_information->difficulty === 'Sulit' ? 'selected' : '' }}>Sulit</option>
+                        <option value="Mudah" {{ isset($further_information->difficulty) && $further_information->difficulty === 'Mudah' ? 'selected' : '' }}>Mudah</option>
+                        <option value="Sedang" {{ isset($further_information->difficulty) && $further_information->difficulty === 'Sedang' ? 'selected' : '' }}>Sedang</option>
+                        <option value="Sulit" {{ isset($further_information->difficulty) && $further_information->difficulty === 'Sulit' ? 'selected' : '' }}>Sulit</option>
                     </select>
                 </div>
                 
                 <div class="tools-further-information">
                     <p>Bahan Tambahan</p>
-                    <textarea name="material" id="material" cols="30" rows="10">{{ old('material', $further_information->material) }}</textarea>
+                    <textarea name="material" id="material" cols="30" rows="10">{{ old('material', $further_information->material ?? '') }}</textarea>
                 </div>
                 
                 <div class="tools-further-information last">
                     <p>Waktu Penyajian</p>
-                    <input type="text" name="serving_time" id="serving_time" value="{{ old('serving_time', $further_information->serving_time) }}">
+                    <input type="text" name="serving_time" id="serving_time" value="{{ old('serving_time', $further_information->serving_time ?? '') }}">
                     <select name="time_format" id="time_format">
-                        <option value="Menit" {{ $further_information->time_format === 'Menit' ? 'selected' : '' }}>Menit</option>
-                        <option value="Jam" {{ $further_information->time_format === 'Jam' ? 'selected' : '' }}>Jam</option>
+                        <option value="Menit" {{ isset($further_information->time_format) && $further_information->time_format === 'Menit' ? 'selected' : '' }}>Menit</option>
+                        <option value="Jam" {{ isset($further_information->time_format) && $further_information->time_format === 'Jam' ? 'selected' : '' }}>Jam</option>
                     </select>
                 </div>
                 
