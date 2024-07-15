@@ -16,7 +16,7 @@ class SectionProductSeeder extends Seeder
         collect([
             [
                 'section_number'=>'#Section_1',
-                'appetizer_menu_id'=> 1,
+                'appetizer_menu_id'=> null,
                 'maincourse_menu_id'=>null,
                 'dessert_menu_id'=>null,
             ],
@@ -24,7 +24,7 @@ class SectionProductSeeder extends Seeder
             [
                 'section_number'=>'#Section_2',
                 'appetizer_menu_id'=> null,
-                'maincourse_menu_id'=> 3,
+                'maincourse_menu_id'=> null,
                 'dessert_menu_id'=>null,
             ],
 
@@ -32,12 +32,12 @@ class SectionProductSeeder extends Seeder
                 'section_number'=>'#Section_3',
                 'appetizer_menu_id'=> null,
                 'maincourse_menu_id'=>null,
-                'dessert_menu_id'=>4,
+                'dessert_menu_id'=>null,
             ],
 
             [
                 'section_number'=>'#Section_4',
-                'appetizer_menu_id'=> 2,
+                'appetizer_menu_id'=> null,
                 'maincourse_menu_id'=>null,
                 'dessert_menu_id'=>null,
             ],
