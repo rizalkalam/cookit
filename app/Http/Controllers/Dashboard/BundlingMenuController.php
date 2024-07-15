@@ -34,6 +34,7 @@ class BundlingMenuController extends Controller
                     'bundling_types.bundling_id as bundling_id',
                     'bundling_types.menu_id as menu_id',
                     'menus.name as name',
+                    'menus.img_menu as img_menu',
                     'menus.updated_at as updated_at',
                     'menus.price as price',
                     'bundling_types.qty as qty',

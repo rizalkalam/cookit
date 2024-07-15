@@ -153,7 +153,7 @@ class Controller extends BaseController
         // ]);
 
         return view('home', [
-            "menus" => Menu::all(),
+            "menus" => Menu::take(6)->get(),
             'banner' => PromotionProduct::first()->menu ?? 0,
             'qty_snackattack_appetizer' => $totalQty_snackattack_appetizer,
             'qty_snackattack_maincourse' => $totalQty_snackattack_maincourse,

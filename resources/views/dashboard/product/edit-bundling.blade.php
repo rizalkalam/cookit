@@ -92,7 +92,7 @@
                         @foreach ($menu_appetizer as $menu)
                         <tr>
                         <td><input class="menu-checkbox" disabled type="checkbox" data-menu-id="{{ $menu->menu_id }}" data-menu-price="{{ $menu->price }}" data-menu-qty="{{ $menu->qty }}"  id="status_bundling" name="status_bundling" {{ $menu->status_bundling === 'on_bundling' ? 'checked' : '' }}></td>
-                        <td class="td-menu"><img src="/img_menu/card1-sec2.png" alt="">{{ $menu->name }}</td>
+                        <td class="td-menu"><img src="/{{ $menu->img_menu }}" alt="">{{ $menu->name }}</td>
                         <td>{{ \Carbon\Carbon::parse($menu->updated_at)->format('d-m-Y'); }}</td>
                         <td>Rp. <span class="unit-price-bskt" data-unit-price="{{ $menu->price }}">{{ $menu->price }}</span></td>
                         <td>
@@ -132,7 +132,7 @@
                         @foreach ($menu_maincourse as $menu)
                         <tr>
                         <td><input class="menu-checkbox" disabled type="checkbox" data-menu-id="{{ $menu->id }}" data-menu-price="{{ $menu->price }}" data-menu-qty="{{ $menu->qty }}"  id="status_bundling" name="status_bundling" {{ $menu->status_bundling === 'on_bundling' ? 'checked' : '' }}></td>
-                        <td class="td-menu"><img src="/img_menu/card1-sec2.png" alt="">{{ $menu->name }}</td>
+                        <td class="td-menu"><img src="/{{ $menu->img_menu }}" alt="">{{ $menu->name }}</td>
                         <td>{{ \Carbon\Carbon::parse($menu->updated_at)->format('d-m-Y'); }}</td>
                         <td>Rp. <span class="unit-price-bskt" data-unit-price="{{ $menu->price }}">{{ $menu->price }}</span></td>
                         <td>
@@ -172,7 +172,7 @@
                         @foreach ($menu_dessert as $menu)
                         <tr>
                         <td><input class="menu-checkbox" disabled type="checkbox" data-menu-id="{{ $menu->menu_id }}" data-menu-price="{{ $menu->price }}" data-menu-qty="{{ $menu->qty }}"  id="status_bundling" name="status_bundling" {{ $menu->status_bundling === 'on_bundling' ? 'checked' : '' }}></td>
-                        <td class="td-menu"><img src="/img_menu/card1-sec2.png" alt="">{{ $menu->name }}</td>
+                        <td class="td-menu"><img src="/{{ $menu->img_menu }}" alt="">{{ $menu->name }}</td>
                         <td>{{ \Carbon\Carbon::parse($menu->updated_at)->format('d-m-Y'); }}</td>
                         <td>Rp. <span class="unit-price-bskt" data-unit-price="{{ $menu->price }}">{{ $menu->price }}</span></td>
                         <td>
