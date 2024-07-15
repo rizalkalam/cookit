@@ -29,10 +29,10 @@
                     <input type="hidden" name="bundling_id" value="{{ $input_data->id }}">
                     <input type="hidden" name="bundling_qty" value="{{ $input_data->qty }}">
                     <input type="hidden" name="bundling_price" value="{{ $input_data->price }}">
-                    <button type="submit" class="btn-order-bundling">Order Now Only Rp30.000</button>
+                    <button type="submit" class="btn-order-bundling">Order Now Only Rp{{ number_format($item->price, 0, ',', '.') }}</button>
                 </form>
                 @else
-                <button type="button" class="btn-bundle-guest btn-order-bundling">Order Now Only Rp30.000</button>
+                <button type="button" class="btn-bundle-guest btn-order-bundling">Order Now Only Rp{{ number_format($item->price, 0, ',', '.') }}</button>
                 @endauth
             </div>
         </div>    
@@ -64,6 +64,7 @@
     </div>
     {{-- modal-popup-cart --}}
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
             // Menampilkan modal ketika tombol diklik
