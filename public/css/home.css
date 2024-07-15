@@ -138,6 +138,9 @@
     font-size: 18px;
     font-weight: bold;
     color: #424242;
+    overflow: hidden;
+    white-space: nowrap; /* Prevents the text from wrapping to the next line */
+    text-overflow: ellipsis; /* Displays ellipsis (...) for overflowed text */
 }
 
 .container-carousel-home {
