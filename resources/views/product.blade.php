@@ -73,27 +73,27 @@
                     @foreach ($nutritions as $nutrition)
                     <div class="txt-nutritions-facts">
                         <p class="title-txt-nutritions-facts">Karbohidrat</p>
-                        <p class="dsc-txt-nutritions-facts">{{ $nutrition->karbohidrat }} {{ $nutrition->karbohidrat_unit->unit }}</p>
+                        <p class="dsc-txt-nutritions-facts">{{ $nutrition->karbohidrat }} {{ $nutrition->karbohidrat_unit->unit ?? '' }}</p>
                     </div>
                     <div class="txt-nutritions-facts">
                         <p class="title-txt-nutritions-facts">Lemak</p>
-                        <p class="dsc-txt-nutritions-facts">{{ $nutrition->lemak }} {{ $nutrition->lemak_unit->unit }}</p>
+                        <p class="dsc-txt-nutritions-facts">{{ $nutrition->lemak }} {{ $nutrition->lemak_unit->unit ?? '' }}</p>
                     </div>
                     <div class="txt-nutritions-facts">
                         <p class="title-txt-nutritions-facts">Protein</p>
-                        <p class="dsc-txt-nutritions-facts">{{ $nutrition->protein }} {{ $nutrition->protein_unit->unit }}</p>
+                        <p class="dsc-txt-nutritions-facts">{{ $nutrition->protein }} {{ $nutrition->protein_unit->unit ?? '' }}</p>
                     </div>
                     <div class="txt-nutritions-facts">
                         <p class="title-txt-nutritions-facts">Serat</p>
-                        <p class="dsc-txt-nutritions-facts">{{ $nutrition->serat }} {{ $nutrition->serat_unit->unit }}</p>
+                        <p class="dsc-txt-nutritions-facts">{{ $nutrition->serat }} {{ $nutrition->serat_unit->unit ?? '' }}</p>
                     </div>
                     <div class="txt-nutritions-facts">
                         <p class="title-txt-nutritions-facts">Natrium</p>
-                        <p class="dsc-txt-nutritions-facts">{{ $nutrition->natrium }} {{ $nutrition->natrium_unit->unit }}</p>
+                        <p class="dsc-txt-nutritions-facts">{{ $nutrition->natrium }} {{ $nutrition->natrium_unit->unit ?? '' }}</p>
                     </div>
                     <div class="txt-nutritions-facts">
                         <p class="title-txt-nutritions-facts">Kalori</p>
-                        <p class="dsc-txt-nutritions-facts">{{ $nutrition->kalori }} {{ $nutrition->kalori_unit->unit }}</p>
+                        <p class="dsc-txt-nutritions-facts">{{ $nutrition->kalori }} {{ $nutrition->kalori_unit->unit ?? '' }}</p>
                     </div>
                     @endforeach
                 </div>
