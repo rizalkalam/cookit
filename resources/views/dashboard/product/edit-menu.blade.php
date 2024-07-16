@@ -609,30 +609,5 @@ $(document).ready(function() {
                 $('#successModal').hide();
             });
         });
-
-    // preview upload img
-    const loadFile = event => {
-        const output = document.getElementById('output_img_bahan');
-        const defaultImg = document.getElementById('default_img_bahan');
-
-        output.src = URL.createObjectURL(event.target.files[0]);
-        output.style.display = 'block';
-        defaultImg.style.display = 'none';
-
-        output.onload = () => {
-            URL.revokeObjectURL(output.src) // free memory
-        };
-    };
-
-    document.getElementById('clearBtn').onclick = () => {
-        const inputImg = document.getElementById('input_img_bahan');
-        const output = document.getElementById('output_img_bahan');
-        const defaultImg = document.getElementById('default_img_bahan');
-
-        inputImg.value = ""; // Mengosongkan input file
-        output.src = defaultImg.src; // Mengatur ulang ke gambar default
-        output.style.display = 'none'; // Menyembunyikan gambar pratinjau
-        defaultImg.style.display = 'block';
-    }; 
 </script>
 @endsection
