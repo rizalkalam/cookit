@@ -96,7 +96,7 @@
                             <label for="input_img_bahan">Upload</label>
                             <input id="input_img_bahan" name="img_menu"  type="file" accept="image/*" onchange="loadFile(event)" style="display: none">
                         </div>
-                        <button type="button" id="clearBtn" class="btn-delete-menu">Delete</button>
+                        <button type="button" id="clearBtnMenu" class="btn-delete-menu">Delete</button>
                     </div>
                 </div>
                 <div class="con-price-dshb-menu">
