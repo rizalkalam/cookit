@@ -86,7 +86,7 @@
                         <label for="input_img_bahan" class="btn-upload-img-bahan">Upload</label>
                         <input id="input_img_bahan" name="material_img"  type="file" accept="image/*" onchange="loadFile(event)" style="display: none">
                     </div>
-                    <button type="button" id="clearBtn" class="btn-delete-img-bahan">Delete</button>
+                    <button type="button" id="clearBtnBahan" class="btn-delete-img-bahan">Delete</button>
                 </div>
             </div>
             <div class="right-db-form">
