@@ -51,25 +51,21 @@ class ProfileController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'phone' => 'required',
-            'email' => 'required',
-            'photo_profile' => 'nullable|mimes:jpeg,png,jpg|file|max:3048'
+            'phone' => 'required|string|max:15', // Sesuaikan dengan panjang maksimum yang sesuai untuk nomor telepon
+            'email' => 'required|email',
+            'photo_profile' => 'nullable|image|mimes:jpeg,png,jpg|max:3048',
         ]);
-
+    
         if ($validator->fails()) {
-            return response()->json([
-                'success' => false,
-                'message' => $validator->errors(),
-                'data' => [],
-            ], 400);
+            return redirect()->back()->withErrors($validator)->withInput();
         }
-
+    
         try {
-            $user = User::where('id', auth()->user()->id)->firstOrFail();
+            $user = User::findOrFail(auth()->user()->id);
 
-            //img
             $photo_profile = $request->file('photo_profile');
-
+    
+            // Handle photo_profile update
             if ($photo_profile) {
                 // Delete the old image file if it exists and is not the default image
                 if ($user->photo_profile && $user->photo_profile != 'assets/img-default.png') {
@@ -85,18 +81,18 @@ class ProfileController extends Controller
 
                 $stored_img_path = 'assets/img-default.png';
             }
-
+    
+            // Update user data
             $user->update([
                 'name' => $request->name,
                 'phone' => $request->phone,
                 'email' => $request->email,
                 'photo_profile' => $stored_img_path,
             ]);
-
-            return redirect('/profil_saya')->with('success', 'Profile berhasil diubah !');
-        } catch (\Throwable $th) {
-            //throw $th;
-            return redirect('/profil_saya')->with('error', 'Gagal mengubah data !');
+    
+            return redirect('/profil_saya')->with('success', 'Profil berhasil diperbarui!');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()])->withInput();
         }
     }
 

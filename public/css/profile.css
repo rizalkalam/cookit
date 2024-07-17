@@ -162,7 +162,9 @@
     margin-bottom: 20px;
 }
 
-.input-form-profile input[type=text]{
+.input-form-profile input[type=text],
+.input-form-profile input[type=email]
+{
     width: 100%;
     box-sizing: border-box;
     border: 2px solid #ccc;
