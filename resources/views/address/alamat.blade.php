@@ -26,7 +26,7 @@
             @endforeach
             <a class="a-btn-add-alamat" href="/tambah_alamat">
                 <button class="btn-add-alamat" type="button">
-                    <iconify-icon icon="gala:add" width="20"></iconify-icon>
+                    <iconify-icon class="custom-icon" icon="gala:add" ></iconify-icon>
                     Tambah Alamat
                 </button>
             </a>

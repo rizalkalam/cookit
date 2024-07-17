@@ -159,3 +159,32 @@
     background-color: rgba(22,22,22,0.5); /* complimenting your modal colors */
 }
 /* modal */
+
+@media only screen and (max-width: 835px) {
+    .con-alamat {
+        width: 62vh;
+    }
+
+    .btn-add-alamat, .btn-change {
+        width: 100%;
+        padding: 12px 0px;
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 480px){
+    .con-alamat {
+        width: 42vh;
+    }
+
+    .btn-add-alamat, .btn-change {
+        width: 100%;
+        padding: 8px 0px;
+        font-size: 10px;
+    }
+
+    .custom-icon {
+        width: 14; /* Atur lebar ikon */
+        color: #FF5733; /* Ubah warna ikon jika diperlukan */
+    }
+}
