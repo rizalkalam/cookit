@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->string('full_name');
-            $table->string('phone_address');
-            $table->foreignId('area_id');
-            $table->foreignId('district_id');
-            $table->string('complete_address');
+            $table->string('phone_address')->nullable();
+            $table->foreignId('area_id')->nullable();
+            $table->foreignId('district_id')->nullable();
+            $table->string('complete_address')->nullable();
             $table->timestamps();
         });
     }

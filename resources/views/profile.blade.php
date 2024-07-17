@@ -1,38 +1,53 @@
 @extends('layouts.main')
 @section('content')
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+@if (session('success'))
+    <script>
+        window.onload = function() {
+            alert("{{ session('success') }}");
+        };
+    </script>
+@endif
+
 <div class="profile-content">
     <form action="/update_profile" method="POST" enctype="multipart/form-data">
-    @csrf
-    <div class="con-head-profile">
-        <p class="title-profile">Profile Saya</p>
-        <button type="submit" class="btn-sv-profile">Save</button>
-    </div>
-
-    <div class="sec1-form-profile">
-            @foreach ($profiles as $profile)    
-                <div class="left-db-form">
-                    <div class="img-profile-picture">
-                        <img id="output_img_bahan" src="/{{ $profile->photo_profile }}" alt="">
-                        <img id="default_img_bahan" src="/assets/img-default.png" alt="" style="display: none">
-                    </div>
-                    <div class="con-btn-form-profile">
-                        <div class="">
-                            <label for="input_img_bahan" class="btn-upload-img-profile">Upload</label>
-                            <input id="input_img_bahan" name="photo_profile"  type="file" accept="image/*" onchange="loadFile(event)" style="display: none">
-                        </div>
-                        <button type="button" id="clearBtn" class="btn-delete-img-profile">Delete</button>
-                    </div>
-                </div>
-                <div class="input-form-profile">
+        @csrf
+        <div class="con-head-profile">
+            <p class="title-profile">Profile Saya</p>
+            <button type="submit" class="btn-sv-profile">Save</button>
+        </div>
     
-                    <input type="text" name="name" id="name" value="{{ old('name', $profile->name) }}" required />
-                    {{-- <p>@tess</p> --}}
-                    <input type="text" placeholder="masukkan format nomor (62XXXXXXXXXXX)" name="phone" id="phone" value="{{ old('phone', $profile->phone) }}" required />
-                    <input type="text" name="email" id="email" value="{{ old('email', $profile->email) }}" required />
+        <div class="sec1-form-profile">
+            @foreach ($profiles as $profile)    
+            <div class="left-db-form">
+                <div class="img-profile-picture">
+                    <img id="output_img_bahan" src="/{{ $profile->photo_profile }}" alt="">
+                    <img id="default_img_bahan" src="/assets/img-default.png" alt="" style="display: none">
                 </div>
+                <div class="con-btn-form-profile">
+                    <div class="">
+                        <label for="input_img_bahan" class="btn-upload-img-profile">Upload</label>
+                        <input id="input_img_bahan" name="photo_profile" type="file" accept="image/*" onchange="loadFile(event)" style="display: none">
+                    </div>
+                    <button type="button" id="clearBtn" class="btn-delete-img-profile">Delete</button>
+                </div>
+            </div>
+            <div class="input-form-profile">
+                <input type="text" name="name" id="name" value="{{ old('name', $profile->name) }}" required />
+                <input type="text" placeholder="masukkan format nomor (62XXXXXXXXXXX)" name="phone" id="phone" value="{{ old('phone', $profile->phone) }}" required />
+                <input type="email" name="email" id="email" value="{{ old('email', $profile->email) }}" required />
+            </div>
             @endforeach
         </div>
-    </form>
+    </form>    
 
     <div class="sec2-detail-customer">
         <p class="title-sec-profile">Riwayat Pesanan</p>

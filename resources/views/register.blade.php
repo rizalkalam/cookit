@@ -38,7 +38,7 @@
                 </div>
                 <div class="input-form-register">
                     <p>Username:</p>
-                    <input type="text" name="name" id="name" class="input-reg" placeholder="nama pengguna" required />
+                    <input type="text" name="username" id="name" class="input-reg" placeholder="nama pengguna" required />
                 </div>
                 <div class="input-form-register">
                     <p>Email:</p>

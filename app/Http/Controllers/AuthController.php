@@ -34,23 +34,19 @@ class AuthController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'full_name' => 'required',
-            'name' => 'required',
+            'username' => 'required|unique:users,name',
             'email' => 'required',
             'password' => 'required'
         ]);
 
         if ($validator->fails()) {
-            return response()->json([
-                'success' => false,
-                'message' => $validator->errors(),
-                'data' => [],
-            ], 400);
+            return redirect()->back()->withInput()->withErrors([$validator->errors()->first()]);
         }
 
         try {
             $data = User::create([
                 'full_name' => $request->full_name,
-                'name' => $request->name,
+                'name' => $request->username,
                 'email' => $request->email,
                 'password' => Hash::make($request->password), 
             ]);
