@@ -99,13 +99,19 @@
                 </div>
             </div>
             @auth
-            <div class="btn-section-34">
-                <button class="btn-order-now" type="submit">Pesan Sekarang</button>
-            </div>
+                @if (auth()->user()->address_id === null)
+                <div class="btn-section-34">
+                    <button class="btn-bundle-address btn-order-now" type="button">Pesan Sekarang</button>
+                </div>
+                @else    
+                <div class="btn-section-34">
+                    <button class="btn-order-now" type="submit">Pesan Sekarang</button>
+                </div>
+                @endif
             @else
-            <div class="btn-section-34">
-                <button class="btn-bundle-guest btn-order-now" type="button">Pesan Sekarang</button>
-            </div>
+                <div class="btn-section-34">
+                    <button class="btn-bundle-guest btn-order-now" type="button">Pesan Sekarang</button>
+                </div>
             @endauth
         </div>
         {{-- end-section-3 --}}
@@ -126,14 +132,20 @@
                 </div>
                 @endforeach
             </div>
-            @auth    
-            <div class="btn-section-34">
-                    <button class="btn-order-now" type="submit">Pesan Sekarang</button>
-            </div>
+            @auth
+                @if (auth()->user()->address_id === null)
+                <div class="btn-section-34">
+                    <button class="btn-bundle-address btn-order-now" type="button">Pesan Sekarang</button>
+                </div>
+                @else    
+                <div class="btn-section-34">
+                        <button class="btn-order-now" type="submit">Pesan Sekarang</button>
+                </div>
+                @endif    
             @else
-            <div class="btn-section-34">
-                <button class="btn-bundle-guest btn-order-now" type="button">Pesan Sekarang</button>
-            </div>
+                <div class="btn-section-34">
+                    <button class="btn-bundle-guest btn-order-now" type="button">Pesan Sekarang</button>
+                </div>
             @endauth
         </div>
         {{-- end-section-4 --}}
@@ -161,22 +173,38 @@
 </div>
 {{-- modal-popup-cart --}}
 
+{{-- modal-popup-addres --}}
+<div id="checkAddress" style="display: none;">
+    <div id="editTosentModal" class="reveal-modal-tutorial">
+        <span class="btn-close-modal" id="close-delete-tutorial"><img src="/assets/close-modal.svg" alt="Close"></span>
+        <p>Lengkapi alamat terlebih dahulu</p>
+        <a href="/profil_saya">
+            <button class="btn-delete">Profil saya</button>
+        </a>
+    </div>
+</div>
+{{-- modal-popup-addres --}}
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 
 <script>
     $(document).ready(function() {
-            // Menampilkan modal ketika tombol diklik
-            $('.btn-bundle-guest').on('click', function() {
-                $('#guestModal').show();
-            });
-
-            // Menutup modal ketika tombol close diklik
-            $('#close-modal-guest').on('click', function() {
-                $('#guestModal').hide();
-            });
+        // Menampilkan modal ketika tombol diklik
+        $('.btn-bundle-guest').on('click', function() {
+            $('#guestModal').show();
         });
-    $(document).ready(function() {
+
+        $('.btn-bundle-address').on('click', function() {
+            $('#checkAddress').show();
+        });
+
+        // Menutup modal ketika tombol close diklik
+        $('.btn-close-modal').on('click', function() {
+            $(this).closest('.reveal-modal-tutorial').parent().hide();
+        });
+
+        // Menampilkan modal success jika session show_modal ada
         @if(session('show_modal'))
             $('#successModal').show();
         @endif

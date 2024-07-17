@@ -6,8 +6,8 @@
         <p class="title-keranjang">Tambah Alamat</p>
         <div class="input-alamat-1">
             <p>Kontak</p>
-            <input type="name" name="full_name" id="full_name" placeholder="Nama Lengkap" required />
-            <input type="name" name="phone_address" id="phone_address" placeholder="Nomor Telepon (input angka setelah +62)" required />
+            <input type="text" name="full_name" id="full_name" placeholder="Nama Lengkap" required />
+            <input type="text" name="phone_address" id="phone_address" placeholder="Nomor Telepon (input angka setelah +62)" required />
         </div>
         <div class="input-alamat-2">
             <select name="area" id="area">
@@ -19,7 +19,7 @@
             <select name="district" id="district" required>
                 <option value="">Pilih Kecamatan</option>
             </select>
-            <input type="name" name="complete_address" id="complete_address" placeholder="Alamat Lengkap" required />
+            <input type="text" name="complete_address" id="complete_address" placeholder="Alamat Lengkap" required />
         </div>
         <button type="submit" class="btn-sv-form-alamat">
             Simpan
