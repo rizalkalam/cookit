@@ -48,7 +48,7 @@ class AddressUserController extends Controller
                 'address_id' => $request->selected_address
             ]);
 
-            return redirect('/check_out')->with('success', 'Alamat berhasil diubah'); 
+            return redirect('/profil_saya')->with('success', 'Alamat berhasil diubah'); 
         } catch (\Throwable $th) {
             //throw $th;
             return response()->json([

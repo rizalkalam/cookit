@@ -136,21 +136,24 @@ class ProfileController extends Controller
         }
 
         try {
-            $input_area = AddressDetail::where('id', $request->area)->value('area');
-            $input_district = District::where('id', $request->district)->value('district_name');
+            $input_area = AddressDetail::where('id', $request->area)->value('id');
+            $input_district = District::where('id', $request->district)->value('id');
             $data = AddressUser::create([
                 'user_id' => auth()->user()->id,
                 'full_name' => $request->full_name,
                 'phone_address' =>  $request->phone_address,
-                'area' => $input_area,
-                'district' => $input_district,
+                'area_id' => $input_area,
+                'district_id' => $input_district,
                 'complete_address' => $request->complete_address
             ]);
 
             return redirect('/alamat_saya')->with('success', 'Alamat berhasil ditambahkan !');
         } catch (\Throwable $th) {
             //throw $th;
-            return redirect('/tambah_alamat')->with('error', 'Gagal mengubah data !');
+            return response()->json([
+                'message' => 'failed',
+                'errors' => $th->getMessage(),
+            ], 400);
         }
     }
 
