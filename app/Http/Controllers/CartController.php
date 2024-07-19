@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\BundlingType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class CartController extends Controller
@@ -53,9 +54,9 @@ class CartController extends Controller
     public function add_to_cart(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            // 'product_id' => 'required',
-            // 'qty' => 'required',
             'total_price' => 'required'
+            // 'id' => 'required|integer|exists:carts,product_id',
+            // 'qty' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -68,23 +69,26 @@ class CartController extends Controller
 
         try {
             
-            $existingCart = Cart::where('product_id', $request->id)->first();
-
-            if ($existingCart) {
-                // Update existing cart item
-                $existingCart->update([
-                    'qty' => $existingCart->qty + $request->qty,
-                    'total_price' => $existingCart->total_price + $request->total_price,
-                ]);
-            } else {
-                // Create new cart item
-                Cart::create([
-                    'user_id' => auth()->user()->id,
-                    'product_id' => $request->id,
-                    'qty' => $request->qty,
-                    'total_price' => $request->total_price,
-                ]);
-            }
+            DB::transaction(function () use ($request) {
+                $existingCart = Cart::where('product_id', $request->id)
+                    ->where('user_id', auth()->user()->id)
+                    ->first();
+        
+                if ($existingCart) {
+                    // Update existing cart item
+                    $existingCart->qty += $request->qty;
+                    $existingCart->total_price += $request->total_price;
+                    $existingCart->save();
+                } else {
+                    // Create new cart item
+                    Cart::create([
+                        'user_id' => auth()->user()->id,
+                        'product_id' => $request->id,
+                        'qty' => $request->qty,
+                        'total_price' => $request->total_price,
+                    ]);
+                }
+            });
 
             return back()->with(['success', 'User berhasil ditambahkan!', 'show_modal' => true]); 
         } catch (\Throwable $th) {
