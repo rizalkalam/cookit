@@ -16,7 +16,7 @@ class BundlingSeeder extends Seeder
         collect([
             [
                 'bundling_name' => 'Snack Attack',
-                'price' => 0,
+                'price' => 10000,
             ],
             [
                 'bundling_name' => 'Cook The Day',
