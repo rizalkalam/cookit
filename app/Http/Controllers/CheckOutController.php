@@ -180,6 +180,7 @@ class CheckOutController extends Controller
         // Initialize total price and order details string
         $totalPrice = 0;
         $orderDetails = "";
+        $qtys = $request->input('qty'); // Mengambil kuantitas sebagai array
 
         // Process each cart item
         foreach ($carts as $cart) {
@@ -187,7 +188,7 @@ class CheckOutController extends Controller
             $menuType = $cart->menu->type->name_type ?? ' ';
             $menuDsc = $cart->menu->description ?? ' ';
             $menuPrice = $cart->menu->price ?? $cart->bundling->price;
-            $qty = $cart->qty;
+            $qty = $qtys[$cart->id] ?? 1;  // Default to 1 if not set
 
             $orderDetails .= "{$menuName} ({$qty} x Rp " . number_format($menuPrice, 0, ',', '.') . ")\n";
 

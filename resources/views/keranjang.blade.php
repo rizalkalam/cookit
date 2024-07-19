@@ -45,7 +45,8 @@
                                             <button class="minus-btn-bskt" type="button" name="button" data-cart-id="{{ $item->id }}">
                                                 <iconify-icon icon="ic:baseline-minus" width="12"></iconify-icon>
                                             </button>
-                                            <input type="text" name="quantities[{{ $item->id }}]" value="{{ $item->qty }}">
+                                            <input type="text" name="quantities[{{ $item->id }}]" class="quantity-input" value="{{ $item->qty }}">
+                                            <input type="hidden" class="total_qty" name="qty[{{ $item->id }}]" value="">
                                             <button class="plus-btn-bskt" type="button" name="button" data-cart-id="{{ $item->id }}">
                                                 <iconify-icon icon="material-symbols:add" width="12"></iconify-icon>
                                             </button>
@@ -59,7 +60,6 @@
                                 <input type="hidden" name="shipping_cost" value="{{ $shippingCost = auth()->user()->addres->district->shipping_cost }}">
                                 <input type="hidden" name="total_price" value="{{ $subtotal = $cart_products->sum(function($item) { return $item->menu->price * $item->qty; }) }}">
                                 <input type="hidden" name="price" value="{{ $subtotal + $shippingCost }}">
-                                <input type="hidden" name="qty[]" value="{{ $item->qty }}">
                                 <input type="hidden" name="menu_name[]" value="{{ $item->menu->name }}">
                                 <input type="hidden" name="menu_type[]" value="{{ $item->menu->type->name_type }}">
                                 <input type="hidden" name="bundling[]" value="">
@@ -108,7 +108,10 @@
                                 $subtotal = $cart_products->sum(function($item) { return $item->menu->price * $item->qty; }) +
                             $cart_bundlings->sum('total_price'), 0, ',', '.')  }}">
                             <input type="hidden" name="price" value="{{ $subtotal + $shippingCost }}">
-                            <input type="hidden" name="qty[]" value="{{ $item->qty }}">
+                            @php
+                                $totalQty = $cart_products->sum('qty') + $cart_bundlings->sum('qty');
+                            @endphp
+                            <input type="hidden" name="qty[{{ $item->id }}]" value="{{ $totalQty }}">
                             <input type="hidden" name="menu_name[]" value="{{ $item->bundling_name }}">
                             <input type="hidden" name="menu_type[]" value="Bundling">
                             <input type="hidden" name="customer_first_name" value="{{ auth()->user()->name }}">
@@ -123,13 +126,14 @@
         <div class="sec-total-bskt">
             <div class="right-total-bskt"></div>
             <div class="left-total-bskt">
-                <p>Total (<span class="total-items">{{ $cart_products->sum('qty') + $cart_bundlings->sum('qty') }}</span> Produk)</p>
+                <p>Total (<span class="total-items">{{ $totalQty = $cart_products->sum('qty') + $cart_bundlings->sum('qty') }}</span> Produk)</p>
                 <div class="price-con-total-bskt">
                     Rp.<span class="total-price">
-                        {{ (
-                            ($cart_products ? $cart_products->sum(fn($item) => $item->menu->price * $item->qty) : 0) +
-                            ($cart_bundlings ? $cart_bundlings->sum('total_price') : 0)
-                        ) }}
+                        {{ number_format(
+                                 ($cart_products ? $cart_products->sum(fn($item) => $item->menu->price * $item->qty) : 0) +
+                                ($cart_bundlings ? $cart_bundlings->sum('total_price') : 0)
+                            , 0, ',', '.')
+                        }}
                     </span>
                 </div>
                 <a href="/check_out">
@@ -172,74 +176,96 @@
                 });
         // refresh
 
-         function updatePrice($quantityInput) {
+        function formatCurrency(number) {
+            return new Intl.NumberFormat('id-ID', {
+                style: 'decimal',
+                minimumFractionDigits: 0
+            }).format(number);
+        }
+
+        function updatePrice($quantityInput) {
             var $item = $quantityInput.closest('.item');
             var unitPrice = parseFloat($item.find('.unit-price-bskt').data('unit-price'));
-            var quantity = parseInt($quantityInput.val());
+            var quantity = parseInt($quantityInput.val(), 10); // Ensure base 10 parsing
             var totalPrice = unitPrice * quantity;
-            $item.find('.total-price-bskt').text(totalPrice);
+            $item.find('.total-price-bskt').text(formatCurrency(totalPrice));
             updateTotalPrice();
-            updateTotalItems();
+            updateTotalItems(); // Update total items after price update
         }
 
         function updateTotalPrice() {
             var total = 0;
             $('.item').each(function() {
                 var unitPrice = parseFloat($(this).find('.unit-price-bskt').data('unit-price'));
-                var quantity = parseInt($(this).find('input[type="text"]').val());
+                var quantity = parseInt($(this).find('input[type="text"]').val(), 10);
                 if (!isNaN(unitPrice) && !isNaN(quantity)) {
                     total += unitPrice * quantity;
                 }
             });
-            $('.price-con-total-bskt .total-price').text(total);
+            $('.price-con-total-bskt .total-price').text(formatCurrency(total));
         }
 
         function updateTotalItems() {
             var totalItems = 0;
             $('.item').each(function() {
-                var quantity = parseInt($(this).find('input[type="text"]').val());
-                if (!isNaN(quantity)) {
-                    totalItems += quantity;
+                var quantity = $(this).find('.quantity-input').val();
+                var parsedQuantity = parseInt(quantity, 10); // Ensure base 10 parsing
+
+                if (!isNaN(parsedQuantity) && parsedQuantity > 0) {
+                    totalItems += parsedQuantity;
                 }
+                
+                // Update the total_qty input within the same item
+                $(this).find('.total_qty').val(parsedQuantity);
             });
+
+            // Update the display of total items
             $('.total-items').text(totalItems);
         }
 
+        // Handle minus button click
         $('.minus-btn-bskt').on('click', function(e) {
             e.preventDefault();
             var $this = $(this);
-            var $input = $this.closest('.quantity').find('input');
-            var value = parseInt($input.val());
+            var $item = $this.closest('.item'); // Find the closest item
+            var $input = $item.find('input[type="text"]'); // Get the input within the same item
+            var value = parseInt($input.val(), 10);
 
             if (value > 1) {
                 value = value - 1;
                 $input.val(value);
                 updatePrice($input);
 
-                // Update quantity in database via AJAX
-                updateCartItem($this.data('id'), value);
+                // Optionally update quantity in the database via AJAX
+                updateCartItem($this.data('cart-id'), value);
             }
+            updateTotalItems(); // Ensure total items are updated after change
         });
 
+        // Handle plus button click
         $('.plus-btn-bskt').on('click', function(e) {
             e.preventDefault();
             var $this = $(this);
-            var $input = $this.closest('.quantity').find('input');
-            var value = parseInt($input.val());
+            var $item = $this.closest('.item'); // Find the closest item
+            var $input = $item.find('input[type="text"]'); // Get the input within the same item
+            var value = parseInt($input.val(), 10);
 
             if (value < 100) {
                 value = value + 1;
                 $input.val(value);
                 updatePrice($input);
 
-                // Update quantity in database via AJAX
-                updateCartItem($this.data('id'), value);
+                // Optionally update quantity in the database via AJAX
+                updateCartItem($this.data('cart-id'), value);
             }
+            updateTotalItems(); // Ensure total items are updated after change
         });
 
+        // Handle manual input change
         $('.quantity input').on('input', function() {
             var $this = $(this);
-            var value = parseInt($this.val());
+            var value = parseInt($this.val(), 10);
+
             if (isNaN(value) || value < 1) {
                 $this.val(1);
             } else if (value > 100) {
@@ -247,9 +273,17 @@
             }
             updatePrice($this);
 
-            // Update quantity in database via AJAX
-            updateCartItem($this.closest('.quantity').find('.minus-btn-bskt').data('id'), $this.val());
+            // Optionally update quantity in the database via AJAX
+            updateCartItem($this.closest('.item').find('.minus-btn-bskt').data('cart-id'), $this.val());
+            updateTotalItems(); // Ensure total items are updated after change
         });
+
+        // Initialize #total_qty value on page load based on existing input values
+        $(document).ready(function() {
+            updateTotalItems();
+        });
+
+
 
         // modal delete
         document.addEventListener('DOMContentLoaded', function() {
