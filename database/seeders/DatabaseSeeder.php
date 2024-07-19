@@ -66,7 +66,7 @@ class DatabaseSeeder extends Seeder
             // OrderSeeder::class,
             // PromotionProductSeeder::class,
             BundlingSeeder::class,
-            // BundlingTypeSeeder::class,
+            BundlingTypeSeeder::class,
         ]);
     }
 }
