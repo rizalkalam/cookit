@@ -336,7 +336,10 @@
                         <div class="list-img-sec4-edit-menu">
                             <img src="/{{ $tutorial->image }}">
                         </div>
-                        <textarea class="input-dsc-sec4" id="input-dsc-sec4" name="instruction" id="instruction" disabled>{{ old('instruction', $tutorial->instruction) }}</textarea>
+                        <div class="con-edit-tutorial-dshb">
+                            <textarea class="title-dsc-sec4" id="input-dsc-sec4" name="title_instruction" id="title_instruction" disabled>{{ old('title_instruction', $tutorial->title_instruction) }}</textarea>
+                            <textarea class="input-dsc-sec4" id="input-dsc-sec4" name="instruction" id="instruction" disabled>{{ old('instruction', $tutorial->instruction) }}</textarea>
+                        </div>
                         <div class="con-btn-tutorial">
                             <div class="edit-to-sent">
                                 <a class="icn-edit-to-sent" href="#delModal" id="edit-tutorial" 

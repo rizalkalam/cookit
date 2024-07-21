@@ -442,6 +442,23 @@
     border: 1px solid #D5D5D5;
 }
 
+.con-edit-tutorial-dshb{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.title-dsc-sec4{
+    max-width: 700px;
+    width: 700px; /* Lebar 100% agar mengisi container */
+    height: 44px; /* Tinggi menyesuaikan dengan konten */
+    padding: 12px 18px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #D5D5D5;
+    box-sizing: border-box; /* Padding dan border dihitung sebagai bagian dari lebar dan tinggi */
+}
+
 .input-dsc-sec4{
     max-width: 700px;
     width: 700px; /* Lebar 100% agar mengisi container */
