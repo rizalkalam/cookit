@@ -155,7 +155,7 @@
                     <a href="/ubah_alamat/{{ $address->id }}">Ubah</a>
                 </div>
             @endforeach
-            <a href="/tambah_alamat">
+            <a href="/alamat_saya">
                 <button class="btn-dshb-db" id="modal-add-profiledata">
                     <iconify-icon icon="gala:add" width="18"></iconify-icon>
                     Tambah alamat
