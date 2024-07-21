@@ -16,19 +16,110 @@ class FurtherInformationSeeder extends Seeder
         collect([
             [
                 'menu_id'=> 1,
-                'tools'=> 'Tusukan kayu/sate',
-                'difficulty'=> 'Sedang',
-                'material'=>'Air mineral 200ml',
-                'serving_time'=> '45',
-                'time_format'=>'Menit'
+                'tools'=> null,
+                'difficulty'=> null,
+                'material'=> null,
+                'serving_time'=> null,
+                'time_format'=> null
             ],
+
             [
                 'menu_id'=> 2,
-                'tools'=> 'Panci',
-                'difficulty'=> 'Sulit',
-                'material'=>'Air mineral 200ml',
-                'serving_time'=> '2',
-                'time_format'=>'Jam'
+                'tools'=> null,
+                'difficulty'=> null,
+                'material'=> null,
+                'serving_time'=> null,
+                'time_format'=> null
+            ],
+
+            [
+                'menu_id'=> 3,
+                'tools'=> null,
+                'difficulty'=> null,
+                'material'=> null,
+                'serving_time'=> null,
+                'time_format'=> null
+            ],
+
+            [
+                'menu_id'=> 4,
+                'tools'=> null,
+                'difficulty'=> null,
+                'material'=> null,
+                'serving_time'=> null,
+                'time_format'=> null
+            ],
+
+            [
+                'menu_id'=> 5,
+                'tools'=> null,
+                'difficulty'=> null,
+                'material'=> null,
+                'serving_time'=> null,
+                'time_format'=> null
+            ],
+
+            [
+                'menu_id'=> 6,
+                'tools'=> null,
+                'difficulty'=> null,
+                'material'=> null,
+                'serving_time'=> null,
+                'time_format'=> null
+            ],
+
+            [
+                'menu_id'=> 7,
+                'tools'=> null,
+                'difficulty'=> null,
+                'material'=> null,
+                'serving_time'=> null,
+                'time_format'=> null
+            ],
+
+            [
+                'menu_id'=> 8,
+                'tools'=> null,
+                'difficulty'=> null,
+                'material'=> null,
+                'serving_time'=> null,
+                'time_format'=> null
+            ],
+
+            [
+                'menu_id'=> 9,
+                'tools'=> null,
+                'difficulty'=> null,
+                'material'=> null,
+                'serving_time'=> null,
+                'time_format'=> null
+            ],
+
+            [
+                'menu_id'=> 10,
+                'tools'=> null,
+                'difficulty'=> null,
+                'material'=> null,
+                'serving_time'=> null,
+                'time_format'=> null
+            ],
+
+            [
+                'menu_id'=> 11,
+                'tools'=> null,
+                'difficulty'=> null,
+                'material'=> null,
+                'serving_time'=> null,
+                'time_format'=> null
+            ],
+
+            [
+                'menu_id'=> 12,
+                'tools'=> null,
+                'difficulty'=> null,
+                'material'=> null,
+                'serving_time'=> null,
+                'time_format'=> null
             ],
         ])->each(function ($further_information){
             DB::table('further_information')->insert($further_information);
