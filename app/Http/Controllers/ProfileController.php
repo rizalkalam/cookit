@@ -143,6 +143,11 @@ class ProfileController extends Controller
                 'complete_address' => $request->complete_address
             ]);
 
+            $addres_id = User::where('id', auth()->user()->id)
+            ->update([
+                'address_id' => $data->id
+            ]);
+
             return redirect('/alamat_saya')->with('success', 'Alamat berhasil ditambahkan !');
         } catch (\Throwable $th) {
             //throw $th;
@@ -194,6 +199,11 @@ class ProfileController extends Controller
                 'area' => $input_area,
                 'district' => $input_district,
                 'complete_address' => $request->complete_address
+            ]);
+
+            $addres_id = User::where('id', auth()->user()->id)
+            ->update([
+                'address_id' => $data->id
             ]);
 
             return redirect('/alamat_saya')->with('success', 'Alamat berhasil diubah !, silahkan terapkan alamat pilihan anda');
