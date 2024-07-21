@@ -143,6 +143,11 @@ class ProfileController extends Controller
                 'complete_address' => $request->complete_address
             ]);
 
+            $addres_id = User::where('id', auth()->user()->id)
+            ->update([
+                'address_id' => $data->id
+            ]);
+
             return redirect('/alamat_saya')->with('success', 'Alamat berhasil ditambahkan !');
         } catch (\Throwable $th) {
             //throw $th;
@@ -196,7 +201,12 @@ class ProfileController extends Controller
                 'complete_address' => $request->complete_address
             ]);
 
-            return redirect('/alamat_saya')->with('success', 'Alamat berhasil diubah !');
+            $addres_id = User::where('id', auth()->user()->id)
+            ->update([
+                'address_id' => $data->id
+            ]);
+
+            return redirect('/alamat_saya')->with('success', 'Alamat berhasil diubah !, silahkan terapkan alamat pilihan anda');
         } catch (\Throwable $th) {
             return redirect('/ubah_alamat')->with('error', 'Gagal mengubah data !');
         }
@@ -205,6 +215,10 @@ class ProfileController extends Controller
     public function delete_address_user($id)
     {
         try {
+            $addres_id = User::where('id', auth()->user()->id)
+            ->update([
+                'address_id' => null
+            ]);
             $data = AddressUser::where('id', $id)->first();
 
             $data->delete();
