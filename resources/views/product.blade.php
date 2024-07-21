@@ -24,23 +24,39 @@
             <p class="title-section">Yang kami kirim</p>
             <div class="contaniner-carousel-product">
                 <div class="carousel-view-product">
-                    <!-- Left Button -->
-                    <button id="prev-btn-mtrl" class="prev-btn-mtrl"><img src="/assets/icn-arrow-left.svg" alt=""></button>
-                      <!-- List Container -->
-                      <div id="material-list" class="material-list">
-                        <!-- Items -->
-                        @foreach ($to_sents as $to_sent)    
-                        <div class="material">
-                            <div class="material-img">
-                                <img id="material" src="/{{ $to_sent->material->material_img }}">
+                      @if (count($to_sents) < 6)
+                        <!-- List Container -->
+                        <div id="material-list" class="material-list">
+                            <!-- Items -->
+                            @foreach ($to_sents as $to_sent)    
+                            <div class="material">
+                                <div class="material-img">
+                                    <img id="material" src="/{{ $to_sent->material->material_img }}">
+                                </div>
+                                <p>{{ $to_sent->qty }} {{ $to_sent->unit->unit }} 
+                                    {{ $to_sent->material->material_name }}</p>
                             </div>
-                            <p>{{ $to_sent->qty }} {{ $to_sent->unit->unit }} 
-                                {{ $to_sent->material->material_name }}</p>
+                            @endforeach
                         </div>
-                        @endforeach
-                      </div>
-                    <!-- Right Button -->
-                    <button id="next-btn-mtrl" class="next-btn-mtrl"><img src="/assets/icn-arrow-right.svg" alt=""></button>
+                      @else
+                        <!-- Left Button -->
+                        <button type="button" id="prev-btn-mtrl" class="prev-btn-mtrl"><img src="/assets/icn-arrow-left.svg" alt=""></button>
+                        <!-- List Container -->
+                        <div id="material-list" class="material-list">
+                            <!-- Items -->
+                            @foreach ($to_sents as $to_sent)    
+                            <div class="material">
+                                <div class="material-img">
+                                    <img id="material" src="/{{ $to_sent->material->material_img }}">
+                                </div>
+                                <p>{{ $to_sent->qty }} {{ $to_sent->unit->unit }} 
+                                    {{ $to_sent->material->material_name }}</p>
+                            </div>
+                            @endforeach
+                        </div>
+                        <!-- Right Button -->
+                        <button type="button" id="next-btn-mtrl" class="next-btn-mtrl"><img src="/assets/icn-arrow-right.svg" alt=""></button>
+                      @endif
                 </div>
             </div>
         </div>
@@ -211,6 +227,29 @@
 
         $('#close-delete-tutorial').on('click', function() {
             $('#successModal').hide();
+        });
+    });
+
+    $(document).ready(function() {
+        initializeSlick();
+
+        $(window).on('resize', function() {
+            initializeSlick();
+        });
+
+        const prev = document.getElementById('prev-btn-mtrl');
+        const next = document.getElementById('next-btn-mtrl');
+        const list = document.getElementById('material-list');
+
+        const itemWidth = 150;
+        const padding = 10;
+
+        prev.addEventListener('click', () => {
+            list.scrollLeft -= itemWidth + padding;
+        });
+
+        next.addEventListener('click', () => {
+            list.scrollLeft += itemWidth + padding;
         });
     });
 </script>
