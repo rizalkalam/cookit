@@ -6,24 +6,28 @@
     <div class="section-bskt">
         <p class="title-keranjang">Alamat Saya</p>
         <div class="list-alamat">
-            @foreach ($address as $item)
-            <div id="con-alamat-{{ $item->id }}" class="con-alamat {{ auth()->user()->address_id === $item->id ? 'applied' : '' }}" onclick="selectAddress('{{ $item->id }}')">
-                <input type="radio" name="selected_address" value="{{ $item->id }}" {{ auth()->user()->address_id === $item->id ? 'checked' : '' }} style="display: none;">
-                <p class="contact-check-out">{{ $item->full_name }} (+62) {{ $item->phone_address }}</p>
-                <p class="addres-check-out">{{ $item->complete_address }}</p>
-                <a href="/ubah_alamat/{{ $item->id }}">Ubah</a>
-                <div class="btn-delete-address" id="btn-delete-address_user" data-id-address="{{ $item->id }}">
-                    <a>
-                        <iconify-icon icon="mdi:trash" style="color: #fff" width="20"></iconify-icon>
-                    </a>
-                </div>
-                @if (auth()->user()->address_id === $item->id)
-                <div class="badge-applied">
-                    <p>Applied</p>
-                </div>
-                @endif
-            </div>
-            @endforeach
+            @if ($address->isEmpty())
+                <h3>Silahkan tambah alamat anda</h3>
+            @else
+                @foreach ($address as $item)
+                    <div id="con-alamat-{{ $item->id }}" class="con-alamat {{ auth()->user()->address_id === $item->id ? 'applied' : '' }}" onclick="selectAddress('{{ $item->id }}')">
+                        <input type="radio" name="selected_address" value="{{ $item->id }}" {{ auth()->user()->address_id === $item->id ? 'checked' : '' }} style="display: none;">
+                        <p class="contact-check-out">{{ $item->full_name }} (+62) {{ $item->phone_address }}</p>
+                        <p class="address-check-out">{{ $item->complete_address }}</p>
+                        <a href="/ubah_alamat/{{ $item->id }}">Ubah</a>
+                        <div class="btn-delete-address" id="btn-delete-address_user" data-id-address="{{ $item->id }}">
+                            <a>
+                                <iconify-icon icon="mdi:trash" style="color: #fff" width="20"></iconify-icon>
+                            </a>
+                        </div>
+                        @if (auth()->user()->address_id === $item->id)
+                            <div class="badge-applied">
+                                <p>Applied</p>
+                            </div>
+                        @endif
+                    </div>
+                @endforeach
+            @endif
             <a class="a-btn-add-alamat" href="/tambah_alamat">
                 <button class="btn-add-alamat" type="button">
                     <iconify-icon class="custom-icon" icon="gala:add" ></iconify-icon>
@@ -42,7 +46,7 @@
     <div id="editTosentModal" class="reveal-modal-tutorial">
         <span class="btn-close-modal" id="close-delete-address_user"><img src="/assets/close-modal.svg" alt="Close"></span>
         <p>Anda yakin ingin menghapus alamat?</p>
-        <form action="/delete_address/{{ $item->id }}" method="POST" id="deleteForm">
+        <form action="/delete_address/{{ $item->id ?? null }}" method="POST" id="deleteForm">
             @csrf
             @method('DELETE')
             <input type="hidden" name="addressId_delete" id="addressId_delete">
