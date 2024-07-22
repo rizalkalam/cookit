@@ -29,15 +29,17 @@ class RevenueController extends Controller
         $user_percentage_increase_formatted = number_format($user_percentage_increase, 1);
 
 
-        $orders = Order::get();
-        $order_count = count($orders);
+        $orders = Order::get();        
+        $order_count = $orders->count(); // Get the count of orders
         $orders_yesterday = Order::whereDate('date', $yesterday)->count();
-        // Hitung persentase kenaikan
+
+        // Calculate the percentage increase
         if ($orders_yesterday > 0) {
-            $order_percentage_increase = (($orders - $orders_yesterday) / $orders_yesterday) * 100;
+            $order_percentage_increase = (($order_count - $orders_yesterday) / $orders_yesterday) * 100;
         } else {
-            $order_percentage_increase = 0; // Jika tidak ada data kemarin, persentase kenaikan dianggap 0
+            $order_percentage_increase = 0; // If there are no orders yesterday, the percentage increase is considered 0
         }
+
         $order_percentage_increase_formatted = number_format($order_percentage_increase, 1);
 
         $orders_completed = Order::where('status', 'completed')->get();
